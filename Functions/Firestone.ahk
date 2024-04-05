@@ -41,12 +41,13 @@ PixelSearch,X,Y, 1049, 318, 1338, 422, 0xEB00EF, 100, Fast RGB
 ; tries to find first node available, if none is found it will scroll the tree and restart the function
 PixelSearch,X,Y, 205, 208, 1887, 850, 0x0D49DE, 100, Fast RGB
   if(ErrorLevel=1){
+    return
+  } Else {
     loop, 35{
       Send {WheelDown}
       Sleep, 200
     }
   FirestoneTest()
-  return
   }
   if(ErrorLevel=0){
     Sleep, 1000

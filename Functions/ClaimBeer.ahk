@@ -5,10 +5,12 @@
 #Include Functions\subFunctions\OpenTown.ahk
 #Include Functions\subFunctions\UseTavernToken.ahk
 
-; skip claiming beer from tavern
 ClaimBeer(){
-    GuiControlGet, Checked, , Beer, ;get state of Research checkbox
-        if (Checked=0){
+    ; check if skip beer was selected
+    GuiControlGet, Checked, , Beer,
+        if (Checked=1){
+            Return
+        } Else {
             ControlFocus,, ahk_exe Firestone.exe
             MainMenu()
             OpenTown()

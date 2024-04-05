@@ -76,5 +76,4 @@ GuiControlGet, Checked, , Bless,
     }
 BigClose()
 BigClose()
-
 }

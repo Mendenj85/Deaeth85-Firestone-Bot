@@ -25,14 +25,17 @@ Guild(){
     BigClose()
     ; check if claiming pickaxes
     GuiControlGet, Checked, , Pickaxes, 
-        if (Checked = 0){
+        if (Checked = 1){
+            Goto, CrystalHit
+        } Else {
             ClaimAxes()
-    }
+        }
+    CrystalHit:
     ; check if we are doing crystal hits
     GuiControlGet, Checked, , Crystal,
         if (Checked = 1){
             HitCrystal()
-    }
+        }
     ; see if we are running personal tree or not
     GuiControlGet,Checked, , PTree,
     if (Checked = 1){
@@ -44,9 +47,9 @@ Guild(){
     }
     ; check if clearing guild notifications
     GuiControlGet,Checked, , GNotif,
-        if (Checked = 1){
-            ClearNotifications()
-        }
+    if (Checked = 1){
+        ClearNotifications()
+    }
     return
 }
 ClaimAxes(){

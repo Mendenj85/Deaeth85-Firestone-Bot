@@ -28,17 +28,17 @@ SetBatchLines, -1
 
 ; start of main script
 ControlFocus,, ahk_exe Firestone.exe
-loop:
-    {
-        GetColor()
-        ClaimCampaign()
-        ClaimBeer()
-        ; check if either sell exotic is checked (sell all check is internal to sell exotic script)
-        GuiControlGet, Checked, , SellEx,
-            if (Checked = 1)
-                SellExotic()
-        ClaimEngineer()
-        Guardian()
+loop:{
+    GetColor()
+    ClaimCampaign()
+    ClaimBeer()
+    ; check if either sell exotic is checked (sell all check is internal to sell exotic script)
+    GuiControlGet, Checked, , SellEx,
+        if (Checked = 1){
+            SellExotic()
+            ClaimEngineer()
+            Guardian()
+        }
         ; check if Claim Daily Quests is checked
         GuiControlGet, Checked, , Daily,
             if (Checked = 1){
@@ -51,37 +51,43 @@ loop:
             }
         ; check if Open Chests is checked
         GuiControlGet, Checked, , Chests,
-        if (Checked = 1){
-            OpenChests()
+            if (Checked = 1){
+                OpenChests()
             } Else {
-                 ;check if Upgrade Blessings is checked
-                GuiControlGet, Checked, , Bless,
-                    if (Checked = 1){
-                        OpenBlessChests()
-                    }
+            ;check if Upgrade Blessings is checked
+            GuiControlGet, Checked, , Bless,
+                if (Checked = 1){
+                    OpenBlessChests()
                 }
+            }
         ClaimOracle()
         Guild()   
         ; check if we are skipping alchemy
         GuiControlGet, Checked, , Alch, 
-            if (Checked = 0){
+            if (Checked = 1){
+                Goto, ResearchStart
+            } Else {
                 Alchemist()
             }
+        ResearchStart:
         ; check if we are skipping research
         GuiControlGet, Checked, , Research,
-            if (Checked = 0){
+            if (Checked = 1){
+                Goto, MapStartUp
+            } Else {
                 GoFirestone()
                 FirestoneTest()
             }
+        MapStartUp:
         GoMap()
         MapRedeem()
         HeroUpgrade()
         MouseMove, 947, 755
         Sleep, 60000 ;wait 1 minute then repeat
         Goto, Loop
-        }
+    }
 
-        GuiEscape:
-        GuiClose:
-        ExitApp
-        $Esc:: ExitApp  
+GuiEscape:
+GuiClose:
+ExitApp
+$Esc:: ExitApp  
