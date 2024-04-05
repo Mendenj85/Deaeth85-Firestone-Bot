@@ -1,0 +1,29 @@
+; Solar.ahk
+
+#Include Functions\subFunctions\BigClose.ahk
+
+Solar(){
+PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0xFEF343, 3, Fast RGB
+If (ErrorLevel=0){
+    MouseMove, FoundX, FoundY
+    Sleep, 1000
+    Click
+    Sleep, 1500
+    ; click 1
+    MouseMove, 914, 812
+    Sleep, 1000
+    Click
+    Sleep, 5000
+    ; clicks equip or space it should be
+    MouseMove, 962, 850
+    Sleep, 1000
+    Click
+    Sleep, 1500
+    BigClose()
+    ; failsafe in case big close opens options
+    MouseMove, 47, 622
+    Sleep, 1000
+    Click
+    Sleep, 1500
+}
+}
