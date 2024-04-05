@@ -5,6 +5,8 @@ SendMode, Input
 SetBatchLines, -1
 SetWorkingDir, %A_ScriptDir%
 
+Picture = Images\startbutton.png
+
 ; gui code
 Gui Font, s9, Segoe UI
 Gui Add, Tab3, x0 y-1 w600 h800, About | Options | Personal Tree | Script Start
@@ -71,7 +73,7 @@ Gui Add, Picture, x0 y190 w600 h300, Images\logo.png
 Gui Add, Text, x0 y540 w600 h20 +0x200 +Center, Thank you for using my bot
 Gui Add, Text, x0 y560 w600 h20 +0x200 +Center, Donations are never required, but accepted through Venmo:
 Gui Add, Text, x0 y580 w600 h20 +0x200 +Center, @Spyder85
-Gui Add, Picture, x145 y620 w300 h60 +0x200 +Center gButtonStart, Images\startbutton.png
+Gui Add, Picture, x145 y620 w300 h60 +0x200 +Center gButtonStart, %Picture%
 
 Gui Show, w600 h700, Deaeth85's Firestone Bot - V1.0
 return
