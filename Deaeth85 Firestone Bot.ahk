@@ -27,8 +27,9 @@ SetWorkingDir %A_ScriptDir%
 SetBatchLines, -1
 
 ; start of main script
-ControlFocus,, ahk_exe Firestone.exe
-loop:{
+loop:
+    {
+    ControlFocus,, ahk_exe Firestone.exe
     GetColor()
     ClaimCampaign()
     ClaimBeer()
