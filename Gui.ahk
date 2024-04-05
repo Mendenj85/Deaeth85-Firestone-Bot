@@ -28,8 +28,8 @@ Gui Add, Checkbox, x10 y90 w400 h20 vResearch, Skip Research
 Gui Add, Checkbox, x10 y120 w200 h20 vBeer, Skip Claiming Beer
 Gui Add, Checkbox, x10 y150 w400 h20 VToken, Use Tavern Tokens (Will NOT work if Skip Claiming Beer selected)
 Gui Add, Checkbox, x10 y180 w400 h20 VSellEx, Sell Exotic Items (MUST choose this AND one of the next two options)
-Gui Add, Checkbox, x20 y210 w400 h20 vSellScrolls,  1. Sell ONLY Exotic Scrolls (Select this OR the next, not both)
-Gui Add, Checkbox, x20 y240 w400 h20 vSellAll,  2. Sell All Exotic Items (Do not select if you took the one above)
+Gui Add, Radio, x20 y210 w400 h20 vSellScrolls,  1. Sell ONLY Exotic Scrolls
+Gui Add, Radio, x20 y240 w400 h20 vSellAll,  2. Sell All Exotic Items
 Gui Add, Checkbox, x10 y270 w400 h20 vPickaxes, Skip Claiming Pickaxes
 Gui Add, Checkbox, x10 y300 w400 h20 vCrystal, Spend Pickaxes on Crystal
 Gui Add, Checkbox, x10 y330 w400 h20 vPTree, Upgrade Personal Tree (Select options on next tab if upgrading)
