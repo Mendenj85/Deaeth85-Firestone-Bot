@@ -2,6 +2,7 @@
 #SingleInstance Force
 #Include Gui.ahk
 #Include Functions\Alchemist.ahk
+#Include Functions\Arena.ahk
 #Include Functions\ClaimBeer.ahk
 #Include Functions\ClaimCampaign.ahk
 #Include Functions\ClaimEngineer.ahk
@@ -26,6 +27,9 @@ global Color
 SetWorkingDir %A_ScriptDir%
 #NoEnv
 SetBatchLines, -1
+
+; initialize the last execution time of arena section
+lastExecutionTimeArena := 0
 
 ; start of main script
 loop:
@@ -63,7 +67,22 @@ loop:
             }
         }
     ClaimOracle()
-    Guild()   
+    Guild()
+    GuiControlGet, Checked, , PVP,
+        If (Checked=1){
+            ; get current time
+            currentTime := A_TickCount
+            ;check if it's been 24 hours since last execution
+            If (lastExecutionTimeArena <= 0){
+                Arena()
+                lastExecutionTimeArena := currentTime
+            } Else {
+                If (currentTime - lastExecutionTimeArena >= 24 * 60 * 60 * 1000){
+                Arena()
+                lastExecutionTimeArena := currentTime
+                }
+            }
+        }   
     ; check if we are skipping alchemy
     GuiControlGet, Checked, , Alch, 
         if (Checked = 1){
