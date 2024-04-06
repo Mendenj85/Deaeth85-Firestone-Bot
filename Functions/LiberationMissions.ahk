@@ -155,7 +155,8 @@ LiberationMissions(){
         }
         While !LiberationInProgress(){
             Sleep, 5000
-        }Goto, 20Stars
+        }
+        Goto, 20Stars
     }
     20Stars:
     {
@@ -184,7 +185,8 @@ LiberationMissions(){
         }
         While !LiberationInProgress(){
             Sleep, 5000
-        }Goto, 5Stars
+        }
+        Goto, 5Stars
     }
     5Stars:
     {
