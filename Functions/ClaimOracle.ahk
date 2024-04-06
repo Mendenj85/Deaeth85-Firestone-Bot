@@ -5,6 +5,8 @@
 #include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\OpenTown.ahk
 
+lastExecutionTimeOracle := 0
+
 ;function that checks Oracle
 ClaimOracle(){
     ControlFocus,, ahk_exe Firestone.exe
@@ -39,23 +41,37 @@ ClaimOracle(){
     sleep, 1500
     ; check if Claim Daily Oracle was checked on startup
     GuiControlGet, Checked, , DailyOracle,
-        if (Checked = 1){
+    If (Checked = 1){
+        ; get current time
+        currentTime := A_TickCount
+        ;check if it's been 24 hours since last execution
+            If (lastExecutionTimeOracle <= 0){
+                lastExecutionTimeOracle := currentTime
+                Goto, Claim
+            } Else {
+                If (currentTime - lastExecutionTimeOracle >= 24 * 60 * 60 * 1000){
+                lastExecutionTimeOracle := currentTime
+                Goto, Claim
+                }
+            Return
+            }   
+        Claim:
             MouseMove, 833, 758
             Sleep, 1000
             Click
             Sleep, 1500
             ImageSearch,x,y, 422,602,580,744, Images\Oracle.png 
-            if(ErrorLevel=0){
+            If (ErrorLevel=0){
                 BigClose()
                 Goto, UpgradeBlessings
             } else {
-            MouseMove, 619, 756
-            Sleep, 1000
-            Click
-            Sleep, 5000 ; longer delay to allow for steam to load for the following failsafe to trigger
-            ;failsafe in case of steam popup
-            ImageSearch, X, Y, 1208, 223, 1453, 311, Images\steam.png, 100
-                if (ErrorLevel=0)
+                MouseMove, 619, 756
+                Sleep, 1000
+                Click
+                Sleep, 5000 ; longer delay to allow for steam to load for the following failsafe to trigger
+                ;failsafe in case of steam popup
+                ImageSearch, X, Y, 1208, 223, 1453, 311, Images\steam.png, 100
+                If (ErrorLevel=0){
                     MouseMove, 1583, 168
                     Sleep, 1000
                     Click
@@ -66,13 +82,14 @@ ClaimOracle(){
                     Sleep, 5000 ; longer delay to allow for Purchase failed popup before proceeding
                     BigClose()
                     BigClose()
-        }
-    }
+                }
+            }
+    }          
 ; check if upgradeBlessings box was checked
 UpgradeBlessings:
 GuiControlGet, Checked, , Bless,
     if (Checked = 1){
-    UpgradeBlessings()
+        UpgradeBlessings()
     }
 BigClose()
 BigClose()
