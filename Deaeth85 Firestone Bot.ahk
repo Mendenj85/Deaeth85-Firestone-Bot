@@ -3,6 +3,7 @@
 #Include Gui.ahk
 #Include Functions\Alchemist.ahk
 #Include Functions\Arena.ahk
+#Include Functions\CheckMail.ahk
 #Include Functions\ClaimBeer.ahk
 #Include Functions\ClaimCampaign.ahk
 #Include Functions\ClaimEngineer.ahk
@@ -40,29 +41,34 @@ loop:
     ClaimBeer()
     ; check if either sell exotic is checked (sell all check is internal to sell exotic script)
     GuiControlGet, Checked, , SellEx,
-        if (Checked = 1){
+        If (Checked = 1){
             SellExotic()
         }
     ClaimEngineer()
     Guardian()
     ; check if Claim Daily Quests is checked
     GuiControlGet, Checked, , Daily,
-        if (Checked = 1){
+        If (Checked = 1){
             ClaimDaily()
         }
     ; check if Claim Weekly Quests is checked
     GuiControlGet, Checked, , Weekly,
-        if (Checked = 1){
+        If (Checked = 1){
             ClaimWeekly()
+        }
+    ; check if Check Mail is checked
+    GuiControlGet, Checked, , Mail
+        If (Checked = 1){
+            CheckMail()
         }
     ; check if Open Chests is checked
     GuiControlGet, Checked, , Chests,
-        if (Checked = 1){
+        If (Checked = 1){
             OpenChests()
         } Else {
         ;check if Upgrade Blessings is checked
         GuiControlGet, Checked, , Bless,
-            if (Checked = 1){
+            If (Checked = 1){
                 OpenBlessChests()
             }
         }
@@ -78,14 +84,14 @@ loop:
                 lastExecutionTimeArena := currentTime
             } Else {
                 If (currentTime - lastExecutionTimeArena >= 24 * 60 * 60 * 1000){
-                Arena()
-                lastExecutionTimeArena := currentTime
+                    Arena()
+                    lastExecutionTimeArena := currentTime
                 }
             }
         }   
     ; check if we are skipping alchemy
     GuiControlGet, Checked, , Alch, 
-        if (Checked = 1){
+        If (Checked = 1){
             Goto, ResearchStart
         } Else {
             Alchemist()
@@ -93,11 +99,10 @@ loop:
     ResearchStart:
     ; check if we are skipping research
     GuiControlGet, Checked, , Research,
-        if (Checked = 1){
+        If (Checked = 1){
             Goto, MapStartUp
         } Else {
             GoFirestone()
-            FirestoneTest()
         }
     MapStartUp:
     GoMap()

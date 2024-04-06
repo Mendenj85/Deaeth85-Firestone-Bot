@@ -22,7 +22,7 @@ Gui Add, Text, x0 y550 w600 h20 +0x200 +Center, Personal Tree tab you can select
 Gui Add, Text, x0 y580 w600 h20 +0x200 +Center, NOTES:
 Gui Add, Text, x0 y610 w600 h20 +0x200 +Center, The script takes control of your mouse and will repeat until you close it
 Gui Add, Text, x0 y640 w600 h20 +0x200 +Center, You have a 1 minute delay after the Hero Upgrade section to use your mouse w/o risk until script starts over
-Gui Add, Text, x0 y680 w600 h20 +0x200 +Center, Credit to @Dandey for the original code
+Gui Add, Text, x0 y780 w600 h20 +0x200 +Center, Credit to @Dandey for the original code
 Gui Tab, 2
 Gui Add, Text, x10 y30 w600 h29 +0x200 +Center, CHECK ANY OPTIONAL BOXES TO DIRECT THE SCRIPT
 Gui Add, Checkbox, x10 y60 w200 h20 vAlch, Skip Alchemy
@@ -42,9 +42,10 @@ Gui Add, Checkbox, x10 y450 w400 h20 vBless, Upgrade Blessings
 Gui Add, Checkbox, x10 y480 w400 h20 vDaily, Claim Daily Quests
 Gui Add, Checkbox, x10 y510 w400 h20 vWeekly, Claim Weekly Quests
 Gui Add, Checkbox, x10 y540 w400 h20 vChests, Open Chests
-Gui Add, Checkbox, x10 y570 w400 h20 vPVP, Complete Arena Battles
-Gui Add, Text, x10 y600 w600 h20, *If you don't want Liberation Missions next leave dropdown as-is, else scroll to highest star setting
-Gui Add, DropDownList, x10 y630 w400 r5 vLiberationStars, Don't Complete Liberation Missions||190 Or Less Stars|155 or Less Stars|120 or Less Stars|110 or Less Stars|80 or Less Stars|70 or Less Stars|60 or Less Stars|40 or Less Stars|20 or Less Stars|10 or Less Stars|5 or Less Stars
+Gui Add, Checkbox, x10 y570 w400 h20 vMail, Check Mail
+Gui Add, Checkbox, x10 y600 w400 h20 vPVP, Complete Arena Battles
+Gui Add, Text, x10 y630 w600 h20, *If you don't want Liberation Missions next leave dropdown as-is, else scroll to highest applicable star setting
+Gui Add, DropDownList, x10 y660 w400 r5 vLiberationStars, Don't Complete Liberation Missions||190 Or Less Stars|155 or Less Stars|120 or Less Stars|110 or Less Stars|80 or Less Stars|70 or Less Stars|60 or Less Stars|40 or Less Stars|20 or Less Stars|10 or Less Stars|5 or Less Stars
 Gui Tab, 3
 Gui Add, Text, x10 y20 w600 h29 +0x200 +Center, CHOOSE PERSONAL TREE UPGRADES THAT YOU WOULD LIKE THE SCRIPT TO ATTEMPT TO PURCHASE
 Gui Add, Text, x10 y40 w600 h29 +0x200 +Center, Choose as many options as you would like
@@ -68,7 +69,7 @@ Gui Add, Checkbox, x10 y550 w200 h20 vMagic, Magic Spells
 Gui Add, Checkbox, x10 y580 w200 h20 vTank, Tank Specialization
 Gui Add, Checkbox, x10 y610 w200 h20 vDamage, Damage Specialization
 Gui Add, Checkbox, x10 y640 w200 h20 vHeal, Healer Specialization
-Gui Add, Text, x0 y670 w600 h20 +0x200 +Center, Be aware: The script does try to buy in order listed here (top to bottom)
+Gui Add, Text, x0 y770 w600 h20 +0x200 +Center, Be aware: The script does try to buy in order listed here (top to bottom)
 Gui Tab, 4
 Gui Add, Text, x0 y74 w600 h20 +0x200 +Center, Press START (below) to run the Script
 Gui Add, Text, x0 y120 w600 h20 +0x200 +Center, Pressing Esc at any time will stop the Script
@@ -76,9 +77,9 @@ Gui Add, Picture, x0 y190 w600 h300, Images\logo.png
 Gui Add, Text, x0 y540 w600 h20 +0x200 +Center, Thank you for using my bot
 Gui Add, Text, x0 y560 w600 h20 +0x200 +Center, Donations are never required, but accepted through Venmo:
 Gui Add, Text, x0 y580 w600 h20 +0x200 +Center, @Spyder85
-Gui Add, Picture, x145 y620 w300 h60 +0x200 +Center gButtonStart, %Picture%
+Gui Add, Picture, x145 y720 w300 h60 +0x200 +Center gButtonStart, %Picture%
 
-Gui Show, w600 h700, Deaeth85's Firestone Bot - V1.0
+Gui Show, w600 h800, Deaeth85's Firestone Bot - V1.0
 return
 ButtonStart:
     SetTimer, loop, 1000
