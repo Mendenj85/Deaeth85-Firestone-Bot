@@ -32,7 +32,6 @@ loop:
     {
     ControlFocus,, ahk_exe Firestone.exe
     GetColor()
-    LiberationMissions()
     ClaimCampaign()
     ClaimBeer()
     ; check if either sell exotic is checked (sell all check is internal to sell exotic script)
