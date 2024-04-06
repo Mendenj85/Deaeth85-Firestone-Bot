@@ -29,7 +29,7 @@ Arena(){
         MouseMove, 871, 195
         Sleep, 1000
         Click
-        Sleep, 6000
+        Sleep, 3000
         ; choose random opponent
         MouseMove, %RandomX%, 630
         Sleep, 1000
