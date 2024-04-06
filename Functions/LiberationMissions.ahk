@@ -1,18 +1,10 @@
 ; LiberationMissions.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\GoMap.ahk
 #Include Functions\subFunctions\LiberationInProgressCheck.ahk
-#Include Functions\subFunctions\MainMenu.ahk
 
 LiberationMissions(){
     ControlFocus,, ahk_exe Firestone.exe
-    GoMap()
-    ; open campaign
-    MouseMove, 1840, 570
-    Sleep, 1000
-    Click
-    Sleep, 1500
     ; open daily missions
     MouseMove, 1800, 982
     Sleep, 1000

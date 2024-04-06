@@ -1,7 +1,8 @@
 ; ClaimCampaign.ahk
 
-#include Functions\subFunctions\GoMap.ahk
-#include Functions\subFunctions\BigClose.ahk
+#Include Functions\LiberationMissions.ahk
+#Include Functions\subFunctions\GoMap.ahk
+#Include Functions\subFunctions\BigClose.ahk
 
 ;function to get the campaign coins and tokens
 ClaimCampaign(){
@@ -16,6 +17,10 @@ ClaimCampaign(){
     sleep, 1000
     click
     sleep, 1500
+    GuiControlGet, SelectedItem, ,LiberationStars,
+        If (SelectedItem!="Don't Complete Liberation Missions"){
+            LiberationMissions()
+        }
     BigClose()
     return
 }
