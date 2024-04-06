@@ -8,6 +8,6 @@ ClickBless(){
     Sleep, 1000
     MouseMove, 471, 643
     Sleep, 1000
-    click
+    Click
     Sleep, 1000
 }
