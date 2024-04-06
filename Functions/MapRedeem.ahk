@@ -26,6 +26,7 @@ MapRedeem(){
             Sleep, 1000
             Click
             Sleep, 1500
+            Goto, Checks
         } Else {
         ; check if mission is complete
         MsgBox, , Mission Check, Checking if mission is already complete, 2
@@ -67,6 +68,7 @@ MapRedeem(){
             Sleep, 1000
             Click
             Sleep, 1500
+            Goto, Checks
         } Else {
         ; check if mission is complete
         MsgBox, , Mission Check, Checking if mission is already complete, 2
@@ -89,6 +91,7 @@ MapRedeem(){
         If (ErrorLevel = 0){
             MsgBox, , Troop Check, Slackers found - starting maps, 2
             MapStart()
+        } Else {
+            MsgBox, , Troop Check, No troops found - leaving maps, 2
         }
-    MsgBox, , Troop Check, No troops found - leaving maps, 2
 }
