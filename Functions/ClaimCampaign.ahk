@@ -18,7 +18,7 @@ ClaimCampaign(){
     sleep, 1000
     click
     sleep, 1500
-    GuiControlGet, SelectedItem, ,LiberationStars,
+    GuiControlGet, SelectedItem, , LiberationStars,
         If (SelectedItem != "Don't Complete Liberation Missions"){
             ; get current time
             currentTime := A_TickCount

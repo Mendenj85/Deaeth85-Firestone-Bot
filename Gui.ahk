@@ -42,10 +42,11 @@ Gui Add, Checkbox, x10 y450 w400 h20 vBless, Upgrade Blessings
 Gui Add, Checkbox, x10 y480 w400 h20 vDaily, Claim Daily Quests
 Gui Add, Checkbox, x10 y510 w400 h20 vWeekly, Claim Weekly Quests
 Gui Add, Checkbox, x10 y540 w400 h20 vChests, Open Chests
-Gui Add, Checkbox, x10 y570 w400 h20 vMail, Check Mail
-Gui Add, Checkbox, x10 y600 w400 h20 vPVP, Complete Arena Battles
-Gui Add, Text, x10 y630 w600 h20, *If you don't want Liberation Missions next leave dropdown as-is, else scroll to highest applicable star setting
-Gui Add, DropDownList, x10 y660 w400 r5 vLiberationStars, Don't Complete Liberation Missions||190 Or Less Stars|155 or Less Stars|120 or Less Stars|110 or Less Stars|80 or Less Stars|70 or Less Stars|60 or Less Stars|40 or Less Stars|20 or Less Stars|10 or Less Stars|5 or Less Stars
+Gui Add, Checkbox, x10 y570 w400 h20 vShop, Get Free Gift and Check-In
+Gui Add, Checkbox, x10 y600 w400 h20 vMail, Check Mail
+Gui Add, Checkbox, x10 y630 w400 h20 vPVP, Complete Arena Battles
+Gui Add, Text, x10 y660 w600 h20, *If you don't want Liberation Missions leave dropdown as-is, else scroll to highest applicable star setting
+Gui Add, DropDownList, x10 y690 w400 r5 vLiberationStars, Don't Complete Liberation Missions||190 Or Less Stars|155 or Less Stars|120 or Less Stars|110 or Less Stars|80 or Less Stars|70 or Less Stars|60 or Less Stars|40 or Less Stars|20 or Less Stars|10 or Less Stars|5 or Less Stars
 Gui Tab, 3
 Gui Add, Text, x10 y20 w600 h29 +0x200 +Center, CHOOSE PERSONAL TREE UPGRADES THAT YOU WOULD LIKE THE SCRIPT TO ATTEMPT TO PURCHASE
 Gui Add, Text, x10 y40 w600 h29 +0x200 +Center, Choose as many options as you would like

@@ -19,6 +19,7 @@
 #Include Functions\PTree.ahk
 #Include Functions\Quests.ahk
 #Include Functions\SellExotic.ahk
+#Include Functions\Shop.ahk
 #Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\GetColor.ahk
 #Include Functions\subFunctions\GoMap.ahk
@@ -56,6 +57,21 @@ loop:
         If (Checked = 1){
             ClaimWeekly()
         }
+    GuiControlGet, Checked, , Shop,
+        If (Checked=1){
+            ; get current time
+            currentTime := A_TickCount
+            ;check if it's been 24 hours since last execution
+            If (lastExecutionTimeShop <= 0){
+                Shop()
+                lastExecutionTimeShop := currentTime
+            } Else {
+                If (currentTime - lastExecutionTimeArena >= 24 * 60 * 60 * 1000){
+                    Shop()
+                    lastExecutionTimeShop := currentTime
+                }
+            }
+        }   
     ; check if Check Mail is checked
     GuiControlGet, Checked, , Mail
         If (Checked = 1){
