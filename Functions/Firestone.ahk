@@ -21,10 +21,13 @@ GoFirestone() {
     Sleep, 1000
     click
     Sleep, 1000
-    MouseMove, 1522,892
     FirestoneTest()
-    FirestoneNew1st()
-    FirestoneNew2nd()
+    If (2ndSlotInProgress = 0){
+        FirestoneNew2nd()
+    }
+    If (1stSlotInProgress = 0){
+        FirestoneNew1st()
+    }
     BigClose()
     BigClose()
 }

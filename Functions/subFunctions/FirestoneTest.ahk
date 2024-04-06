@@ -1,49 +1,45 @@
-; FirestoneTest.ahk
+#Include Functions\subFunctions\BigClose.ahk
 
 global 1stSlotInProcess := 0
 global 2ndSlotInProcess := 0
 
 FirestoneTest() {
-    ; check for completed research (2nd slot)
-    PixelSearch, X, Y, 1235, 924, 1267, 966, 0x0AA008, 10, Fast RGB
-    If (Error=0){
-        MouseMove, 1198, 934
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        2ndSlotInProcess := 0
-    }
-    ;check for completed research (1st slot)
-    PixelSearch, X, Y, 592, 913, 619, 965, 0x0AA008, 10, Fast RGB
-    If (ErrorLevel=0){
-        MouseMove, 553, 944
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        1stSlotInProcess := 0
-    }
-  
-    ; look for no research in 2nd slot
-    PixelSearch, X, Y, 1064, 887, 1170, 975, 0x488ADC, 10, Fast RGB
-    If (ErrorLevel=0){
-        2ndSlotInProcess := 0
-    }
-  
-    ; look for no research in 1st slot
-    PixelSearch, X, Y, 466, 892, 628, 986, 0x488ADC, 10, Fast RGB
-    If (ErrorLevel=0){
-        1stSlotInProcess := 0
-    }
-  
-    ; look for 2nd slot in progress
-    PixelSearch, X, Y, 1128, 937,1181, 987, 0xA30094, 10, Fast RGB
-    If(ErrorLevel=0){
+    ; check for status of slot 2
+    MsgBox, , Slot 2 Status ,Checking status of slot 2..., 2
+    Sleep, 2000
+    MouseMove, 1202, 944
+    Sleep, 1000
+    Click
+    Sleep, 1500
+    PixelSearch, X, Y, 562, 245, 754, 311, 0x8C4221, 10, Fast RGB
+    If (ErrorLevel = 0){
+        MsgBox, , Slot 2 Status, Slot 2 is in progress., 2
+        Sleep, 2000
         2ndSlotInProcess := 1
+        BigClose()
     }
-  
-    ; look for 1st slot in progress
-    PixelSearch, X, Y, 480, 935, 530, 992, 0xA30094, 10, Fast RGB
-    If(ErrorLevel=0){
+    else {
+        MsgBox, , Slot 2 Status, Slot 2 is not in progress., 2
+        Sleep, 2000
+    }
+    
+    ; check for status of slot 1
+    MsgBox, , Slot 1 Status, Checking status of slot 1... , 2
+    Sleep, 2000
+    MouseMove, 554, 939
+    Sleep, 1000
+    Click
+    Sleep, 1500
+    PixelSearch, X, Y, 562, 245, 754, 311, 0x8C4221, 10, Fast RGB
+    If (ErrorLevel = 0){
+        MsgBox, , Slot 1 Status, Slot 1 is in progress., 2
+        Sleep, 2000
         1stSlotInProcess := 1
+        BigClose()
+        Return
+    }
+    else {
+        MsgBox, , Slot 1 Status, Slot 1 is not in progress., 2
+        Sleep, 2000
     }
 }
