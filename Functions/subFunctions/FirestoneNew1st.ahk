@@ -3,7 +3,7 @@
 #Include Functions\subFunctions\FirestoneClicks.ahk
 
 FirestoneNew1st() {
-    If (1stSlotInProcess = 0){
+    If (Slot1InProcess = 0){
         Loop, 35{
             Send, {WheelUp}
             Sleep, 200
@@ -15,7 +15,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 1 mid upper
@@ -24,7 +24,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 1 middle
@@ -33,7 +33,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 1 mid lower
@@ -42,7 +42,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 1 lower
@@ -51,7 +51,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 2 upper
@@ -60,7 +60,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 2 mid upper
@@ -69,7 +69,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 2 middle
@@ -78,7 +78,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 2 mid lower
@@ -87,7 +87,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 2 lower
@@ -96,7 +96,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 3 upper
@@ -105,7 +105,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 3 mid upper
@@ -114,7 +114,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 3 middle
@@ -123,7 +123,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 3 mid lower
@@ -132,7 +132,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 3 lower
@@ -141,7 +141,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 4
@@ -150,7 +150,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 5 upper
@@ -163,7 +163,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 5 lower
@@ -172,7 +172,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 6 upper
@@ -181,7 +181,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 6 middle
@@ -190,7 +190,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 6 lower
@@ -199,7 +199,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 7 upper
@@ -208,7 +208,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 7 mid upper
@@ -217,7 +217,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 7 middle
@@ -226,7 +226,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 7 mid lower
@@ -235,7 +235,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 7 lower
@@ -244,7 +244,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 8 upper
@@ -253,7 +253,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 8 mid upper
@@ -262,7 +262,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 8 middle
@@ -271,7 +271,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 8 mid lower
@@ -280,7 +280,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
     ; column 8 lower
@@ -289,7 +289,7 @@ FirestoneNew1st() {
     Click
     Sleep, 1500
     FirestoneClicks()
-    If (1stSlotInProcess = 1){
+    If (Slot1InProcess = 1){
         Return
     }
 }
