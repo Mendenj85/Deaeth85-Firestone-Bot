@@ -9,7 +9,6 @@ lastExecutionTimeLiberation := 0
 ;function to get the campaign coins and tokens
 ClaimCampaign(){
     ControlFocus,, ahk_exe Firestone.exe
-    ;similar command like this will be used at the beginning of each function to open the map/ screen for the action to be made
     GoMap()
     MouseMove, 1857, 606
     sleep, 1000
@@ -31,7 +30,6 @@ ClaimCampaign(){
                 If (currentTime - lastExecutionTimeLiberation >= 24 * 60 * 60 * 1000){
                     LiberationMissions()
                     lastExecutionTimeLiberation := currentTime
-
                 }
             }
         }   
