@@ -37,7 +37,7 @@ OpenChests(){
     Sleep, 1500
     BigClose()
     ; failsafe in case big close opens options
-    MouseMove, 622, 962
+    MouseMove, 59, 181
     Sleep, 1000
     Click
     Sleep, 1500
@@ -59,7 +59,7 @@ OpenChests(){
     Sleep, 1500
     BigClose()
     ; failsafe in case big close opens options
-    MouseMove, 47, 622
+    MouseMove, 59, 181
     Sleep, 1000
     Click
     Sleep, 1500
