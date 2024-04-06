@@ -10,5 +10,6 @@ LiberationInProgress(){
             Sleep, 1500
             Return True
         }
-        Goto, Search
+    Sleep, 2000
+    Goto, Search
     }
