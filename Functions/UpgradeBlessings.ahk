@@ -41,7 +41,7 @@ UpgradeBlessings(){
             ClickBless()
         }
     ; 3 o-clock position
-    PixelSearch, X, Y, 1734, 507, 1782, 570, 0xF60000, 10, Fast RGB
+    PixelSearch, X, Y, 1741, 507, 1777, 546, 0xF60000, 10, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1703, 578
             Sleep, 1000
@@ -50,7 +50,7 @@ UpgradeBlessings(){
             ClickBless()
         }
     ; 4 o-clock position
-    PixelSearch, X, Y, 1695, 673, 1741, 730, 0xF60000, 10, Fast RGB
+    PixelSearch, X, Y, 1695, 673, 1731, 711, 0xF60000, 10, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1653, 741
             Sleep, 1000
@@ -59,7 +59,7 @@ UpgradeBlessings(){
             ClickBless()
         }
     ; 5 o-clock position
-    PixelSearch, X, Y, 1584, 802, 1622, 849, 0xF60000, 10, Fast RGB
+    PixelSearch, X, Y, 1577, 795, 1613, 825, 0xF60000, 10, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1531, 860
             Sleep, 1000
@@ -68,7 +68,7 @@ UpgradeBlessings(){
             ClickBless()
         }
     ; 6 o-clock position
-    PixelSearch, X, Y, 1414, 844, 1458, 904, 0xF60000, 10, Fast RGB
+    PixelSearch, X, Y, 1414, 837, 1447, 876, 0xF60000, 10, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1372, 903
             Sleep, 1000
@@ -77,7 +77,7 @@ UpgradeBlessings(){
             ClickBless()
         }
     ; 7 o-clock position
-    PixelSearch, X, Y, 1258, 809, 1291, 847, 0xF60000, 10, Fast RGB
+    PixelSearch, X, Y, 1258, 793, 1283, 828, 0xF60000, 10, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1207, 852
             Sleep, 1000
@@ -86,7 +86,7 @@ UpgradeBlessings(){
             ClickBless()
         }
     ; 8 o-clock position
-    PixelSearch, X, Y, 1115, 656, 1164, 711, 0xF60000, 10, Fast RGB
+    PixelSearch, X, Y, 1132, 672, 1165, 703, 0xF60000, 10, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1089, 742
             Sleep, 1000
@@ -95,7 +95,7 @@ UpgradeBlessings(){
             ClickBless()
         }
     ; 9 o-clock position
-    PixelSearch, X, Y, 1084, 501, 1121, 559, 0xF60000, 10, Fast RGB
+    PixelSearch, X, Y, 1091, 510, 1115, 5541, 0xF60000, 10, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1045, 575
             Sleep, 1000
@@ -104,7 +104,7 @@ UpgradeBlessings(){
             ClickBless()
         }
     ; 10 o-clock position
-    PixelSearch, X, Y, 1121, 334, 1159, 394, 0xF60000, 10, Fast RGB
+    PixelSearch, X, Y, 1131, 345, 1165, 377, 0xF60000, 10, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1089, 415
             Sleep, 1000
@@ -113,7 +113,7 @@ UpgradeBlessings(){
             ClickBless()
         }
     ; 11 o-clock position
-    PixelSearch, X, Y, 1238, 210, 1281, 266, 0xF60000, 10, Fast RGB
+    PixelSearch, X, Y, 1256, 224, 1277, 261, 0xF60000, 10, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1209, 291
             Sleep, 1000
