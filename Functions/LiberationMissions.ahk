@@ -24,9 +24,9 @@ LiberationMissions(){
             Goto, 190Stars
         }
     GuiControlGet, SelectedItem, ,LiberationStars,
-    If (SelectedItem="155 or Less Stars"){
-        Goto, 155Stars
-    }   
+        If (SelectedItem="155 or Less Stars"){
+            Goto, 155Stars
+        }   
     GuiControlGet, SelectedItem, ,LiberationStars,
         If (SelectedItem="110 or Less Stars"){
             Goto, 110Stars
@@ -45,14 +45,26 @@ LiberationMissions(){
         }
     GuiControlGet, SelectedItem, ,LiberationStars,
         If (SelectedItem="20 or Less Stars"){
+            Loop, 60{
+                Send, {WheelUp}
+                Sleep, 200
+            }
             Goto, 20Stars
         }
     GuiControlGet, SelectedItem, ,LiberationStars,
         If (SelectedItem="10 or Less Stars"){
+            Loop, 60{
+                Send, {WheelUp}
+                Sleep, 200
+            }
             Goto, 10Stars
         }
     GuiControlGet, SelectedItem, ,LiberationStars,
         If (SelectedItem="5 or Less Stars"){
+            Loop, 60{
+                Send, {WheelUp}
+                Sleep, 200
+            }
             Goto, 5Stars
         }    
     ; missions
@@ -63,12 +75,12 @@ LiberationMissions(){
         Click
         Sleep, 1500
         PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
-        If (ErrorLevel=0){
-            Goto, 155Stars
-        }
-        While !LiberationInProgress(){
-            Sleep, 5000
-        }
+            If (ErrorLevel=0){
+                Goto, 155Stars
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
         Goto, 155Stars
     } 
     155Stars:
@@ -78,12 +90,12 @@ LiberationMissions(){
         Click
         Sleep, 1500
         PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
-        If (ErrorLevel=0){
-            Goto, 110Stars
-        }
-        While !LiberationInProgress(){
-            Sleep, 5000
-        }
+            If (ErrorLevel=0){
+                Goto, 110Stars
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
         Goto, 110Stars
     }
     110Stars:
@@ -93,12 +105,12 @@ LiberationMissions(){
         Click
         Sleep, 1500
         PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
-        If (ErrorLevel=0){
-            Goto, 80Stars
-        }
-        While !LiberationInProgress(){
-            Sleep, 5000
-        }
+            If (ErrorLevel=0){
+                Goto, 80Stars
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
         Goto, 80Stars
     }
     80Stars:
@@ -108,12 +120,12 @@ LiberationMissions(){
         Click
         Sleep, 1500
         PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
-        If (ErrorLevel=0){
-            Goto, 60Stars
-        }
-        While !LiberationInProgress(){
-            Sleep, 5000
-        }
+            If (ErrorLevel=0){
+                Goto, 60Stars
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
         Goto, 60Stars
     }
     60Stars:
@@ -123,12 +135,12 @@ LiberationMissions(){
         Click
         Sleep, 1500
         PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
-        If (ErrorLevel=0){
-            Goto, 40Stars
-        }
-        While !LiberationInProgress(){
-            Sleep, 5000
-        }
+            If (ErrorLevel=0){
+                Goto, 40Stars
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
         Goto, 40Stars
     }
     40Stars:
@@ -142,12 +154,12 @@ LiberationMissions(){
         Click
         Sleep, 1500
         PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
-        If (ErrorLevel=0){
-            Goto, 20Stars
-        }
-        While !LiberationInProgress(){
-            Sleep, 5000
-        }
+            If (ErrorLevel=0){
+                Goto, 20Stars
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
         Goto, 20Stars
     }
     20Stars:
@@ -157,12 +169,12 @@ LiberationMissions(){
         Click
         Sleep, 1500
         PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
-        If (ErrorLevel=0){
-            Goto, 10Stars
-        }
-        While !LiberationInProgress(){
-            Sleep, 5000
-        }
+            If (ErrorLevel=0){
+                Goto, 10Stars
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
         Goto, 10Stars
     }
     10Stars:
@@ -172,12 +184,12 @@ LiberationMissions(){
         Click
         Sleep, 1500
         PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
-        If (ErrorLevel=0){
-            Goto, 5Stars
-        }
-        While !LiberationInProgress(){
-            Sleep, 5000
-        }
+            If (ErrorLevel=0){
+                Goto, 5Stars
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
         Goto, 5Stars
     }
     5Stars:
@@ -187,16 +199,17 @@ LiberationMissions(){
         Click
         Sleep, 1500
         PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
-        If (ErrorLevel=0){
-            BigClose()
-            Goto, CheckDungeon
-        }
-        While !LiberationInProgress(){
-            Sleep, 5000
-        }
+            If (ErrorLevel=0){
+                BigClose()
+                Goto, CheckDungeon
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
         BigClose()
         Goto, CheckDungeon
     }
+
     CheckDungeon:
     ; see if we have enough stars for dungeon missions
     GuiControlGet, SelectedItem, ,LiberationStars,
@@ -205,7 +218,7 @@ LiberationMissions(){
         } Else {
             If (SelectedItem="155 or Less Stars"){
                 Goto, Dungeon
-            }   Else {
+            } Else {
                 If (SelectedItem="120 or Less Stars"){
                     Goto, Dungeon 
                 } Else {
@@ -226,11 +239,11 @@ LiberationMissions(){
     Return
     Dungeon:
     {
-    ; open dungeon
-    MouseMove, 1229, 768
-    Sleep, 1000
-    Click
-    Sleep, 1500
+        ; open dungeon
+        MouseMove, 1229, 768
+        Sleep, 1000
+        Click
+        Sleep, 1500
     }
     GuiControlGet, SelectedItem, ,LiberationStars,
         If (SelectedItem="190 or Less Stars"){
@@ -263,12 +276,12 @@ LiberationMissions(){
         Click
         Sleep, 1500
         PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
-        If (ErrorLevel=0){
-            Goto, 70Stars
-        }
-        While !LiberationInProgress(){
-            Sleep, 5000
-        }
+            If (ErrorLevel=0){
+                Goto, 70Stars
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
         Goto, 70Stars
     }
     70Stars:
@@ -278,14 +291,14 @@ LiberationMissions(){
         Click
         Sleep, 1500
         PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
-        If (ErrorLevel=0){
-            Return
-        }
-        While !LiberationInProgress(){
-            Sleep, 5000
-        }
+            If (ErrorLevel=0){
+                Return
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
     }
-    BigClose()
-    BigClose()
-    BigClose()
+BigClose()
+BigClose()
+BigClose()
 }
