@@ -10,6 +10,7 @@
 #Include Functions\Guardian.ahk
 #Include Functions\Guild.ahk
 #Include Functions\HeroUpgrade.ahk
+#Include Functions\LiberationMissions.ahk
 #Include Functions\MapRedeem.ahk
 #Include Functions\MapStart.ahk
 #Include Functions\OpenChests.ahk
@@ -31,62 +32,63 @@ loop:
     {
     ControlFocus,, ahk_exe Firestone.exe
     GetColor()
+    LiberationMissions()
     ClaimCampaign()
     ClaimBeer()
     ; check if either sell exotic is checked (sell all check is internal to sell exotic script)
     GuiControlGet, Checked, , SellEx,
         if (Checked = 1){
             SellExotic()
-            ClaimEngineer()
-            Guardian()
         }
-        ; check if Claim Daily Quests is checked
-        GuiControlGet, Checked, , Daily,
+    ClaimEngineer()
+    Guardian()
+    ; check if Claim Daily Quests is checked
+    GuiControlGet, Checked, , Daily,
+        if (Checked = 1){
+            ClaimDaily()
+        }
+    ; check if Claim Weekly Quests is checked
+    GuiControlGet, Checked, , Weekly,
+        if (Checked = 1){
+            ClaimWeekly()
+        }
+    ; check if Open Chests is checked
+    GuiControlGet, Checked, , Chests,
+        if (Checked = 1){
+            OpenChests()
+        } Else {
+        ;check if Upgrade Blessings is checked
+        GuiControlGet, Checked, , Bless,
             if (Checked = 1){
-                ClaimDaily()
+                OpenBlessChests()
             }
-        ; check if Claim Weekly Quests is checked
-        GuiControlGet, Checked, , Weekly,
-            if (Checked = 1){
-                ClaimWeekly()
-            }
-        ; check if Open Chests is checked
-        GuiControlGet, Checked, , Chests,
-            if (Checked = 1){
-                OpenChests()
-            } Else {
-            ;check if Upgrade Blessings is checked
-            GuiControlGet, Checked, , Bless,
-                if (Checked = 1){
-                    OpenBlessChests()
-                }
-            }
-        ClaimOracle()
-        Guild()   
-        ; check if we are skipping alchemy
-        GuiControlGet, Checked, , Alch, 
-            if (Checked = 1){
-                Goto, ResearchStart
-            } Else {
-                Alchemist()
-            }
-        ResearchStart:
-        ; check if we are skipping research
-        GuiControlGet, Checked, , Research,
-            if (Checked = 1){
-                Goto, MapStartUp
-            } Else {
-                GoFirestone()
-                FirestoneTest()
-            }
-        MapStartUp:
-        GoMap()
-        MapRedeem()
-        HeroUpgrade()
-        MouseMove, 947, 755
-        Sleep, 60000 ;wait 1 minute then repeat
-        Goto, Loop
-    }
+        }
+    ClaimOracle()
+    Guild()   
+    ; check if we are skipping alchemy
+    GuiControlGet, Checked, , Alch, 
+        if (Checked = 1){
+            Goto, ResearchStart
+        } Else {
+            Alchemist()
+        }
+    ResearchStart:
+    ; check if we are skipping research
+    GuiControlGet, Checked, , Research,
+        if (Checked = 1){
+            Goto, MapStartUp
+        } Else {
+            GoFirestone()
+            FirestoneTest()
+        }
+    MapStartUp:
+    GoMap()
+    MapRedeem()
+    HeroUpgrade()
+    MouseMove, 947, 755
+    Sleep, 60000 ;wait 1 minute then repeat
+    Goto, Loop
+}
 
 GuiEscape:
 GuiClose:
