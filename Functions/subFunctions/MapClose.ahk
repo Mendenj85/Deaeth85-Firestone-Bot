@@ -8,5 +8,5 @@ MapClose()
     sleep, 1000
     click
     sleep, 1500
-    return
+    Return
 }

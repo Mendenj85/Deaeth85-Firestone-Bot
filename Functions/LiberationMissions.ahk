@@ -240,7 +240,7 @@ LiberationMissions(){
     Dungeon:
     {
         ; open dungeon
-        MouseMove, 1229, 768
+        MouseMove, 1223, 794
         Sleep, 1000
         Click
         Sleep, 1500
@@ -271,7 +271,7 @@ LiberationMissions(){
         }
     120Stars:
     {
-        MouseMove, 1157, 735
+        MouseMove, 1149, 763
         Sleep, 1000
         Click
         Sleep, 1500
@@ -286,7 +286,7 @@ LiberationMissions(){
     }
     70Stars:
     {
-        MouseMove, 766, 730
+        MouseMove, 768, 762
         Sleep, 1000
         Click
         Sleep, 1500

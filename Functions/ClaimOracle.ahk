@@ -45,45 +45,31 @@ ClaimOracle(){
         ; get current time
         currentTime := A_TickCount
         ;check if it's been 24 hours since last execution
-            If (lastExecutionTimeOracle <= 0){
-                lastExecutionTimeOracle := currentTime
-                Goto, Claim
-            } Else {
-                If (currentTime - lastExecutionTimeOracle >= 24 * 60 * 60 * 1000){
-                lastExecutionTimeOracle := currentTime
-                Goto, Claim
-                }
-            Return
-            }   
-        Claim:
-            MouseMove, 833, 758
-            Sleep, 1000
-            Click
-            Sleep, 1500
-            ImageSearch,x,y, 422,602,580,744, Images\Oracle.png 
+        If (lastExecutionTimeOracle <= 0){
+            lastExecutionTimeOracle := currentTime
+            Goto, Claim
+        } Else {
+            If (currentTime - lastExecutionTimeOracle >= 24 * 60 * 60 * 1000){
+            lastExecutionTimeOracle := currentTime
+            Goto, Claim
+            }
+        Return
+        }   
+    Claim:
+        MouseMove, 833, 758
+        Sleep, 1000
+        Click
+        Sleep, 1500
+        ImageSearch, X, Y, 407, 178, 841, 875, Images\Oracle.png 
             If (ErrorLevel=0){
-                BigClose()
-                Goto, UpgradeBlessings
-            } else {
                 MouseMove, 619, 756
                 Sleep, 1000
                 Click
-                Sleep, 5000 ; longer delay to allow for steam to load for the following failsafe to trigger
-                ;failsafe in case of steam popup
-                ImageSearch, X, Y, 1208, 223, 1453, 311, Images\steam.png, 100
-                If (ErrorLevel=0){
-                    MouseMove, 1583, 168
-                    Sleep, 1000
-                    Click
-                    Sleep, 1500
-                    MouseMove, 919, 579
-                    Sleep, 1000
-                    Click
-                    Sleep, 5000 ; longer delay to allow for Purchase failed popup before proceeding
-                    BigClose()
-                    BigClose()
-                }
+                Sleep, 1500
+                BigClose()
+                Goto, UpgradeBlessings
             }
+            
     }          
 ; check if upgradeBlessings box was checked
 UpgradeBlessings:
