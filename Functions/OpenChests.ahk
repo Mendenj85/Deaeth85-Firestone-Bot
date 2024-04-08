@@ -59,9 +59,10 @@ OpenChests(){
         Goto, Rare
     }    
     Mythic:
+    MsgBox, , Open Chests, Opening Mythic Chests, 2
     Mythic()
-    MsgBox, , Open Chests, Opening Legendary Chests, 2
     Legendary:
+    MsgBox, , Open Chests, Opening Legendary Chests, 2
     Legendary()
     Epic:
     MsgBox, , Open Chests, Opening Epic Chests, 2
