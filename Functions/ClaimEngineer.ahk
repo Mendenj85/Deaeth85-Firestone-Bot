@@ -1,7 +1,7 @@
 ;ClaimEngineer.ahk
 
-#include Functions\subFunctions\BigClose.ahk
-#include Functions\subFunctions\MapClose.ahk
+#Include Functions\subFunctions\BigClose.ahk
+#Include Functions\subFunctions\MapClose.ahk
 #Include Functions\subFunctions\OpenTown.ahk
 
 ClaimEngineer(){

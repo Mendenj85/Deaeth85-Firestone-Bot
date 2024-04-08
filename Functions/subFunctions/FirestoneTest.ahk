@@ -20,9 +20,6 @@ FirestoneTest() {
         Slot2InProcess := 0
     }
 
-    ; Display the value of Slot2InProcess
-    MsgBox, , Slot2InProcess, % "Slot2InProcess is set to: " Slot2InProcess, 2
-    
     ; check for status of slot 1
     MsgBox, , Slot 1 Status, Checking status of slot 1... , 2
     MouseMove, 554, 939
@@ -35,12 +32,8 @@ FirestoneTest() {
         Slot1InProcess := 1
         BigClose()
         Return
-    }
-    else {
+    } Else {
         MsgBox, , Slot 1 Status, Slot 1 is not in progress., 2
         Slot1InProcess := 0
     }
-
-    ; Display the value of Slot1InProcess
-    MsgBox, , Slot1InProcess, % "Slot1InProcess is set to: " Slot1InProcess, 2
 }

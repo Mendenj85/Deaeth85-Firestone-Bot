@@ -1,9 +1,9 @@
-; Solar.ahk
+; Emerald.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
 
-Solar(){
-    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0xFEF343, 3, Fast RGB
+Emerald(){
+    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0x7B6926, 1, Fast RGB
     If (ErrorLevel=0){
         MouseMove, FoundX, FoundY
         Sleep, 1000

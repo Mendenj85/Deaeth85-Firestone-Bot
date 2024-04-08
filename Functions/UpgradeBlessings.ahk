@@ -1,8 +1,8 @@
 ; upgradeBlessings
 
-#include Functions\subFunctions\MainMenu.ahk
-#include Functions\subFunctions\BigClose.ahk
-#include Functions\subFunctions\ClickBless.ahk
+#Include Functions\subFunctions\MainMenu.ahk
+#Include Functions\subFunctions\BigClose.ahk
+#Include Functions\subFunctions\ClickBless.ahk
 
 ControlFocus,, ahk_exe Firestone.exe
 MainMenu()

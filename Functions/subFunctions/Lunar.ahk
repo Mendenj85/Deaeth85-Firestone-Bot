@@ -13,7 +13,7 @@ Lunar(){
         MouseMove, 914, 812
         Sleep, 1000
         Click
-        Sleep, 5000
+        Sleep, 10000 ; long delay in case 10 or more chests are opened
         ; clicks equip or space it should be
         MouseMove, 962, 850
         Sleep, 1000

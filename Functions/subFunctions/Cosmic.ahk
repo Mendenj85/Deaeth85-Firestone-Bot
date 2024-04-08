@@ -1,9 +1,9 @@
-; Solar.ahk
+; Cosmic.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
 
-Solar(){
-    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0xFEF343, 3, Fast RGB
+Cosmic(){
+    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0xD326C0, 1, Fast RGB
     If (ErrorLevel=0){
         MouseMove, FoundX, FoundY
         Sleep, 1000

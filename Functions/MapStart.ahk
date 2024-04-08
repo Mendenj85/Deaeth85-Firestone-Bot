@@ -1,7 +1,7 @@
 ﻿; MapStart.ahk
 
-#include Functions\subFunctions\BigClose.ahk
-#include Functions\subFunctions\MapClose.ahk
+#Include Functions\subFunctions\BigClose.ahk
+#Include Functions\subFunctions\MapClose.ahk
 
 ;function to start the map missions, should be all nodes + the gift missions for the world domination mini-event
 MapStart(){
@@ -12,15 +12,16 @@ For x,y in Point{
     Sleep, 1500
     ; check if mission can be started
     PixelSearch, X, Y, 953, 822, 1205, 898, 0x0AA008, 10, Fast RGB
-        If(ErrorLevel=0){
-            MsgBox, , Mission Start, Mission found - Starting, 2
-            MouseMove, 1084, 865
-            Sleep, 1000
-            Click
-            Sleep, 1500
-            MsgBox, , Troop Check, Looking for more idle troops, 2
-        }
-    MapClose()
+    If(ErrorLevel=0){
+        MsgBox, , Mission Start, Mission found - Starting, 2
+        MouseMove, 1084, 865
+        Sleep, 1000
+        Click
+        Sleep, 1500
+        MsgBox, , Troop Check, Looking for more idle troops, 2
+    } Else {
+        MapClose()
+    }
     ; check for more idle troops
     PixelSearch, X, Y, 1175, 996, 1187, 1012, 0x542710, 10, Fast RGB
         If(ErrorLevel=0){
@@ -28,6 +29,6 @@ For x,y in Point{
         }
     MsgBox, , Troop Check, No idle troops found - ending mission search, 2
     BigClose()
-    return
+    Return
 }
 }

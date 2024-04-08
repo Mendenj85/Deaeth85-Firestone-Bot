@@ -1,3 +1,5 @@
+; MapRedeem.ahk
+
 ; Function to redeem the missions
 MapRedeem(){
     ControlFocus,, ahk_exe Firestone.exe
@@ -16,7 +18,7 @@ MapRedeem(){
         MsgBox, , Mission Check, Checking if mission is free to complete, 2
         ; check if mission is free to finish early
         PixelSearch, X, Y, 1394, 721, 1482, 759, 0xF9AA47, 10, Fast RGB
-        if (ErrorLevel = 0){
+        If (ErrorLevel = 0){
             MsgBox, , Mission Check, Mission can be completed early for free, 2
             MouseMove, 1365, 758
             Sleep, 1000
@@ -58,7 +60,7 @@ MapRedeem(){
         MsgBox, , Mission Check, Checking if mission is free to complete, 2
         ; check if mission is free to finish early
         PixelSearch, X, Y, 1394, 721, 1482, 759, 0xF9AA47, 10, Fast RGB
-        if (ErrorLevel = 0){
+        If (ErrorLevel = 0){
             MsgBox, , Mission Check, Mission can be completed early for free, 2
             MouseMove, 1365, 758
             Sleep, 1000

@@ -1,43 +1,39 @@
-; HeroUpgrade.ahk
+; ClaimEvents.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\MainMenu.ahk
 
-; function that upgrades heros
-HeroUpgrade(){
+ClaimEvents(){
     ControlFocus,, ahk_exe Firestone.exe
     MainMenu()
-    MouseMove, 1447, 938
+    ; open events
+    MouseMove, 1691, 229
     Sleep, 1000
     Click
     Sleep, 1500
-    MouseMove, 1769, 205
+    ; click top event
+    MouseMove, 942, 359
     Sleep, 1000
     Click
     Sleep, 1500
-    MouseMove, 1752, 873
+    ; click challenges
+    MouseMove, 1125, 70
     Sleep, 1000
     Click
     Sleep, 1500
-    MouseMove, 1770, 772
+    ; claim 3 challenges
+    MouseMove, 1483, 382
     Sleep, 1000
     Click
     Sleep, 1500
-    MouseMove, 1773, 650
+    MouseMove, 1496, 604
     Sleep, 1000
     Click
     Sleep, 1500
-    MouseMove, 1759, 539
+    MouseMove, 1500, 837
     Sleep, 1000
     Click
     Sleep, 1500
-    MouseMove, 1763, 427
-    Sleep, 1000
-    Click
-    Sleep, 1500
-    MouseMove, 1757, 317
-    Sleep, 1000
-    Click
-    Sleep, 1500
+    BigClose()
     BigClose()
 }

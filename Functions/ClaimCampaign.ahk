@@ -4,8 +4,6 @@
 #Include Functions\subFunctions\GoMap.ahk
 #Include Functions\subFunctions\BigClose.ahk
 
-lastExecutionTimeLiberation := 0
-
 ;function to get the campaign coins and tokens
 ClaimCampaign(){
     ControlFocus,, ahk_exe Firestone.exe
@@ -26,13 +24,16 @@ ClaimCampaign(){
             If (lastExecutionTimeLiberation <= 0){
                 LiberationMissions()
                 lastExecutionTimeLiberation := currentTime
+                Return
             } Else {
                 If (currentTime - lastExecutionTimeLiberation >= 24 * 60 * 60 * 1000){
                     LiberationMissions()
                     lastExecutionTimeLiberation := currentTime
+                    Return
+                } Else {
+                    Return
                 }
             }
         }   
     BigClose()
-    return
 }

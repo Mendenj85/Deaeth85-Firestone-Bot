@@ -5,8 +5,6 @@
 #include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\OpenTown.ahk
 
-lastExecutionTimeOracle := 0
-
 ;function that checks Oracle
 ClaimOracle(){
     ControlFocus,, ahk_exe Firestone.exe
@@ -23,22 +21,34 @@ ClaimOracle(){
     click
     sleep, 1500
     ; cycle through rituals
-    MouseMove, 1180, 500
-    sleep, 1000
-    click
-    sleep, 1500
-    MouseMove, 1586, 514
-    sleep, 1000
-    click
-    sleep, 1500
-    MouseMove, 1579, 840
-    sleep, 1000
-    click
-    sleep, 1500
-    MouseMove, 1170, 837
-    sleep, 1000
-    click
-    sleep, 1500
+    PixelSearch, X, Y, 1259, 463, 1331, 536, 0x0AA008, 10, Fast RGB
+    If (ErrorLevel = 0){
+        MouseMove, 1180, 500
+        sleep, 1000
+        click
+        sleep, 1500
+    }
+    PixelSearch, X, Y, 1609, 458, 1677, 514, 0x0AA008, 10, Fast RGB
+    If (ErrorLevel = 0){
+        MouseMove, 1586, 514
+        sleep, 1000
+        click
+        sleep, 1500
+    }
+    PixelSearch, X, Y, 1619, 805, 1690, 870, 0x0AA008, 10, Fast RGB
+    If (ErrorLevel = 0){
+        MouseMove, 1579, 840
+        sleep, 1000
+        click
+        sleep, 1500
+    }
+    PixelSearch, X, Y, 1272, 811, 1326, 872, 0x0AA008, 10, Fast RGB
+    If (ErrorLevel = 0){
+        MouseMove, 1170, 837
+        sleep, 1000
+        click
+        sleep, 1500
+    }
     ; check if Claim Daily Oracle was checked on startup
     GuiControlGet, Checked, , DailyOracle,
     If (Checked = 1){
@@ -46,14 +56,13 @@ ClaimOracle(){
         currentTime := A_TickCount
         ;check if it's been 24 hours since last execution
         If (lastExecutionTimeOracle <= 0){
-            lastExecutionTimeOracle := currentTime
             Goto, Claim
         } Else {
             If (currentTime - lastExecutionTimeOracle >= 24 * 60 * 60 * 1000){
-            lastExecutionTimeOracle := currentTime
             Goto, Claim
+            } Else {
+                Return
             }
-        Return
         }   
     Claim:
         MouseMove, 833, 758
@@ -61,12 +70,13 @@ ClaimOracle(){
         Click
         Sleep, 1500
         ImageSearch, X, Y, 407, 178, 841, 875, Images\Oracle.png 
-            If (ErrorLevel=0){
+            If (ErrorLevel = 0){
                 MouseMove, 619, 756
                 Sleep, 1000
                 Click
                 Sleep, 1500
                 BigClose()
+                lastExecutionTimeOracle := currentTime
                 Goto, UpgradeBlessings
             }
             

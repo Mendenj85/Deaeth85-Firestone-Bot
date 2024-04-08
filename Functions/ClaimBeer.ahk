@@ -1,7 +1,7 @@
 ;ClaimBeer.ahk
 
-#include Functions\subFunctions\MainMenu.ahk
-#include Functions\subFunctions\BigClose.ahk
+#Include Functions\subFunctions\MainMenu.ahk
+#Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\OpenTown.ahk
 #Include Functions\subFunctions\UseTavernToken.ahk
 

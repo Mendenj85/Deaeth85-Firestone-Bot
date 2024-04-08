@@ -1,9 +1,9 @@
-; Solar.ahk
+; Epic.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
 
-Solar(){
-    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0xFEF343, 3, Fast RGB
+Epic(){
+    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0xB273F5, 3, Fast RGB
     If (ErrorLevel=0){
         MouseMove, FoundX, FoundY
         Sleep, 1000

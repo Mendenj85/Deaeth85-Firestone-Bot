@@ -1,7 +1,7 @@
 ; Guardian.ahk
 
-#include Functions\subFunctions\BigClose.ahk
-#include Functions\subFunctions\MainMenu.ahk
+#Include Functions\subFunctions\BigClose.ahk
+#Include Functions\subFunctions\MainMenu.ahk
 #Include Functions\subFunctions\OpenTown.ahk
 
 ;function that does the guardian training and guardian evolving(auto evolving not tested, might wait a bit too low for it to work)
