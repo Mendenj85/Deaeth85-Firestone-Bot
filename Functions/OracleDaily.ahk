@@ -4,7 +4,7 @@
 
 OracleDaily(){
     ; Look for oracle gift notification
-    PixelSearch, FoundX, FoundY, 5, 215, 124, 741, 0x00EAF6, 5, Fast RGB
+    PixelSearch, FoundX, FoundY, 5, 215, 124, 741, 0xFFE300, 3, Fast RGB
     If (ErrorLevel = 0){
         MouseMove, FoundX, FoundY
         Sleep, 1000
