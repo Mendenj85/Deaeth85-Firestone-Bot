@@ -8,7 +8,7 @@ FirestoneTest() {
     MouseMove, 1202, 944
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 500
     PixelSearch, X, Y, 562, 245, 754, 311, 0x8C4221, 10, Fast RGB
     If (ErrorLevel = 0){
         MsgBox, , Slot 2 Status, Slot 2 is in progress., 2
@@ -25,7 +25,7 @@ FirestoneTest() {
     MouseMove, 554, 939
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 500
     PixelSearch, X, Y, 562, 245, 754, 311, 0x8C4221, 10, Fast RGB
     If (ErrorLevel = 0){
         MsgBox, , Slot 1 Status, Slot 1 is in progress., 2
