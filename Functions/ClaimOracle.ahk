@@ -26,28 +26,28 @@ ClaimOracle(){
         MouseMove, 1180, 500
         sleep, 1000
         click
-        sleep, 1500
+        sleep, 1000
     }
     PixelSearch, X, Y, 1609, 458, 1677, 514, 0x0AA008, 10, Fast RGB
     If (ErrorLevel = 0){
         MouseMove, 1586, 514
         sleep, 1000
         click
-        sleep, 1500
+        sleep, 1000
     }
     PixelSearch, X, Y, 1619, 805, 1690, 870, 0x0AA008, 10, Fast RGB
     If (ErrorLevel = 0){
         MouseMove, 1579, 840
         sleep, 1000
         click
-        sleep, 1500
+        sleep, 1000
     }
     PixelSearch, X, Y, 1272, 811, 1326, 872, 0x0AA008, 10, Fast RGB
     If (ErrorLevel = 0){
         MouseMove, 1170, 837
         sleep, 1000
         click
-        sleep, 1500
+        sleep, 1000
     }
     ; check if Claim Daily Oracle was checked on startup
     GuiControlGet, Checked, , DailyOracle,
@@ -65,6 +65,7 @@ ClaimOracle(){
             }
         }   
     Claim:
+        ; open Oracle shop
         MouseMove, 833, 758
         Sleep, 1000
         Click

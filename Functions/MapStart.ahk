@@ -9,7 +9,7 @@ Point := {1207:32,1290:99,1177:35,1104:43,883:460,616:204,581:295,672:423,884:23
 For x,y in Point{
     ControlFocus,, ahk_exe Firestone.exe
     Click %x%, %y%
-    Sleep, 1500
+    Sleep, 1000
     ; check if mission can be started
     PixelSearch, X, Y, 953, 822, 1205, 898, 0x0AA008, 10, Fast RGB
     If(ErrorLevel=0){
@@ -17,7 +17,7 @@ For x,y in Point{
         MouseMove, 1084, 865
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 500
         MsgBox, , Troop Check, Looking for more idle troops, 2
     } Else {
         MapClose()

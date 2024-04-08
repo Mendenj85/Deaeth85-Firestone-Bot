@@ -21,7 +21,7 @@ Guild(){
     click
     sleep, 1500
     click
-    sleep, 1500
+    sleep, 1000
     BigClose()
     ; check if claiming pickaxes
     GuiControlGet, Checked, , Pickaxes, 

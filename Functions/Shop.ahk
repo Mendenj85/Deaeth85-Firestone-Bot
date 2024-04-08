@@ -30,6 +30,6 @@ Shop(){
     MouseMove, 1342, 834
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     BigClose()
 }

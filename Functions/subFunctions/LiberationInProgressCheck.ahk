@@ -7,7 +7,7 @@ LiberationInProgress(){
             MouseMove, 967, 744
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             Return True
         }
     Sleep, 2000

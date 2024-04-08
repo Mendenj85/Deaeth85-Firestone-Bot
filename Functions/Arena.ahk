@@ -34,7 +34,7 @@ Arena(){
         MouseMove, %RandomX%, 630
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; check for buy more battles popup
         PixelSearch, X, Y, 1243, 669, 1291, 713, 0x0AA008, 10, Fast RGB
             If (ErrorLevel=0){

@@ -20,11 +20,11 @@ Alchemist(){
             MouseMove, 949, 777
             Sleep, 1000
             click
-            sleep, 1500
+            sleep, 1000
             MouseMove, 935, 765
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
         }
     ; check for completed alchemy with dust
     PixelSearch, x, y, 1336, 748, 1386, 789, 0x0AA008, 100, Fast RGB
@@ -32,11 +32,11 @@ Alchemist(){
             MouseMove, 1286, 786
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             MouseMove, 1286, 770
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
         }
     ; check for in-process alchemy with blood
     PixelSearch, X, Y, 1007, 735, 1030, 766, 0x916A38, 100, Fast RGB
@@ -46,7 +46,7 @@ Alchemist(){
             MouseMove, 951, 771
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
         }
     DustSearch:
     ; check for in-process alchemy with dust
@@ -57,7 +57,7 @@ Alchemist(){
             MouseMove, 1286, 786
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
         }
     ; check if using exotic coins, go through same steps as above if so
     ExoticCheck:
@@ -69,7 +69,7 @@ Alchemist(){
                     MouseMove, 1632, 772
                     Sleep, 1000
                     Click
-                    Sleep, 1500
+                    Sleep, 1000
                     Goto, StartExotic
                 }
             ; check for in-process alchemy with exotic coins
@@ -81,7 +81,7 @@ Alchemist(){
             MouseMove, 1641, 767
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             Return
         }
     BigClose()

@@ -7,6 +7,6 @@ MapClose()
     MouseMove, 1870, 706
     sleep, 1000
     click
-    sleep, 1500
+    sleep, 1000
     Return
 }

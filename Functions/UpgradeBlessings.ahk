@@ -19,7 +19,7 @@ UpgradeBlessings(){
             MouseMove, 1375, 239,
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     ; 1 o-clock position
@@ -28,7 +28,7 @@ UpgradeBlessings(){
             MouseMove, 1535, 286
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     ; 2 o-clock position
@@ -37,7 +37,7 @@ UpgradeBlessings(){
             MouseMove, 1662, 407
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     ; 3 o-clock position
@@ -46,7 +46,7 @@ UpgradeBlessings(){
             MouseMove, 1703, 578
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     ; 4 o-clock position
@@ -55,7 +55,7 @@ UpgradeBlessings(){
             MouseMove, 1653, 741
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     ; 5 o-clock position
@@ -64,7 +64,7 @@ UpgradeBlessings(){
             MouseMove, 1531, 860
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     ; 6 o-clock position
@@ -73,7 +73,7 @@ UpgradeBlessings(){
             MouseMove, 1372, 903
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     ; 7 o-clock position
@@ -82,7 +82,7 @@ UpgradeBlessings(){
             MouseMove, 1207, 852
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     ; 8 o-clock position
@@ -91,7 +91,7 @@ UpgradeBlessings(){
             MouseMove, 1089, 742
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     ; 9 o-clock position
@@ -100,7 +100,7 @@ UpgradeBlessings(){
             MouseMove, 1045, 575
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     ; 10 o-clock position
@@ -109,7 +109,7 @@ UpgradeBlessings(){
             MouseMove, 1089, 415
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     ; 11 o-clock position
@@ -118,12 +118,12 @@ UpgradeBlessings(){
             MouseMove, 1209, 291
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ClickBless()
         }
     MouseMove, 1370, 572
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ClickBless()
 }

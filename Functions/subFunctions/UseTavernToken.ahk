@@ -7,7 +7,7 @@ UseToken(){
     MouseMove, 913, 954
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
 
     ; Define the X and Y coordinates for each card
     XCoords := [680, 956, 1243, 680, 956, 1243]
@@ -23,5 +23,5 @@ UseToken(){
     MouseMove, %RandomX%, %RandomY%
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
 }

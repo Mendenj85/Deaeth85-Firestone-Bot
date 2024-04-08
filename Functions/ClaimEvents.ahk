@@ -15,25 +15,25 @@ ClaimEvents(){
     MouseMove, 942, 359
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; click challenges
     MouseMove, 1125, 70
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; claim 3 challenges
     MouseMove, 1483, 382
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 500
     MouseMove, 1496, 604
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 500
     MouseMove, 1500, 837
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 500
     BigClose()
     BigClose()
 }

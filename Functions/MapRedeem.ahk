@@ -1,8 +1,18 @@
 ; MapRedeem.ahk
 
+#Include Functions\maps test.ahk
 ; Function to redeem the missions
 MapRedeem(){
     ControlFocus,, ahk_exe Firestone.exe
+    ; check if missions can be reset for free
+    MsgBox, , Mission Restart, Checking if we can reset missions for free, 2
+    PixelSearch, X, Y, 92, 961, 268, 964, 0xF7A242, 3
+    If (ErrorLevel = 0){
+        MouseMove, 173, 918
+        Sleep, 1000
+        Click
+        Sleep, 1000
+    }
     Checks:
     ; click top mission on left-side list
     MouseMove, 166, 333
@@ -23,11 +33,11 @@ MapRedeem(){
             MouseMove, 1365, 758
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             MouseMove, 971, 628
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             Goto, Checks
         } Else {
         ; check if mission is complete
@@ -38,7 +48,7 @@ MapRedeem(){
                 MouseMove, 971, 628
                 Sleep, 1000
                 Click
-                Sleep, 1500
+                Sleep, 1000
                 Goto, Checks
             }
         }
@@ -65,11 +75,11 @@ MapRedeem(){
             MouseMove, 1365, 758
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             MouseMove, 971, 628
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             Goto, Checks
         } Else {
         ; check if mission is complete
@@ -80,7 +90,7 @@ MapRedeem(){
                 MouseMove, 971, 628
                 Sleep, 1000
                 Click
-                Sleep, 1500
+                Sleep, 1000
                 Goto, Checks
             }
         }

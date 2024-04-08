@@ -23,11 +23,11 @@ ClaimBeer(){
             MouseMove, 1735, 69
             Sleep, 1000
             click
-            Sleep, 1500
+            Sleep, 1000
             MouseMove, 544, 630
             Sleep, 1000
             click
-            Sleep, 1500
+            Sleep, 1000
             BigClose()
             ; check if Use Tavern Token is checked
             GuiControlGet, Checked, , Token,

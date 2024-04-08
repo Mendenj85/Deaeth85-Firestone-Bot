@@ -8,7 +8,7 @@ OraclesGift(){
         MouseMove, FoundX, FoundY
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; click 1
         MouseMove, 904, 724
         Sleep, 1000
@@ -19,6 +19,6 @@ OraclesGift(){
         MouseMove, 59, 181
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
     }
 }

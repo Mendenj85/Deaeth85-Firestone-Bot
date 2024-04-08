@@ -10,21 +10,21 @@ CheckMail(){
     MouseMove, 56, 777
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; attempt to click claim
     MouseMove, 1215, 808
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; click ok if mail had attachment, otherwise will be empty click in mail area
     MouseMove, 1172, 688
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; delete claimed mail
     MouseMove, 1569, 939
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     BigClose()
 }

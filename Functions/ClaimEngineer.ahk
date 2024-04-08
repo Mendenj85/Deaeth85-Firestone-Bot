@@ -22,7 +22,7 @@ ClaimEngineer(){
     MouseMove, 1642, 704
     sleep, 1000
     click
-    sleep, 1500
+    sleep, 1000
     BigClose()
     BigClose()
     return

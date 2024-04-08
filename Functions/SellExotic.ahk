@@ -24,17 +24,17 @@ SellExotic(){
     MouseMove, 959, 596
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; sell scroll of damage
     MouseMove, 1280, 601
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; sell scroll of health
     MouseMove, 1595, 592
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; check if Sell ALL exotic items is checked
     GuiControlGet, Checked, , SellAll,
     If (Checked = 1){
@@ -42,17 +42,17 @@ SellExotic(){
         MouseMove, 962, 908
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; sell pouch of gold
         MouseMove, 1278, 910
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; sell bucket of gold
         MouseMove, 1602, 911
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; scroll to bottom
         Loop, 35{
             Send, {WheelDown}
@@ -62,37 +62,37 @@ SellExotic(){
         MouseMove, 967, 307
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; sell barrel of gold
         MouseMove, 1280, 313
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; sell drums of war
         MouseMove, 1611, 313
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; sell dragon armor
         MouseMove, 954, 616
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; sell guardian's rune
         MouseMove, 1269, 608
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; sell totem of agony
         MouseMove, 1591, 610
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; sell totem of annihilation
         MouseMove, 951, 934
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
     } Else {
         ; check if Sell All But Keep Gold Items is checked
         GuiControlGet, Checked, , SellNoGold,
@@ -105,27 +105,27 @@ SellExotic(){
             MouseMove, 1611, 313
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ; sell dragon armor
             MouseMove, 954, 616
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ; sell guardian's rune
             MouseMove, 1269, 608
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ; sell totem of agony
             MouseMove, 1591, 610
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             ; sell totem of annihilation
             MouseMove, 951, 934
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
         }
     }
     ; check if buy exotic chests is checked

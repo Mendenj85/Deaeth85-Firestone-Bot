@@ -11,11 +11,11 @@ ClaimCampaign(){
     MouseMove, 1857, 606
     sleep, 1000
     click
-    sleep, 1500
+    sleep, 1000
     MouseMove, 165, 977
     sleep, 1000
     click
-    sleep, 1500
+    sleep, 1000
     GuiControlGet, SelectedItem, , LiberationStars,
         If (SelectedItem != "Don't Complete Liberation Missions"){
             ; get current time

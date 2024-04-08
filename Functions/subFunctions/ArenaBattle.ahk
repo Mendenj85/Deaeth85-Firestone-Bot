@@ -7,7 +7,7 @@ ArenaBattle(){
             MouseMove, 959, 775
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             Return True
         }
     Sleep, 2000

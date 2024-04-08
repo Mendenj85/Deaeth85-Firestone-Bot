@@ -19,20 +19,20 @@ Guardian(){
         MouseMove, 1450,174
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         MouseMove, 1117, 750
         Click
         Sleep, 10500
         MouseMove, 1291, 171
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
     }
     MouseMove, 1138, 787
     Sleep, 1000
     click
-    Sleep, 1500
+    Sleep, 1000
     BigClose()
     BigClose()
-    return
+    Return
 }

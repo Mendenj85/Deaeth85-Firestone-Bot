@@ -8,7 +8,7 @@ Galaxy(){
         MouseMove, FoundX, FoundY
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         ; click 1
         MouseMove, 914, 812
         Sleep, 1000
@@ -18,12 +18,12 @@ Galaxy(){
         MouseMove, 962, 850
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
         BigClose()
         ; failsafe in case big close opens options
         MouseMove, 59, 181
         Sleep, 1000
         Click
-        Sleep, 1500
+        Sleep, 1000
     }
 }

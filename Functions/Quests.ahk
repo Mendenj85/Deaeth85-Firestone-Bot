@@ -11,38 +11,38 @@ ClaimDaily(){
     MouseMove, 90, 112
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     MouseMove, 1455, 74
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     MouseMove, 765, 155
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     MouseMove, 1503, 309
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     MouseMove, 1619, 990
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; check if claim weekly quests is also checked
     GuiControlGet, Checked, , Weekly,
         if (Checked = 1){
             MouseMove, 1165, 154
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             MouseMove, 1503, 309
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
             MouseMove, 1619, 990
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
         }
     BigClose()
     return
@@ -58,23 +58,23 @@ ClaimWeekly(){
     MouseMove, 90, 112
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     MouseMove, 1455, 74
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     MouseMove, 1165, 154
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     MouseMove, 1503, 309
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     MouseMove, 1619, 990
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     BigClose()
     return
 }
