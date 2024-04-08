@@ -7,7 +7,7 @@ Awaken(){
     ControlFocus,, ahk_exe Firestone.exe
     MainMenu()
     ; check for awaken heroes notification on main screen
-    PixelSearch, FoundX, FoundY, 5, 221, 98, 709, 521008, 3, Fast RGB
+    PixelSearch, FoundX, FoundY, 5, 221, 98, 709, 0x4F0D05, 3, Fast RGB
     If (ErrorUpgrade = 0){
         MouseMove, FoundX, FoundY
         Sleep, 1000
