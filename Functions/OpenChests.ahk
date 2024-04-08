@@ -31,12 +31,12 @@ OpenChests(){
     MouseMove, 1581, 939
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; click chests tab
     MouseMove, 1487, 460
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; looks for Gear Chests
     GuiControlGet, SelectedItem, ,GearChestExclude,
     If (SelectedItem="Exclude All"){
@@ -47,7 +47,7 @@ OpenChests(){
         Goto, Mythic
     }    
     GuiControlGet, SelectedItem, ,GearChestExclude,
-    If (SelectedItem="Mythic and Higher"){
+    If (SelectedItem="Mythic"){
         Goto, Legendary
     }
     GuiControlGet, SelectedItem, ,GearChestExclude,
@@ -133,28 +133,28 @@ OpenBlessChests(){
     MouseMove, 1581, 939
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; click chests tab
     MouseMove, 1487, 460
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
     ; look for blessing chests
-    MsgBox, , Open Chests, Opening Comet Chests, 2
-    Comet()
-    MsgBox, , Open Chests, Opening Lunar Chests, 2
-    Lunar()
-    MsgBox, , Open Chests, Opening Solar Chests, 2
-    Solar()
-    MsgBox, , Open Chests, Opening Nebula Chests, 2
-    Nebula()
-    MsgBox, , Open Chests, Opening Cosmic Chests, 2
-    Cosmic()
     MsgBox, , Open Chests, Opening Galaxy Chests, 2
     Galaxy()
+    MsgBox, , Open Chests, Opening Cosmic Chests, 2
+    Cosmic()
+    MsgBox, , Open Chests, Opening Nebula Chests, 2
+    Nebula()
+    MsgBox, , Open Chests, Opening Solar Chests, 2
+    Solar()
+    MsgBox, , Open Chests, Opening Lunar Chests, 2
+    Lunar()
+    MsgBox, , Open Chests, Opening Comet Chests, 2
+    Comet()
     ; close bag
     MouseMove, 1870, 246
     Sleep, 1000
     Click
-    Sleep, 1500
+    Sleep, 1000
 }
