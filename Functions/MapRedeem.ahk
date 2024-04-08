@@ -6,7 +6,7 @@ MapRedeem(){
     ControlFocus,, ahk_exe Firestone.exe
     ; check if missions can be reset for free
     MsgBox, , Mission Restart, Checking if we can reset missions for free, 2
-    PixelSearch, X, Y, 92, 961, 268, 964, 0xF7A242, 3
+    PixelSearch, X, Y, 92, 961, 268, 964, 0xF7A242, 3, Fast RGB
     If (ErrorLevel = 0){
         MouseMove, 173, 918
         Sleep, 1000
