@@ -1,6 +1,8 @@
 ; MapRedeem.ahk
 
-#Include Functions\maps test.ahk
+#Include Functions\MapStart.ahk
+#Include Functions\subFunctions\MapClose.ahk
+
 ; Function to redeem the missions
 MapRedeem(){
     ControlFocus,, ahk_exe Firestone.exe
