@@ -49,45 +49,12 @@ ClaimOracle(){
         click
         sleep, 1000
     }
-    ; check if Claim Daily Oracle was checked on startup
-    GuiControlGet, Checked, , DailyOracle,
-    If (Checked = 1){
-        ; get current time
-        currentTime := A_TickCount
-        ;check if it's been 24 hours since last execution
-        If (lastExecutionTimeOracle <= 0){
-            Goto, Claim
-        } Else {
-            If (currentTime - lastExecutionTimeOracle >= 24 * 60 * 60 * 1000){
-            Goto, Claim
-            } Else {
-                Return
-            }
-        }   
-    Claim:
-        ; open Oracle shop
-        MouseMove, 833, 758
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        ImageSearch, X, Y, 407, 178, 841, 875, Images\Oracle.png 
-            If (ErrorLevel = 0){
-                MouseMove, 619, 756
-                Sleep, 1000
-                Click
-                Sleep, 1500
-                BigClose()
-                lastExecutionTimeOracle := currentTime
-                Goto, UpgradeBlessings
-            }
-            
-    }          
-; check if upgradeBlessings box was checked
-UpgradeBlessings:
-GuiControlGet, Checked, , Bless,
-    if (Checked = 1){
-        UpgradeBlessings()
-    }
-BigClose()
-BigClose()
+    ; check if upgradeBlessings box was checked
+    UpgradeBlessings:
+    GuiControlGet, Checked, , Bless,
+        if (Checked = 1){
+            UpgradeBlessings()
+        }
+    BigClose()
+    BigClose()
 }

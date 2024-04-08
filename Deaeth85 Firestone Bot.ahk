@@ -4,6 +4,7 @@
 #Include Gui.ahk
 #Include Functions\Alchemist.ahk
 #Include Functions\Arena.ahk
+#Include Functions\Awaken.ahk
 #Include Functions\CheckMail.ahk
 #Include Functions\ClaimBeer.ahk
 #Include Functions\ClaimCampaign.ahk
@@ -18,6 +19,7 @@
 #Include Functions\MapRedeem.ahk
 #Include Functions\MapStart.ahk
 #Include Functions\OpenChests.ahk
+#Include Functions\OracleDaily.ahk
 #Include Functions\PTree.ahk
 #Include Functions\Quests.ahk
 #Include Functions\SellExotic.ahk
@@ -36,9 +38,7 @@ SetBatchLines, -1
 
 ; initialize the last execution times
 lastExecutionTimeArena := 0
-lastExecutionTimeShop := 0
 lastExecutionTimeLiberation := 0
-lastExecutionTimeOracle := 0
 
 ; start of main script
 loop:
@@ -75,23 +75,21 @@ loop:
         }
     GuiControlGet, Checked, , Shop,
         If (Checked=1){
-        ; get current time
-            currentTime := A_TickCount
-            ;check if it's been 24 hours since last execution
-            If (lastExecutionTimeShop <= 0){
-                Shop()
-                lastExecutionTimeShop := currentTime
-            } Else {
-                If (currentTime - lastExecutionTimeArena >= 24 * 60 * 60 * 1000){
-                    Shop()
-                    lastExecutionTimeShop := currentTime
-                }
-            }
-        }   
+            Shop()
+        }
+    ; check if Claim Daily Oracle was checked on startup
+    GuiControlGet, Checked, , DailyOracle,
+        If (Checked = 1){
+            OracleDaily()
+        }            
     ; check if Check Mail is checked
     GuiControlGet, Checked, , Mail
         If (Checked = 1){
-                CheckMail()
+            CheckMail()
+        }
+    GuiControlGet, Checked, , Awaken,
+        If (Checked = 1){
+            AwakenRun()
         }
     ; check if Open Chests is checked
     GuiControlGet, Checked, , Chests,

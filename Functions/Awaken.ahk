@@ -3,29 +3,34 @@
 #Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\MainMenu.ahk
 
-Awaken(){
+AwakenRun(){
     ControlFocus,, ahk_exe Firestone.exe
     MainMenu()
-    ; check for awaken heroes notification on main screen
-    PixelSearch, FoundX, FoundY, 5, 221, 98, 709, 0x4F0D05, 3, Fast RGB
-    If (ErrorUpgrade = 0){
+    ; Check for awaken heroes notification on main screen
+    MsgBox, Looking for awaken heroes notification...
+    PixelSearch, FoundX, FoundY, 5, 221, 116, 726, 0x651605, 5, Fast RGB
+    If (ErrorLevel = 0){
+        MsgBox, Awaken heroes notification found at X: %FoundX%, Y: %FoundY%
         MouseMove, FoundX, FoundY
         Sleep, 1000
         Click
         Sleep, 1500
     } Else {
+        MsgBox, Awaken heroes notification not found!
         Return
     }
-
-    ; attempt clicking farthest right button
+    ; Attempt clicking farthest right button
+    MsgBox, Attempting to click farthest right button...
     MouseMove, 1865, 338
     Sleep, 1000
     Click
     Sleep, 1000
-    ; change to auto
+    ; Change to auto
+    MsgBox, Changing to auto...
     MouseMove, 1774, 993
     Sleep, 1000
     Click
     Sleep, 20000
+    MsgBox, Awaken completed.
     BigClose()
 }

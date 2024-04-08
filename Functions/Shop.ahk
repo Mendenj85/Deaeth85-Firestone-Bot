@@ -8,28 +8,27 @@ lastExecutionTimeShop := 0
 Shop(){
     ControlFocus,, ahk_exe Firestone.exe
     MainMenu()
-    ; open shop
-    MouseMove, 1857, 583
-    Sleep, 1000
-    Click
-    Sleep, 1500
-    ; check for free gift
-    ImageSearch, X, Y, 381, 280, 796, 934, Images\shop.png
-        If (ErrorLevel = 0){
-            MouseMove, 581, 752
-            Sleep, 1000
-            Click
-            Sleep, 1500
-        }
-    ; open daily check-in
-    MouseMove, 1383, 116
-    Sleep, 1000
-    Click
-    Sleep, 1500
-    ; check in
-    MouseMove, 1342, 834
-    Sleep, 1000
-    Click
-    Sleep, 1000
-    BigClose()
+    PixelSearch, X, Y, 1876, 523, 1905, 564, 0xF40000, 3, Fast RGB
+    If (ErrorLevel = 0){
+        MouseMove, 1857, 583
+        Sleep, 1000
+        Click
+        Sleep, 1500
+        ; claim mystery box
+        MouseMove, 591, 754
+        Sleep, 1000
+        Click
+        Sleep, 1000
+        ; open daily check-in
+        MouseMove, 1383, 116
+        Sleep, 1000
+        Click
+        Sleep, 1000
+        ; check in
+        MouseMove, 1342, 834
+        Sleep, 1000
+        Click
+        Sleep, 1000
+        BigClose()
+    }
 }
