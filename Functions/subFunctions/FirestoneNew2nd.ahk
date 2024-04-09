@@ -4,7 +4,7 @@
 
 FirestoneNew2nd() {
     MouseMove, 1429, 944
-    MsgBox, , Setup, Scrolling to ensure tree setup, 2
+    MsgBox, , Setup, Scrolling to ensure tree setup, 1.5
     If (Slot2InProcess = 0){
         Loop, 35{
             Send, {WheelUp}

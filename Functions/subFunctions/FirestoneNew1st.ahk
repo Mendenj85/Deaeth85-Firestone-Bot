@@ -5,7 +5,7 @@
 FirestoneNew1st() {
     If (Slot1InProcess = 0){
         MouseMove, 1429, 944
-        MsgBox, , Setup, Scrolling to ensure tree setup, 2
+        MsgBox, , Setup, Scrolling to ensure tree setup, 1.5
         Loop, 35{
             Send, {WheelUp}
             Sleep, 200
