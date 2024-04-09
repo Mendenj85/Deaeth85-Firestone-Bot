@@ -50,7 +50,6 @@ ClaimOracle(){
         sleep, 1000
     }
     ; check if upgradeBlessings box was checked
-    UpgradeBlessings:
     GuiControlGet, Checked, , Bless,
         if (Checked = 1){
             UpgradeBlessings()

@@ -9,23 +9,23 @@ Guild(){
     ControlFocus,, ahk_exe Firestone.exe
     MainMenu()
     MouseMove, 1857, 481
-    sleep, 1000
-    click
-    sleep, 1500
+    Sleep, 1000
+    Click
+    Sleep, 1500
     MouseMove, 308, 406
-    sleep, 1000
-    click
-    sleep, 1500
+    Sleep, 1000
+    Click
+    Sleep, 1500
     MouseMove, 1321, 331
-    sleep, 1000
-    click
-    sleep, 1500
-    click
-    sleep, 1000
+    Sleep, 1000
+    Click
+    Sleep, 1500
+    Click
+    Sleep, 1000
     BigClose()
     ; check if claiming pickaxes
     GuiControlGet, Checked, , Pickaxes, 
-        if (Checked = 1){
+        If (Checked = 1){
             Goto, CrystalHit
         } Else {
             ClaimAxes()
@@ -33,12 +33,12 @@ Guild(){
     CrystalHit:
     ; check if we are doing crystal hits
     GuiControlGet, Checked, , Crystal,
-        if (Checked = 1){
+        If (Checked = 1){
             HitCrystal()
         }
     ; see if we are running personal tree or not
     GuiControlGet,Checked, , PTree,
-    if (Checked = 1){
+    If (Checked = 1){
         MouseMove, 1560, 366
         Sleep, 1000
         Click
@@ -47,7 +47,7 @@ Guild(){
     }
     ; check if clearing guild notifications
     GuiControlGet,Checked, , GNotif,
-    if (Checked = 1){
+    If (Checked = 1){
         ClearNotifications()
     }
     return
@@ -66,7 +66,7 @@ ClaimAxes(){
     Click
     Sleep, 1500
     BigClose()
-    return
+    Return
 }
 HitCrystal(){
     MouseMove, 1646, 928
@@ -90,5 +90,5 @@ ClearNotifications(){
     Click
     Sleep, 1500
     BigClose()
-    return
+    Return
 }
