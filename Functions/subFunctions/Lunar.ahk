@@ -3,7 +3,7 @@
 #Include Functions\subFunctions\BigClose.ahk
 
 Lunar(){
-    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0x006965, 3, Fast RGB
+    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0x00F694, 3, Fast RGB
     If (ErrorLevel=0){
         MouseMove, FoundX, FoundY
         Sleep, 1000

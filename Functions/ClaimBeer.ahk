@@ -1,19 +1,15 @@
 ;ClaimBeer.ahk
 
-#Include Functions\subFunctions\MainMenu.ahk
 #Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\OpenTown.ahk
 #Include Functions\subFunctions\UseTavernToken.ahk
 
 ClaimBeer(){
     ; check if skip beer was selected
     GuiControlGet, Checked, , Beer,
-        if (Checked=1){
+        If (Checked=1){
             Return
         } Else {
             ControlFocus,, ahk_exe Firestone.exe
-            MainMenu()
-            OpenTown()
             ; open Tavern
             MouseMove, 719, 957
             Sleep, 1000
@@ -24,10 +20,14 @@ ClaimBeer(){
             Sleep, 1000
             click
             Sleep, 1000
-            MouseMove, 544, 630
-            Sleep, 1000
-            click
-            Sleep, 1000
+            PixelSearch, X, Y, 616, 610, 697, 656, 0x659BB0, 3, Fast RGB
+            If (ErrorLevel = 0){
+                MouseMove, 544, 630
+                Sleep, 1000
+                click
+                Sleep, 1000
+                BigClose()
+            }
             BigClose()
             ; check if Use Tavern Token is checked
             GuiControlGet, Checked, , Token,
@@ -35,8 +35,5 @@ ClaimBeer(){
                 UseToken()
             }
             BigClose()
-            BigClose()
-            Return
         }
-    Return
 }

@@ -13,7 +13,6 @@ BPOnly(){
         Goto, All
     } Else {
         If (SelectedItem = "Damage Only"){
-            MsgBox, Damage Only selected
         } Else {
             If (SelectedItem = "Health"){
                 Goto, Health
@@ -38,71 +37,119 @@ BPOnly(){
     }
 
     All:
-        MouseMove, 1108, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        MouseMove, 1413, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        MouseMove, 1726, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        Return
+        ; upgrade damage
+        PixelSearch, X, Y, 1171, 594, 1225, 644, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1108, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+        }
+        ; upgrade health
+        PixelSearch, X, Y, 1477, 597, 1536, 644, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1413, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+        }
+        ; upgrade armor
+        PixelSearch, X, Y, 1786, 596, 1844, 642, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1726, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+            Return
+        }
 
     Damage:
-        MouseMove, 1108, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        Return
+        ; upgrade damage
+        PixelSearch, X, Y, 1171, 594, 1225, 644, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1108, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+            Return
+        }
 
     Health:
-        MouseMove, 1413, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        Return
+        ; upgrade health
+        PixelSearch, X, Y, 1477, 597, 1536, 644, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1413, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+            Return
+        }
 
     Armor:
-        MouseMove, 1726, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        Return
+        ; upgrade armor
+        PixelSearch, X, Y, 1786, 596, 1844, 642, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1726, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+            Return
+        }
 
     DnH:
-        MouseMove, 1108, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        MouseMove, 1413, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        Return
+        ; upgrade damage
+        PixelSearch, X, Y, 1171, 594, 1225, 644, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1108, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+        }
+        ; upgrade health
+        PixelSearch, X, Y, 1477, 597, 1536, 644, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1413, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+            Return
+        }
 
     DnA:
-        MouseMove, 1108, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        MouseMove, 1726, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        Return
+        ; upgrade damage
+        PixelSearch, X, Y, 1171, 594, 1225, 644, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1108, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+        }
+        ; upgrade armor
+        PixelSearch, X, Y, 1786, 596, 1844, 642, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1726, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+            Return
+        }
 
     HnA:
-        MouseMove, 1413, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        MouseMove, 1726, 600
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        Return
+        ; upgrade health
+        PixelSearch, X, Y, 1477, 597, 1536, 644, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1413, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+        }
+        ; upgrade armor
+        PixelSearch, X, Y, 1786, 596, 1844, 642, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1726, 600
+            Sleep, 1000
+            Click
+            Sleep, 1000
+            Return
+        }
 }

@@ -3,7 +3,7 @@
 #Include Functions\subFunctions\BigClose.ahk
 
 Comet(){
-    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0xD37C5C, 3, Fast RGB
+    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0x9F3C29, 0, Fast RGB
     If (ErrorLevel=0){
         MouseMove, FoundX, FoundY
         Sleep, 1000

@@ -1,19 +1,14 @@
-; Firestone.ahk
+; Research.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\FirestoneNew1st.ahk
-#Include Functions\subFunctions\FirestoneNew2nd.ahk
-#Include Functions\subFunctions\FirestoneTest.ahk
-#Include Functions\subFunctions\MainMenu.ahk
-#Include Functions\subFunctions\OpenTown.ahk
+#Include Functions\subFunctions\ResearchStart.ahk
+#Include Functions\subFunctions\ResearchSlotTest.ahk
 
 global Slot1InProcess := 0
 global Slot2InProcess := 0
 
-GoFirestone() {
+GoResearch() {
     ControlFocus,, ahk_exe Firestone.exe
-    MainMenu()
-    OpenTown()
     ; open Library
     MouseMove, 329, 657
     Sleep, 1000
@@ -24,13 +19,12 @@ GoFirestone() {
     Sleep, 1000
     click
     Sleep, 1000
-    FirestoneTest()
+    ResearchSlotTest()
     If (Slot1InProcess = 0){
-        FirestoneNew1st()
+        ResearchStart()
     }
     If (Slot2InProcess = 0){
-        FirestoneNew2nd()
+        ResearchStart()
     }
-    BigClose()
     BigClose()
 }

@@ -1,8 +1,8 @@
-; FirestoneAfterStartTest.ahk
+; ResearchAfterStartTest.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
 
-FAST(){
+RAST(){
     ; check for status of slot 2
     MsgBox, , Slot 2 Status ,Checking status of slot 2..., 1.5
     MouseMove, 1202, 944

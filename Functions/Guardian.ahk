@@ -1,19 +1,16 @@
 ; Guardian.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\MainMenu.ahk
-#Include Functions\subFunctions\OpenTown.ahk
 
-;function that does the guardian training and guardian evolving(auto evolving not tested, might wait a bit too low for it to work)
+;function that does the guardian training and guardian evolving
 Guardian(){
     ControlFocus,, ahk_exe Firestone.exe
-    MainMenu()
-    OpenTown()
     ; open Magic Quarter
     MouseMove, 658, 284
     Sleep, 1000
     click
     Sleep, 1500
+    ; check for evolve
     PixelSearch, X, Y, 1491, 110, 1533, 144, 0x0F40000, 3, Fast RGB
     if(ErrorLevel=0){
         MouseMove, 1450,174
@@ -28,11 +25,14 @@ Guardian(){
         Click
         Sleep, 1000
     }
-    MouseMove, 1138, 787
-    Sleep, 1000
-    click
-    Sleep, 1000
-    BigClose()
+    ; check for training
+    PixelSearch, X, Y, 1199, 766, 1257, 810, 0x0AA008, 3, Fast RGB
+    If (ErrorLevel = 0){
+        MouseMove, 1138, 787
+        Sleep, 1000
+        click
+        Sleep, 1000
+    }
     BigClose()
     Return
 }

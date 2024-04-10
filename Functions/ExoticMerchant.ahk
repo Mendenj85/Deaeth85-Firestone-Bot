@@ -1,20 +1,38 @@
 ; SellExotic.ahk
 
-#Include Functions\BuyExotic.ahk
-#Include Functions\subFunctions\MainMenu.ahk
+#Include Functions\subFunctions\BuyExotic.ahk
 #Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\OpenTown.ahk
+#Include Functions\subFunctions\ExoticUpgrades.ahk
 
 ControlFocus,, ahk_exe Firestone.exe
 MainMenu()
 
-SellExotic(){
-    OpenTown()
+ExoticMerchant(){
     ; Open exotic merchant
     MouseMove, 1459, 650
     Sleep, 1000
     Click
     Sleep, 1500
+    ; check if Sell Scrolls is checked
+    GuiControlGet, Checked, , SellScrolls,
+        If (Checked = 1){
+            Goto, SellStart
+        } Else {
+            ; check if Sell All Exotic Items is checked
+            GuiControlGet, Checked, , SellAll,
+            If (Checked = 1){
+                Goto, SellStart
+            } Else {
+                ; check if Sell All But Keep Gold Items is checked
+                GuiControlGet, Checked, , SellNoGold,
+                If (Checked = 1){
+                    Goto, SellStart
+                }  Else {
+                    Goto, ExChecks
+                }
+            }
+        }
+    SellStart:
     ; make sure we are at the top
     Loop, 35{
         Send, {WheelUp}
@@ -128,11 +146,16 @@ SellExotic(){
             Sleep, 1000
         }
     }
+    ExChecks:
+    ; check if Exotic Upgrades is checked
+    GuiControlGet, Checked, , ExoticUpgrades
+    If (Checked = 1){
+        ExoticUpgrades()
+    }
     ; check if buy exotic chests is checked
     GuiControlGet, Checked, , BuyEx,
     If (Checked = 1) {
         BuyExotic()
     }
-BigClose()
 BigClose()
 }

@@ -1,29 +1,35 @@
 ; Guild.ahk
 
-#Include Functions\PTree.ahk
+#Include Functions\subFunctions\Awaken.ahk
 #Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\MainMenu.ahk
+#Include Functions\subFunctions\PTree.ahk
 
 ; expeditions function
 Guild(){
     ControlFocus,, ahk_exe Firestone.exe
     MainMenu()
+    ; open guild
     MouseMove, 1857, 481
     Sleep, 1000
     Click
     Sleep, 1500
-    MouseMove, 308, 406
-    Sleep, 1000
-    Click
-    Sleep, 1500
-    MouseMove, 1321, 331
-    Sleep, 1000
-    Click
-    Sleep, 1500
-    Click
-    Sleep, 1000
-    BigClose()
-    ; check if claiming pickaxes
+    ; check if expeditions are ready
+    PixelSearch, X, Y, 404, 457, 441, 495, 0xF40000, 3, Fast RGB
+    If (ErrorLevel = 0){
+        MouseMove, 308, 406
+        Sleep, 1000
+        Click
+        Sleep, 1500
+        MouseMove, 1321, 331
+        Sleep, 1000
+        Click
+        Sleep, 1500
+        Click
+        Sleep, 1000
+        BigClose()
+    }
+    ; check if skipping claiming pickaxes
     GuiControlGet, Checked, , Pickaxes, 
         If (Checked = 1){
             Goto, CrystalHit
@@ -50,7 +56,12 @@ Guild(){
     If (Checked = 1){
         ClearNotifications()
     }
-    return
+    ; check if awaken heroes is selected
+    GuiControlGet, Checked, , Awaken,
+    If (Checked = 1){
+        AwakenRun()
+    }
+    Return
 }
 ClaimAxes(){
     MouseMove, 639, 263
@@ -61,10 +72,13 @@ ClaimAxes(){
     Sleep, 1000
     Click
     Sleep, 1500
-    MouseMove, 716, 637
-    Sleep, 1000
-    Click
-    Sleep, 1500
+    PixelSearch, X, Y, 764, 617, 869, 653, 0x1EA569, 3, Fast RGB
+    If (ErrorLevel = 0){
+        MouseMove, 716, 637
+        Sleep, 1000
+        Click
+        Sleep, 1500
+    }
     BigClose()
     Return
 }
@@ -73,11 +87,14 @@ HitCrystal(){
     Sleep, 1000
     Click
     Sleep, 1500
-    MouseMove, 957, 896
-    Sleep, 1000
-    Click
-    Sleep, 1500
-    BigClose()
+    PixelSearch, X, Y, 1101, 904, 1075, 946, 0x0AA008, 3, Fast RGB
+    If (ErrorLevel = 0){
+        MouseMove, 957, 896
+        Sleep, 1000
+        Click
+        Sleep, 1500
+        BigClose()
+    }
     Return
 }
 ClearNotifications(){

@@ -5,8 +5,8 @@ MapClose()
 {
     ControlFocus,, ahk_exe Firestone.exe
     MouseMove, 1870, 706
-    sleep, 1000
+    Sleep, 1000
     click
-    sleep, 1000
+    Sleep, 1500
     Return
 }

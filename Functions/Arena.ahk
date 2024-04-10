@@ -2,13 +2,9 @@
 
 #Include Functions\subFunctions\ArenaBattle.ahk
 #Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\MainMenu.ahk
-#Include Functions\subFunctions\OpenTown.ahk
 
 Arena(){
     ControlFocus,, ahk_exe Firestone.exe
-    MainMenu()
-    OpenTown()
     ; open battles
     MouseMove, 362, 204
     Sleep, 1000
@@ -39,6 +35,7 @@ Arena(){
         PixelSearch, X, Y, 1243, 669, 1291, 713, 0x0AA008, 10, Fast RGB
             If (ErrorLevel=0){
                 BigClose()
+                BigClose()
                 Return
             }
         MouseMove, 961, 570
@@ -49,6 +46,5 @@ Arena(){
         }
     Continue
     }
-BigClose()
 BigClose()
 }
