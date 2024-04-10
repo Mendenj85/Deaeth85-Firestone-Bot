@@ -37,6 +37,8 @@ UpgradeTalents800(){
                         Click
                         Sleep, 1500
                         UpgradeTalents450()
+                    } Else {
+                        Return
                     }
                 }
             }
