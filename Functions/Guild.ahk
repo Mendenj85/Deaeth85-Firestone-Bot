@@ -95,6 +95,7 @@ HitCrystal(){
         Sleep, 1500
         BigClose()
     }
+    BigClose()
     Return
 }
 ClearNotifications(){
