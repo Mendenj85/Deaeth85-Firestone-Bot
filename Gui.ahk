@@ -15,7 +15,7 @@ Gui Tab, 1 ; About
 Gui Font, s20, , Lucida Handwriting Italic
 Gui Add, Text, x0 y20 w900 h60 +0x200 +Center, DEAETH85'S FIRESTONE BOT
 Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x0 y70 w900 h30 +0x200 +Center, VERSION 2.0.0
+Gui Add, Text, x0 y70 w900 h30 +0x200 +Center, VERSION 2.1.0
 Gui Add, Picture, x415 y575 w60 h60, Images\giftbox.png
 Gui Add, Picture, x150 y100 w600 h300, Images\Firestone.png
 Gui Add, Picture, x150 y30 w60 h60, Images\logo.png
@@ -39,24 +39,25 @@ Gui Font, s15, Bold, Tahoma
 Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, CHECK ANY OPTIONAL BOXES TO DIRECT THE SCRIPT
 Gui Font, s9 Bold, Tahoma
 Gui Add, Checkbox, x10 y70 w600 h30 VToken, Use Tavern Tokens (Will NOT work if Skip Claiming Beer selected in QoL section)
-Gui Add, Checkbox, x10 y110 w600 h30 VSellEx, Sell Exotic Items (MUST choose this AND one of the next three options)
+Gui Add, Checkbox, x10 y110 w600 h30 VSellEx, Open Exotic Merchant (Master toggle that only goes to Exotic Merchant)
 Gui Add, Radio, x20 y135 w400 h30 vSellScrolls,  1. Sell ONLY Exotic Scrolls
 Gui Add, Radio, x20 y160 w400 h30 vSellNoGold, 2. Sell All But Gold Items
 Gui Add, Radio, x20 y185 w400 h30 vSellAll,  3. Sell All Exotic Items
-Gui Add, Checkbox, x10 y225 w400 h30 vBuyEx, Buy Exotic Chests
-Gui Add, Checkbox, x10 y265 w400 h30 vChests, Open Chests - Choose an "Exclude from" option from the dropdowns below - Gifts will be opened as well
-Gui Add, Text, x150 y305 w200 h30, Gear Chests
-Gui Add, DropDownList, x10 y325 w400 r5 vGearChestExclude, Exclude All|Don't Exclude Any|Epic and Higher|Legendary and Higher|Mythic||
-Gui Add, Text, x150 y355 w200 h30, Jewel Chests
-Gui Add, DropDownList, x10 y375 w400 r5 VJewelChestExclude, Exclude All|Don't Exclude Any|Diamond and Higher||Opal and Higher|Emerald
-Gui Add, Checkbox, x10 y415 w400 h30 vBless, Upgrade Blessings - Only way to auto-open Oracle Chests
-Gui Add, Checkbox, x10 y455 w400 h30 vDaily, Claim Daily Quests
-Gui Add, Checkbox, x10 y495 w400 h30 vWeekly, Claim Weekly Quests
-Gui Add, Checkbox, x10 y535 w400 h30 vEvents, Claim Basic Events
-Gui Add, Checkbox, x10 y575 w400 h30 vMail, Check Mail
-Gui Add, Checkbox, x10 y615 w400 h30 vAwaken, Awaken Heroes
-Gui Add, Checkbox, x10 y655 w400 h30 vCrystal, Spend Pickaxes on Crystal
-Gui Add, Checkbox, x10 y695 w600 h30 vPTree, Upgrade Personal Tree (Select options on next tab if upgrading)
+Gui Add, Checkbox, x10 y215 w400 h30 vExoticUpgrades, Buy Exotic Upgrades (Requires Sell Exotic Items Checked)
+Gui Add, Checkbox, x10 y245 w400 h30 vBuyEx, Buy Exotic Chests (Requires Sell Exotic Items Checked)
+Gui Add, Checkbox, x10 y285 w400 h30 vChests, Open Chests - Choose an "Exclude from" option from the dropdowns below - Gifts will be opened as well
+Gui Add, Text, x150 y315 w200 h30, Gear Chests
+Gui Add, DropDownList, x10 y335 w400 r5 vGearChestExclude, Exclude All|Don't Exclude Any|Epic and Higher|Legendary and Higher|Mythic||
+Gui Add, Text, x150 y365 w200 h30, Jewel Chests
+Gui Add, DropDownList, x10 y385 w400 r5 VJewelChestExclude, Exclude All|Don't Exclude Any|Diamond and Higher||Opal and Higher|Emerald
+Gui Add, Checkbox, x10 y425 w400 h30 vBless, Upgrade Blessings - Only way to auto-open Oracle Chests
+Gui Add, Checkbox, x10 y465 w400 h30 vDaily, Claim Daily Quests
+Gui Add, Checkbox, x10 y505 w400 h30 vWeekly, Claim Weekly Quests
+Gui Add, Checkbox, x10 y545 w400 h30 vEvents, Claim Basic Events
+Gui Add, Checkbox, x10 y585 w400 h30 vMail, Check Mail
+Gui Add, Checkbox, x10 y625 w400 h30 vAwaken, Awaken Heroes
+Gui Add, Checkbox, x10 y665 w400 h30 vCrystal, Spend Pickaxes on Crystal
+Gui Add, Checkbox, x10 y705 w600 h30 vPTree, Upgrade Personal Tree (Select options on next tab if upgrading)
 Gui Tab, 3 ; Personal Tree Upgrades
 Gui Font, s12, Bold, Tahoma
 Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, CHOOSE PERSONAL TREE UPGRADES THAT YOU WOULD LIKE THE SCRIPT TO ATTEMPT TO PURCHASE
@@ -122,6 +123,12 @@ Gui Add, Text, x10 y350 w400 h30, Choose to upgrade level only, blueprints only,
 Gui Add, DropDownList, x10 y370 w400 r3 vWMOptions, Level Only||Blueprints Only|Level and Blueprints
 Gui Add, Text, x10 y400 w400 h30, Choose the Blueprint priority (All Options will process from the left to right)
 Gui Add, DropDownList, x10 y430 w400 r10 vBlueprints, Upgrade All||Damage Only|Health Only|Armor Only|Damage and Health|Damage and Armor|Health and Armor
+Gui Font, s15, Bold, Tahoma
+Gui Add, Text, x10 y460 w400 h30 +0x200 +Center, ~~ Upgrade Talents ~~
+Gui Font, s9 Bold, Tahoma
+Gui Add, Text, x10 y490 w400 h30, Please choose only one option from between the two dropdowns
+Gui Add, DropDownList, x10 y520 w400 r10 vTalents450, Don't Upgrade Talents (0-450 Talent Points)||All Main Attributes(1)|Leadership(3)|Guardian Power(3)|Team Bonus(3)|Leader-Auto Abilities(10)|Attack Speed(15)|Trainer Skills(15)|Critical Chance(15)|Party - Auto Abilities(20)|Dodge(25)|Critical Damage(25)|Librarian(30)|Meteorite Hunter(30)|Expeditioner(30)|Powerless Enemy(35)|Powerless Boss(35)|Weaklings(40)|Expose Weakness(40)|Ancient Knowledge(45)|Raining Gold(60)|Coworkers(60)|Twin Dragons(70)|Attack Speed(80)|Critical Chance(80)|Battle Cry(100)|Dodge(120)|Critical Damage(120)|Powerless Enemy(140)|Powerless Boss(140)|Alchemy(160)|Weaklings(180)|Expose Weakness(180)|All Main Attributes(200)|Leadership(250)|Guardian Power(250)|Team Bonus(250)|Twin Dragons(300)|Alchemy(350)|Librarian(350)|Battle Cry(400)|Powerless Enemy(450)|Powerless Boss(450)
+Gui Add, DropDownList, x10 y550 w400 r10 vTalents800, Don't Upgrade Talents (500+ Talent Points)||Leadership(500)|Guardian Power(500)|Team Bonus(500)|Fate(530)|Mana Heroes(560)|Energy Heroes(560)|Rage Heroes(560)|Weaklings(590)|Expose Weakness(590)|Damange Specialization(620)|Tank Specialization(620)|Healer Specialization(620)|Raining Gold(650)|Fist Fight(680)|Precision(680)|Magic Spells(680)|Weaklings(710)|Expose Weakness(710)|Leadership(740)|Guardian Power(740)|Team Bonus(740)|Powerless Enemy(770)|Powerless Boss(770)|Fate(800)
 Gui Tab, 6 ; Start Script
 Gui Add, Picture, x0 y0 w900 h350, Images\fslogo.png
 Gui Font, s15, Bold, Tahoma
@@ -134,7 +141,7 @@ Gui Add, Text, x0 y670 w900 h30 +0x200 +Center, Donations are never required, bu
 Gui Add, Text, x0 y700 w900 h30 +0x200 +Center, @Spyder85
 Gui Add, Picture, x300 y730 w300 h60 +0x200 +Center gButtonStart, %Picture%
 
-Gui Show, w900 h800, Deaeth85's Firestone Bot - V2.0.0
+Gui Show, w900 h800, Deaeth85's Firestone Bot - V2.1.0
 Return
 ButtonStart:
     SetTimer, loop, 1000
