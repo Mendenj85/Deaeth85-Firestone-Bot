@@ -15,6 +15,7 @@ OracleDaily(){
         Sleep, 1000
         Click
         Sleep, 1500
+        BigClose()
     }
     Return
 }

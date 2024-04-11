@@ -5,11 +5,16 @@
 
 LiberationMissions(){
     ControlFocus,, ahk_exe Firestone.exe
-    ; open daily missions
+    ; open daily missions if notification present
+    PixelSearch, X, Y, 1873, 920, 1900, 954, 0xF40000, 3, Fast RGB
+    If (ErrorLevel = 0){
     MouseMove, 1800, 982
     Sleep, 1000
     Click
     Sleep, 1500
+    } Else {
+        Return
+    }
     ; open Liberation
     MouseMove, 697, 788
     Sleep, 1000

@@ -3,7 +3,7 @@
 #Include Functions\subFunctions\BigClose.ahk
 
 Golden(){
-    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0xDF8428, 1, Fast RGB
+    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0xCF7029, 1, Fast RGB
     If (ErrorLevel=0){
         MouseMove, FoundX, FoundY
         Sleep, 1000

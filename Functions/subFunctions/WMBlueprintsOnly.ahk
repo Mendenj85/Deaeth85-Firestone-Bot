@@ -13,6 +13,7 @@ BPOnly(){
         Goto, All
     } Else {
         If (SelectedItem = "Damage Only"){
+            Goto, Damage
         } Else {
             If (SelectedItem = "Health"){
                 Goto, Health

@@ -8,6 +8,8 @@
 #Include Functions\ClaimBeer.ahk
 #Include Functions\ClaimEngineer.ahk
 #Include Functions\ClaimEvents.ahk
+#Include Functions\ClaimRituals.ahk
+#Include Functions\ExoticMerchant.ahk
 #Include Functions\Guardian.ahk
 #Include Functions\Guild.ahk
 #Include Functions\HeroUpgrade.ahk
@@ -15,8 +17,6 @@
 #Include Functions\OpenChests.ahk
 #Include Functions\Quests.ahk
 #Include Functions\Research.ahk
-#Include Functions\ClaimRituals.ahk
-#Include Functions\ExoticMerchant.ahk
 #Include Functions\Shop.ahk
 #Include Functions\Talents450.ahk
 #Include Functions\Talents800.ahk
@@ -33,11 +33,10 @@ SetBatchLines, -1
 
 global Color
 global lastExecutionTimeArena := 0
-global lastExecutionTimeLiberation := 0
 
 ; start of main script
+MainScript(){
 loop:
-    {
     ControlFocus,, ahk_exe Firestone.exe
     GetColor()
     ; do main screen sections
@@ -46,16 +45,6 @@ loop:
         If (Checked = 1){
             ClaimEvents()
         }
-    ; check if we have selected talent upgrades in the 450 dropdown
-    GuiControlGet, SelectedItem, , Talents450
-    If (SelectedItem != "Don't Upgrade Talents (0-450 Talent Points)"){
-        UpgradeTalents450()
-    }
-    ; check if we have selected talent upgrades in the 800 dropdown
-    GuiControlGet, SelectedItem, , Talents800
-    If (SelectedItem != "Don't Upgrade Talents (0-800 Talent Points)"){
-        UpgradeTalents800()
-    }
     ; check if Claim Daily Quests is checked
     GuiControlGet, Checked, , Daily,
     If (Checked = 1){
@@ -95,12 +84,17 @@ loop:
     ; tavern
     ClaimBeer()
     ; claim rituals
+    GuiControlGet, Checked, , SkipOracle,
+        If (Checked = 1){
+            Goto, Engineer
+        }
     ClaimRituals()  
     ; check if skip engineer is checked
     GuiControlGet, Checked, , NoEng,
         If (Checked = 1){
             Goto, ExoticSection
         }
+    Engineer:
     ClaimEngineer()
     ExoticSection:
     ; check if sell exotic is checked (sell all check is internal to sell exotic script)
@@ -114,7 +108,7 @@ loop:
             ; get current time
             currentTimeArena := A_TickCount
             ;check if it's been 24 hours since last execution
-            If (lastExecutionTimeArena <= 0 || currentTimeArena - lastExecutionTimeArena >= 12 * 60 * 60 * 1000){
+            If (lastExecutionTimeArena <= 0 || currentTimeArena - lastExecutionTimeArena >= 6 * 60 * 60 * 1000){
                 Arena()
                 lastExecutionTimeArena := currentTimeArena
             } 
@@ -144,6 +138,16 @@ loop:
     MapStartUp:
     GoMap()
     MapRedeem()
+    ; check if we have selected talent upgrades in the 450 dropdown
+    GuiControlGet, SelectedItem, , Talents450
+    If (SelectedItem != "Don't Upgrade Talents (0-450 Talent Points)"){
+        UpgradeTalents450()
+    }
+    ; check if we have selected talent upgrades in the 800 dropdown
+    GuiControlGet, SelectedItem, , Talents800
+    If (SelectedItem != "Don't Upgrade Talents (0-800 Talent Points)"){
+        UpgradeTalents800()
+    }
     HeroUpgrade()
     MouseMove, 947, 755
     Sleep, 60000 ;wait 1 minute then repeat

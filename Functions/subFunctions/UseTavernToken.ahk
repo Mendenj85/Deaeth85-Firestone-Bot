@@ -4,7 +4,12 @@
 #include Functions\subFunctions\BigClose.ahk
 
 UseToken(){
-    MouseMove, 913, 954
+    ; check to ensure Get Game Tokens isn't there
+    PixelSearch, X, Y, 1059, 985, 1079, 1003, 0x0AA008, 2, Fast RGB
+    If (ErrorLevel = 0){
+        Return
+    }
+    MouseMove, 768, 957
     Sleep, 1000
     Click
     Sleep, 1000

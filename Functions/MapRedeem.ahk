@@ -30,7 +30,7 @@ MapRedeem(){
     PixelSearch, X, Y, 207, 305, 244, 348, 0x0AA008, 3, Fast RGB
     If (ErrorLevel = 0){
         MouseMove, 162, 334
-        MsgBox, , Mission Check, Mission is already complete - claiming and checking for more, 1.5
+        MsgBox, , Mission Check, Mission is already complete!, 1.5
         Click
         Sleep, 1000
         MouseMove, 971, 628

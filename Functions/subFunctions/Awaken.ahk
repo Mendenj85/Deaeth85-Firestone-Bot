@@ -4,10 +4,10 @@
 
 AwakenRun(){
     ControlFocus,, ahk_exe Firestone.exe
-    ; Check for awaken heroes notification on guild screen
-    PixelSearch, X, Y, 1321, 876, 1353, 913, 0xF40000, 3, Fast RGB
+    ; Check for awaken heroes notification on crystal screen
+    PixelSearch, X, Y, 1877, 308, 1905, 339, 0xF40000, 3, Fast RGB
     If (ErrorLevel = 0){
-        MouseMove, 1202, 846
+        MouseMove, 1826, 360
         Sleep, 1000
         Click
         Sleep, 1500

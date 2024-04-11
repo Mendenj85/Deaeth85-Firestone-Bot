@@ -50,7 +50,7 @@ Gui Add, Text, x150 y315 w200 h30, Gear Chests
 Gui Add, DropDownList, x10 y335 w400 r5 vGearChestExclude, Exclude All|Don't Exclude Any|Epic and Higher|Legendary and Higher|Mythic||
 Gui Add, Text, x150 y365 w200 h30, Jewel Chests
 Gui Add, DropDownList, x10 y385 w400 r5 VJewelChestExclude, Exclude All|Don't Exclude Any|Diamond and Higher||Opal and Higher|Emerald
-Gui Add, Checkbox, x10 y425 w400 h30 vBless, Upgrade Blessings - Only way to auto-open Oracle Chests
+Gui Add, Checkbox, x10 y425 w400 h30 vBless, Upgrade Blessings - Will open Oracle chests even without Open Chests selected
 Gui Add, Checkbox, x10 y465 w400 h30 vDaily, Claim Daily Quests
 Gui Add, Checkbox, x10 y505 w400 h30 vWeekly, Claim Weekly Quests
 Gui Add, Checkbox, x10 y545 w400 h30 vEvents, Claim Basic Events
@@ -100,6 +100,7 @@ Gui Add, Checkbox, x10 y490 w400 h30 vGNotif, Clear Annoying Guild Notifications
 Gui Add, Checkbox, x10 y530 w200 h30 vAlch, Skip Alchemy
 Gui Add, Checkbox, x10 y570 w400 h30 vCoin, Use Exotic Coins in Alchemy
 Gui Add, Checkbox, x10 y610 w400 h30 vResearch, Skip Research
+Gui Add, Checkbox, x10 y650 w400 h30 vSkipOracle, Skip Oracle
 Gui Tab, 5 ; Other Options
 Gui Font, s15, Bold, Tahoma
 Gui Add, Picture, x500 y300 w300 h500, Images\barkeep.png
@@ -120,7 +121,7 @@ Gui Font, s9 Bold, Tahoma
 Gui Add, Text, x10 y290 w400 h30, List is from Left to Right in Garage - Ensure you set each dropdown so you don't waste resources you want to keep
 Gui Add, DropDownList, x10 y320 w400 r9 vUpgradeWM, Don't Upgrade WM's||Upgrade Aegis|Upgrade Cloudfist|Upgrade Curator|Upgrade Earthshatterer|Upgrade FireCracker|Upgrade Fortress|Upgrade Goliath|Upgrade Harvester|Upgrade Hunter|Upgrade Judgement|Upgrade Sentinel|Upgrade Talos|Upgrade Thunderclap
 Gui Add, Text, x10 y350 w400 h30, Choose to upgrade level only, blueprints only, or both!
-Gui Add, DropDownList, x10 y370 w400 r3 vWMOptions, Level Only||Blueprints Only|Level and Blueprints
+Gui Add, DropDownList, x10 y370 w400 r3 vWMOptions, Blueprints Only||Level Only|Level and Blueprints|
 Gui Add, Text, x10 y400 w400 h30, Choose the Blueprint priority (All Options will process from the left to right)
 Gui Add, DropDownList, x10 y430 w400 r10 vBlueprints, Upgrade All||Damage Only|Health Only|Armor Only|Damage and Health|Damage and Armor|Health and Armor
 Gui Font, s15, Bold, Tahoma

@@ -3,7 +3,7 @@
 #Include Functions\subFunctions\BigClose.ahk
 
 Uncommon(){
-    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0xB54424, 3, Fast RGB
+    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0xB54424, 1, Fast RGB
     If (ErrorLevel=0){
         MouseMove, FoundX, FoundY
         Sleep, 1000

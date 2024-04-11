@@ -6,7 +6,6 @@
 ; function that upgrades heros
 HeroUpgrade(){
     ControlFocus,, ahk_exe Firestone.exe
-    MainMenu()
     ; open upgrade menu
     MouseMove, 1447, 938
     Sleep, 1000

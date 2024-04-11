@@ -25,7 +25,6 @@ ClaimEngineer(){
             Sleep, 1500
             Goto, ClaimTools
         } 
-    
     ; select engineer
     MouseMove, 610, 540
     Sleep, 1000

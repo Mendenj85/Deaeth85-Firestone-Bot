@@ -43,7 +43,7 @@ Guild(){
             HitCrystal()
         }
     ; see if we are running personal tree or not
-    GuiControlGet,Checked, , PTree,
+    GuiControlGet, Checked, , PTree,
     If (Checked = 1){
         MouseMove, 1560, 366
         Sleep, 1000
@@ -52,15 +52,11 @@ Guild(){
         PersonalTree()
     }
     ; check if clearing guild notifications
-    GuiControlGet,Checked, , GNotif,
+    GuiControlGet, Checked, , GNotif,
     If (Checked = 1){
         ClearNotifications()
     }
-    ; check if awaken heroes is selected
-    GuiControlGet, Checked, , Awaken,
-    If (Checked = 1){
-        AwakenRun()
-    }
+    BigClose()
     Return
 }
 ClaimAxes(){
@@ -93,7 +89,11 @@ HitCrystal(){
         Sleep, 1000
         Click
         Sleep, 1500
-        BigClose()
+    }
+    ; check if awaken heroes is selected
+    GuiControlGet, Checked, , Awaken,
+    If (Checked = 1){
+        AwakenRun()
     }
     BigClose()
     Return

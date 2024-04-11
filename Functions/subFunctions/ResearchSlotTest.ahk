@@ -1,8 +1,15 @@
 ;ResearchSlotTest.ahk
 
 ResearchSlotTest() {
-    ; check for in process research in slot 2
+    ; make sure slot 2 is purchased
     MsgBox, , Slot 2 Status ,Checking status of slot 2..., 1.5
+    PixelSearch, X, Y, 1208, 892, 1264, 931, 0x6F6F6F, 1, Fast RGB
+    If (ErrorLevel = 0){
+        MsgBox, , Slot 2 Status, Slot 2 not purchased - setting to in progress, 1.5
+        Slot2InProcess := 1
+        Goto, Slot1Check
+    }
+    ; check for in process research in slot 2
     PixelSearch, X, Y, 1228, 889, 1269, 929, 0x916A37, 3, Fast RGB
     If (ErrorLevel = 0){
         MsgBox, , Slot 2 Status, Slot 2 is in progress., 1.5
