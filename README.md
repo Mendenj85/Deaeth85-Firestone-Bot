@@ -1,0 +1,81 @@
+Changelog
+
+1. Streamlined process to flow smoother and execute faster.
+    a. Starts of with a "main screen" section
+        a.5 (edit after this was written) - Managed to finish the talent upgrade section
+        aa. Checks events checkbox and collects (only if notification visible)
+        ab. Checks daily quests checkbox and collects
+        ac. Checks weekly quests checkbox and collects
+        ad. Checks daily gift checkbox and collects (only if notification visible)
+        ae. Checks get mail checkbox and collects (only if notification visible)
+        af. Checks opens chests checkbox and collects
+            af1. collects all chests and gifts
+            af2. will collect oracle chests if upgrade blessings is checked, even w/o open chests
+    b. Start of "town" section (will stay in town until this section completed)
+        ba. Checks for guarding training
+        bb. Checks for skip tavern checkbox and collects ClaimBeer
+            bb1. will randomly choose 1 of the 6 cards if spend tokens checked
+        bc. Checks oracle for rituals
+            bc1. will claim blessings if checkbox SelectedItem
+            bc2. will claim daily oracle chest if checkbox selected (only if notification visible)
+        bd. Checks for skip engineer checkbox and goes in if not checked
+            bd1. If upgrade WM selected, will go to garage
+                bd1a. will select chosen WM and upgrade based on selections
+                bd1b. goes to engineer screen from here to check for tools claim
+            bd2. if no WM upgrade chosen, goes to engineer to check for tools claim
+        be. Checks for Exotic Merchant master toggle
+            be1. will sell exotic if one of the 3 radio dials is checked
+            be2. will upgrade exotic tree from top to bottom and left to right
+                bd2a. will scroll until it purchases once, then move on
+            be3. will buy exotic chests if checkbox selected (only best chest)
+        bf. Checks of Arena checkbox is selected
+            bf1. does your 5 arena fights
+            bf2. will stop if spend tokens popup appears
+            bf3. 12 hour timer until it tries arena again
+                bf3a. set to 12 hours in case you start cycle at an odd time, also just helps ensure it's done
+        bg. Checks for skip alchemy checkbox and open alhemist if not
+            bg1. will check for free to complete and completed alchemy and restart them
+            bg2. will use exotic coins if that option is checked
+        bh. Checks for skip research checkbox, opens research if not
+            bh1. will look for free to complete and completed research
+            bh2. cycles through the columns from top to bottom, left to right and buys first it finds
+            bh3. must faster than previous versions with msgbox popups that self close to watch progress
+    c. Back to Main screen for final section
+        ca. Checks for skip guild checkbox, opens guild if not selected
+            ca1. Opens expeditions and completes/restarts (only if notification visible)
+            ca2. Checks for skip claiming pickaxes, otherwise claims if one+ is available
+            ca3. Checks for use pickaxes on crystal checkbox and hit crystal if available
+            ca4. Checks for awaken heroes checkbox and attempts to awaken (only if notification visible)
+        cb. Map section
+            cb1. Opens map and looks at mission progress
+                cb1a. Checks for no missions running
+                cb1b. checks for completed missions
+                cb1c. checks for missions with 3+ minutes left
+                cb1d. checks for missions that are free to complete early
+                cb1e. cycles through this until top mission is not there or over 3 minutes left
+            cb2. Looks for idle troops
+                cb2a. cycles through the map to start missions if troops found
+            cb3. Once troops are used up, goes to campaign to check for rewards
+            cb4. Checks for Liberation missions checkbox   
+                cb4a. Will open missions and complete based on your stars you chose in dropdown
+                cb4b. Also does the dungeon
+                cb4c. also on a 12 hour timer to save time
+    d. Upgrades Heroes (suggested to set to Milestone before starting script)
+
+2. Maps and Research
+    * Made both of these previously troublesome sections extremly fast and reliable to complete.
+    * Used more PixelSearch commands instead of clicks to help speed the process up
+    * MsgBox's used in place of sleep delays to show user what script is doing
+
+
+3. Future Updates
+
+** Considered a server swap but that although it worked, proved to be unreliable due to the nature of their servers, thus removed the server swap feature and most likely will never go live.
+
+** Looking into the possibility of implementing upgrading hero gear as well
+
+** May also look into adding meteorite tree upgrading
+
+4. Final Thoughts
+
+Please leave me feedback on how this is working for you or to report bugs. You can join my discord at: https://discord.gg/N2BsyptbNH
