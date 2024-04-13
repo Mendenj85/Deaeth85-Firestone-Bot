@@ -91,6 +91,8 @@ Alchemist(){
                     PixelSearch, x, y, 1693, 732, 1731, 767, 0x916A38, 3 Fast RGB
                     If (ErrorLevel = 0){
                         Return
+                    } Else {
+                        UseExoticCoins()
                     }
                 }
             }

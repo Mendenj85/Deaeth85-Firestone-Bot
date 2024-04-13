@@ -4,11 +4,6 @@
 #include Functions\subFunctions\BigClose.ahk
 
 UseToken(){
-    ; check to ensure Get Game Tokens isn't there
-    PixelSearch, X, Y, 1059, 985, 1079, 1003, 0x0AA008, 2, Fast RGB
-    If (ErrorLevel = 0){
-        Return
-    }
     MouseMove, 768, 957
     Sleep, 1000
     Click
@@ -26,6 +21,12 @@ UseToken(){
     RandomY := YCoords[RandomIndex]
     Sleep, 1000
     MouseMove, %RandomX%, %RandomY%
+    Sleep, 1000
+    Click
+    Sleep, 1000
+
+    ; random click in case get game tokens was clicked
+    MouseMove, 1257, 49
     Sleep, 1000
     Click
     Sleep, 1000
