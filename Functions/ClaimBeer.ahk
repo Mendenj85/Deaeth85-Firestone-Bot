@@ -1,6 +1,7 @@
 ;ClaimBeer.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
+#Include Functions\subFunctions\CraftArtifact.ahk
 #Include Functions\subFunctions\UseTavernToken.ahk
 
 ClaimBeer(){
@@ -32,6 +33,7 @@ ClaimBeer(){
             GuiControlGet, Checked, , Token,
             If (Checked = 1){
                 UseToken()
+                CraftArtifact()
             }
             BigClose()
         }

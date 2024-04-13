@@ -61,8 +61,8 @@ BPOnly(){
             Sleep, 1000
             Click
             Sleep, 1000
-            Return
         }
+        Return
 
     Damage:
         ; upgrade damage
@@ -72,8 +72,8 @@ BPOnly(){
             Sleep, 1000
             Click
             Sleep, 1000
-            Return
         }
+        Return
 
     Health:
         ; upgrade health
@@ -83,8 +83,8 @@ BPOnly(){
             Sleep, 1000
             Click
             Sleep, 1000
-            Return
         }
+        Return
 
     Armor:
         ; upgrade armor
@@ -94,8 +94,8 @@ BPOnly(){
             Sleep, 1000
             Click
             Sleep, 1000
-            Return
         }
+        Return
 
     DnH:
         ; upgrade damage
@@ -113,8 +113,8 @@ BPOnly(){
             Sleep, 1000
             Click
             Sleep, 1000
-            Return
         }
+        Return
 
     DnA:
         ; upgrade damage
@@ -132,8 +132,8 @@ BPOnly(){
             Sleep, 1000
             Click
             Sleep, 1000
-            Return
         }
+        Return
 
     HnA:
         ; upgrade health
@@ -151,6 +151,6 @@ BPOnly(){
             Sleep, 1000
             Click
             Sleep, 1000
-            Return
         }
+        Return
 }

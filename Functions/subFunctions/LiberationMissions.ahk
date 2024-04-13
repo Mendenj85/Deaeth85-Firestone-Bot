@@ -25,31 +25,31 @@ LiberationMissions(){
         Sleep, 200
     }
     GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="190 or Less Stars"){
+        If (SelectedItem="190+ Stars"){
             Goto, 190Stars
         }
     GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="155 or Less Stars"){
+        If (SelectedItem="155 - 189 Stars"){
             Goto, 155Stars
         }   
     GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="110 or Less Stars"){
+        If (SelectedItem="110 - 119 Stars"){
             Goto, 110Stars
         }
     GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="80 or Less Stars"){
+        If (SelectedItem="80 - 109 Stars"){
             Goto, 80Stars
         }
     GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="60 or Less Stars"){
+        If (SelectedItem="60 - 69 Stars"){
             Goto, 60Stars
         }
     GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="40 or Less Stars"){
+        If (SelectedItem="40 - 59 Stars"){
             Goto, 40Stars
         }
     GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="20 or Less Stars"){
+        If (SelectedItem="20 - 39 Stars"){
             Loop, 60{
                 Send, {WheelUp}
                 Sleep, 200
@@ -57,7 +57,7 @@ LiberationMissions(){
             Goto, 20Stars
         }
     GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="10 or Less Stars"){
+        If (SelectedItem="10 - 19 Stars"){
             Loop, 60{
                 Send, {WheelUp}
                 Sleep, 200
@@ -65,7 +65,7 @@ LiberationMissions(){
             Goto, 10Stars
         }
     GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="5 or Less Stars"){
+        If (SelectedItem="5 - 9 Stars"){
             Loop, 60{
                 Send, {WheelUp}
                 Sleep, 200
@@ -218,22 +218,22 @@ LiberationMissions(){
     CheckDungeon:
     ; see if we have enough stars for dungeon missions
     GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="190 or Less Stars"){
+        If (SelectedItem="190+ Stars"){
             Goto, Dungeon
         } Else {
-            If (SelectedItem="155 or Less Stars"){
+            If (SelectedItem="155 - 189 Stars"){
                 Goto, Dungeon
             } Else {
-                If (SelectedItem="120 or Less Stars"){
+                If (SelectedItem="120 - 154 Stars"){
                     Goto, Dungeon 
                 } Else {
-                    If (SelectedItem="110 or Less Stars"){
+                    If (SelectedItem="110 - 119 Stars"){
                         Goto, Dungeon
                     } Else {
-                        If (SelectedItem="80 or Less Stars"){
+                        If (SelectedItem="80 - 109 Stars"){
                             Goto, Dungeon
                         } Else {
-                            If (SelectedItem="70 or Less Stars"){
+                            If (SelectedItem="70 - 79 Stars"){
                                 Goto, Dungeon
                             }
                         }
@@ -251,22 +251,22 @@ LiberationMissions(){
         Sleep, 1500
     }
     GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="190 or Less Stars"){
+        If (SelectedItem="190+ Stars"){
             Goto, 120Stars
         } Else {
-            If (SelectedItem="155 or Less Stars"){
+            If (SelectedItem="155 - 189 Stars"){
                 Goto, 120Stars
             } Else {
-                If (SelectedItem="120 or Less Stars"){
+                If (SelectedItem="120 - 154 Stars"){
                     Goto, 120Stars
                 } Else {
-                    If (SelectedItem="110 or Less Stars"){
+                    If (SelectedItem="110 - 119 Stars"){
                         Goto, 70Stars
                     } Else {
-                        If (SelectedItem="80 or Less Stars"){
+                        If (SelectedItem="80 - 109 Stars"){
                             Goto, 70Stars
                         } Else {
-                            If (SelectedItem="70 or Less Stars"){
+                            If (SelectedItem="70 - 79 Stars"){
                                 Goto, 70Stars
                             }
                         }

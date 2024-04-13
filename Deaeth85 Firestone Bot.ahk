@@ -75,7 +75,6 @@ loop:
                 OpenBlessChests()
             }
         }
-       
 
     ; start town section
     OpenTown()
@@ -88,13 +87,13 @@ loop:
         If (Checked = 1){
             Goto, Engineer
         }
-    ClaimRituals()  
+    ClaimRituals()
+    Engineer:
     ; check if skip engineer is checked
     GuiControlGet, Checked, , NoEng,
         If (Checked = 1){
             Goto, ExoticSection
         }
-    Engineer:
     ClaimEngineer()
     ExoticSection:
     ; check if sell exotic is checked (sell all check is internal to sell exotic script)

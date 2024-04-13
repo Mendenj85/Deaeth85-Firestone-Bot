@@ -38,7 +38,7 @@ Gui Add, Picture, x450 y180 w400 h400, Images\chest.png
 Gui Font, s15, Bold, Tahoma
 Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, CHECK ANY OPTIONAL BOXES TO DIRECT THE SCRIPT
 Gui Font, s9 Bold, Tahoma
-Gui Add, Checkbox, x10 y70 w600 h30 VToken, Use Tavern Tokens (Will NOT work if Skip Claiming Beer selected in QoL section)
+Gui Add, Checkbox, x10 y70 w600 h30 VToken, Use Tavern Tokens/Craft Artifact (Will NOT work if Skip Claiming Beer selected in QoL section)
 Gui Add, Checkbox, x10 y110 w600 h30 VSellEx, Open Exotic Merchant (Master toggle that only goes to Exotic Merchant)
 Gui Add, Radio, x20 y135 w400 h30 vSellScrolls,  1. Sell ONLY Exotic Scrolls
 Gui Add, Radio, x20 y160 w400 h30 vSellNoGold, 2. Sell All But Gold Items
@@ -114,7 +114,7 @@ Gui Font, s15, Bold, Tahoma
 Gui Add, Text, x10 y170 w400 h30 +0x200 +Center, ~~ Liberation Missions ~~
 Gui Font, s9 Bold, Tahoma
 Gui Add, Text, x10 y200 w400 h30, *If you don't want Liberation Missions leave dropdown as-is, else scroll to highest applicable star setting
-Gui Add, DropDownList, x10 y230 w400 r12 vLiberationStars, Don't Complete Liberation Missions||190 Or Less Stars|155 or Less Stars|120 or Less Stars|110 or Less Stars|80 or Less Stars|70 or Less Stars|60 or Less Stars|40 or Less Stars|20 or Less Stars|10 or Less Stars|5 or Less Stars
+Gui Add, DropDownList, x10 y230 w400 r12 vLiberationStars, Don't Complete Liberation Missions||190+ Stars|155 - 189 Stars|120 - 154 Stars|110 - 119 Stars|80 - 109 Stars|70 - 79 Stars|60 - 69 Stars|40 - 59 Stars|20 - 39 Stars|10 - 19 Stars|5 - 9 Stars
 Gui Font, s15, Bold, Tahoma
 Gui Add, Text, x10 y260 w400 h30 +0x200 +Center, ~~ War Machine Upgrades ~~
 Gui Font, s9 Bold, Tahoma
