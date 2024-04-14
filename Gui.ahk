@@ -98,9 +98,10 @@ Gui Add, Checkbox, x10 y410 w400 h30 vNoEng, Skip Engineer
 Gui Add, Checkbox, x10 y450 w400 h30 vPickaxes, Skip Claiming Pickaxes
 Gui Add, Checkbox, x10 y490 w400 h30 vGNotif, Clear Annoying Guild Notifications
 Gui Add, Checkbox, x10 y530 w200 h30 vAlch, Skip Alchemy
-Gui Add, Checkbox, x10 y570 w400 h30 vCoin, Use Exotic Coins in Alchemy
-Gui Add, Checkbox, x10 y610 w400 h30 vResearch, Skip Research
-Gui Add, Checkbox, x10 y650 w400 h30 vSkipOracle, Skip Oracle
+Gui Add, Checkbox, x10 y570 w200 h30 vDust, Don't Use Dust in Alchemy
+Gui Add, Checkbox, x10 y610 w400 h30 vCoin, Use Exotic Coins in Alchemy
+Gui Add, Checkbox, x10 y650 w400 h30 vResearch, Skip Research
+Gui Add, Checkbox, x10 y690 w400 h30 vSkipOracle, Skip Oracle
 Gui Tab, 5 ; Other Options
 Gui Font, s15, Bold, Tahoma
 Gui Add, Picture, x500 y300 w300 h500, Images\barkeep.png

@@ -14,7 +14,7 @@ Alchemist(){
     PixelSearch, X, Y, 985, 746, 1037, 792, 0x0AA008, 3, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 949, 777
-            Sleep, 1000
+            MsgBox, , Alchemy Status, Dragon Blood experiment is complete, 1.5
             Click
             Sleep, 1000
         }
@@ -22,7 +22,15 @@ Alchemist(){
     PixelSearch, x, y, 1336, 748, 1386, 789, 0x0AA008, 3, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1286, 786
+            MsgBox, , Alchemy Status, Strange Dust experiment is complete, 1.5
+            Click
             Sleep, 1000
+        }
+    ; check for completed alchemy with exotic coins
+    PixelSearch, X, Y, 1679, 748, 1735, 796, 0x0AA008, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1632, 772
+            MsgBox, , Alchemy Status, Exotic Coins experiment is complete, 1.5
             Click
             Sleep, 1000
         }
@@ -30,7 +38,7 @@ Alchemist(){
     PixelSearch, X, Y, 985, 746, 1037, 792, 0xF9AA47, 3, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 949, 777
-            Sleep, 1000
+            MsgBox, , Alchemy Status, Dragon Blood experiment is free to complete, 1.5
             Click
             Sleep, 1000
         }
@@ -38,74 +46,68 @@ Alchemist(){
     PixelSearch, x, y, 1336, 748, 1386, 789, 0xF9AA47, 3, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1286, 786
+            MsgBox, , Alchemy Status, Strange Dust experiment is free to complete, 1.5
+            Click
             Sleep, 1000
+        }
+    ; check for free to complete alchemy with exotic coins
+    PixelSearch, X, Y, 1679, 748, 1735, 796, 0xF9AA47, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, 1632, 772
+            MsgBox, , Alchemy Status, Exotic Coins experiment is free to complete, 1.5
             Click
             Sleep, 1000
         }
     ; check for in-process alchemy with blood
     PixelSearch, X, Y, 1007, 735, 1030, 766, 0x916A38, 3, Fast RGB
         If (ErrorLevel = 0){
+            MsgBox, , Alchemy Status, Dragon Blood experiment has more than 3 minutes remaining, 1.5
             Goto, DustSearch
         } Else {
             MouseMove, 951, 771
-            Sleep, 1000
+            MsgBox, , Alchemy Status, Starting Dragon Blood experiment, 1.5
             Click
             Sleep, 1000
             Goto, DustSearch
         }
     DustSearch:
-    ; check for in-process alchemy with dust
-    PixelSearch,X,Y, 1344, 775, 1381, 815, 0xF39E42, 3, Fast RGB
-    If (ErrorLevel = 0){
-        Goto, ExoticCheck
-    } Else {
-        MouseMove, 1286, 786
-        Sleep, 1000
-        Click
-        Sleep, 1000
-    }
-    
+    ; check if don't use dust is checked
+    GuiControlGet, Checked, , Dust
+        If (Checked = 1){
+            Goto, ExoticCheck
+        } Else {
+            ; check for in-process alchemy with dust
+            PixelSearch, X, Y, 1346, 734, 1373, 766, 0x916A38, 3, Fast RGB
+                If (ErrorLevel = 0){
+                    MsgBox, , Alchemy Status, Strange Dust experiment has more than 3 minutes remaining, 1.5
+                    Goto, ExoticCheck
+                } Else {
+                    MouseMove, 1286, 786
+                    MsgBox, , Alchemy Status, Starting Strange Dust experiment, 1.5
+                    Click
+                    Sleep, 1000
+                    Goto, ExoticCheck
+                }
+        }
     ; check If using exotic coins, go through same steps as above If so
     ExoticCheck:
     GuiControlGet, Checked, , Coin,
         If (Checked = 1){
-            ; check for completed alchemy with exotic coins
-            PixelSearch, X, Y, 1679, 748, 1735, 796, 0x0AA008, 3, Fast RGB
-            If (ErrorLevel = 0){
-                MouseMove, 1632, 772
-                Sleep, 1000
-                Click
-                Sleep, 1000
-                UseExoticCoins()
-            } Else {
-                ; check for free to complete alchemy with exotic coins
-                PixelSearch, X, Y, 1679, 748, 1735, 796, 0xF9AA47, 3, Fast RGB
+            ; check for in-process alchemy with exotic coins
+            PixelSearch, X, Y, 1699, 737, 1723, 767, 0x916A38, 3, Fast RGB
                 If (ErrorLevel = 0){
-                    MouseMove, 1632, 772
-                    Sleep, 1000
+                    MsgBox, , Alchemy Status, Exotic Coins experiment has more than 3 minutes remaining, 1.5
+                    Goto, FinishAlch
+                } Else {
+                    ; start exotic coin alchemy
+                    MouseMove, 1641, 767
+                    MsgBox, , Alchemy Status, Starting Exotic Coins experiment, 1.5
                     Click
                     Sleep, 1000
-                    UseExoticCoins()
-                } Else {
-                    ; check for in-process alchemy with exotic coins
-                    PixelSearch, x, y, 1693, 732, 1731, 767, 0x916A38, 3 Fast RGB
-                    If (ErrorLevel = 0){
-                        Return
-                    } Else {
-                        UseExoticCoins()
-                    }
+                    Goto, FinishAlch
                 }
             }
-        } Else {
-            BigClose()
-            Return
-        }
-}
-
-UseExoticCoins(){
-    MouseMove, 1641, 767
-    Sleep, 1000
-    Click
-    Sleep, 1000
+    FinishAlch:
     BigClose()
+    Return
 }
