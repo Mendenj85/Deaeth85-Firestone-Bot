@@ -124,7 +124,7 @@ UpgradeBlessings(){
                 ClickBless()
             }
         ; fate position
-        PixelSearch, X, Y, 1419, 481, 1464, 543, 0xF60000, 10, Fast RGB
+        PixelSearch, X, Y, 1431, 498, 1465, 531, 0xF60000, 10, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 1370, 572
             Sleep, 1000
