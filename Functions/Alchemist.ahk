@@ -53,7 +53,7 @@ Alchemist(){
             }
         }
     ; check for free to complete alchemy with blood
-    PixelSearch, X, Y, 985, 746, 1037, 792, 0xF9AA47, 3, Fast RGB
+    PixelSearch, X, Y, 969, 742, 1026, 756, 0xF9AA47, 3, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, 949, 777
             MsgBox, , Alchemy Status, Dragon Blood experiment is free to complete, 1.5
