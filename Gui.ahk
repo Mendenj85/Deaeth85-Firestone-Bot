@@ -1,11 +1,58 @@
 #NoEnv
 #SingleInstance, Force
 #Include Deaeth85 Firestone Bot.ahk
+
 SendMode, Input
 SetBatchLines, -1
 SetWorkingDir, %A_ScriptDir%
 
 Picture = Images\startbutton.png
+
+; Read settings from INI file when GUI is initialized
+Gui +OwnDialogs
+Gui Font, s9 Bold, Tahoma
+
+; Read settings from INI file
+IniRead, Token, settings.ini, CommonOptions, Token
+IniRead, SellEx, settings.ini, CommonOptions, SellEx
+IniRead, SellScrolls, settings.ini, CommonOptions, SellScrolls
+IniRead, SellNoGold, settings.ini, CommonOptions, SellNoGold
+IniRead, SellAll, settings.ini, CommonOptions, SellAll
+IniRead, ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
+IniRead, BuyEx, settings.ini, CommonOptions, BuyEx
+IniRead, Chests, settings.ini, CommonOptions, Chests
+IniRead, GearChestExclude, settings.ini, CommonOptions, GearChestExclude
+GuiControl, Choose, GearChestExclude, %GearChestExclude%
+IniRead, JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
+IniRead, Bless, settings.ini, CommonOptions, Bless
+IniRead, Daily, settings.ini, CommonOptions, Daily
+IniRead, Weekly, settings.ini, CommonOptions, Weekly
+IniRead, Events, settings.ini, CommonOptions, Events
+IniRead, Mail, settings.ini, CommonOptions, Mail
+IniRead, Awaken, settings.ini, CommonOptions, Awaken
+IniRead, Crystal, settings.ini, CommonOptions, Crystal
+IniRead, PTree, settings.ini, CommonOptions, PTree
+
+IniRead, Beer, settings.ini, Qol/RareOptions, Beer
+IniRead, NoGuild, settings.ini, Qol/RareOptions, NoGuild
+IniRead, NoEng, settings.ini, Qol/RareOptions, NoEng
+IniRead, Pickaxes, settings.ini, Qol/RareOptions, Pickaxes
+IniRead, GNotif, settings.ini, Qol/RareOptions, GNotif
+IniRead, Alch, settings.ini, Qol/RareOptions, Alch
+IniRead, Dust, settings.ini, Qol/RareOptions, Dust
+IniRead, Coin, settings.ini, Qol/RareOptions, Coin
+IniRead, Research, settings.ini, Qol/RareOptions, Research
+IniRead, SkipOracle, settings.ini, Qol/RareOptions, SkipOracle
+
+IniRead, Shop, settings.ini, OtherOptions, Shop
+IniRead, DailyOracle, settings.ini, OtherOptions, DailyOracle
+IniRead, PVP, settings.ini, OtherOptions, PVP
+IniRead, LiberationStars, settings.ini, OtherOptions, LiberationStars
+IniRead, UpgradeWM, settings.ini, OtherOptions, UpgradeWM
+IniRead, WMOptions, settings.ini, OtherOptions, WMOptions
+IniRead, Blueprints, settings.ini, OtherOptions, Blueprints
+IniRead, Talents450, settings.ini, OtherOptions, Talents450
+IniRead, Talents800, settings.ini, OtherOptions, Talents800
 
 ; gui code
 Gui Font, s9 Bold, Tahoma
@@ -38,26 +85,27 @@ Gui Add, Picture, x450 y180 w400 h400, Images\chest.png
 Gui Font, s15, Bold, Tahoma
 Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, CHECK ANY OPTIONAL BOXES TO DIRECT THE SCRIPT
 Gui Font, s9 Bold, Tahoma
-Gui Add, Checkbox, x10 y70 w600 h30 VToken, Use Tavern Tokens/Craft Artifact (Will NOT work if Skip Claiming Beer selected in QoL section)
-Gui Add, Checkbox, x10 y110 w600 h30 VSellEx, Open Exotic Merchant (Master toggle that only goes to Exotic Merchant)
-Gui Add, Radio, x20 y135 w400 h30 vSellScrolls,  1. Sell ONLY Exotic Scrolls
-Gui Add, Radio, x20 y160 w400 h30 vSellNoGold, 2. Sell All But Gold Items
-Gui Add, Radio, x20 y185 w400 h30 vSellAll,  3. Sell All Exotic Items
-Gui Add, Checkbox, x10 y215 w400 h30 vExoticUpgrades, Buy Exotic Upgrades (Requires Sell Exotic Items Checked)
-Gui Add, Checkbox, x10 y245 w400 h30 vBuyEx, Buy Exotic Chests (Requires Sell Exotic Items Checked)
-Gui Add, Checkbox, x10 y285 w400 h30 vChests, Open Chests - Choose an "Exclude from" option from the dropdowns below - Gifts will be opened as well
-Gui Add, Text, x150 y315 w200 h30, Gear Chests
-Gui Add, DropDownList, x10 y335 w400 r5 vGearChestExclude, Exclude All|Don't Exclude Any|Epic and Higher|Legendary and Higher|Mythic||
-Gui Add, Text, x150 y365 w200 h30, Jewel Chests
-Gui Add, DropDownList, x10 y385 w400 r5 VJewelChestExclude, Exclude All|Don't Exclude Any|Diamond and Higher||Opal and Higher|Emerald
-Gui Add, Checkbox, x10 y425 w400 h30 vBless, Upgrade Blessings - Will open Oracle chests even without Open Chests selected
-Gui Add, Checkbox, x10 y465 w400 h30 vDaily, Claim Daily Quests
-Gui Add, Checkbox, x10 y505 w400 h30 vWeekly, Claim Weekly Quests
-Gui Add, Checkbox, x10 y545 w400 h30 vEvents, Claim Basic Events
-Gui Add, Checkbox, x10 y585 w400 h30 vMail, Check Mail
-Gui Add, Checkbox, x10 y625 w400 h30 vAwaken, Awaken Heroes
-Gui Add, Checkbox, x10 y665 w400 h30 vCrystal, Spend Pickaxes on Crystal
-Gui Add, Checkbox, x10 y705 w600 h30 vPTree, Upgrade Personal Tree (Select options on next tab if upgrading)
+Gui Add, Checkbox, x10 y70 w600 h30 vToken Checked%Token%, Use Tavern Tokens/Craft Artifact (Will NOT work if Skip Claiming Beer selected in QoL section)
+Gui Add, Checkbox, x10 y110 w600 h30 vSellEx Checked%SellEx%, Open Exotic Merchant (Master toggle that only goes to Exotic Merchant)
+Gui Add, Radio, x20 y135 w400 h30 vSellScrolls Checked%SellScrolls%,  1. Sell ONLY Exotic Scrolls
+Gui Add, Radio, x20 y160 w400 h30 vSellNoGold Checked%SellNoGold%, 2. Sell All But Gold Items
+Gui Add, Radio, x20 y185 w400 h30 vSellAll Checked%SellAll%,  3. Sell All Exotic Items
+Gui Add, Radio, x20 y210 w400 h30 vSellNone Checked%SellNone%, 4. Sell Nothing
+Gui Add, Checkbox, x10 y240 w400 h30 vExoticUpgrades Checked%ExoticUpgrades%, Buy Exotic Upgrades (Requires Sell Exotic Items Checked)
+Gui Add, Checkbox, x10 y270 w400 h30 vBuyEx Checked%BuyEx%, Buy Exotic Chests (Requires Sell Exotic Items Checked)
+Gui Add, Checkbox, x10 y310 w400 h30 vChests Checked%Chests%, Open Chests - Choose an "Exclude from" option from the dropdowns below - Gifts will be opened as well
+Gui Add, Text, x150 y340 w200 h30, Gear Chests
+Gui Add, DropDownList, x10 y360 w400 r5 vGearChestExclude Choose%GearChestExclude%, Exclude All|Don't Exclude Any|Epic and Higher|Legendary and Higher|Mythic
+Gui Add, Text, x150 y390 w200 h30, Jewel Chests
+Gui Add, DropDownList, x10 y410 w400 r5 vJewelChestExclude, Exclude All|Don't Exclude Any|Diamond and Higher||Opal and Higher|Emerald
+Gui Add, Checkbox, x10 y450 w400 h30 vBless Checked%Bless%, Upgrade Blessings - Will open Oracle chests even without Open Chests selected
+Gui Add, Checkbox, x10 y490 w400 h30 vDaily Checked, Claim Daily Quests
+Gui Add, Checkbox, x10 y530 w400 h30 vWeekly Checked%Weekly%, Claim Weekly Quests
+Gui Add, Checkbox, x10 y570 w400 h30 vEvents Checked%Events%, Claim Basic Events
+Gui Add, Checkbox, x10 y610 w400 h30 vMail Checked%Mail%, Check Mail
+Gui Add, Checkbox, x10 y650 w400 h30 vAwaken Checked%Awaken%, Awaken Heroes
+Gui Add, Checkbox, x10 y690 w400 h30 vCrystal Checked%Crystal%, Spend Pickaxes on Crystal
+Gui Add, Checkbox, x10 y730 w600 h30 vPTree Checked%PTree%, Upgrade Personal Tree (Select options on next tab if upgrading)
 Gui Tab, 3 ; Personal Tree Upgrades
 Gui Font, s12, Bold, Tahoma
 Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, CHOOSE PERSONAL TREE UPGRADES THAT YOU WOULD LIKE THE SCRIPT TO ATTEMPT TO PURCHASE
@@ -92,25 +140,25 @@ Gui Add, Picture, x0 y0 w900 h300, Images\dragonbanner.png
 Gui Font, s15, Bold, Tahoma
 Gui Add, Text, x0 y330 w900 h30 +0x200 +Center, Rarer Options
 Gui Font, s9 Bold, Tahoma
-Gui Add, Checkbox, x10 y330 w600 h30 vBeer, Skip Claiming Beer
-Gui Add, Checkbox, x10 y370 w400 h30 vNoGuild, Skip All Guild Functions
-Gui Add, Checkbox, x10 y410 w400 h30 vNoEng, Skip Engineer
-Gui Add, Checkbox, x10 y450 w400 h30 vPickaxes, Skip Claiming Pickaxes
-Gui Add, Checkbox, x10 y490 w400 h30 vGNotif, Clear Annoying Guild Notifications
-Gui Add, Checkbox, x10 y530 w200 h30 vAlch, Skip Alchemy
-Gui Add, Checkbox, x10 y570 w200 h30 vDust, Don't Use Dust in Alchemy
-Gui Add, Checkbox, x10 y610 w400 h30 vCoin, Use Exotic Coins in Alchemy
-Gui Add, Checkbox, x10 y650 w400 h30 vResearch, Skip Research
-Gui Add, Checkbox, x10 y690 w400 h30 vSkipOracle, Skip Oracle
+Gui Add, Checkbox, x10 y330 w600 h30 vBeer Checked%Beer%, Skip Claiming Beer
+Gui Add, Checkbox, x10 y370 w400 h30 vNoGuild Checked%NoGuild%, Skip All Guild Functions
+Gui Add, Checkbox, x10 y410 w400 h30 vNoEng Checked%NoEng%, Skip Engineer
+Gui Add, Checkbox, x10 y450 w400 h30 vPickaxes Checked%Pickaxes%, Skip Claiming Pickaxes
+Gui Add, Checkbox, x10 y490 w400 h30 vGNotif Checked%GNotif%, Clear Annoying Guild Notifications
+Gui Add, Checkbox, x10 y530 w200 h30 vAlch Checked%Alch%, Skip Alchemy
+Gui Add, Checkbox, x10 y570 w200 h30 vDust Checked%Dust%, Don't Use Dust in Alchemy
+Gui Add, Checkbox, x10 y610 w400 h30 vCoin Checked%Coin%, Use Exotic Coins in Alchemy
+Gui Add, Checkbox, x10 y650 w400 h30 vResearch Checked%Research%, Skip Research
+Gui Add, Checkbox, x10 y690 w400 h30 vSkipOracle Checked%SkipOracle%, Skip Oracle
 Gui Tab, 5 ; Other Options
 Gui Font, s15, Bold, Tahoma
 Gui Add, Picture, x500 y300 w300 h500, Images\barkeep.png
 Gui Add, Picture, x10 y600 w200 h200, Images\dragonchest.png
 Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, Other Misc Options
 Gui Font, s9 Bold, Tahoma
-Gui Add, Checkbox, x10 y70 w400 h30 vShop, Get Free Gift and Check-In
-Gui Add, Checkbox, x10 y100 w400 h30 vDailyOracle, Claim Daily Oracle
-Gui Add, Checkbox, x10 y130 w400 h30 vPVP, Complete Arena Battles
+Gui Add, Checkbox, x10 y70 w400 h30 vShop Checked%Shop%, Get Free Gift and Check-In
+Gui Add, Checkbox, x10 y100 w400 h30 vDailyOracle Checked%DailyOracle%, Claim Daily Oracle
+Gui Add, Checkbox, x10 y130 w400 h30 vPVP Checked%PVP%, Complete Arena Battles
 Gui Font, s15, Bold, Tahoma
 Gui Add, Text, x10 y170 w400 h30 +0x200 +Center, ~~ Liberation Missions ~~
 Gui Font, s9 Bold, Tahoma
@@ -141,10 +189,187 @@ Gui Add, Picture, x0 y350 w900 h300, Images\logo.png
 Gui Add, Text, x0 y640 w900 h30 +0x200 +Center, Thank you for using my bot
 Gui Add, Text, x0 y670 w900 h30 +0x200 +Center, Donations are never required, but accepted through Venmo:
 Gui Add, Text, x0 y700 w900 h30 +0x200 +Center, @Spyder85
-Gui Add, Picture, x300 y730 w300 h60 +0x200 +Center gButtonStart, %Picture%
+Gui Add, Button, x100 y730 w300 h60 gSaveSettings, Save GUI Settings
+Gui Add, Button, x500 y730 w300 h60 +0x200 +Center gButtonStart, Start Script
+
+; Read settings from INI file
+IniRead, Token, settings.ini, CommonOptions, Token
+IniRead, SellEx, settings.ini, CommonOptions, SellEx
+IniRead, SellScrolls, settings.ini, CommonOptions, SellScrolls
+IniRead, SellNoGold, settings.ini, CommonOptions, SellNoGold
+IniRead, SellAll, settings.ini, CommonOptions, SellAll
+IniRead, ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
+IniRead, BuyEx, settings.ini, CommonOptions, BuyEx
+IniRead, Chests, settings.ini, CommonOptions, Chests
+IniRead, GearChestExclude, settings.ini, CommonOptions, GearChestExclude
+GuiControl, Choose, GearChestExclude, %GearChestExclude%
+IniRead, JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
+GuiControl, Choose, JewelChestExclude, %JewelChestExclude%
+IniRead, Bless, settings.ini, CommonOptions, Bless
+IniRead, Daily, settings.ini, CommonOptions, Daily
+IniRead, Weekly, settings.ini, CommonOptions, Weekly
+IniRead, Events, settings.ini, CommonOptions, Events
+IniRead, Mail, settings.ini, CommonOptions, Mail
+IniRead, Awaken, settings.ini, CommonOptions, Awaken
+IniRead, Crystal, settings.ini, CommonOptions, Crystal
+IniRead, PTree, settings.ini, CommonOptions, PTree
+
+IniRead, Beer, settings.ini, Qol/RareOptions, Beer
+IniRead, NoGuild, settings.ini, Qol/RareOptions, NoGuild
+IniRead, NoEng, settings.ini, Qol/RareOptions, NoEng
+IniRead, Pickaxes, settings.ini, Qol/RareOptions, Pickaxes
+IniRead, GNotif, settings.ini, Qol/RareOptions, GNotif
+IniRead, Alch, settings.ini, Qol/RareOptions, Alch
+IniRead, Dust, settings.ini, Qol/RareOptions, Dust
+IniRead, Coin, settings.ini, Qol/RareOptions, Coin
+IniRead, Research, settings.ini, Qol/RareOptions, Research
+IniRead, SkipOracle, settings.ini, Qol/RareOptions, SkipOracle
+
+IniRead, Shop, settings.ini, OtherOptions, Shop
+IniRead, DailyOracle, settings.ini, OtherOptions, DailyOracle
+IniRead, PVP, settings.ini, OtherOptions, PVP
+IniRead, LiberationStars, settings.ini, OtherOptions, LiberationStars
+GuiControl, Choose, LiberationStars, %LiberationStars%
+IniRead, UpgradeWM, settings.ini, OtherOptions, UpgradeWM
+GuiControl, Choose, UpgradeWM, %UpgradeWM%
+IniRead, WMOptions, settings.ini, OtherOptions, WMOptions
+GuiControl, Choose, WMOptions, %WMOptions%
+IniRead, Blueprints, settings.ini, OtherOptions, Blueprints
+GuiControl, Choose, Blueprints, %Blueprints%
+IniRead, Talents450, settings.ini, OtherOptions, Talents450
+GuiControl, Choose, Talents450, %Talents450%
+IniRead, Talents800, settings.ini, OtherOptions, Talents800
+GuiControl, Choose, Talents800, %Talents800%
 
 Gui Show, w900 h800, Deaeth85's Firestone Bot - V2.1.0
 Return
-ButtonStart:
-    SetTimer, loop, 1000
+
+SaveSettings:
+    ; Common Options
+    IniWrite, % Token, settings.ini, CommonOptions, Token
+    IniWrite, % SellEx, settings.ini, CommonOptions, SellEx
+    IniWrite, % SellScrolls, settings.ini, CommonOptions, SellScrolls
+    IniWrite, % SellNoGold, settings.ini, CommonOptions, SellNoGold
+    IniWrite, % SellAll, settings.ini, CommonOptions, SellAll
+    IniWrite, % ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
+    IniWrite, % BuyEx, settings.ini, CommonOptions, BuyEx
+    IniWrite, % Chests, settings.ini, CommonOptions, Chests
+    IniWrite, % GearChestExclude, settings.ini, CommonOptions, GearChestExclude
+    IniWrite, % JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
+    IniWrite, % Bless, settings.ini, CommonOptions, Bless
+    IniWrite, % Daily, settings.ini, CommonOptions, Daily
+    IniWrite, % Weekly, settings.ini, CommonOptions, Weekly
+    IniWrite, % Events, settings.ini, CommonOptions, Events
+    IniWrite, % Mail, settings.ini, CommonOptions, Mail
+    IniWrite, % Awaken, settings.ini, CommonOptions, Awaken
+    IniWrite, % Crystal, settings.ini, CommonOptions, Crystal
+    IniWrite, % PTree, settings.ini, CommonOptions, PTree
+
+    ; QoL/Rare Options
+    IniWrite, % Beer, settings.ini, Qol/RareOptions, Beer
+    IniWrite, % NoGuild, settings.ini, Qol/RareOptions, NoGuild
+    IniWrite, % NoEng, settings.ini, Qol/RareOptions, NoEng
+    IniWrite, % Pickaxes, settings.ini, Qol/RareOptions, Pickaxes
+    IniWrite, % GNotif, settings.ini, Qol/RareOptions, GNotif
+    IniWrite, % Alch, settings.ini, Qol/RareOptions, Alch
+    IniWrite, % Dust, settings.ini, Qol/RareOptions, Dust
+    IniWrite, % Coin, settings.ini, Qol/RareOptions, Coin
+    IniWrite, % Research, settings.ini, Qol/RareOptions, Research
+    IniWrite, % SkipOracle, settings.ini, Qol/RareOptions, SkipOracle
+
+    ; Other Options
+    IniWrite, % Shop, settings.ini, OtherOptions, Shop
+    IniWrite, % DailyOracle, settings.ini, OtherOptions, DailyOracle
+    IniWrite, % PVP, settings.ini, OtherOptions, PVP
+    IniWrite, % LiberationStars, settings.ini, OtherOptions, LiberationStars
+    IniWrite, % UpgradeWM, settings.ini, OtherOptions, UpgradeWM
+    IniWrite, % WMOptions, settings.ini, OtherOptions, WMOptions
+    IniWrite, % Blueprints, settings.ini, OtherOptions, Blueprints
+    IniWrite, % Talents450Selected, settings.ini, OtherOptions, Talents450
+    IniWrite, % Talents800Selected, settings.ini, OtherOptions, Talents800
+
+    GuiControlGet, Token, , Token
+    GuiControlGet, SellEx, , SellEx
+    GuiControlGet, SellScrolls, , SellScrolls
+    GuiControlGet, SellNoGold, , SellNoGold
+    GuiControlGet, SellAll, , SellAll
+    GuiControlGet, ExoticUpgrades, , ExoticUpgrades
+    GuiControlGet, BuyEx, , BuyEx
+    GuiControlGet, Chests, , Chests
+    GuiControlGet, GearChestExclude, , GearChestExclude
+    GuiControlGet, JewelChestExclude, , JewelChestExclude
+    GuiControlGet, Bless, , Bless
+    GuiControlGet, Daily, , Daily
+    GuiControlGet, Weekly, , Weekly
+    GuiControlGet, Events, , Events
+    GuiControlGet, Mail, , Mail
+    GuiControlGet, Awaken, , Awaken
+    GuiControlGet, Crystal, , Crystal
+    GuiControlGet, PTree, , PTree
+
+    GuiControlGet, Beer, , Beer
+    GuiControlGet, NoGuild, , NoGuild
+    GuiControlGet, NoEng, , NoEng
+    GuiControlGet, Pickaxes, , Pickaxes
+    GuiControlGet, GNotif, , GNotif
+    GuiControlGet, Alch, , Alch
+    GuiControlGet, Dust, , Dust
+    GuiControlGet, Coin, , Coin
+    GuiControlGet, Research, , Research
+    GuiControlGet, SkipOracle, , SkipOracle
+
+    GuiControlGet, Shop, , Shop
+    GuiControlGet, DailyOracle, , DailyOracle
+    GuiControlGet, PVP, , PVP
+    GuiControlGet, LiberationStars, , LiberationStars
+    GuiControlGet, UpgradeWM, , UpgradeWM
+    GuiControlGet, WMOptions, , WMOptions
+    GuiControlGet, Blueprints, , Blueprints
+    GuiControlGet, Talents450, , Talents450
+    GuiControlGet, Talents800, , Talents800
+
+    IniWrite, % Token, settings.ini, CommonOptions, Token
+    IniWrite, % SellEx, settings.ini, CommonOptions, SellEx
+    IniWrite, % SellScrolls, settings.ini, CommonOptions, SellScrolls
+    IniWrite, % SellNoGold, settings.ini, CommonOptions, SellNoGold
+    IniWrite, % SellAll, settings.ini, CommonOptions, SellAll
+    IniWrite, % ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
+    IniWrite, % BuyEx, settings.ini, CommonOptions, BuyEx
+    IniWrite, % Chests, settings.ini, CommonOptions, Chests
+    IniWrite, % GearChestExclude, settings.ini, CommonOptions, GearChestExclude
+    IniWrite, % JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
+    IniWrite, % Bless, settings.ini, CommonOptions, Bless
+    IniWrite, % Daily, settings.ini, CommonOptions, Daily
+    IniWrite, % Weekly, settings.ini, CommonOptions, Weekly
+    IniWrite, % Events, settings.ini, CommonOptions, Events
+    IniWrite, % Mail, settings.ini, CommonOptions, Mail
+    IniWrite, % Awaken, settings.ini, CommonOptions, Awaken
+    IniWrite, % Crystal, settings.ini, CommonOptions, Crystal
+    IniWrite, % PTree, settings.ini, CommonOptions, PTree
+
+    IniWrite, % Beer, settings.ini, Qol/RareOptions, Beer
+    IniWrite, % NoGuild, settings.ini, Qol/RareOptions, NoGuild
+    IniWrite, % NoEng, settings.ini, Qol/RareOptions, NoEng
+    IniWrite, % Pickaxes, settings.ini, Qol/RareOptions, Pickaxes
+    IniWrite, % GNotif, settings.ini, Qol/RareOptions, GNotif
+    IniWrite, % Alch, settings.ini, Qol/RareOptions, Alch
+    IniWrite, % Dust, settings.ini, Qol/RareOptions, Dust
+    IniWrite, % Coin, settings.ini, Qol/RareOptions, Coin
+    IniWrite, % Research, settings.ini, Qol/RareOptions, Research
+    IniWrite, % SkipOracle, settings.ini, Qol/RareOptions, SkipOracle
+
+    IniWrite, % Shop, settings.ini, OtherOptions, Shop
+    IniWrite, % DailyOracle, settings.ini, OtherOptions, DailyOracle
+    IniWrite, % PVP, settings.ini, OtherOptions, PVP
+    IniWrite, % LiberationStars, settings.ini, OtherOptions, LiberationStars
+    IniWrite, % UpgradeWM, settings.ini, OtherOptions, UpgradeWM
+    IniWrite, % WMOptions, settings.ini, OtherOptions, WMOptions
+    IniWrite, % Blueprints, settings.ini, OtherOptions, Blueprints
+    IniWrite, % Talents450, settings.ini, OtherOptions, Talents450
+    IniWrite, % Talents800, settings.ini, OtherOptions, Talents800
+    MsgBox, , Gui Settings, Gui Settings Saved
     Return
+
+ButtonStart:
+SetTimer, loop, 1000
+Return

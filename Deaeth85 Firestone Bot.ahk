@@ -155,5 +155,5 @@ loop:
 
 GuiEscape:
 GuiClose:
-ExitApp
-$Esc:: ExitApp  
+    $Esc::
+    ExitApp  
