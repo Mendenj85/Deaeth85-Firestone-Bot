@@ -4,7 +4,7 @@
 #include Functions\subFunctions\BigClose.ahk
 
 UseToken(){
-    MouseMove, 768, 957
+    MouseMove, 968, 960
     Sleep, 1000
     Click
     Sleep, 1000
