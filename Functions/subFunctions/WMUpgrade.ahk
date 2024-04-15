@@ -359,7 +359,7 @@ Cloudfist:
         } 
     Sentinel:
         ; select war machine
-        PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0x28BD76, 3, Fast RGB
+        PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0xC2EFD9, 3, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, FoundX, FoundY
             Sleep, 1000
@@ -386,7 +386,7 @@ Cloudfist:
         } 
     Talos:
         ; select war machine
-        PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0x263B54, 3, Fast RGB
+        PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0x226B10, 3, Fast RGB
         If (ErrorLevel = 0){
             MouseMove, FoundX, FoundY
             Sleep, 1000
