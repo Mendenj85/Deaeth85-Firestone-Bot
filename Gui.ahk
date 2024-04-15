@@ -18,12 +18,14 @@ IniRead, SellEx, settings.ini, CommonOptions, SellEx
 IniRead, SellScrolls, settings.ini, CommonOptions, SellScrolls
 IniRead, SellNoGold, settings.ini, CommonOptions, SellNoGold
 IniRead, SellAll, settings.ini, CommonOptions, SellAll
+IniRead, SellNone, settings.ini, CommonOptions, SellNone
 IniRead, ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
 IniRead, BuyEx, settings.ini, CommonOptions, BuyEx
 IniRead, Chests, settings.ini, CommonOptions, Chests
 IniRead, GearChestExclude, settings.ini, CommonOptions, GearChestExclude
 GuiControl, Choose, GearChestExclude, %GearChestExclude%
 IniRead, JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
+GuiControl, Choose, JewelChestExclude, %JewelChestExclude%
 IniRead, Bless, settings.ini, CommonOptions, Bless
 IniRead, Daily, settings.ini, CommonOptions, Daily
 IniRead, Weekly, settings.ini, CommonOptions, Weekly
@@ -48,12 +50,17 @@ IniRead, Shop, settings.ini, OtherOptions, Shop
 IniRead, DailyOracle, settings.ini, OtherOptions, DailyOracle
 IniRead, PVP, settings.ini, OtherOptions, PVP
 IniRead, LiberationStars, settings.ini, OtherOptions, LiberationStars
+GuiControl, Choose, LiberationStars, %LiberationStars%
 IniRead, UpgradeWM, settings.ini, OtherOptions, UpgradeWM
+GuiControl, Choose, UpgradeWM, %UpgradeWM%
 IniRead, WMOptions, settings.ini, OtherOptions, WMOptions
+GuiControl, Choose, WMOptions, %WMOptions%
 IniRead, Blueprints, settings.ini, OtherOptions, Blueprints
+GuiControl, Choose, Blueprints, %Blueprints%
 IniRead, Talents450, settings.ini, OtherOptions, Talents450
+GuiControl, Choose, Talents450, %Talents450%
 IniRead, Talents800, settings.ini, OtherOptions, Talents800
-
+GuiControl, Choose, Talents800, %Talents800%
 ; gui code
 Gui Font, s9 Bold, Tahoma
 Gui Color, D3D3D3
@@ -198,6 +205,7 @@ IniRead, SellEx, settings.ini, CommonOptions, SellEx
 IniRead, SellScrolls, settings.ini, CommonOptions, SellScrolls
 IniRead, SellNoGold, settings.ini, CommonOptions, SellNoGold
 IniRead, SellAll, settings.ini, CommonOptions, SellAll
+IniRead, SellNone, settings.ini, CommonOptions, SellNone
 IniRead, ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
 IniRead, BuyEx, settings.ini, CommonOptions, BuyEx
 IniRead, Chests, settings.ini, CommonOptions, Chests
@@ -251,6 +259,7 @@ SaveSettings:
     IniWrite, % SellScrolls, settings.ini, CommonOptions, SellScrolls
     IniWrite, % SellNoGold, settings.ini, CommonOptions, SellNoGold
     IniWrite, % SellAll, settings.ini, CommonOptions, SellAll
+    IniWrite, % SellNone, settings.ini, CommonOptions, SellNone
     IniWrite, % ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
     IniWrite, % BuyEx, settings.ini, CommonOptions, BuyEx
     IniWrite, % Chests, settings.ini, CommonOptions, Chests
@@ -293,6 +302,7 @@ SaveSettings:
     GuiControlGet, SellScrolls, , SellScrolls
     GuiControlGet, SellNoGold, , SellNoGold
     GuiControlGet, SellAll, , SellAll
+    GuiControlGet, SellNone, , SellNone
     GuiControlGet, ExoticUpgrades, , ExoticUpgrades
     GuiControlGet, BuyEx, , BuyEx
     GuiControlGet, Chests, , Chests
@@ -333,6 +343,7 @@ SaveSettings:
     IniWrite, % SellScrolls, settings.ini, CommonOptions, SellScrolls
     IniWrite, % SellNoGold, settings.ini, CommonOptions, SellNoGold
     IniWrite, % SellAll, settings.ini, CommonOptions, SellAll
+    IniWrite, % SellNone, settings.ini, CommonOptions, SellNone
     IniWrite, % ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
     IniWrite, % BuyEx, settings.ini, CommonOptions, BuyEx
     IniWrite, % Chests, settings.ini, CommonOptions, Chests
