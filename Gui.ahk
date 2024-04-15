@@ -99,7 +99,7 @@ Gui Add, DropDownList, x10 y360 w400 r5 vGearChestExclude Choose%GearChestExclud
 Gui Add, Text, x150 y390 w200 h30, Jewel Chests
 Gui Add, DropDownList, x10 y410 w400 r5 vJewelChestExclude, Exclude All|Don't Exclude Any|Diamond and Higher||Opal and Higher|Emerald
 Gui Add, Checkbox, x10 y450 w400 h30 vBless Checked%Bless%, Upgrade Blessings - Will open Oracle chests even without Open Chests selected
-Gui Add, Checkbox, x10 y490 w400 h30 vDaily Checked, Claim Daily Quests
+Gui Add, Checkbox, x10 y490 w400 h30 vDaily Checked%Daily%, Claim Daily Quests
 Gui Add, Checkbox, x10 y530 w400 h30 vWeekly Checked%Weekly%, Claim Weekly Quests
 Gui Add, Checkbox, x10 y570 w400 h30 vEvents Checked%Events%, Claim Basic Events
 Gui Add, Checkbox, x10 y610 w400 h30 vMail Checked%Mail%, Check Mail
