@@ -35,16 +35,17 @@ IniRead, Awaken, settings.ini, CommonOptions, Awaken
 IniRead, Crystal, settings.ini, CommonOptions, Crystal
 IniRead, PTree, settings.ini, CommonOptions, PTree
 
-IniRead, Beer, settings.ini, Qol/RareOptions, Beer
-IniRead, NoGuild, settings.ini, Qol/RareOptions, NoGuild
-IniRead, NoEng, settings.ini, Qol/RareOptions, NoEng
-IniRead, Pickaxes, settings.ini, Qol/RareOptions, Pickaxes
-IniRead, GNotif, settings.ini, Qol/RareOptions, GNotif
-IniRead, Alch, settings.ini, Qol/RareOptions, Alch
-IniRead, Dust, settings.ini, Qol/RareOptions, Dust
-IniRead, Coin, settings.ini, Qol/RareOptions, Coin
-IniRead, Research, settings.ini, Qol/RareOptions, Research
-IniRead, SkipOracle, settings.ini, Qol/RareOptions, SkipOracle
+IniRead, Beer, settings.ini, QoL/RareOptions, Beer
+IniRead, NoGuild, settings.ini, QoL/RareOptions, NoGuild
+IniRead, NoEng, settings.ini, QoL/RareOptions, NoEng
+IniRead, Pickaxes, settings.ini, QoL/RareOptions, Pickaxes
+IniRead, GNotif, settings.ini, QoL/RareOptions, GNotif
+IniRead, Alch, settings.ini, QoL/RareOptions, Alch
+IniRead, Dust, settings.ini, QoL/RareOptions, Dust
+IniRead, Coin, settings.ini, QoL/RareOptions, Coin
+IniRead, Research, settings.ini, QoL/RareOptions, Research
+IniRead, SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
+IniRead, DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 
 IniRead, Shop, settings.ini, OtherOptions, Shop
 IniRead, DailyOracle, settings.ini, OtherOptions, DailyOracle
@@ -61,6 +62,7 @@ IniRead, Talents450, settings.ini, OtherOptions, Talents450
 GuiControl, Choose, Talents450, %Talents450%
 IniRead, Talents800, settings.ini, OtherOptions, Talents800
 GuiControl, Choose, Talents800, %Talents800%
+
 ; gui code
 Gui Font, s9 Bold, Tahoma
 Gui Color, D3D3D3
@@ -157,6 +159,7 @@ Gui Add, Checkbox, x10 y570 w200 h30 vDust Checked%Dust%, Don't Use Dust in Alch
 Gui Add, Checkbox, x10 y610 w400 h30 vCoin Checked%Coin%, Use Exotic Coins in Alchemy
 Gui Add, Checkbox, x10 y650 w400 h30 vResearch Checked%Research%, Skip Research
 Gui Add, Checkbox, x10 y690 w400 h30 vSkipOracle Checked%SkipOracle%, Skip Oracle
+Gui Add, Checkbox, x10 y770 w500 h30 vDisableWarning Checked%DisableWarning%, Do not show Steam warning again. (Popup when starting script)
 Gui Tab, 5 ; Other Options
 Gui Font, s15, Bold, Tahoma
 Gui Add, Picture, x500 y300 w300 h500, Images\barkeep.png
@@ -222,16 +225,17 @@ IniRead, Awaken, settings.ini, CommonOptions, Awaken
 IniRead, Crystal, settings.ini, CommonOptions, Crystal
 IniRead, PTree, settings.ini, CommonOptions, PTree
 
-IniRead, Beer, settings.ini, Qol/RareOptions, Beer
-IniRead, NoGuild, settings.ini, Qol/RareOptions, NoGuild
-IniRead, NoEng, settings.ini, Qol/RareOptions, NoEng
-IniRead, Pickaxes, settings.ini, Qol/RareOptions, Pickaxes
-IniRead, GNotif, settings.ini, Qol/RareOptions, GNotif
-IniRead, Alch, settings.ini, Qol/RareOptions, Alch
-IniRead, Dust, settings.ini, Qol/RareOptions, Dust
-IniRead, Coin, settings.ini, Qol/RareOptions, Coin
-IniRead, Research, settings.ini, Qol/RareOptions, Research
-IniRead, SkipOracle, settings.ini, Qol/RareOptions, SkipOracle
+IniRead, Beer, settings.ini, QoL/RareOptions, Beer
+IniRead, NoGuild, settings.ini, QoL/RareOptions, NoGuild
+IniRead, NoEng, settings.ini, QoL/RareOptions, NoEng
+IniRead, Pickaxes, settings.ini, QoL/RareOptions, Pickaxes
+IniRead, GNotif, settings.ini, QoL/RareOptions, GNotif
+IniRead, Alch, settings.ini, QoL/RareOptions, Alch
+IniRead, Dust, settings.ini, QoL/RareOptions, Dust
+IniRead, Coin, settings.ini, QoL/RareOptions, Coin
+IniRead, Research, settings.ini, QoL/RareOptions, Research
+IniRead, SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
+IniRead, DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 
 IniRead, Shop, settings.ini, OtherOptions, Shop
 IniRead, DailyOracle, settings.ini, OtherOptions, DailyOracle
@@ -250,6 +254,10 @@ IniRead, Talents800, settings.ini, OtherOptions, Talents800
 GuiControl, Choose, Talents800, %Talents800%
 
 Gui Show, w900 h800, Deaeth85's Firestone Bot - V2.1.0
+GuiControlGet, Checked, , DisableWarning
+If (Checked = 0){
+MsgBox, 48, Warning, Please note this Bot will ONLY work reliably with the game launched via Steam
+}
 Return
 
 SaveSettings:
@@ -275,16 +283,17 @@ SaveSettings:
     IniWrite, % PTree, settings.ini, CommonOptions, PTree
 
     ; QoL/Rare Options
-    IniWrite, % Beer, settings.ini, Qol/RareOptions, Beer
-    IniWrite, % NoGuild, settings.ini, Qol/RareOptions, NoGuild
-    IniWrite, % NoEng, settings.ini, Qol/RareOptions, NoEng
-    IniWrite, % Pickaxes, settings.ini, Qol/RareOptions, Pickaxes
-    IniWrite, % GNotif, settings.ini, Qol/RareOptions, GNotif
-    IniWrite, % Alch, settings.ini, Qol/RareOptions, Alch
-    IniWrite, % Dust, settings.ini, Qol/RareOptions, Dust
-    IniWrite, % Coin, settings.ini, Qol/RareOptions, Coin
-    IniWrite, % Research, settings.ini, Qol/RareOptions, Research
-    IniWrite, % SkipOracle, settings.ini, Qol/RareOptions, SkipOracle
+    IniWrite, % Beer, settings.ini, QoL/RareOptions, Beer
+    IniWrite, % NoGuild, settings.ini, QoL/RareOptions, NoGuild
+    IniWrite, % NoEng, settings.ini, QoL/RareOptions, NoEng
+    IniWrite, % Pickaxes, settings.ini, QoL/RareOptions, Pickaxes
+    IniWrite, % GNotif, settings.ini, QoL/RareOptions, GNotif
+    IniWrite, % Alch, settings.ini, QoL/RareOptions, Alch
+    IniWrite, % Dust, settings.ini, QoL/RareOptions, Dust
+    IniWrite, % Coin, settings.ini, QoL/RareOptions, Coin
+    IniWrite, % Research, settings.ini, QoL/RareOptions, Research
+    IniWrite, % SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
+    IniWrite, % DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 
     ; Other Options
     IniWrite, % Shop, settings.ini, OtherOptions, Shop
@@ -327,6 +336,7 @@ SaveSettings:
     GuiControlGet, Coin, , Coin
     GuiControlGet, Research, , Research
     GuiControlGet, SkipOracle, , SkipOracle
+    GuiControlGet, DisableWarning, , DisableWarning
 
     GuiControlGet, Shop, , Shop
     GuiControlGet, DailyOracle, , DailyOracle
@@ -358,16 +368,17 @@ SaveSettings:
     IniWrite, % Crystal, settings.ini, CommonOptions, Crystal
     IniWrite, % PTree, settings.ini, CommonOptions, PTree
 
-    IniWrite, % Beer, settings.ini, Qol/RareOptions, Beer
-    IniWrite, % NoGuild, settings.ini, Qol/RareOptions, NoGuild
-    IniWrite, % NoEng, settings.ini, Qol/RareOptions, NoEng
-    IniWrite, % Pickaxes, settings.ini, Qol/RareOptions, Pickaxes
-    IniWrite, % GNotif, settings.ini, Qol/RareOptions, GNotif
-    IniWrite, % Alch, settings.ini, Qol/RareOptions, Alch
-    IniWrite, % Dust, settings.ini, Qol/RareOptions, Dust
-    IniWrite, % Coin, settings.ini, Qol/RareOptions, Coin
-    IniWrite, % Research, settings.ini, Qol/RareOptions, Research
-    IniWrite, % SkipOracle, settings.ini, Qol/RareOptions, SkipOracle
+    IniWrite, % Beer, settings.ini, QoL/RareOptions, Beer
+    IniWrite, % NoGuild, settings.ini, QoL/RareOptions, NoGuild
+    IniWrite, % NoEng, settings.ini, QoL/RareOptions, NoEng
+    IniWrite, % Pickaxes, settings.ini, QoL/RareOptions, Pickaxes
+    IniWrite, % GNotif, settings.ini, QoL/RareOptions, GNotif
+    IniWrite, % Alch, settings.ini, QoL/RareOptions, Alch
+    IniWrite, % Dust, settings.ini, QoL/RareOptions, Dust
+    IniWrite, % Coin, settings.ini, QoL/RareOptions, Coin
+    IniWrite, % Research, settings.ini, QoL/RareOptions, Research
+    IniWrite, % SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
+    IniWrite, % DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 
     IniWrite, % Shop, settings.ini, OtherOptions, Shop
     IniWrite, % DailyOracle, settings.ini, OtherOptions, DailyOracle
