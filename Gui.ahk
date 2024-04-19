@@ -104,7 +104,7 @@ Gui Add, Checkbox, x10 y240 w400 h30 vExoticUpgrades Checked%ExoticUpgrades%, Bu
 Gui Add, Checkbox, x10 y270 w400 h30 vBuyEx Checked%BuyEx%, Buy Exotic Chests (Requires Sell Exotic Items Checked)
 Gui Add, Checkbox, x10 y310 w400 h30 vChests Checked%Chests%, Open Chests - Choose an "Exclude from" option from the dropdowns below - Gifts will be opened as well
 Gui Add, Text, x150 y340 w200 h30, Gear Chests
-Gui Add, DropDownList, x10 y360 w400 r5 vGearChestExclude, Exclude All|Don't Exclude Any|Epic and Higher|Legendary and Higher|Mythic
+Gui Add, DropDownList, x10 y360 w400 r5 vGearChestExclude, Exclude All|Don't Exclude Any|Epic and Higher|Legendary and Higher|Mythic||
 Gui Add, Text, x150 y390 w200 h30, Jewel Chests
 Gui Add, DropDownList, x10 y410 w400 r5 vJewelChestExclude, Exclude All|Don't Exclude Any|Diamond and Higher||Opal and Higher|Emerald
 Gui Add, Checkbox, x10 y450 w400 h30 vBless Checked%Bless%, Upgrade Blessings - Will open Oracle chests even without Open Chests selected
