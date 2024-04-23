@@ -71,7 +71,7 @@ WMUpgrade(){
                                                     If (SelectedItem = "Upgrade Thunderclap"){
                                                         MsgBox, , WMUpgrade, Selected war machine: Thunderclap., 1.5
                                                         Goto, Thunderclap
-                                                    } 
+                                                    }
                                                 }
                                             }
                                         }
@@ -85,62 +85,61 @@ WMUpgrade(){
         }
     }
 
-
-   Aegis:
-    ; select war machine
-    PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0xA49789, 3, Fast RGB
-    If (ErrorLevel = 0){
-        MouseMove, FoundX, FoundY
-        Sleep, 1000
-        Click
-        Sleep, 1000
-    }
-    GuiControlGet, SelectedItem, ,WMOptions,
-    If (SelectedItem = "Level Only"){
-        LevelOnly()
-        Return
-    } Else {
+    Aegis:
+        ; select war machine
+        PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0xA49789, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, FoundX, FoundY
+            Sleep, 1000
+            Click
+            Sleep, 1000
+        }
         GuiControlGet, SelectedItem, ,WMOptions,
-        If (SelectedItem = "Blueprints Only"){
-            BPOnly()
+        If (SelectedItem = "Level Only"){
+            LevelOnly()
             Return
         } Else {
             GuiControlGet, SelectedItem, ,WMOptions,
-            If (SelectedItem = "Level and Blueprints"){
-                LevelOnly()
+            If (SelectedItem = "Blueprints Only"){
                 BPOnly()
                 Return
+            } Else {
+                GuiControlGet, SelectedItem, ,WMOptions,
+                If (SelectedItem = "Level and Blueprints"){
+                    LevelOnly()
+                    BPOnly()
+                    Return
+                }
             }
         }
-    }
 
-Cloudfist:
-    ; select war machine
-    PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0xF7661c, 3, Fast RGB
-    If (ErrorLevel = 0){
-        MouseMove, FoundX, FoundY
-        Sleep, 1000
-        Click
-        Sleep, 1000
-    }
-    GuiControlGet, SelectedItem, ,WMOptions,
-    If (SelectedItem = "Level Only"){
-        LevelOnly()
-        Return
-    } Else {
+    Cloudfist:
+        ; select war machine
+        PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0xF7661c, 3, Fast RGB
+        If (ErrorLevel = 0){
+            MouseMove, FoundX, FoundY
+            Sleep, 1000
+            Click
+            Sleep, 1000
+        }
         GuiControlGet, SelectedItem, ,WMOptions,
-        If (SelectedItem = "Blueprints Only"){
-            BPOnly()
+        If (SelectedItem = "Level Only"){
+            LevelOnly()
             Return
         } Else {
             GuiControlGet, SelectedItem, ,WMOptions,
-            If (SelectedItem = "Level and Blueprints"){
-                LevelOnly()
+            If (SelectedItem = "Blueprints Only"){
                 BPOnly()
                 Return
+            } Else {
+                GuiControlGet, SelectedItem, ,WMOptions,
+                If (SelectedItem = "Level and Blueprints"){
+                    LevelOnly()
+                    BPOnly()
+                    Return
+                }
             }
         }
-    }
     Curator:
         ; select war machine
         PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0x740D0B, 3, Fast RGB
@@ -302,7 +301,7 @@ Cloudfist:
                     Return
                 }
             }
-        } 
+        }
     Hunter:
         ; select war machine
         PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0x6CB932, 3, Fast RGB
@@ -329,7 +328,7 @@ Cloudfist:
                     Return
                 }
             }
-        } 
+        }
     Judgement:
         ; select war machine
         PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0x971DAB, 3, Fast RGB
@@ -356,7 +355,7 @@ Cloudfist:
                     Return
                 }
             }
-        } 
+        }
     Sentinel:
         ; select war machine
         PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0xC2EFD9, 3, Fast RGB
@@ -383,7 +382,7 @@ Cloudfist:
                     Return
                 }
             }
-        } 
+        }
     Talos:
         ; select war machine
         PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0x226B10, 3, Fast RGB
@@ -410,7 +409,7 @@ Cloudfist:
                     Return
                 }
             }
-        } 
+        }
     Thunderclap:
         ; select war machine
         PixelSearch, FoundX, FoundY, 248, 894, 1878, 1020, 0x3EE0EE, 3, Fast RGB
@@ -437,5 +436,5 @@ Cloudfist:
                     Return
                 }
             }
-        } 
-}
+        }
+    }

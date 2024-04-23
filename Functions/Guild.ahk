@@ -2,13 +2,11 @@
 
 #Include Functions\subFunctions\Awaken.ahk
 #Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\MainMenu.ahk
 #Include Functions\subFunctions\PTree.ahk
 
 ; expeditions function
 Guild(){
     ControlFocus,, ahk_exe Firestone.exe
-    MainMenu()
     ; open guild
     MouseMove, 1857, 481
     Sleep, 1000

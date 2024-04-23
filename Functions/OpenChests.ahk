@@ -23,9 +23,6 @@
 #Include Functions\subFunctions\Uncommon.ahk
 #Include Functions\subFunctions\Wooden.ahk
 
-ControlFocus,, ahk_exe Firestone.exe
-MainMenu()
-
 OpenChests(){
     ; open bag
     MouseMove, 1581, 939

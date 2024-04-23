@@ -4,9 +4,6 @@
 #Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\ExoticUpgrades.ahk
 
-ControlFocus,, ahk_exe Firestone.exe
-MainMenu()
-
 ExoticMerchant(){
     ; Open exotic merchant
     MouseMove, 1459, 650

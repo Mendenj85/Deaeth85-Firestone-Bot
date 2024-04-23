@@ -3,9 +3,6 @@
 #Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\MainMenu.ahk
 
-ControlFocus,, ahk_exe Firestone.exe
-MainMenu()
-
 ; claim daily quests
 ClaimDaily(){
     ; open character window
@@ -55,7 +52,7 @@ ClaimDaily(){
             }
         }
     BigClose()
-    return
+    Return
 }
 
 ; claim weekly quests
@@ -63,7 +60,7 @@ ClaimWeekly(){
     ; check if claim daily quests is also checked
     GuiControlGet, Checked, , Daily,
         If (Checked = 1){
-            return
+            Return
         }
     ; open character window
     MouseMove, 90, 112

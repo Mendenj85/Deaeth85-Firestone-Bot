@@ -1,11 +1,9 @@
 ; ClaimEvents.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\MainMenu.ahk
 
 ClaimEvents(){
     ControlFocus,, ahk_exe Firestone.exe
-    MainMenu()
     PixelSearch, X, Y, 1719, 170, 1741, 204, 0xF40000, 3, Fast RGB
     If (ErrorLevel = 0){
         ; open events
@@ -47,5 +45,7 @@ ClaimEvents(){
         }
     BigClose()
     BigClose()
+    MsgBox, , Main Menu Check, Checking to ensure we are on main screen after claiming events, 2
+    MainMenu()
     }
 }

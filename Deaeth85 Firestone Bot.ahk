@@ -31,15 +31,14 @@ SetWorkingDir %A_ScriptDir%
 #NoEnv
 SetBatchLines, -1
 
-global Color
 global lastExecutionTimeArena := 0
 
 ; start of main script
 MainScript(){
 loop:
     ControlFocus,, ahk_exe Firestone.exe
-    GetColor()
     ; do main screen sections
+    MsgBox, , Main Menu Check, Checking to ensure we are on main screen at loop start, 2
     MainMenu()
     GuiControlGet, Checked, , Events,
         If (Checked = 1){

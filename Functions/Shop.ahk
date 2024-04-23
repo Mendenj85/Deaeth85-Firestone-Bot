@@ -7,7 +7,6 @@ lastExecutionTimeShop := 0
 
 Shop(){
     ControlFocus,, ahk_exe Firestone.exe
-    MainMenu()
     PixelSearch, X, Y, 1876, 523, 1905, 564, 0xF40000, 3, Fast RGB
     If (ErrorLevel = 0){
         MouseMove, 1857, 583
@@ -30,5 +29,7 @@ Shop(){
         Click
         Sleep, 1000
         BigClose()
+        MsgBox, , Main Menu Check, Checking to ensure we are on main screen after redeeming shop gifts, 2
+        MainMenu()
     }
 }

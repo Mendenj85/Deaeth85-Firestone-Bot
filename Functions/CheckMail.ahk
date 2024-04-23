@@ -1,11 +1,9 @@
 ; CheckMail.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\MainMenu.ahk
 
 CheckMail(){
     ControlFocus,, ahk_exe Firestone.exe
-    MainMenu()
     ; open mail
     MouseMove, 56, 777
     Sleep, 1000
