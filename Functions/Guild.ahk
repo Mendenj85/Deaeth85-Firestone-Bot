@@ -101,7 +101,7 @@ ClearNotifications(){
     Sleep, 1000
     Click
     Sleep, 1500
-    MouseMove, 236, 606
+    MouseMove, 232, 444
     Sleep, 1000
     Click
     Sleep, 1500
