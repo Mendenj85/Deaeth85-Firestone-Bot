@@ -45,6 +45,7 @@ IniRead, Dust, settings.ini, QoL/RareOptions, Dust
 IniRead, Coin, settings.ini, QoL/RareOptions, Coin
 IniRead, Research, settings.ini, QoL/RareOptions, Research
 IniRead, SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
+IniRead, NoHero, settings.ini, QoL/RareOptions, NoHero
 IniRead, DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 
 IniRead, Shop, settings.ini, OtherOptions, Shop
@@ -159,6 +160,7 @@ Gui Add, Checkbox, x10 y570 w200 h30 vDust Checked%Dust%, Don't Use Dust in Alch
 Gui Add, Checkbox, x10 y610 w400 h30 vCoin Checked%Coin%, Use Exotic Coins in Alchemy
 Gui Add, Checkbox, x10 y650 w400 h30 vResearch Checked%Research%, Skip Research
 Gui Add, Checkbox, x10 y690 w400 h30 vSkipOracle Checked%SkipOracle%, Skip Oracle
+Gui Add, Checkbox, x10 y730 w400 h30 vNoHero Checked%NoHero%, Don't Upgrade Heroes
 Gui Add, Checkbox, x10 y770 w500 h30 vDisableWarning Checked%DisableWarning%, Do not show Steam warning again. (Popup when starting script)
 Gui Tab, 5 ; Other Options
 Gui Font, s15, Bold, Tahoma
@@ -293,6 +295,7 @@ SaveSettings:
     IniWrite, % Coin, settings.ini, QoL/RareOptions, Coin
     IniWrite, % Research, settings.ini, QoL/RareOptions, Research
     IniWrite, % SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
+    IniWrite, % NoHero, settings.ini, QoL/RareOptions, NoHero
     IniWrite, % DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 
     ; Other Options
@@ -336,6 +339,7 @@ SaveSettings:
     GuiControlGet, Coin, , Coin
     GuiControlGet, Research, , Research
     GuiControlGet, SkipOracle, , SkipOracle
+    GuiControlGet, NoHero, , NoHero
     GuiControlGet, DisableWarning, , DisableWarning
 
     GuiControlGet, Shop, , Shop
@@ -378,6 +382,7 @@ SaveSettings:
     IniWrite, % Coin, settings.ini, QoL/RareOptions, Coin
     IniWrite, % Research, settings.ini, QoL/RareOptions, Research
     IniWrite, % SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
+    IniWrite, % NoHero, settings.ini, QoL/RareOptions, NoHero
     IniWrite, % DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 
     IniWrite, % Shop, settings.ini, OtherOptions, Shop

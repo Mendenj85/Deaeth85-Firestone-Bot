@@ -146,7 +146,12 @@ loop:
     If (SelectedItem != "Don't Upgrade Talents (0-800 Talent Points)"){
         UpgradeTalents800()
     }
+    GuiControlGet, Checked, , NoHero,
+    If (Checked = 1){
+        Goto, EndingMouseMove
+    }
     HeroUpgrade()
+    EndingMouseMove:
     MouseMove, 947, 755
     Sleep, 60000 ;wait 1 minute then repeat
     Goto, Loop

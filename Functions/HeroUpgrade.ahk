@@ -7,10 +7,9 @@
 HeroUpgrade(){
     ControlFocus,, ahk_exe Firestone.exe
     ; open upgrade menu
-    MouseMove, 1447, 938
-    Sleep, 1000
-    Click
-    Sleep, 1000
+    MsgBox, , Hero Upgrades, Opening Hero Upgrade Menu, 2
+    Send, U
+    Sleep, 1500
     ; check special upgrade
     PixelSearch, X, Y, 1874, 207, 1889, 249, 0x0AA008, 3, Fast RGB
     If (ErrorLevel = 0 ){
