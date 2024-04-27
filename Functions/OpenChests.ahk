@@ -121,7 +121,7 @@ OpenChests(){
     ;check if Upgrade Blessings is checked
     GuiControlGet, Checked, , Bless,
         If (Checked = 1){
-            Goto, SkipBagClose
+            OpenBlessChests()
         } Else {
             Return
         }
@@ -132,15 +132,6 @@ OpenChests(){
     Click
     Sleep, 1500
     Return
-
-    SkipBagClose:
-        ;check if Upgrade Blessings is checked
-        GuiControlGet, Checked, , Bless,
-        If (Checked = 1){
-            OpenBlessChests()
-        } Else {
-            Return
-        }
 }
 
 ; section will trigger if Upgrade Blessings is selected and Open Chests is not
