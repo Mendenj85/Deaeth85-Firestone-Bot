@@ -39,6 +39,7 @@ loop:
     ControlFocus,, ahk_exe Firestone.exe
     ; do main screen sections
     MsgBox, , Main Menu Check, Checking to ensure we are on main screen at loop start, 2
+    ControlFocus,, ahk_exe Firestone.exe
     MainMenu()
     GuiControlGet, Checked, , Events,
         If (Checked = 1){

@@ -15,7 +15,8 @@ GoResearch() {
     click
     sleep, 1000
     ; select Firestone tree
-    MouseMove, 1809, 975
+;    MouseMove, 1809, 975
+    MouseMove, 1816, 610
     Sleep, 1000
     click
     Sleep, 1000

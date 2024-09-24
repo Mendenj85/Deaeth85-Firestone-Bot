@@ -13,7 +13,8 @@ Guild(){
     Click
     Sleep, 1500
     ; check if expeditions are ready
-    PixelSearch, X, Y, 404, 457, 441, 495, 0xF40000, 3, Fast RGB
+;    PixelSearch, X, Y, 404, 457, 441, 495, 0xF40000, 3, Fast RGB
+    PixelSearch, X, Y, 438, 392, 500, 440, 0xF40000, 3, Fast RGB
     If (ErrorLevel = 0){
         MouseMove, 308, 406
         Sleep, 1000
@@ -27,6 +28,7 @@ Guild(){
         Sleep, 1000
         BigClose()
     }
+
     ; check if skipping claiming pickaxes
     GuiControlGet, Checked, , Pickaxes, 
         If (Checked = 1){
@@ -101,7 +103,7 @@ ClearNotifications(){
     Sleep, 1000
     Click
     Sleep, 1500
-    MouseMove, 232, 444
+    MouseMove, 230, 667
     Sleep, 1000
     Click
     Sleep, 1500

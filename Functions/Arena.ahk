@@ -11,7 +11,7 @@ Arena(){
     Click
     Sleep, 1500
     ; choose arena of kings
-    MouseMove, 959, 518
+    MouseMove, 1120, 507
     Sleep, 1000
     Click
     Sleep, 1500
