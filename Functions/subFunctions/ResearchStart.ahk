@@ -192,9 +192,9 @@ ResearchStart() {
         Return
     }
     ; column 4
-    PixelSearch, X, Y, 1677, 459, 1757, 556, 0x0D49DE, 3, Fast RGB
+    PixelSearch, X, Y, 1675, 466, 1725, 560, 0x0D49DE, 3, Fast RGB
     If (ErrorLevel = 0){
-    MouseMove, 1795, 503
+    MouseMove, 1695, 478
     Sleep, 1000
     Click
     Sleep, 500
