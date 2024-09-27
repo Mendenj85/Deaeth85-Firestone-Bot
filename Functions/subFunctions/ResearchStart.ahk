@@ -192,9 +192,9 @@ ResearchStart() {
         Return
     }
     ; column 4
-    PixelSearch, X, Y, 1675, 466, 1725, 560, 0x0D49DE, 3, Fast RGB
+    PixelSearch, X, Y, 1675, 466, 1723, 509, 0x0D49DE, 3, Fast RGB
     If (ErrorLevel = 0){
-    MouseMove, 1695, 478
+    MouseMove, 1670, 505
     Sleep, 1000
     Click
     Sleep, 500
@@ -340,7 +340,7 @@ ResearchStart() {
         Return
     }
     ; column 8 mid upper
-    PixelSearch, X, Y, 1793, 338, 1871, 436, 0x0D49DE, 3, Fast RGB
+    PixelSearch, X, Y, 1574 347, 1712, 387, 0x0D49DE, 3, Fast RGB
     If (ErrorLevel = 0){
     MouseMove, 1675, 388
     Sleep, 1000
@@ -352,7 +352,7 @@ ResearchStart() {
         Return
     }
     ; column 8 middle
-    PixelSearch, X, Y, 1791, 459, 1868, 551, 0x0D49DE, 3, Fast RGB
+    PixelSearch, X, Y, 1568, 465, 1721, 512, 0x0D49DE, 3, Fast RGB
     If (ErrorLevel = 0){
     MouseMove, 1693, 509
     Sleep, 1000
@@ -364,7 +364,7 @@ ResearchStart() {
         Return
     }
     ; column 8 mid lower
-    PixelSearch, X, Y, 1789, 577, 1868, 677, 0x0D49DE, 3, Fast RGB
+    PixelSearch, X, Y, 1576, 585, 1718, 630, 0x0D49DE, 3, Fast RGB
     If (ErrorLevel = 0){
     MouseMove, 1676, 628
     Sleep, 1000
