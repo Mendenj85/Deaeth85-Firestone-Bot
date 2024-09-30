@@ -15,7 +15,7 @@ ResearchStart() {
     ; look for available research - Page 1
     Loop {
 	    XCheck := A_Index * 100
-        PixelSearch, X, Y, XCheck, 300, XCheck + 100, 750, 0x0D49DE, 0, Fast RGB   ;  Search coords X 100 - X 1700
+        PixelSearch, X, Y, XCheck, 300, XCheck + 50, 750, 0x0D49DE, 0, Fast RGB   ;  Search coords X 100 - X 1750
         If (ErrorLevel = 0){
             MouseClick, Left, X, Y, 1, 0
             Sleep, 500
@@ -24,7 +24,7 @@ ResearchStart() {
         If (Slot2InProcess = 1){
             Return
         }
-	    if ((XCheck + 100) == 1700)
+	    if (XCheck == 1700)
 		    break
     }
     ; Page 2
@@ -43,7 +43,7 @@ ResearchStart() {
         If (Slot2InProcess = 1){
             Return
         }
-	    if ((XCheck + 100) == 1700)
+	    if (XCheck == 1700)
 		    break
     }
 }
