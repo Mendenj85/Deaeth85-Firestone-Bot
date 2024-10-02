@@ -8,6 +8,7 @@ MainMenu(){
     ; get to and find settings window, one big close to ensure we're on main page
     Send, !{Tab}
     Sleep, 1000
+    ControlFocus,, ahk_exe Firestone.exe
     SettingsFinder:
         PixelSearch, X, Y, 1542, 655, 1654, 687, 0x285483, 3, Fast RGB
         If (ErrorLevel = 0){
