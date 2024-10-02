@@ -28,9 +28,13 @@ Guild(){
         Sleep, 1000
         BigClose()
     }
-
+    ; check if awaken heroes is selected
+    GuiControlGet, Checked, , Awaken,
+    If (Checked = 1){
+        AwakenRun()
+    }
     ; check if skipping claiming pickaxes
-    GuiControlGet, Checked, , Pickaxes, 
+    GuiControlGet, Checked, , Pickaxes,
         If (Checked = 1){
             Goto, CrystalHit
         } Else {
@@ -89,11 +93,6 @@ HitCrystal(){
         Sleep, 1000
         Click
         Sleep, 1500
-    }
-    ; check if awaken heroes is selected
-    GuiControlGet, Checked, , Awaken,
-    If (Checked = 1){
-        AwakenRun()
     }
     BigClose()
     Return
