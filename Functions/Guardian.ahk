@@ -11,9 +11,9 @@ Guardian(){
     click
     Sleep, 1500
     ; check for evolve
-    PixelSearch, X, Y, 1491, 110, 1533, 144, 0x0F40000, 3, Fast RGB
+    PixelSearch, X, Y, 1307, 107, 1346, 136, 0x0F40000, 3, Fast RGB
     if(ErrorLevel=0){
-        MouseMove, 1450,174
+        MouseMove, 1275, 165
         Sleep, 1000
         Click
         Sleep, 1000
