@@ -17,7 +17,7 @@ ResearchStart() {
 	    XCheck := A_Index * 100
         PixelSearch, X, Y, XCheck, 300, XCheck + 50, 750, 0x0D49DE, 0, Fast RGB   ;  Search coords X 100 - X 1750
         If (ErrorLevel = 0){
-            MouseClick, Left, X, Y, 1, 0
+            MouseClick, Left, X, Y+20, 1, 0
             Sleep, 500
             ResearchClicks()
         }
@@ -36,7 +36,7 @@ ResearchStart() {
 	    XCheck := A_Index * 100
         PixelSearch, X, Y, XCheck, 300, XCheck + 100, 750, 0x0D49DE, 0, Fast RGB   ;  Search coords X 100 - X 1700
         If (ErrorLevel = 0){
-            MouseClick, Left, X, Y, 1, 0
+            MouseClick, Left, X, Y+20, 1, 0
             Sleep, 500
             ResearchClicks()
         }

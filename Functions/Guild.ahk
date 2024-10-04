@@ -1,6 +1,7 @@
 ; Guild.ahk
 
 #Include Functions\subFunctions\Awaken.ahk
+#Include Functions\subFunctions\Chaos.ahk
 #Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\PTree.ahk
 
@@ -32,6 +33,11 @@ Guild(){
     GuiControlGet, Checked, , Awaken,
     If (Checked = 1){
         AwakenRun()
+    }
+    ; check if Chaos Rift is selected
+    GuiControlGet, Checked, , Chaos,
+    If (Checked = 1){
+        HitChaos()
     }
     ; check if skipping claiming pickaxes
     GuiControlGet, Checked, , Pickaxes,
