@@ -9,9 +9,9 @@ HitChaos(){
     If (ErrorLevel = 0){
         MouseClick, Left, 1410, 625, 1, 0
         Sleep, 1500
-    }
     ; Change to auto
     MouseClick, Left, 1740, 980, 1, 0
     Sleep, 10000
     BigClose()
+    }
 }
