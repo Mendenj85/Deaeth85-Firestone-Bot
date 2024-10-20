@@ -14,10 +14,13 @@ Shop(){
         Click
         Sleep, 1500
         ; claim mystery box
-        MouseMove, 591, 754
-        Sleep, 1000
-        Click
-        Sleep, 1000
+        PixelSearch, X, Y, 591, 754, 591, 754, 0x7E82EC, 3, Fast RGB ;  0x059C3E is Dragon Balista  | 0x7E82EC is mystery box
+        If (ErrorLevel = 0){
+            MouseMove, 591, 754
+            Sleep, 1000
+            Click
+            Sleep, 1000
+        }
         ; open daily check-in
         MouseMove, 1383, 116
         Sleep, 1000
