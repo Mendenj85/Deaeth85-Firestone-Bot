@@ -33,6 +33,7 @@ IniRead, Events, settings.ini, CommonOptions, Events
 IniRead, Mail, settings.ini, CommonOptions, Mail
 IniRead, Awaken, settings.ini, CommonOptions, Awaken
 IniRead, Crystal, settings.ini, CommonOptions, Crystal
+IniRead, Chaos, settings.ini, CommonOptions, Chaos
 IniRead, PTree, settings.ini, CommonOptions, PTree
 
 IniRead, Beer, settings.ini, QoL/RareOptions, Beer
@@ -72,7 +73,7 @@ Gui Tab, 1 ; About
 Gui Font, s20, , Lucida Handwriting Italic
 Gui Add, Text, x0 y20 w900 h60 +0x200 +Center, DEAETH85'S FIRESTONE BOT
 Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x0 y70 w900 h30 +0x200 +Center, VERSION 3.0.3
+Gui Add, Text, x0 y70 w900 h30 +0x200 +Center, VERSION 3.0.5
 Gui Add, Picture, x415 y575 w60 h60, Images\giftbox.png
 Gui Add, Picture, x150 y100 w600 h300, Images\Firestone.png
 Gui Add, Picture, x150 y30 w60 h60, Images\logo.png
@@ -115,7 +116,8 @@ Gui Add, Checkbox, x10 y570 w400 h30 vEvents Checked%Events%, Claim Basic Events
 Gui Add, Checkbox, x10 y610 w400 h30 vMail Checked%Mail%, Check Mail
 Gui Add, Checkbox, x10 y650 w400 h30 vAwaken Checked%Awaken%, Awaken Heroes
 Gui Add, Checkbox, x10 y690 w400 h30 vCrystal Checked%Crystal%, Spend Pickaxes on Crystal
-Gui Add, Checkbox, x10 y730 w600 h30 vPTree Checked%PTree%, Upgrade Personal Tree (Select options on next tab if upgrading)
+Gui Add, Checkbox, x10 y730 w400 h30 vChaos Checked%Chaos%, Participate in Chaos Rift
+Gui Add, Checkbox, x10 y770 w600 h30 vPTree Checked%PTree%, Upgrade Personal Tree (Select options on next tab if upgrading)
 Gui Tab, 3 ; Personal Tree Upgrades
 Gui Font, s12, Bold, Tahoma
 Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, CHOOSE PERSONAL TREE UPGRADES THAT YOU WOULD LIKE THE SCRIPT TO ATTEMPT TO PURCHASE
@@ -225,6 +227,7 @@ IniRead, Events, settings.ini, CommonOptions, Events
 IniRead, Mail, settings.ini, CommonOptions, Mail
 IniRead, Awaken, settings.ini, CommonOptions, Awaken
 IniRead, Crystal, settings.ini, CommonOptions, Crystal
+IniRead, Chaos, settings.ini, CommonOptions, Chaos
 IniRead, PTree, settings.ini, CommonOptions, PTree
 
 IniRead, Beer, settings.ini, QoL/RareOptions, Beer
@@ -255,7 +258,7 @@ GuiControl, Choose, Talents450, %Talents450%
 IniRead, Talents800, settings.ini, OtherOptions, Talents800
 GuiControl, Choose, Talents800, %Talents800%
 
-Gui Show, w900 h800, Deaeth85's Firestone Bot - V3.0.3
+Gui Show, w900 h800, Deaeth85's Firestone Bot - V3.0.5
 GuiControlGet, Checked, , DisableWarning
 If (Checked = 0){
 MsgBox, 48, Warning, Please note this Bot will ONLY work reliably with the game launched via Steam
@@ -282,6 +285,7 @@ SaveSettings:
     IniWrite, % Mail, settings.ini, CommonOptions, Mail
     IniWrite, % Awaken, settings.ini, CommonOptions, Awaken
     IniWrite, % Crystal, settings.ini, CommonOptions, Crystal
+    IniWrite, % Chaos, settings.ini, CommonOptions, Chaos
     IniWrite, % PTree, settings.ini, CommonOptions, PTree
 
     ; QoL/Rare Options
@@ -327,6 +331,7 @@ SaveSettings:
     GuiControlGet, Mail, , Mail
     GuiControlGet, Awaken, , Awaken
     GuiControlGet, Crystal, , Crystal
+    GuiControlGet, Chaos, , Chaos
     GuiControlGet, PTree, , PTree
 
     GuiControlGet, Beer, , Beer
@@ -370,6 +375,7 @@ SaveSettings:
     IniWrite, % Mail, settings.ini, CommonOptions, Mail
     IniWrite, % Awaken, settings.ini, CommonOptions, Awaken
     IniWrite, % Crystal, settings.ini, CommonOptions, Crystal
+    IniWrite, % Chaos, settings.ini, CommonOptions, Chaos
     IniWrite, % PTree, settings.ini, CommonOptions, PTree
 
     IniWrite, % Beer, settings.ini, QoL/RareOptions, Beer
