@@ -1,7 +1,6 @@
 ; Guild.ahk
 
 #Include Functions\subFunctions\Awaken.ahk
-#Include Functions\subFunctions\Chaos.ahk
 #Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\PTree.ahk
 
@@ -29,18 +28,9 @@ Guild(){
         Sleep, 1000
         BigClose()
     }
-    ; check if awaken heroes is selected
-    GuiControlGet, Checked, , Awaken,
-    If (Checked = 1){
-        AwakenRun()
-    }
-    ; check if Chaos Rift is selected
-    GuiControlGet, Checked, , Chaos,
-    If (Checked = 1){
-        HitChaos()
-    }
+
     ; check if skipping claiming pickaxes
-    GuiControlGet, Checked, , Pickaxes,
+    GuiControlGet, Checked, , Pickaxes, 
         If (Checked = 1){
             Goto, CrystalHit
         } Else {
@@ -99,6 +89,11 @@ HitCrystal(){
         Sleep, 1000
         Click
         Sleep, 1500
+    }
+    ; check if awaken heroes is selected
+    GuiControlGet, Checked, , Awaken,
+    If (Checked = 1){
+        AwakenRun()
     }
     BigClose()
     Return

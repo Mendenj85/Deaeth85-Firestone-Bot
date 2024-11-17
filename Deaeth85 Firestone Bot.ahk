@@ -148,7 +148,7 @@ loop:
     Talents800Check:
     ; check if we have selected talent upgrades in the 800 dropdown
     GuiControlGet, SelectedItem, , Talents800
-    If (SelectedItem = "Don't Upgrade Talents (500+ Talent Points)"){
+    If (SelectedItem = "Don't Upgrade Talents (0-800 Talent Points)"){
         Goto, UpgradeHero
     } Else {
         UpgradeTalents800()
