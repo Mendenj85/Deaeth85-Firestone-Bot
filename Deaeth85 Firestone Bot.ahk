@@ -138,21 +138,6 @@ loop:
     MapStartUp:
     GoMap()
     MapRedeem()
-    ; check if we have selected talent upgrades in the 450 dropdown
-    GuiControlGet, SelectedItem, , Talents450
-    If (SelectedItem = "Don't Upgrade Talents (0-450 Talent Points)"){
-    Goto, Talents800Check
-    } Else {
-        UpgradeTalents450()
-    }
-    Talents800Check:
-    ; check if we have selected talent upgrades in the 800 dropdown
-    GuiControlGet, SelectedItem, , Talents800
-    If (SelectedItem = "Don't Upgrade Talents (0-800 Talent Points)"){
-        Goto, UpgradeHero
-    } Else {
-        UpgradeTalents800()
-    }
     UpgradeHero:
     GuiControlGet, Checked, , NoHero,
     If (Checked = 1){

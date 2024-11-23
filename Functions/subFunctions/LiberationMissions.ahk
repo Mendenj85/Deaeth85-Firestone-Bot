@@ -20,62 +20,29 @@ LiberationMissions(){
     Sleep, 1000
     Click
     Sleep, 1500
-    Loop, 60{
+    Loop, 70{
         Send, {WheelDown}
         Sleep, 200
     }
-    GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="190+ Stars"){
-            Goto, 190Stars
-        }
-    GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="155 - 189 Stars"){
-            Goto, 155Stars
-        }   
-    GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="110 - 119 Stars"){
-            Goto, 110Stars
-        }
-    GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="80 - 109 Stars"){
-            Goto, 80Stars
-        }
-    GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="60 - 69 Stars"){
-            Goto, 60Stars
-        }
-    GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="40 - 59 Stars"){
-            Goto, 40Stars
-        }
-    GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="20 - 39 Stars"){
-            Loop, 60{
-                Send, {WheelUp}
-                Sleep, 200
-            }
-            Goto, 20Stars
-        }
-    GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="10 - 19 Stars"){
-            Loop, 60{
-                Send, {WheelUp}
-                Sleep, 200
-            }
-            Goto, 10Stars
-        }
-    GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="5 - 9 Stars"){
-            Loop, 60{
-                Send, {WheelUp}
-                Sleep, 200
-            }
-            Goto, 5Stars
-        }    
     ; missions
+    319Stars:
+    {
+        MouseMove, 1583, 755
+        Sleep, 1000
+        Click
+        Sleep, 1500
+        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+            If (ErrorLevel=0){
+                Goto, 190Stars
+            }
+            While !LiberationInProgress(){
+                Sleep, 5000
+            }
+        Goto, 190Stars
+    }
     190Stars:
     {
-        MouseMove, 1581, 759
+        MouseMove, 1191, 755
         Sleep, 1000
         Click
         Sleep, 1500
@@ -90,7 +57,7 @@ LiberationMissions(){
     } 
     155Stars:
     {
-        MouseMove, 1193, 767
+        MouseMove, 791, 755
         Sleep, 1000
         Click
         Sleep, 1500
@@ -105,7 +72,7 @@ LiberationMissions(){
     }
     110Stars:
     {
-        MouseMove, 797, 759
+        MouseMove, 412, 755
         Sleep, 1000
         Click
         Sleep, 1500
@@ -120,7 +87,7 @@ LiberationMissions(){
     }
     80Stars:
     {
-        MouseMove, 412, 748
+        MouseMove, 133, 748
         Sleep, 1000
         Click
         Sleep, 1500
@@ -135,7 +102,11 @@ LiberationMissions(){
     }
     60Stars:
     {
-        MouseMove, 137, 742
+        Loop, 63{
+            Send, {WheelUp}
+            Sleep, 200
+        }
+        MouseMove, 1688, 755
         Sleep, 1000
         Click
         Sleep, 1500
@@ -150,11 +121,7 @@ LiberationMissions(){
     }
     40Stars:
     {
-        Loop, 60{
-            Send, {WheelUp}
-            Sleep, 200
-        }
-        MouseMove, 1505, 758
+        MouseMove, 1291, 755
         Sleep, 1000
         Click
         Sleep, 1500
@@ -169,7 +136,7 @@ LiberationMissions(){
     }
     20Stars:
     {
-        MouseMove, 1115, 755
+        MouseMove, 900, 755
         Sleep, 1000
         Click
         Sleep, 1500
@@ -184,7 +151,7 @@ LiberationMissions(){
     }
     10Stars:
     {
-        MouseMove, 713, 753
+        MouseMove, 517, 755
         Sleep, 1000
         Click
         Sleep, 1500
@@ -199,7 +166,7 @@ LiberationMissions(){
     }
     5Stars:
     {
-        MouseMove, 331, 758
+        MouseMove, 157, 758
         Sleep, 1000
         Click
         Sleep, 1500
@@ -216,33 +183,6 @@ LiberationMissions(){
     }
 
     CheckDungeon:
-    ; see if we have enough stars for dungeon missions
-    GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="190+ Stars"){
-            Goto, Dungeon
-        } Else {
-            If (SelectedItem="155 - 189 Stars"){
-                Goto, Dungeon
-            } Else {
-                If (SelectedItem="120 - 154 Stars"){
-                    Goto, Dungeon 
-                } Else {
-                    If (SelectedItem="110 - 119 Stars"){
-                        Goto, Dungeon
-                    } Else {
-                        If (SelectedItem="80 - 109 Stars"){
-                            Goto, Dungeon
-                        } Else {
-                            If (SelectedItem="70 - 79 Stars"){
-                                Goto, Dungeon
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    Return
-    Dungeon:
     {
         ; open dungeon
         MouseMove, 1223, 794
@@ -250,30 +190,6 @@ LiberationMissions(){
         Click
         Sleep, 1500
     }
-    GuiControlGet, SelectedItem, ,LiberationStars,
-        If (SelectedItem="190+ Stars"){
-            Goto, 120Stars
-        } Else {
-            If (SelectedItem="155 - 189 Stars"){
-                Goto, 120Stars
-            } Else {
-                If (SelectedItem="120 - 154 Stars"){
-                    Goto, 120Stars
-                } Else {
-                    If (SelectedItem="110 - 119 Stars"){
-                        Goto, 70Stars
-                    } Else {
-                        If (SelectedItem="80 - 109 Stars"){
-                            Goto, 70Stars
-                        } Else {
-                            If (SelectedItem="70 - 79 Stars"){
-                                Goto, 70Stars
-                            }
-                        }
-                    }
-                }
-            }
-        }
     120Stars:
     {
         MouseMove, 1149, 763
@@ -303,7 +219,6 @@ LiberationMissions(){
                 Sleep, 5000
             }
     }
-BigClose()
 BigClose()
 BigClose()
 }

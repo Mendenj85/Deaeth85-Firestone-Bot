@@ -52,8 +52,7 @@ IniRead, DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 IniRead, Shop, settings.ini, OtherOptions, Shop
 IniRead, DailyOracle, settings.ini, OtherOptions, DailyOracle
 IniRead, PVP, settings.ini, OtherOptions, PVP
-IniRead, LiberationStars, settings.ini, OtherOptions, LiberationStars
-GuiControl, Choose, LiberationStars, %LiberationStars%
+IniRead, Liberation, settings.ini, OtherOptions, Liberation
 IniRead, UpgradeWM, settings.ini, OtherOptions, UpgradeWM
 GuiControl, Choose, UpgradeWM, %UpgradeWM%
 IniRead, WMOptions, settings.ini, OtherOptions, WMOptions
@@ -173,26 +172,17 @@ Gui Font, s9 Bold, Tahoma
 Gui Add, Checkbox, x10 y70 w400 h30 vShop Checked%Shop%, Get Free Gift and Check-In
 Gui Add, Checkbox, x10 y100 w400 h30 vDailyOracle Checked%DailyOracle%, Claim Daily Oracle
 Gui Add, Checkbox, x10 y130 w400 h30 vPVP Checked%PVP%, Complete Arena Battles
+Gui Add, Checkbox, x10 y160 w400 h40 vLiberation Checked%Liberation%, Complete Liberation Missions
 Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x10 y170 w400 h30 +0x200 +Center, ~~ Liberation Missions ~~
+Gui Add, Text, x10 y200 w400 h30 +0x200 +Center, ~~ War Machine Upgrades ~~
 Gui Font, s9 Bold, Tahoma
-Gui Add, Text, x10 y200 w400 h30, *If you don't want Liberation Missions leave dropdown as-is, else scroll to highest applicable star setting
-Gui Add, DropDownList, x10 y230 w400 r12 vLiberationStars, Don't Complete Liberation Missions||190+ Stars|155 - 189 Stars|120 - 154 Stars|110 - 119 Stars|80 - 109 Stars|70 - 79 Stars|60 - 69 Stars|40 - 59 Stars|20 - 39 Stars|10 - 19 Stars|5 - 9 Stars
+Gui Add, Text, x10 y230 w400 h30, List is from Left to Right in Garage - Ensure you set each dropdown so you don't waste resources you want to keep
+Gui Add, DropDownList, x10 y260 w400 r9 vUpgradeWM, Don't Upgrade WM's||Upgrade Aegis|Upgrade Cloudfist|Upgrade Curator|Upgrade Earthshatterer|Upgrade FireCracker|Upgrade Fortress|Upgrade Goliath|Upgrade Harvester|Upgrade Hunter|Upgrade Judgement|Upgrade Sentinel|Upgrade Talos|Upgrade Thunderclap
+Gui Add, Text, x10 y290 w400 h30, Choose to upgrade level only, blueprints only, or both!
+Gui Add, DropDownList, x10 y310 w400 r3 vWMOptions, Blueprints Only||Level Only|Level and Blueprints|
+Gui Add, Text, x10 y340 w400 h30, Choose the Blueprint priority (All Options will process from the left to right)
+Gui Add, DropDownList, x10 y370 w400 r10 vBlueprints, Upgrade All||Damage Only|Health Only|Armor Only|Damage and Health|Damage and Armor|Health and Armor
 Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x10 y260 w400 h30 +0x200 +Center, ~~ War Machine Upgrades ~~
-Gui Font, s9 Bold, Tahoma
-Gui Add, Text, x10 y290 w400 h30, List is from Left to Right in Garage - Ensure you set each dropdown so you don't waste resources you want to keep
-Gui Add, DropDownList, x10 y320 w400 r9 vUpgradeWM, Don't Upgrade WM's||Upgrade Aegis|Upgrade Cloudfist|Upgrade Curator|Upgrade Earthshatterer|Upgrade FireCracker|Upgrade Fortress|Upgrade Goliath|Upgrade Harvester|Upgrade Hunter|Upgrade Judgement|Upgrade Sentinel|Upgrade Talos|Upgrade Thunderclap
-Gui Add, Text, x10 y350 w400 h30, Choose to upgrade level only, blueprints only, or both!
-Gui Add, DropDownList, x10 y370 w400 r3 vWMOptions, Blueprints Only||Level Only|Level and Blueprints|
-Gui Add, Text, x10 y400 w400 h30, Choose the Blueprint priority (All Options will process from the left to right)
-Gui Add, DropDownList, x10 y430 w400 r10 vBlueprints, Upgrade All||Damage Only|Health Only|Armor Only|Damage and Health|Damage and Armor|Health and Armor
-Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x10 y460 w400 h30 +0x200 +Center, ~~ Upgrade Talents ~~
-Gui Font, s9 Bold, Tahoma
-Gui Add, Text, x10 y490 w400 h30, Please choose only one option from between the two dropdowns
-Gui Add, DropDownList, x10 y520 w400 r10 vTalents450, Don't Upgrade Talents (0-450 Talent Points)||All Main Attributes(1)|Leadership(3)|Guardian Power(3)|Team Bonus(3)|Leader-Auto Abilities(10)|Attack Speed(15)|Trainer Skills(15)|Critical Chance(15)|Party - Auto Abilities(20)|Dodge(25)|Critical Damage(25)|Librarian(30)|Meteorite Hunter(30)|Expeditioner(30)|Powerless Enemy(35)|Powerless Boss(35)|Weaklings(40)|Expose Weakness(40)|Ancient Knowledge(45)|Raining Gold(60)|Coworkers(60)|Twin Dragons(70)|Attack Speed(80)|Critical Chance(80)|Battle Cry(100)|Dodge(120)|Critical Damage(120)|Powerless Enemy(140)|Powerless Boss(140)|Alchemy(160)|Weaklings(180)|Expose Weakness(180)|All Main Attributes(200)|Leadership(250)|Guardian Power(250)|Team Bonus(250)|Twin Dragons(300)|Alchemy(350)|Librarian(350)|Battle Cry(400)|Powerless Enemy(450)|Powerless Boss(450)
-Gui Add, DropDownList, x10 y550 w400 r10 vTalents800, Don't Upgrade Talents (500+ Talent Points)||Leadership(500)|Guardian Power(500)|Team Bonus(500)|Fate(530)|Mana Heroes(560)|Energy Heroes(560)|Rage Heroes(560)|Weaklings(590)|Expose Weakness(590)|Damange Specialization(620)|Tank Specialization(620)|Healer Specialization(620)|Raining Gold(650)|Fist Fight(680)|Precision(680)|Magic Spells(680)|Weaklings(710)|Expose Weakness(710)|Leadership(740)|Guardian Power(740)|Team Bonus(740)|Powerless Enemy(770)|Powerless Boss(770)|Fate(800)
 Gui Tab, 6 ; Start Script
 Gui Add, Picture, x0 y0 w900 h350, Images\fslogo.png
 Gui Font, s15, Bold, Tahoma
@@ -253,10 +243,6 @@ IniRead, WMOptions, settings.ini, OtherOptions, WMOptions
 GuiControl, Choose, WMOptions, %WMOptions%
 IniRead, Blueprints, settings.ini, OtherOptions, Blueprints
 GuiControl, Choose, Blueprints, %Blueprints%
-IniRead, Talents450, settings.ini, OtherOptions, Talents450
-GuiControl, Choose, Talents450, %Talents450%
-IniRead, Talents800, settings.ini, OtherOptions, Talents800
-GuiControl, Choose, Talents800, %Talents800%
 
 Gui Show, w900 h800, Deaeth85's Firestone Bot - V3.0.5
 GuiControlGet, Checked, , DisableWarning
@@ -306,12 +292,10 @@ SaveSettings:
     IniWrite, % Shop, settings.ini, OtherOptions, Shop
     IniWrite, % DailyOracle, settings.ini, OtherOptions, DailyOracle
     IniWrite, % PVP, settings.ini, OtherOptions, PVP
-    IniWrite, % LiberationStars, settings.ini, OtherOptions, LiberationStars
+    IniWrite, % Liberation, settings.ini, OtherOptions, Liberation
     IniWrite, % UpgradeWM, settings.ini, OtherOptions, UpgradeWM
     IniWrite, % WMOptions, settings.ini, OtherOptions, WMOptions
     IniWrite, % Blueprints, settings.ini, OtherOptions, Blueprints
-    IniWrite, % Talents450Selected, settings.ini, OtherOptions, Talents450
-    IniWrite, % Talents800Selected, settings.ini, OtherOptions, Talents800
 
     GuiControlGet, Token, , Token
     GuiControlGet, SellEx, , SellEx
@@ -350,12 +334,10 @@ SaveSettings:
     GuiControlGet, Shop, , Shop
     GuiControlGet, DailyOracle, , DailyOracle
     GuiControlGet, PVP, , PVP
-    GuiControlGet, LiberationStars, , LiberationStars
+    GuiControlGet, Liberation, , Liberation
     GuiControlGet, UpgradeWM, , UpgradeWM
     GuiControlGet, WMOptions, , WMOptions
     GuiControlGet, Blueprints, , Blueprints
-    GuiControlGet, Talents450, , Talents450
-    GuiControlGet, Talents800, , Talents800
 
     IniWrite, % Token, settings.ini, CommonOptions, Token
     IniWrite, % SellEx, settings.ini, CommonOptions, SellEx
@@ -394,12 +376,10 @@ SaveSettings:
     IniWrite, % Shop, settings.ini, OtherOptions, Shop
     IniWrite, % DailyOracle, settings.ini, OtherOptions, DailyOracle
     IniWrite, % PVP, settings.ini, OtherOptions, PVP
-    IniWrite, % LiberationStars, settings.ini, OtherOptions, LiberationStars
+    IniWrite, % Liberation, settings.ini, OtherOptions, Liberation
     IniWrite, % UpgradeWM, settings.ini, OtherOptions, UpgradeWM
     IniWrite, % WMOptions, settings.ini, OtherOptions, WMOptions
     IniWrite, % Blueprints, settings.ini, OtherOptions, Blueprints
-    IniWrite, % Talents450, settings.ini, OtherOptions, Talents450
-    IniWrite, % Talents800, settings.ini, OtherOptions, Talents800
     MsgBox, , Gui Settings, Gui Settings Saved
     Return
 

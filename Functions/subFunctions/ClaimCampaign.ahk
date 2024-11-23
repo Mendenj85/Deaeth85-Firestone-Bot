@@ -25,9 +25,9 @@ ClaimCampaign(){
         Click
         Sleep, 1000
     }
-    GuiControlGet, SelectedItem, , LiberationStars
-    If (SelectedItem != "Don't Complete Liberation Missions") {
+    GuiControlGet, Checked, , Liberation,
+    If (Checked=1){
         LiberationMissions()
-        }    
+    } 
     BigClose()
 }
