@@ -11,5 +11,6 @@ LiberationInProgress(){
             Return True
         }
     Sleep, 2000
+    MouseMove, 1650, 500
     Goto, Search
     }
