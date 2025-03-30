@@ -24,7 +24,7 @@ Shop(){
         Click
         Sleep, 1000
         ; check in
-        MouseMove, 1342, 834
+        MouseMove, 1338, 895
         Sleep, 1000
         Click
         Sleep, 1000
