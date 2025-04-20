@@ -28,6 +28,10 @@ Shop(){
         Sleep, 3000
         Click
         Sleep, 1000
+        MouseMove, 1339, 828
+        Sleep, 3000
+        Click
+        Sleep, 1000
         BigClose()
         MsgBox, , Main Menu Check, Checking to ensure we are on main screen after redeeming shop gifts, 2
         MainMenu()

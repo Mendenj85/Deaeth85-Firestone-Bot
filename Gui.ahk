@@ -72,7 +72,7 @@ Gui Tab, 1 ; About
 Gui Font, s20, , Lucida Handwriting Italic
 Gui Add, Text, x0 y20 w900 h60 +0x200 +Center, DEAETH85'S FIRESTONE BOT
 Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x0 y70 w900 h30 +0x200 +Center, VERSION 3.2.1
+Gui Add, Text, x0 y70 w900 h30 +0x200 +Center, VERSION 3.2.2
 Gui Add, Picture, x415 y575 w60 h60, Images\giftbox.png
 Gui Add, Picture, x150 y100 w600 h300, Images\Firestone.png
 Gui Add, Picture, x150 y30 w60 h60, Images\logo.png
@@ -244,7 +244,7 @@ GuiControl, Choose, WMOptions, %WMOptions%
 IniRead, Blueprints, settings.ini, OtherOptions, Blueprints
 GuiControl, Choose, Blueprints, %Blueprints%
 
-Gui Show, w900 h800, Deaeth85's Firestone Bot - V3.2.1
+Gui Show, w900 h800, Deaeth85's Firestone Bot - V3.2.2
 GuiControlGet, Checked, , DisableWarning
 If (Checked = 0){
 MsgBox, 48, Warning, Please note this Bot will ONLY work reliably with the game launched via Steam
