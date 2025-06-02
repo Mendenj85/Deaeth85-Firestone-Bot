@@ -18,8 +18,6 @@
 #Include Functions\Quests.ahk
 #Include Functions\Research.ahk
 #Include Functions\Shop.ahk
-#Include Functions\Talents450.ahk
-#Include Functions\Talents800.ahk
 #Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\GetColor.ahk
 #Include Functions\subFunctions\GoMap.ahk
@@ -46,18 +44,17 @@ loop:
         If (Checked = 1){
             ClaimEvents()
         }
-    ; check if Claim Daily Quests is checked
-    GuiControlGet, Checked, , Daily,
+    ; check if Claim Quests is checked
+    GuiControlGet, Checked, , Quests,
     If (Checked = 1){
-        ClaimDaily()
+        ClaimQuests()
     }
-    ; check if Claim Weekly Quests is checked
-    GuiControlGet, Checked, , Weekly,
-        If (Checked = 1){
-            ClaimWeekly()
-        }
+    MsgBox, , Main Menu Check, Checking to ensure we are on main screen after claiming quests, 2
+    MainMenu()
+    ControlFocus,, ahk_exe Firestone.exe
+    ; check if Claim Free Gift and Check-in is checked
     GuiControlGet, Checked, , Shop,
-    If (Checked=1){
+    If (Checked = 1){
         Shop()
     }
     ; check if Check Mail is checked
@@ -76,7 +73,6 @@ loop:
                 OpenBlessChests()
             }
         }
-
     ; start town section
     OpenTown()
     ; check for guardian upgrade

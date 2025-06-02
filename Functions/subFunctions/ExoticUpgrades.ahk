@@ -6,10 +6,6 @@ ExoticUpgrades(){
     Click
     Sleep, 1000
     MouseMove, 1270, 567
-    Loop, 50{
-        Send, {WheelUp}
-        Sleep, 200
-    }
     ; check row 1 spot 1
     PixelSearch, X, Y, 1004, 833, 1060, 874, 0x0AA008, 3, Fast RGB
     If (ErrorLevel = 0){

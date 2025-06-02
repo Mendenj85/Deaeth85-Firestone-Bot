@@ -27,8 +27,7 @@ GuiControl, Choose, GearChestExclude, %GearChestExclude%
 IniRead, JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
 GuiControl, Choose, JewelChestExclude, %JewelChestExclude%
 IniRead, Bless, settings.ini, CommonOptions, Bless
-IniRead, Daily, settings.ini, CommonOptions, Daily
-IniRead, Weekly, settings.ini, CommonOptions, Weekly
+IniRead, Quests, settings.ini, CommonOptions, Quests
 IniRead, Events, settings.ini, CommonOptions, Events
 IniRead, Mail, settings.ini, CommonOptions, Mail
 IniRead, Awaken, settings.ini, CommonOptions, Awaken
@@ -72,7 +71,7 @@ Gui Tab, 1 ; About
 Gui Font, s20, , Lucida Handwriting Italic
 Gui Add, Text, x0 y20 w900 h60 +0x200 +Center, DEAETH85'S FIRESTONE BOT
 Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x0 y70 w900 h30 +0x200 +Center, VERSION 3.2.2
+Gui Add, Text, x0 y70 w900 h30 +0x200 +Center, VERSION 4.0.0
 Gui Add, Picture, x415 y575 w60 h60, Images\giftbox.png
 Gui Add, Picture, x150 y100 w600 h300, Images\Firestone.png
 Gui Add, Picture, x150 y30 w60 h60, Images\logo.png
@@ -109,14 +108,13 @@ Gui Add, DropDownList, x10 y360 w400 r5 vGearChestExclude, Exclude All|Don't Exc
 Gui Add, Text, x150 y390 w200 h30, Jewel Chests
 Gui Add, DropDownList, x10 y410 w400 r5 vJewelChestExclude, Exclude All|Don't Exclude Any|Diamond and Higher||Opal and Higher|Emerald
 Gui Add, Checkbox, x10 y450 w400 h30 vBless Checked%Bless%, Upgrade Blessings - Will open Oracle chests even without Open Chests selected
-Gui Add, Checkbox, x10 y490 w400 h30 vDaily Checked%Daily%, Claim Daily Quests
-Gui Add, Checkbox, x10 y530 w400 h30 vWeekly Checked%Weekly%, Claim Weekly Quests
-Gui Add, Checkbox, x10 y570 w400 h30 vEvents Checked%Events%, Claim Basic Events
-Gui Add, Checkbox, x10 y610 w400 h30 vMail Checked%Mail%, Check Mail
-Gui Add, Checkbox, x10 y650 w400 h30 vAwaken Checked%Awaken%, Awaken Heroes
-Gui Add, Checkbox, x10 y690 w400 h30 vCrystal Checked%Crystal%, Spend Pickaxes on Crystal
-Gui Add, Checkbox, x10 y730 w400 h30 vChaos Checked%Chaos%, Participate in Chaos Rift
-Gui Add, Checkbox, x10 y770 w600 h30 vPTree Checked%PTree%, Upgrade Personal Tree (Select options on next tab if upgrading)
+Gui Add, Checkbox, x10 y490 w400 h30 vQuests Checked%Quests%, Claim Quests
+Gui Add, Checkbox, x10 y530 w400 h30 vEvents Checked%Events%, Claim Basic Events
+Gui Add, Checkbox, x10 y570 w400 h30 vMail Checked%Mail%, Check Mail
+Gui Add, Checkbox, x10 y610 w400 h30 vAwaken Checked%Awaken%, Awaken Heroes
+Gui Add, Checkbox, x10 y650 w400 h30 vCrystal Checked%Crystal%, Spend Pickaxes on Crystal
+Gui Add, Checkbox, x10 y690 w400 h30 vChaos Checked%Chaos%, Participate in Chaos Rift
+Gui Add, Checkbox, x10 y730 w600 h30 vPTree Checked%PTree%, Upgrade Personal Tree (Select options on next tab if upgrading)
 Gui Tab, 3 ; Personal Tree Upgrades
 Gui Font, s12, Bold, Tahoma
 Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, CHOOSE PERSONAL TREE UPGRADES THAT YOU WOULD LIKE THE SCRIPT TO ATTEMPT TO PURCHASE
@@ -211,8 +209,7 @@ GuiControl, Choose, GearChestExclude, %GearChestExclude%
 IniRead, JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
 GuiControl, Choose, JewelChestExclude, %JewelChestExclude%
 IniRead, Bless, settings.ini, CommonOptions, Bless
-IniRead, Daily, settings.ini, CommonOptions, Daily
-IniRead, Weekly, settings.ini, CommonOptions, Weekly
+IniRead, Quests, settings.ini, CommonOptions, Quests
 IniRead, Events, settings.ini, CommonOptions, Events
 IniRead, Mail, settings.ini, CommonOptions, Mail
 IniRead, Awaken, settings.ini, CommonOptions, Awaken
@@ -244,7 +241,7 @@ GuiControl, Choose, WMOptions, %WMOptions%
 IniRead, Blueprints, settings.ini, OtherOptions, Blueprints
 GuiControl, Choose, Blueprints, %Blueprints%
 
-Gui Show, w900 h800, Deaeth85's Firestone Bot - V3.2.2
+Gui Show, w900 h800, Deaeth85's Firestone Bot - V4.0.0
 GuiControlGet, Checked, , DisableWarning
 If (Checked = 0){
 MsgBox, 48, Warning, Please note this Bot will ONLY work reliably with the game launched via Steam
@@ -265,8 +262,7 @@ SaveSettings:
     IniWrite, % GearChestExclude, settings.ini, CommonOptions, GearChestExclude
     IniWrite, % JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
     IniWrite, % Bless, settings.ini, CommonOptions, Bless
-    IniWrite, % Daily, settings.ini, CommonOptions, Daily
-    IniWrite, % Weekly, settings.ini, CommonOptions, Weekly
+    IniWrite, % Quests, settings.ini, CommonOptions, Quests
     IniWrite, % Events, settings.ini, CommonOptions, Events
     IniWrite, % Mail, settings.ini, CommonOptions, Mail
     IniWrite, % Awaken, settings.ini, CommonOptions, Awaken
@@ -309,8 +305,7 @@ SaveSettings:
     GuiControlGet, GearChestExclude, , GearChestExclude
     GuiControlGet, JewelChestExclude, , JewelChestExclude
     GuiControlGet, Bless, , Bless
-    GuiControlGet, Daily, , Daily
-    GuiControlGet, Weekly, , Weekly
+    GuiControlGet, Quests, , Quests
     GuiControlGet, Events, , Events
     GuiControlGet, Mail, , Mail
     GuiControlGet, Awaken, , Awaken
@@ -351,8 +346,7 @@ SaveSettings:
     IniWrite, % GearChestExclude, settings.ini, CommonOptions, GearChestExclude
     IniWrite, % JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
     IniWrite, % Bless, settings.ini, CommonOptions, Bless
-    IniWrite, % Daily, settings.ini, CommonOptions, Daily
-    IniWrite, % Weekly, settings.ini, CommonOptions, Weekly
+    IniWrite, % Quests, settings.ini, CommonOptions, Quests
     IniWrite, % Events, settings.ini, CommonOptions, Events
     IniWrite, % Mail, settings.ini, CommonOptions, Mail
     IniWrite, % Awaken, settings.ini, CommonOptions, Awaken

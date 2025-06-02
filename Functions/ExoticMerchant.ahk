@@ -30,11 +30,6 @@ ExoticMerchant(){
         }
     }
     SellStart:
-        ; make sure we are at the top
-        Loop, 35{
-            Send, {WheelUp}
-            Sleep, 200
-        }
         ; sell scroll of speed
         PixelSearch, X, Y, 1026, 596, 1074, 636, 0x0AA008, 3, Fast RGB
         If (ErrorLevel = 0){
