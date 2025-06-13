@@ -7,6 +7,18 @@
 ; Function to redeem the missions
 MapRedeem(){
     ControlFocus,, ahk_exe Firestone.exe
+        ; Check and correct map position
+    PixelSearch, X, Y, 811, 44, 1057, 102, 0x1652B5, 3, Fast RGB
+    If (ErrorLevel = 1){
+        MouseMove, 1053, 154
+        Sleep, 500
+        Click Down
+        Sleep, 500
+        MouseMove, 1043, 326
+        Sleep, 500
+        Click Up
+        Sleep, 500
+    }
     ; check if missions can be reset for free
     MsgBox, , Mission Restart, Checking if we can reset missions for free, 1.5
     PixelSearch, X, Y, 221, 878, 277, 891, 0xFCAC47, 3, Fast RGB
