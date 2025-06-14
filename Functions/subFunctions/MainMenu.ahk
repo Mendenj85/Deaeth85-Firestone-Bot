@@ -1,6 +1,7 @@
 ; MainMenu.ahk
 
-#include Functions\subFunctions\BigClose.ahk
+#Include Functions\subFunctions\BigClose.ahk
+#Include Functions\util.ahk
 
 ;check to see if we are on the mainmenu in case script ends up badly on another menu, also skips the rate pop-up, it is done via avatar color(that is taken automatically on script start)
 MainMenu(){
@@ -10,18 +11,18 @@ MainMenu(){
     Sleep, 1000
     WinActivate, ahk_exe Firestone.exe
     SettingsFinder:
-        PixelSearch, X, Y, 1542, 655, 1654, 687, 0x285483, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1542, 655, 1654, 687, 0x285483, 3)
         If (ErrorLevel = 0){
             BigClose()
             Return
         }
-        PixelSearch, X, Y, 1057, 288, 1321, 335, 0x8E4423, 2, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1057, 288, 1321, 335, 0x8E4423, 2)
         If (ErrorLevel = 0){
-            MouseMove, 1397, 307
+            MoveMouseRel(1397, 307)
             Sleep, 1000
             Click
             Sleep, 1500
         }
         BigClose()
         Goto, SettingsFinder
-    }
+}

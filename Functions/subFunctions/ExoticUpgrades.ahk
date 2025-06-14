@@ -1,33 +1,37 @@
 ; ExoticUpgrades.ahk
 
+#Include Functions\util.ahk
+
 ExoticUpgrades(){
-    MouseMove, 1282, 173
+    ; open upgrades menu
+    MoveMouseRel(1282, 173)
     Sleep, 1000
     Click
     Sleep, 1000
-    MouseMove, 1270, 567
+    MoveMouseRel(1270, 567)
+    Sleep, 1000
     ; check row 1 spot 1
-    PixelSearch, X, Y, 1004, 833, 1060, 874, 0x0AA008, 3, Fast RGB
+    PixelSearchRel(FoundX, FoundY, 1004, 833, 1060, 874, 0x0AA008, 3)
     If (ErrorLevel = 0){
-        MouseMove, 900, 851
+        MoveMouseRel(900, 851)
         Sleep, 1000
         Click
         Sleep, 500
         Return
     } Else {
         ; check row 1 spot 2
-        PixelSearch, X, Y, 1350, 830, 1400, 865, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1350, 830, 1400, 865, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1284, 840
+            MoveMouseRel(1284, 840)
             Sleep, 1000
             Click
             Sleep, 500
             Return
         } Else {
             ; check row 1 spot 3
-            PixelSearch, X, Y, 1694, 831, 1741, 872, 0x0AA008, 3, Fast RGB
+            PixelSearchRel(FoundX, FoundY, 1694, 831, 1741, 872, 0x0AA008, 3)
             If (ErrorLevel = 0){
-                MouseMove, 1626, 836
+                MoveMouseRel(1626, 836)
                 Sleep, 1000
                 Click
                 Sleep, 500
@@ -39,27 +43,27 @@ ExoticUpgrades(){
                     Sleep, 200
                 }
                 ; check row 2 spot 1
-                PixelSearch, X, Y, 999, 907, 1051, 946, 0x0AA008, 3, Fast RGB
+                PixelSearchRel(FoundX, FoundY, 999, 907, 1051, 946, 0x0AA008, 3)
                 If (ErrorLevel = 0){
-                    MouseMove, 932, 919
+                    MoveMouseRel(932, 919)
                     Sleep, 1000
                     Click
                     Sleep, 500
                     Return
                 } Else {
                     ; check row 2 spot 2
-                    PixelSearch, X, Y, 1353, 905, 1400, 944, 0x0AA008, 3, Fast RGB
+                    PixelSearchRel(FoundX, FoundY, 1353, 905, 1400, 944, 0x0AA008, 3)
                     If (ErrorLevel = 0){
-                        MouseMove, 1278, 911
+                        MoveMouseRel(1278, 911)
                         Sleep, 1000
                         Click
                         Sleep, 500
                         Return
                     } Else {
                         ; check row 2 spot 3
-                        PixelSearch, X, Y, 1695, 904, 1745, 939, 0x0AA008, 3, Fast RGB
+                        PixelSearchRel(FoundX, FoundY, 1695, 904, 1745, 939, 0x0AA008, 3)
                         If (ErrorLevel = 0){
-                            MouseMove, 1621, 906
+                            MoveMouseRel(1621, 906)
                             Sleep, 1000
                             Click
                             Sleep, 500
@@ -71,27 +75,27 @@ ExoticUpgrades(){
                                 Sleep, 200
                             }
                             ; check row 3 spot 1
-                            PixelSearch, X, Y, 999, 907, 1051, 946, 0x0AA008, 3, Fast RGB
+                            PixelSearchRel(FoundX, FoundY, 999, 907, 1051, 946, 0x0AA008, 3)
                             If (ErrorLevel = 0){
-                                MouseMove, 932, 919
+                                MoveMouseRel(932, 919)
                                 Sleep, 1000
                                 Click
                                 Sleep, 500
                                 Return
                             } Else {
                                 ; check row 3 spot 2
-                                PixelSearch, X, Y, 1353, 905, 1400, 944, 0x0AA008, 3, Fast RGB
+                                PixelSearchRel(FoundX, FoundY, 1353, 905, 1400, 944, 0x0AA008, 3)
                                 If (ErrorLevel = 0){
-                                    MouseMove, 1278, 911
+                                    MoveMouseRel(1278, 911)
                                     Sleep, 1000
                                     Click
                                     Sleep, 500
                                     Return
                                 } Else {
                                     ; check row 3 spot 3
-                                    PixelSearch, X, Y, 1695, 904, 1745, 939, 0x0AA008, 3, Fast RGB
+                                    PixelSearchRel(FoundX, FoundY, 1695, 904, 1745, 939, 0x0AA008, 3)
                                     If (ErrorLevel = 0){
-                                        MouseMove, 1621, 906
+                                        MoveMouseRel(1621, 906)
                                         Sleep, 1000
                                         Click
                                         Sleep, 500
@@ -103,27 +107,27 @@ ExoticUpgrades(){
                                             Sleep, 200
                                         }
                                         ; check row 4 spot 1
-                                        PixelSearch, X, Y, 999, 907, 1051, 946, 0x0AA008, 3, Fast RGB
+                                        PixelSearchRel(FoundX, FoundY, 999, 907, 1051, 946, 0x0AA008, 3)
                                         If (ErrorLevel = 0){
-                                            MouseMove, 932, 919
+                                            MoveMouseRel(932, 919)
                                             Sleep, 1000
                                             Click
                                             Sleep, 500
                                             Return
                                         } Else {
                                             ; check row 4 spot 2
-                                            PixelSearch, X, Y, 1353, 905, 1400, 944, 0x0AA008, 3, Fast RGB
+                                            PixelSearchRel(FoundX, FoundY, 1353, 905, 1400, 944, 0x0AA008, 3)
                                             If (ErrorLevel = 0){
-                                                MouseMove, 1278, 911
+                                                MoveMouseRel(1278, 911)
                                                 Sleep, 1000
                                                 Click
                                                 Sleep, 500
                                                 Return
                                             } Else {
                                                 ; check row 4 spot 3
-                                                PixelSearch, X, Y, 1695, 904, 1745, 939, 0x0AA008, 3, Fast RGB
+                                                PixelSearchRel(FoundX, FoundY, 1695, 904, 1745, 939, 0x0AA008, 3)
                                                 If (ErrorLevel = 0){
-                                                    MouseMove, 1621, 906
+                                                    MoveMouseRel(1621, 906)
                                                     Sleep, 1000
                                                     Click
                                                     Sleep, 500

@@ -1,11 +1,12 @@
 ; CraftArtifact.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
+#Include Functions\util.ahk
 
 CraftArtifact(){
-    PixelSearch, X, Y, 305, 517, 356, 558, 0x0AA008, 3, Fast RGB
+    PixelSearchRel(FoundX, FoundY, 305, 517, 356, 558, 0x0AA008, 3)
     If (ErrorLevel = 0){
-        MouseMove, 227, 507
+        MoveMouseRel(227, 507)
         MsgBox, , Craft Artifact, Crafting an Artifact, 1.5
         Click
         Sleep, 10000

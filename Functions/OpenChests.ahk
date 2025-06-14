@@ -22,15 +22,16 @@
 #Include Functions\subFunctions\Rare.ahk
 #Include Functions\subFunctions\Uncommon.ahk
 #Include Functions\subFunctions\Wooden.ahk
+#Include Functions\util.ahk
 
 OpenChests(){
     ; open bag
-    MouseMove, 1581, 939
+    MoveMouseRel(1581, 939)
     Sleep, 1000
     Click
     Sleep, 1000
     ; click chests tab
-    MouseMove, 1487, 460
+    MoveMouseRel(1487, 460)
     Sleep, 1000
     Click
     Sleep, 1000
@@ -39,19 +40,15 @@ OpenChests(){
     If (SelectedItem="Exclude All"){
         Goto, JewelChests
     }
-    GuiControlGet, SelectedItem, ,GearChestExclude,
     If (SelectedItem="Don't Exclude Any"){
         Goto, Mythic
     }    
-    GuiControlGet, SelectedItem, ,GearChestExclude,
     If (SelectedItem="Mythic"){
         Goto, Legendary
     }
-    GuiControlGet, SelectedItem, ,GearChestExclude,
     If (SelectedItem="Legendary and Higher"){
         Goto, Epic
     }
-    GuiControlGet, SelectedItem, ,GearChestExclude,
     If (SelectedItem="Epic and Higher"){
         Goto, Rare
     }    
@@ -78,19 +75,15 @@ OpenChests(){
     If (SelectedItem="Exclude All"){
         Goto, Gifts
     }
-    GuiControlGet, SelectedItem, ,JewelChestExclude,
     If (SelectedItem="Don't Exclude Any"){
         Goto, Emerald
     }
-    GuiControlGet, SelectedItem, ,JewelChestExclude,
     If (SelectedItem="Diamond and Higher"){
         Goto, Golden
     }
-    GuiControlGet, SelectedItem, ,JewelChestExclude,
     If (SelectedItem="Opal and Higher"){
         Goto, Diamond
     }
-    GuiControlGet, SelectedItem, ,JewelChestExclude,
     If (SelectedItem="Emerald"){
         Goto, Opal
     }
@@ -120,18 +113,16 @@ OpenChests(){
     
     ;check if Upgrade Blessings is checked
     GuiControlGet, Checked, , Bless,
-        If (Checked = 1){
-            OpenBlessChests()
-        } Else {
-            Return
-        }
-
-    ;close bag
-    MouseMove, 1870, 246
-    Sleep, 1000
-    Click
-    Sleep, 1500
-    Return
+    If (Checked = 1){
+        OpenBlessChests()
+    } Else {
+        ;close bag
+        MoveMouseRel(1870, 246)
+        Sleep, 1000
+        Click
+        Sleep, 1500
+        Return
+    }
 }
 
 ; section will trigger if Upgrade Blessings is selected and Open Chests is not
@@ -141,12 +132,12 @@ OpenBlessChests(){
         Goto, OpenBlessChestsNoBag
     }
     ; open bag
-    MouseMove, 1581, 939
+    MoveMouseRel(1581, 939)
     Sleep, 1000
     Click
     Sleep, 1000
     ; click chests tab
-    MouseMove, 1487, 460
+    MoveMouseRel(1487, 460)
     Sleep, 1000
     Click
     Sleep, 1000
@@ -166,7 +157,7 @@ OpenBlessChests(){
     MsgBox, , Open Chests, Opening Comet Chests, 1.5
     Comet()
     ; close bag
-    MouseMove, 1870, 246
+    MoveMouseRel(1870, 246)
     Sleep, 1000
     Click
     Sleep, 1000

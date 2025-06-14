@@ -1,8 +1,9 @@
 ; BigClose.ahk
 
-;function to close menus
+; Function to close menus
 BigClose(){
-    MouseMove, 1851, 84
+    ; Use resolution-independent close (top-right X)
+    MoveMouseRel(1851, 84)
     Sleep, 1000
     Click
     Sleep, 1500

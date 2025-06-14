@@ -1,7 +1,8 @@
-﻿; MapStart.ahk
+; MapStart.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\MapClose.ahk
+#Include Functions\util.ahk
 
 ; function to start the map missions, should be all nodes + the gift missions for the world domination mini-event
 MapStart(){
@@ -10,6 +11,7 @@ MapStart(){
     IniRead, lastIndex, %stateFile%, State, LastIndex, 1
 
     Point := []
+    ; All points as absolute coordinates (util.ahk will convert)
     Point.Insert(Object("x",1533,"y",98))
     Point.Insert(Object("x",1608,"y",119))
     Point.Insert(Object("x",1534,"y",123))
@@ -94,12 +96,14 @@ MapStart(){
         y := Point[idx].y
 
         ControlFocus,, ahk_exe Firestone.exe
-        Click %x%, %y%
+        MoveMouseRel(x, y)
+        Sleep, 500
+        Click
         Sleep, 1000
         ; check if mission can be started
-        PixelSearch, X, Y, 953, 822, 1205, 898, 0x0AA008, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 953, 822, 1205, 898, 0x0AA008, 10)
         If(ErrorLevel=0){
-            MouseMove, 1084, 865
+            MoveMouseRel(1084, 865)
             MsgBox, , Mission Start, Mission found - Starting, 1.5
             Click
             Sleep, 500
@@ -108,7 +112,7 @@ MapStart(){
             MapClose()
         }
         ; check for more idle troops
-        PixelSearch, X, Y, 1175, 996, 1187, 1012, 0x542710, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1175, 996, 1187, 1012, 0x542710, 10)
         If(ErrorLevel=0){
             ; Save next index and continue
             nextIndex := idx + 1

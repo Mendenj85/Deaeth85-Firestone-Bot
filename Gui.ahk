@@ -46,6 +46,8 @@ IniRead, Coin, settings.ini, QoL/RareOptions, Coin
 IniRead, Research, settings.ini, QoL/RareOptions, Research
 IniRead, SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
 IniRead, NoHero, settings.ini, QoL/RareOptions, NoHero
+IniRead, NoMap, settings.ini, QoL/RareOptions, NoMap
+IniRead, Delay, settings.ini, QoL/RareOptions, Delay
 IniRead, DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 
 IniRead, Shop, settings.ini, OtherOptions, Shop
@@ -149,18 +151,21 @@ Gui Add, Picture, x0 y0 w900 h300, Images\dragonbanner.png
 Gui Font, s15, Bold, Tahoma
 Gui Add, Text, x0 y330 w900 h30 +0x200 +Center, Rarer Options
 Gui Font, s9 Bold, Tahoma
-Gui Add, Checkbox, x10 y330 w600 h30 vBeer Checked%Beer%, Skip Claiming Beer
-Gui Add, Checkbox, x10 y370 w400 h30 vNoGuild Checked%NoGuild%, Skip All Guild Functions
-Gui Add, Checkbox, x10 y410 w400 h30 vNoEng Checked%NoEng%, Skip Engineer
-Gui Add, Checkbox, x10 y450 w400 h30 vPickaxes Checked%Pickaxes%, Skip Claiming Pickaxes
-Gui Add, Checkbox, x10 y490 w400 h30 vGNotif Checked%GNotif%, Clear Annoying Guild Notifications
-Gui Add, Checkbox, x10 y530 w200 h30 vAlch Checked%Alch%, Skip Alchemy
-Gui Add, Checkbox, x10 y570 w200 h30 vDust Checked%Dust%, Don't Use Dust in Alchemy
-Gui Add, Checkbox, x10 y610 w400 h30 vCoin Checked%Coin%, Use Exotic Coins in Alchemy
-Gui Add, Checkbox, x10 y650 w400 h30 vResearch Checked%Research%, Skip Research
-Gui Add, Checkbox, x10 y690 w400 h30 vSkipOracle Checked%SkipOracle%, Skip Oracle
-Gui Add, Checkbox, x10 y730 w400 h30 vNoHero Checked%NoHero%, Don't Upgrade Heroes
-Gui Add, Checkbox, x10 y770 w500 h30 vDisableWarning Checked%DisableWarning%, Do not show Steam warning again. (Popup when starting script)
+Gui Add, Checkbox, x10 y300 w300 h30 vBeer Checked%Beer%, Skip Claiming Beer
+Gui Add, Checkbox, x10 y330 w300 h30 vNoGuild Checked%NoGuild%, Skip All Guild Functions
+Gui Add, Checkbox, x10 y360 w300 h30 vNoEng Checked%NoEng%, Skip Engineer
+Gui Add, Checkbox, x10 y390 w400 h30 vPickaxes Checked%Pickaxes%, Skip Claiming Pickaxes
+Gui Add, Checkbox, x10 y420 w400 h30 vGNotif Checked%GNotif%, Clear Annoying Guild Notifications
+Gui Add, Checkbox, x10 y450 w200 h30 vAlch Checked%Alch%, Skip Alchemy
+Gui Add, Checkbox, x10 y480 w200 h30 vDust Checked%Dust%, Don't Use Dust in Alchemy
+Gui Add, Checkbox, x10 y510 w400 h30 vCoin Checked%Coin%, Use Exotic Coins in Alchemy
+Gui Add, Checkbox, x10 y540 w400 h30 vResearch Checked%Research%, Skip Research
+Gui Add, Checkbox, x10 y570 w400 h30 vSkipOracle Checked%SkipOracle%, Skip Oracle
+Gui Add, Checkbox, x10 y600 w400 h30 vNoHero Checked%NoHero%, Don't Upgrade Heroes
+Gui Add, Checkbox, x10 y630 w400 h30 vNoMap Checked%NoMap%, Don't Do Map Missions/Dailies
+Gui Add, Text, x10 y670 w400 h30, Set End of Loop Delay (In Seconds)
+Gui Add, DropDownList, x10 y690 w500 r5 vDelay, 0|30|60||120|180|240|300|600|900|1200
+Gui Add, Checkbox, x10 y720 w500 h30 vDisableWarning Checked%DisableWarning%, Do not show Steam warning again. (Popup when starting script)
 Gui Tab, 5 ; Other Options
 Gui Font, s15, Bold, Tahoma
 Gui Add, Picture, x500 y300 w300 h500, Images\barkeep.png
@@ -227,6 +232,9 @@ IniRead, Dust, settings.ini, QoL/RareOptions, Dust
 IniRead, Coin, settings.ini, QoL/RareOptions, Coin
 IniRead, Research, settings.ini, QoL/RareOptions, Research
 IniRead, SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
+IniRead, NoHero, settings.ini, QoL/RareOptions, NoHero
+IniRead, NoMap, settings.ini, QoL/RareOptions, NoMap
+IniRead, Delay, settings.ini, QoL/RareOptions, Delay
 IniRead, DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 
 IniRead, Shop, settings.ini, OtherOptions, Shop
@@ -282,6 +290,8 @@ SaveSettings:
     IniWrite, % Research, settings.ini, QoL/RareOptions, Research
     IniWrite, % SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
     IniWrite, % NoHero, settings.ini, QoL/RareOptions, NoHero
+    IniWrite, % NoMap, settings.ini, QoL/RareOptions, NoMap
+    IniWrite, % Delay, settings.ini, QoL/RareOptions, Delay
     IniWrite, % DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 
     ; Other Options
@@ -324,6 +334,8 @@ SaveSettings:
     GuiControlGet, Research, , Research
     GuiControlGet, SkipOracle, , SkipOracle
     GuiControlGet, NoHero, , NoHero
+    GuiControlGet, NoMap, , NoMap
+    GuiControlGet, Delay, , Delay
     GuiControlGet, DisableWarning, , DisableWarning
 
     GuiControlGet, Shop, , Shop
@@ -365,6 +377,8 @@ SaveSettings:
     IniWrite, % Research, settings.ini, QoL/RareOptions, Research
     IniWrite, % SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
     IniWrite, % NoHero, settings.ini, QoL/RareOptions, NoHero
+    IniWrite, % NoMap, settings.ini, QoL/RareOptions, NoMap
+    IniWrite, % Delay, settings.ini, QoL/RareOptions, Delay
     IniWrite, % DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
 
     IniWrite, % Shop, settings.ini, OtherOptions, Shop

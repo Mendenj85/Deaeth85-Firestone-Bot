@@ -2,21 +2,22 @@
 
 #Include Functions\subFunctions\BigClose.ahk
 #Include Functions\subFunctions\LiberationInProgressCheck.ahk
+#Include Functions\util.ahk
 
 LiberationMissions(){
     ControlFocus,, ahk_exe Firestone.exe
     ; open daily missions if notification present
-    PixelSearch, X, Y, 1873, 920, 1900, 954, 0xF40000, 3, Fast RGB
+    PixelSearchRel(FoundX, FoundY, 1873, 920, 1900, 954, 0xF40000, 3)
     If (ErrorLevel = 0){
-    MouseMove, 1800, 982
-    Sleep, 1000
-    Click
-    Sleep, 1500
+        MoveMouseRel(1800, 982)
+        Sleep, 1000
+        Click
+        Sleep, 1500
     } Else {
         Return
     }
     ; open Liberation
-    MouseMove, 697, 788
+    MoveMouseRel(697, 788)
     Sleep, 1000
     Click
     Sleep, 1500
@@ -27,11 +28,11 @@ LiberationMissions(){
     ; missions
     319Stars:
     {
-        MouseMove, 1583, 755
+        MoveMouseRel(1583, 755)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 Goto, 190Stars
             }
@@ -42,11 +43,11 @@ LiberationMissions(){
     }
     190Stars:
     {
-        MouseMove, 1191, 755
+        MoveMouseRel(1191, 755)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 Goto, 155Stars
             }
@@ -57,11 +58,11 @@ LiberationMissions(){
     } 
     155Stars:
     {
-        MouseMove, 791, 755
+        MoveMouseRel(791, 755)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 Goto, 110Stars
             }
@@ -72,11 +73,11 @@ LiberationMissions(){
     }
     110Stars:
     {
-        MouseMove, 412, 755
+        MoveMouseRel(412, 755)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 Goto, 80Stars
             }
@@ -87,11 +88,11 @@ LiberationMissions(){
     }
     80Stars:
     {
-        MouseMove, 133, 748
+        MoveMouseRel(133, 748)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 Goto, 60Stars
             }
@@ -106,11 +107,11 @@ LiberationMissions(){
             Send, {WheelUp}
             Sleep, 200
         }
-        MouseMove, 1688, 755
+        MoveMouseRel(1688, 755)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 Goto, 40Stars
             }
@@ -121,11 +122,11 @@ LiberationMissions(){
     }
     40Stars:
     {
-        MouseMove, 1291, 755
+        MoveMouseRel(1291, 755)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 Goto, 20Stars
             }
@@ -136,11 +137,11 @@ LiberationMissions(){
     }
     20Stars:
     {
-        MouseMove, 900, 755
+        MoveMouseRel(900, 755)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 Goto, 10Stars
             }
@@ -151,11 +152,11 @@ LiberationMissions(){
     }
     10Stars:
     {
-        MouseMove, 517, 755
+        MoveMouseRel(517, 755)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 Goto, 5Stars
             }
@@ -166,11 +167,11 @@ LiberationMissions(){
     }
     5Stars:
     {
-        MouseMove, 157, 758
+        MoveMouseRel(157, 758)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 BigClose()
                 Goto, CheckDungeon
@@ -185,18 +186,18 @@ LiberationMissions(){
     CheckDungeon:
     {
         ; open dungeon
-        MouseMove, 1223, 794
+        MoveMouseRel(1223, 794)
         Sleep, 1000
         Click
         Sleep, 1500
     }
     120Stars:
     {
-        MouseMove, 1149, 763
+        MoveMouseRel(1149, 763)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 Goto, 70Stars
             }
@@ -207,11 +208,11 @@ LiberationMissions(){
     }
     70Stars:
     {
-        MouseMove, 768, 762
+        MoveMouseRel(768, 762)
         Sleep, 1000
         Click
         Sleep, 1500
-        PixelSearch, X, Y, 1723, 51, 1797, 123, 0xFF4805, 10, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
             If (ErrorLevel=0){
                 Return
             }
@@ -219,6 +220,5 @@ LiberationMissions(){
                 Sleep, 5000
             }
     }
-BigClose()
-BigClose()
+    BigClose()
 }

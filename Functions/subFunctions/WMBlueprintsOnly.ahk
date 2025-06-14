@@ -1,8 +1,10 @@
 ; WMBlueprintsOnly.ahk
 
+#Include Functions\util.ahk
+
 BPOnly(){
-    ; Open Blueprint tab
-    MouseMove, 1486, 170
+    ; Open Blueprint tab (resolution independent)
+    MoveMouseRel(1486, 170)
     Sleep, 1000
     Click
     Sleep, 1000
@@ -11,53 +13,41 @@ BPOnly(){
     GuiControlGet, SelectedItem, ,Blueprints
     If (SelectedItem = "Upgrade All"){
         Goto, All
-    } Else {
-        If (SelectedItem = "Damage Only"){
-            Goto, Damage
-        } Else {
-            If (SelectedItem = "Health"){
-                Goto, Health
-            } Else {
-                If (SelectedItem = "Armor"){
-                    Goto, Armor
-                } Else {
-                    If (SelectedItem = "Damage and Health"){
-                        Goto, DnH
-                    } Else {
-                        If (SelectedItem = "Damage and Armor"){
-                            Goto, DnA
-                        } Else {
-                            If (SelectedItem = "Health and Armor"){
-                                Goto, HnA
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    } Else If (SelectedItem = "Damage Only"){
+        Goto, Damage
+    } Else If (SelectedItem = "Health"){
+        Goto, Health
+    } Else If (SelectedItem = "Armor"){
+        Goto, Armor
+    } Else If (SelectedItem = "Damage and Health"){
+        Goto, DnH
+    } Else If (SelectedItem = "Damage and Armor"){
+        Goto, DnA
+    } Else If (SelectedItem = "Health and Armor"){
+        Goto, HnA
     }
 
     All:
         ; upgrade damage
-        PixelSearch, X, Y, 1171, 594, 1225, 644, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1171, 594, 1225, 644, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1108, 600
+            MoveMouseRel(1108, 600)
             Sleep, 1000
             Click
             Sleep, 1000
         }
         ; upgrade health
-        PixelSearch, X, Y, 1477, 597, 1536, 644, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1477, 597, 1536, 644, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1413, 600
+            MoveMouseRel(1413, 600)
             Sleep, 1000
             Click
             Sleep, 1000
         }
         ; upgrade armor
-        PixelSearch, X, Y, 1786, 596, 1844, 642, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1786, 596, 1844, 642, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1726, 600
+            MoveMouseRel(1726, 600)
             Sleep, 1000
             Click
             Sleep, 1000
@@ -66,9 +56,9 @@ BPOnly(){
 
     Damage:
         ; upgrade damage
-        PixelSearch, X, Y, 1171, 594, 1225, 644, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1171, 594, 1225, 644, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1108, 600
+            MoveMouseRel(1108, 600)
             Sleep, 1000
             Click
             Sleep, 1000
@@ -77,9 +67,9 @@ BPOnly(){
 
     Health:
         ; upgrade health
-        PixelSearch, X, Y, 1477, 597, 1536, 644, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1477, 597, 1536, 644, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1413, 600
+            MoveMouseRel(1413, 600)
             Sleep, 1000
             Click
             Sleep, 1000
@@ -88,9 +78,9 @@ BPOnly(){
 
     Armor:
         ; upgrade armor
-        PixelSearch, X, Y, 1786, 596, 1844, 642, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1786, 596, 1844, 642, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1726, 600
+            MoveMouseRel(1726, 600)
             Sleep, 1000
             Click
             Sleep, 1000
@@ -99,17 +89,17 @@ BPOnly(){
 
     DnH:
         ; upgrade damage
-        PixelSearch, X, Y, 1171, 594, 1225, 644, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1171, 594, 1225, 644, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1108, 600
+            MoveMouseRel(1108, 600)
             Sleep, 1000
             Click
             Sleep, 1000
         }
         ; upgrade health
-        PixelSearch, X, Y, 1477, 597, 1536, 644, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1477, 597, 1536, 644, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1413, 600
+            MoveMouseRel(1413, 600)
             Sleep, 1000
             Click
             Sleep, 1000
@@ -118,17 +108,17 @@ BPOnly(){
 
     DnA:
         ; upgrade damage
-        PixelSearch, X, Y, 1171, 594, 1225, 644, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1171, 594, 1225, 644, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1108, 600
+            MoveMouseRel(1108, 600)
             Sleep, 1000
             Click
             Sleep, 1000
         }
         ; upgrade armor
-        PixelSearch, X, Y, 1786, 596, 1844, 642, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1786, 596, 1844, 642, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1726, 600
+            MoveMouseRel(1726, 600)
             Sleep, 1000
             Click
             Sleep, 1000
@@ -137,17 +127,17 @@ BPOnly(){
 
     HnA:
         ; upgrade health
-        PixelSearch, X, Y, 1477, 597, 1536, 644, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1477, 597, 1536, 644, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1413, 600
+            MoveMouseRel(1413, 600)
             Sleep, 1000
             Click
             Sleep, 1000
         }
         ; upgrade armor
-        PixelSearch, X, Y, 1786, 596, 1844, 642, 0x0AA008, 3, Fast RGB
+        PixelSearchRel(FoundX, FoundY, 1786, 596, 1844, 642, 0x0AA008, 3)
         If (ErrorLevel = 0){
-            MouseMove, 1726, 600
+            MoveMouseRel(1726, 600)
             Sleep, 1000
             Click
             Sleep, 1000

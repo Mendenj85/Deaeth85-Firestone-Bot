@@ -1,22 +1,21 @@
 ; MysteryBox.ahk
 
 #Include Functions\subFunctions\BigClose.ahk
+#Include Functions\util.ahk
 
 MysteryBox(){
-    PixelSearch, FoundX, FoundY, 1543, 307, 1887, 905, 0x4800A9, 3, Fast RGB
+    PixelSearchRel(FoundX, FoundY, 1543, 307, 1887, 905, 0x4800A9, 3)
     If (ErrorLevel=0){
-        MouseMove, FoundX, FoundY
+        MoveMouseRel(FoundX, FoundY)    ; Move to mystery box
         Sleep, 1000
         Click
         Sleep, 1000
-        ; click 1
-        MouseMove, 904, 724
+        MoveMouseRel(904, 724)          ; Click "1" to open one box
         Sleep, 1000
         Click
-        Sleep, 10000 ; long delay in case 10 or more chests are opened
+        Sleep, 10000                    ; Wait for animation
         BigClose()
-        ; failsafe in case big close opens options
-        MouseMove, 59, 181
+        MoveMouseRel(59, 181)           ; Failsafe: click to close options if needed
         Sleep, 1000
         Click
         Sleep, 1000
