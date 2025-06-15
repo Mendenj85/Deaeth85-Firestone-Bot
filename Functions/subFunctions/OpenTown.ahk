@@ -1,9 +1,11 @@
-; OpenTown.ahk
+; OpenTown.ahk (AHK v2)
 
-; simple script to save on coding
-OpenTown(){
-    WinActivate, ahk_exe Firestone.exe
-    MsgBox, , Open Town, Opening the Town Window, 1.5
-    Send, T
-    Sleep, 1500
+#Include ..\util.ahk
+
+; Simple script to save on coding
+OpenTown() {
+    WinActivate("ahk_exe Firestone.exe")
+    ToolTip("Opening the Town Window")
+    SetTimer(() => ToolTip(), -1500)
+    Send("T")
 }

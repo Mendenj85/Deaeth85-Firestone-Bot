@@ -1,9 +1,8 @@
 ; Deaeth85 Firestone Bot.ahk
 
+#Requires AutoHotkey v2.0
 #SingleInstance Force
-#NoEnv
-SetBatchLines, -1
-SetWorkingDir %A_ScriptDir%
+SetWorkingDir A_ScriptDir
 
 #Include Gui.ahk
 #Include Functions\util.ahk
@@ -31,59 +30,130 @@ SetWorkingDir %A_ScriptDir%
 #Include Functions\subFunctions\MapClose.ahk
 #Include Functions\subFunctions\OpenTown.ahk
 
-CoordMode, Mouse, Relative
-CoordMode, Pixel, Relative
-
 global lastExecutionTimeArena := 0
-global MapPoints :=
+global MapPoints := ""
 
-; start of main script
-MainScript(){
-loop:
-    ControlFocus,, ahk_exe Firestone.exe
-    MsgBox, , Main Menu Check, Checking to ensure we are on main screen at loop start, 2
-    MainMenu()
-    ControlFocus,, ahk_exe Firestone.exe
-    CallIfChecked("Events", "ClaimEvents")
-    CallIfChecked("Quests", "ClaimQuests")
-    MsgBox, , Main Menu Check, Checking to ensure we are on main screen after claiming quests, 2
-    MainMenu()
-    ControlFocus,, ahk_exe Firestone.exe
-    CallIfChecked("Shop", "Shop")
-    CallIfChecked("Mail", "CheckMail")
-    CallIfChecked("Chests", "OpenChests")
-    OpenTown()
-    CallIfChecked("Guardian", "Guardian")
-    SkipIfChecked("Beer", "ClaimBeer")
-    SkipIfChecked("SkipOracle", "ClaimRituals")
-    SkipIfChecked("NoEng", "ClaimEngineer")
-    CallIfChecked("SellEx", "ExoticMerchant")
-    ; Arena logic
-    GuiControlGet, Checked, , PVP,
-    If (Checked = 1){
-        If (lastExecutionTimeArena <= 0 || currentTimeArena - lastExecutionTimeArena >= 6 * 60 * 60 * 1000){
-            Arena()
-            lastExecutionTimeArena := currentTimeArena
-        }
-    }
+Hotkey("Esc", (*) => ExitApp())
+OnExit(ExitAppWrapper)
 
-    ; Alchemy/Research logic
-    SkipIfChecked("Alch", "Alchemist")
-    SkipIfChecked("Research", "GoResearch")
-    BigClose()
-    SkipIfChecked("NoGuild", "Guild")
-    CallOrGotoIfChecked("NoMap", "UpgradeHero", "GoMap")
-    GoMap()
-    MapRedeem()
-    UpgradeHero:
-    SkipIfChecked("NoHero", "UpgradeHero")
-    MoveMouseRel(947, 755)
-    Sleep, 500
-    EndofLoopDelay()
-    Goto, Loop
+ExitAppWrapper(*) {
+    ExitApp()
 }
 
-GuiEscape:
-GuiClose:
-    $Esc::
-    ExitApp
+MainScript() {
+    global lastExecutionTimeArena
+    Loop {
+        ; Focus game window
+        WinActivate("ahk_exe Firestone.exe ahk_class UnityWndClass")
+        ToolTip("Checking to ensure we are on main screen at loop start")
+        SetTimer(() => ToolTip(), -2000)
+        MainMenu()
+        WinActivate("ahk_exe Firestone.exe ahk_class UnityWndClass")
+
+        ; Claim Events
+        if eventsCB.Value
+            ClaimEvents()
+
+        ; Claim Quests
+        if questsCB.Value
+            ClaimQuests()
+
+        ToolTip("Checking to ensure we are on main screen after claiming quests")
+        SetTimer(() => ToolTip(), -2000)
+        MainMenu()
+        WinActivate("ahk_exe Firestone.exe ahk_class UnityWndClass")
+
+        ; Shop (Free Gift and Check-in)
+        if shopCB.Value
+            Shop()
+
+        ; Check Mail
+        if mailCB.Value
+            CheckMail()
+
+        ; Open Chests
+        if chestsCB.Value {
+            OpenChests()
+        } else {
+            ; Upgrade Blessings if checked
+            if blessCB.Value
+                OpenBlessChests()
+        }
+
+        ; Town section
+        OpenTown()
+        Guardian()
+
+        ; Tavern
+        ClaimBeer()
+
+        ; Claim Rituals (skip if SkipOracle checked)
+        if skipOracleCB.Value {
+            ; Skip ClaimRituals, go to Engineer section
+        } else {
+            ClaimRituals()
+        }
+
+        ; Engineer (skip if NoEng checked)
+        if noEngCB.Value {
+            ; Skip ClaimEngineer, go to Exotic section
+        } else {
+            ClaimEngineer()
+        }
+
+        ; Exotic Merchant (if SellEx checked)
+        if sellExCB.Value
+            ExoticMerchant()
+
+        ; Arena (if PVP checked)
+        if pvpCB.Value {
+            currentTimeArena := A_TickCount
+            if lastExecutionTimeArena <= 0 || currentTimeArena - lastExecutionTimeArena >= 6 * 60 * 60 * 1000 {
+                Arena()
+                lastExecutionTimeArena := currentTimeArena
+            }
+        }
+
+        ; Alchemy (skip if Alch checked)
+        if alchCB.Value {
+            ; Skip Alchemist, go to Research section
+        } else {
+            Alchemist()
+        }
+
+        ; Research (skip if Research checked)
+        if researchCB.Value {
+            ; Skip GoResearch, go to FinishTown section
+        } else {
+            GoResearch()
+        }
+
+        ; FinishTown
+        BigClose()
+
+        ; Guild (skip if NoGuild checked)
+        if noGuildCB.Value {
+            ; Skip Guild, go to Map section
+        } else {
+            Guild()
+        }
+
+        ; Map section
+        if noMapCB.Value {
+            ; Skip MapRedeem, go to Hero Upgrade section
+        } else {
+            GoMap()
+        }
+
+        ; Hero Upgrade (skip if NoHero checked)
+        if noHeroCB.Value {
+            ; Skip HeroUpgrade, go to EndingMouseMove
+        } else {
+            HeroUpgrade()
+        }
+
+        ; EndingMouseMove
+        MouseMove(947, 755)
+        EndofLoopDelay() ; Use the user-configurable delay function
+    }
+}

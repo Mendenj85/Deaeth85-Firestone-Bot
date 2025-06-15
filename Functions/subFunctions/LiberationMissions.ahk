@@ -1,224 +1,87 @@
-; LiberationMissions.ahk
+; LiberationMissions.ahk (AHK v2)
 
-#Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\LiberationInProgressCheck.ahk
-#Include Functions\util.ahk
+#Include ..\util.ahk
+#Include BigClose.ahk
+#Include LiberationInProgressCheck.ahk
 
-LiberationMissions(){
-    ControlFocus,, ahk_exe Firestone.exe
+LiberationMissions() {
+    WinActivate("ahk_exe Firestone.exe ahk_class UnityWndClass")
     ; open daily missions if notification present
-    PixelSearchRel(FoundX, FoundY, 1873, 920, 1900, 954, 0xF40000, 3)
-    If (ErrorLevel = 0){
+    result := PixelSearchRel(&FoundX, &FoundY, 1873, 920, 1900, 954, 0xF40000, 3)
+    if !result {
         MoveMouseRel(1800, 982)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-    } Else {
-        Return
+        Sleep(1000)
+        Click()
+        Sleep(1500)
+    } else {
+        return
     }
     ; open Liberation
     MoveMouseRel(697, 788)
-    Sleep, 1000
-    Click
-    Sleep, 1500
-    Loop, 70{
-        Send, {WheelDown}
-        Sleep, 200
-    }
-    ; missions
-    319Stars:
-    {
-        MoveMouseRel(1583, 755)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                Goto, 190Stars
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-        Goto, 190Stars
-    }
-    190Stars:
-    {
-        MoveMouseRel(1191, 755)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                Goto, 155Stars
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-        Goto, 155Stars
-    } 
-    155Stars:
-    {
-        MoveMouseRel(791, 755)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                Goto, 110Stars
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-        Goto, 110Stars
-    }
-    110Stars:
-    {
-        MoveMouseRel(412, 755)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                Goto, 80Stars
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-        Goto, 80Stars
-    }
-    80Stars:
-    {
-        MoveMouseRel(133, 748)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                Goto, 60Stars
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-        Goto, 60Stars
-    }
-    60Stars:
-    {
-        Loop, 63{
-            Send, {WheelUp}
-            Sleep, 200
-        }
-        MoveMouseRel(1688, 755)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                Goto, 40Stars
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-        Goto, 40Stars
-    }
-    40Stars:
-    {
-        MoveMouseRel(1291, 755)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                Goto, 20Stars
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-        Goto, 20Stars
-    }
-    20Stars:
-    {
-        MoveMouseRel(900, 755)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                Goto, 10Stars
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-        Goto, 10Stars
-    }
-    10Stars:
-    {
-        MoveMouseRel(517, 755)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                Goto, 5Stars
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-        Goto, 5Stars
-    }
-    5Stars:
-    {
-        MoveMouseRel(157, 758)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                BigClose()
-                Goto, CheckDungeon
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-        BigClose()
-        Goto, CheckDungeon
+    Sleep(1000)
+    Click()
+    Sleep(1500)
+    Loop 70 {
+        Send("{WheelDown}")
+        Sleep(200)
     }
 
-    CheckDungeon:
-    {
-        ; open dungeon
-        MoveMouseRel(1223, 794)
-        Sleep, 1000
-        Click
-        Sleep, 1500
+    ; Missions in order of priority
+    missions := [
+        {name: "319Stars", x: 1583, y: 755},
+        {name: "190Stars", x: 1191, y: 755},
+        {name: "155Stars", x: 791,  y: 755},
+        {name: "110Stars", x: 412,  y: 755},
+        {name: "80Stars",  x: 133,  y: 748},
+        {name: "60Stars",  x: 1688, y: 755, scrollUp: 63},
+        {name: "40Stars",  x: 1291, y: 755},
+        {name: "20Stars",  x: 900,  y: 755},
+        {name: "10Stars",  x: 517,  y: 755},
+        {name: "5Stars",   x: 157,  y: 758}
+    ]
+
+    for idx, mission in missions {
+        if mission.HasOwnProp("scrollUp") {
+            Loop mission.scrollUp {
+                Send("{WheelUp}")
+                Sleep(200)
+            }
+        }
+        MoveMouseRel(mission.x, mission.y)
+        Sleep(1000)
+        Click()
+        Sleep(1500)
+        result := PixelSearchRel(&FoundX, &FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
+        if !result {
+            continue
+        }
+        while !LiberationInProgress() {
+            Sleep(5000)
+        }
     }
-    120Stars:
-    {
-        MoveMouseRel(1149, 763)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                Goto, 70Stars
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-        Goto, 70Stars
+
+    ; After missions, open dungeon
+    MoveMouseRel(1223, 794)
+    Sleep(1000)
+    Click()
+    Sleep(1500)
+
+    ; Dungeon stars
+    dungeonMissions := [
+        {name: "120Stars", x: 1149, y: 763},
+        {name: "70Stars",  x: 768,  y: 762}
+    ]
+    for idx, mission in dungeonMissions {
+        MoveMouseRel(mission.x, mission.y)
+        Sleep(1000)
+        Click()
+        Sleep(1500)
+        result := PixelSearchRel(&FoundX, &FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
+        if !result {
+            continue
+        }
+        while !LiberationInProgress() {
+            Sleep(5000)
+        }
     }
-    70Stars:
-    {
-        MoveMouseRel(768, 762)
-        Sleep, 1000
-        Click
-        Sleep, 1500
-        PixelSearchRel(FoundX, FoundY, 1723, 51, 1797, 123, 0xFF4805, 10)
-            If (ErrorLevel=0){
-                Return
-            }
-            While !LiberationInProgress(){
-                Sleep, 5000
-            }
-    }
-    BigClose()
 }

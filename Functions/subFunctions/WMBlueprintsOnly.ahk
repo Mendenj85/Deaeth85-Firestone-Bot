@@ -1,146 +1,138 @@
-; WMBlueprintsOnly.ahk
+; WMBlueprintsOnly.ahk (AHK v2)
 
-#Include Functions\util.ahk
+#Include ..\util.ahk
 
-BPOnly(){
+global blueprintsDD := ""  ; Make sure this is assigned in your Gui.ahk as the control object for the Blueprint dropdown
+
+BPOnly() {
+    global blueprintsDD  ; This should be the control object for the Blueprint dropdown
+
     ; Open Blueprint tab (resolution independent)
     MoveMouseRel(1486, 170)
-    Sleep, 1000
-    Click
-    Sleep, 1000
+    Sleep(1000)
+    Click()
+    Sleep(1000)
 
     ; Check upgrade options
-    GuiControlGet, SelectedItem, ,Blueprints
-    If (SelectedItem = "Upgrade All"){
-        Goto, All
-    } Else If (SelectedItem = "Damage Only"){
-        Goto, Damage
-    } Else If (SelectedItem = "Health"){
-        Goto, Health
-    } Else If (SelectedItem = "Armor"){
-        Goto, Armor
-    } Else If (SelectedItem = "Damage and Health"){
-        Goto, DnH
-    } Else If (SelectedItem = "Damage and Armor"){
-        Goto, DnA
-    } Else If (SelectedItem = "Health and Armor"){
-        Goto, HnA
+    SelectedItem := blueprintsDD.Value
+    if (SelectedItem = "Upgrade All") {
+        UpgradeAll()
+    } else if (SelectedItem = "Damage Only") {
+        UpgradeDamage()
+    } else if (SelectedItem = "Health Only") {
+        UpgradeHealth()
+    } else if (SelectedItem = "Armor Only") {
+        UpgradeArmor()
+    } else if (SelectedItem = "Damage and Health") {
+        UpgradeDnH()
+    } else if (SelectedItem = "Damage and Armor") {
+        UpgradeDnA()
+    } else if (SelectedItem = "Health and Armor") {
+        UpgradeHnA()
     }
+}
 
-    All:
-        ; upgrade damage
-        PixelSearchRel(FoundX, FoundY, 1171, 594, 1225, 644, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1108, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        ; upgrade health
-        PixelSearchRel(FoundX, FoundY, 1477, 597, 1536, 644, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1413, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        ; upgrade armor
-        PixelSearchRel(FoundX, FoundY, 1786, 596, 1844, 642, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1726, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        Return
+UpgradeAll() {
+    ; upgrade damage
+    if PixelSearchRel(&FoundX, &FoundY, 1171, 594, 1225, 644, 0x0AA008, 3) {
+        MoveMouseRel(1108, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+    ; upgrade health
+    if PixelSearchRel(&FoundX, &FoundY, 1477, 597, 1536, 644, 0x0AA008, 3) {
+        MoveMouseRel(1413, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+    ; upgrade armor
+    if PixelSearchRel(&FoundX, &FoundY, 1786, 596, 1844, 642, 0x0AA008, 3) {
+        MoveMouseRel(1726, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+}
 
-    Damage:
-        ; upgrade damage
-        PixelSearchRel(FoundX, FoundY, 1171, 594, 1225, 644, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1108, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        Return
+UpgradeDamage() {
+    ; upgrade damage
+    if PixelSearchRel(&FoundX, &FoundY, 1171, 594, 1225, 644, 0x0AA008, 3) {
+        MoveMouseRel(1108, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+}
 
-    Health:
-        ; upgrade health
-        PixelSearchRel(FoundX, FoundY, 1477, 597, 1536, 644, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1413, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        Return
+UpgradeHealth() {
+    ; upgrade health
+    if PixelSearchRel(&FoundX, &FoundY, 1477, 597, 1536, 644, 0x0AA008, 3) {
+        MoveMouseRel(1413, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+}
 
-    Armor:
-        ; upgrade armor
-        PixelSearchRel(FoundX, FoundY, 1786, 596, 1844, 642, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1726, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        Return
+UpgradeArmor() {
+    ; upgrade armor
+    if PixelSearchRel(&FoundX, &FoundY, 1786, 596, 1844, 642, 0x0AA008, 3) {
+        MoveMouseRel(1726, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+}
 
-    DnH:
-        ; upgrade damage
-        PixelSearchRel(FoundX, FoundY, 1171, 594, 1225, 644, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1108, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        ; upgrade health
-        PixelSearchRel(FoundX, FoundY, 1477, 597, 1536, 644, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1413, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        Return
+UpgradeDnH() {
+    ; upgrade damage
+    if PixelSearchRel(&FoundX, &FoundY, 1171, 594, 1225, 644, 0x0AA008, 3) {
+        MoveMouseRel(1108, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+    ; upgrade health
+    if PixelSearchRel(&FoundX, &FoundY, 1477, 597, 1536, 644, 0x0AA008, 3) {
+        MoveMouseRel(1413, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+}
 
-    DnA:
-        ; upgrade damage
-        PixelSearchRel(FoundX, FoundY, 1171, 594, 1225, 644, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1108, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        ; upgrade armor
-        PixelSearchRel(FoundX, FoundY, 1786, 596, 1844, 642, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1726, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        Return
+UpgradeDnA() {
+    ; upgrade damage
+    if PixelSearchRel(&FoundX, &FoundY, 1171, 594, 1225, 644, 0x0AA008, 3) {
+        MoveMouseRel(1108, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+    ; upgrade armor
+    if PixelSearchRel(&FoundX, &FoundY, 1786, 596, 1844, 642, 0x0AA008, 3) {
+        MoveMouseRel(1726, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+}
 
-    HnA:
-        ; upgrade health
-        PixelSearchRel(FoundX, FoundY, 1477, 597, 1536, 644, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1413, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        ; upgrade armor
-        PixelSearchRel(FoundX, FoundY, 1786, 596, 1844, 642, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1726, 600)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        Return
+UpgradeHnA() {
+    ; upgrade health
+    if PixelSearchRel(&FoundX, &FoundY, 1477, 597, 1536, 644, 0x0AA008, 3) {
+        MoveMouseRel(1413, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+    ; upgrade armor
+    if PixelSearchRel(&FoundX, &FoundY, 1786, 596, 1844, 642, 0x0AA008, 3) {
+        MoveMouseRel(1726, 600)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
 }

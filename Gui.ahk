@@ -1,396 +1,361 @@
-#NoEnv
-#SingleInstance, Force
-#Include Deaeth85 Firestone Bot.ahk
+#Requires AutoHotkey v2.0
 
-SendMode, Input
-SetBatchLines, -1
-SetWorkingDir, %A_ScriptDir%
+global myGui, tab
+global tokenCB, sellExCB, sellScrollsRB, sellNoGoldRB, sellAllRB, sellNoneRB, exoticUpgradesCB, buyExCB, chestsCB
+global gearChestDD, jewelChestDD, blessCB, questsCB, eventsCB, mailCB, awakenCB, crystalCB, chaosCB, ptreeCB
+global attDmgCB, attHpCB, attArmCB, energyCB, manaCB, rageCB, minerCB, battleCB, mainAttCB, prestCB, fireCB, goldCB, levelCB, guardCB, fistCB, precCB, magicCB, tankCB, damageCB, healCB
+global beerCB, noGuildCB, noEngCB, pickaxesCB, gnotifCB, alchCB, dustCB, coinCB, researchCB, skipOracleCB, noHeroCB, noMapCB, delayDD, disableWarningCB
+global shopCB, dailyOracleCB, pvpCB, liberationCB, upgradeWMDD, wmOptionsDD, blueprintsDD
 
-Picture = Images\startbutton.png
+ShowGui() {
+    ; --- Read all INI settings ---
+    ; CommonOptions
+    Token := IniRead("settings.ini", "CommonOptions", "Token", "")
+    SellEx := IniRead("settings.ini", "CommonOptions", "SellEx", "")
+    SellScrolls := IniRead("settings.ini", "CommonOptions", "SellScrolls", "")
+    SellNoGold := IniRead("settings.ini", "CommonOptions", "SellNoGold", "")
+    SellAll := IniRead("settings.ini", "CommonOptions", "SellAll", "")
+    SellNone := IniRead("settings.ini", "CommonOptions", "SellNone", "")
+    ExoticUpgrades := IniRead("settings.ini", "CommonOptions", "ExoticUpgrades", "")
+    BuyEx := IniRead("settings.ini", "CommonOptions", "BuyEx", "")
+    Chests := IniRead("settings.ini", "CommonOptions", "Chests", "")
+    GearChestExclude := IniRead("settings.ini", "CommonOptions", "GearChestExclude", "Exclude All")
+    JewelChestExclude := IniRead("settings.ini", "CommonOptions", "JewelChestExclude", "Exclude All")
+    Bless := IniRead("settings.ini", "CommonOptions", "Bless", "")
+    Quests := IniRead("settings.ini", "CommonOptions", "Quests", "")
+    Events := IniRead("settings.ini", "CommonOptions", "Events", "")
+    Mail := IniRead("settings.ini", "CommonOptions", "Mail", "")
+    Awaken := IniRead("settings.ini", "CommonOptions", "Awaken", "")
+    Crystal := IniRead("settings.ini", "CommonOptions", "Crystal", "")
+    Chaos := IniRead("settings.ini", "CommonOptions", "Chaos", "")
+    PTree := IniRead("settings.ini", "CommonOptions", "PTree", "")
 
-; Read settings from INI file when GUI is initialized
-Gui +OwnDialogs
-Gui Font, s9 Bold, Tahoma
+    ; QoL/RareOptions
+    Beer := IniRead("settings.ini", "QoL/RareOptions", "Beer", "")
+    NoGuild := IniRead("settings.ini", "QoL/RareOptions", "NoGuild", "")
+    NoEng := IniRead("settings.ini", "QoL/RareOptions", "NoEng", "")
+    Pickaxes := IniRead("settings.ini", "QoL/RareOptions", "Pickaxes", "")
+    GNotif := IniRead("settings.ini", "QoL/RareOptions", "GNotif", "")
+    Alch := IniRead("settings.ini", "QoL/RareOptions", "Alch", "")
+    Dust := IniRead("settings.ini", "QoL/RareOptions", "Dust", "")
+    Coin := IniRead("settings.ini", "QoL/RareOptions", "Coin", "")
+    Research := IniRead("settings.ini", "QoL/RareOptions", "Research", "")
+    SkipOracle := IniRead("settings.ini", "QoL/RareOptions", "SkipOracle", "")
+    NoHero := IniRead("settings.ini", "QoL/RareOptions", "NoHero", "")
+    NoMap := IniRead("settings.ini", "QoL/RareOptions", "NoMap", "")
+    Delay := IniRead("settings.ini", "QoL/RareOptions", "Delay", "0")
+    DisableWarning := IniRead("settings.ini", "QoL/RareOptions", "DisableWarning", "")
 
-; Read settings from INI file
-IniRead, Token, settings.ini, CommonOptions, Token
-IniRead, SellEx, settings.ini, CommonOptions, SellEx
-IniRead, SellScrolls, settings.ini, CommonOptions, SellScrolls
-IniRead, SellNoGold, settings.ini, CommonOptions, SellNoGold
-IniRead, SellAll, settings.ini, CommonOptions, SellAll
-IniRead, SellNone, settings.ini, CommonOptions, SellNone
-IniRead, ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
-IniRead, BuyEx, settings.ini, CommonOptions, BuyEx
-IniRead, Chests, settings.ini, CommonOptions, Chests
-IniRead, GearChestExclude, settings.ini, CommonOptions, GearChestExclude
-GuiControl, Choose, GearChestExclude, %GearChestExclude%
-IniRead, JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
-GuiControl, Choose, JewelChestExclude, %JewelChestExclude%
-IniRead, Bless, settings.ini, CommonOptions, Bless
-IniRead, Quests, settings.ini, CommonOptions, Quests
-IniRead, Events, settings.ini, CommonOptions, Events
-IniRead, Mail, settings.ini, CommonOptions, Mail
-IniRead, Awaken, settings.ini, CommonOptions, Awaken
-IniRead, Crystal, settings.ini, CommonOptions, Crystal
-IniRead, Chaos, settings.ini, CommonOptions, Chaos
-IniRead, PTree, settings.ini, CommonOptions, PTree
+    ; OtherOptions
+    Shop := IniRead("settings.ini", "OtherOptions", "Shop", "")
+    DailyOracle := IniRead("settings.ini", "OtherOptions", "DailyOracle", "")
+    PVP := IniRead("settings.ini", "OtherOptions", "PVP", "")
+    Liberation := IniRead("settings.ini", "OtherOptions", "Liberation", "")
+    UpgradeWM := IniRead("settings.ini", "OtherOptions", "UpgradeWM", "Don't Upgrade WM's")
+    WMOptions := IniRead("settings.ini", "OtherOptions", "WMOptions", "Blueprints Only")
+    Blueprints := IniRead("settings.ini", "OtherOptions", "Blueprints", "Upgrade All")
+    Talents450 := IniRead("settings.ini", "OtherOptions", "Talents450", "None")
+    Talents800 := IniRead("settings.ini", "OtherOptions", "Talents800", "None")
+    LiberationStars := IniRead("settings.ini", "OtherOptions", "LiberationStars", "None")
 
-IniRead, Beer, settings.ini, QoL/RareOptions, Beer
-IniRead, NoGuild, settings.ini, QoL/RareOptions, NoGuild
-IniRead, NoEng, settings.ini, QoL/RareOptions, NoEng
-IniRead, Pickaxes, settings.ini, QoL/RareOptions, Pickaxes
-IniRead, GNotif, settings.ini, QoL/RareOptions, GNotif
-IniRead, Alch, settings.ini, QoL/RareOptions, Alch
-IniRead, Dust, settings.ini, QoL/RareOptions, Dust
-IniRead, Coin, settings.ini, QoL/RareOptions, Coin
-IniRead, Research, settings.ini, QoL/RareOptions, Research
-IniRead, SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
-IniRead, NoHero, settings.ini, QoL/RareOptions, NoHero
-IniRead, NoMap, settings.ini, QoL/RareOptions, NoMap
-IniRead, Delay, settings.ini, QoL/RareOptions, Delay
-IniRead, DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
+    myGui := Gui("+OwnDialogs", "Deaeth85's Firestone Bot - V5.0.0")
+    myGui.SetFont("s9 Bold", "Tahoma")
+    myGui.BackColor := "D3D3D3"
 
-IniRead, Shop, settings.ini, OtherOptions, Shop
-IniRead, DailyOracle, settings.ini, OtherOptions, DailyOracle
-IniRead, PVP, settings.ini, OtherOptions, PVP
-IniRead, Liberation, settings.ini, OtherOptions, Liberation
-IniRead, UpgradeWM, settings.ini, OtherOptions, UpgradeWM
-GuiControl, Choose, UpgradeWM, %UpgradeWM%
-IniRead, WMOptions, settings.ini, OtherOptions, WMOptions
-GuiControl, Choose, WMOptions, %WMOptions%
-IniRead, Blueprints, settings.ini, OtherOptions, Blueprints
-GuiControl, Choose, Blueprints, %Blueprints%
-IniRead, Talents450, settings.ini, OtherOptions, Talents450
-GuiControl, Choose, Talents450, %Talents450%
-IniRead, Talents800, settings.ini, OtherOptions, Talents800
-GuiControl, Choose, Talents800, %Talents800%
+    tab := myGui.AddTab2("+Buttons x0 y0 w900 h800", [
+        "About",
+        "Common Options",
+        "Personal Tree Upgrades",
+        "QoL/Rare Options",
+        "Other Options",
+        "Script Start"
+    ])
 
-; gui code
-Gui Font, s9 Bold, Tahoma
-Gui Color, D3D3D3
-Gui Add, Tab3, x0 y-1 w900 h800, About | Common Options | Personal Tree Upgrades | QoL/Rare Options | Other Options | Script Start 
-Gui Tab, 1 ; About
-Gui Font, s20, , Lucida Handwriting Italic
-Gui Add, Text, x0 y20 w900 h60 +0x200 +Center, DEAETH85'S FIRESTONE BOT
-Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x0 y70 w900 h30 +0x200 +Center, VERSION 4.1.2
-Gui Add, Picture, x415 y575 w60 h60, Images\giftbox.png
-Gui Add, Picture, x150 y100 w600 h300, Images\Firestone.png
-Gui Add, Picture, x150 y30 w60 h60, Images\logo.png
-Gui Add, Picture, x690 y30 w60 h60, Images\logo.png
-Gui Add, Text, x0 y420 w900 h30 +0x200 +Center, INSTRUCTIONS:
-Gui Font, s9 Bold, Tahoma
-Gui Add, Text, x0 y450 w900 h30 +0x200 +Center, Set Display to: 1920x1080 Maximized (NOT Fullscreen)
-Gui Add, Text, x0 y480 w900 h30 +0x200 +Center, (Recommended) Set Hero Upgrade to Milestone
-Gui Add, Text, x0 y510 w900 h30 +0x200 +Center, Make sure you start on main page
-Gui Add, Text, x0 y540 w900 h30 +0x200 +Center, Please check the rest of the tabs for specific script options
-Gui Add, Text, x0 y570 w900 h0 +0x200 +Center, Personal Tree tab you can select upgrades to have the script purchase for you
-Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x0 y640 w900 h30 +0x200 +Center, NOTES:
-Gui Font, s9 Bold, Tahoma
-Gui Add, Text, x0 y670 w900 h30 +0x200 +Center, The script takes control of your mouse and will repeat until you close it
-Gui Add, Text, x0 y700 w900 h30 +0x200 +Center, You have a 1 minute delay after the Hero Upgrade section to use your mouse w/o risk until script starts over
-Gui Add, Text, x0 y770 w900 h30 +0x200 +Center, Credit to @Dandey for the original code
-Gui Tab, 2 ; Common Options
-Gui Add, Picture, x450 y180 w400 h400, Images\chest.png
-Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, CHECK ANY OPTIONAL BOXES TO DIRECT THE SCRIPT
-Gui Font, s9 Bold, Tahoma
-Gui Add, Checkbox, x10 y70 w600 h30 vToken Checked%Token%, Use Tavern Tokens/Craft Artifact (Will NOT work if Skip Claiming Beer selected in QoL section)
-Gui Add, Checkbox, x10 y110 w600 h30 vSellEx Checked%SellEx%, Open Exotic Merchant (Master toggle that only goes to Exotic Merchant)
-Gui Add, Radio, x20 y135 w400 h30 vSellScrolls Checked%SellScrolls%,  1. Sell ONLY Exotic Scrolls
-Gui Add, Radio, x20 y160 w400 h30 vSellNoGold Checked%SellNoGold%, 2. Sell All But Gold Items
-Gui Add, Radio, x20 y185 w400 h30 vSellAll Checked%SellAll%,  3. Sell All Exotic Items
-Gui Add, Radio, x20 y210 w400 h30 vSellNone Checked%SellNone%, 4. Sell Nothing
-Gui Add, Checkbox, x10 y240 w400 h30 vExoticUpgrades Checked%ExoticUpgrades%, Buy Exotic Upgrades (Requires Sell Exotic Items Checked)
-Gui Add, Checkbox, x10 y270 w400 h30 vBuyEx Checked%BuyEx%, Buy Exotic Chests (Requires Sell Exotic Items Checked)
-Gui Add, Checkbox, x10 y310 w400 h30 vChests Checked%Chests%, Open Chests - Choose an "Exclude from" option from the dropdowns below - Gifts will be opened as well
-Gui Add, Text, x150 y340 w200 h30, Gear Chests
-Gui Add, DropDownList, x10 y360 w400 r5 vGearChestExclude, Exclude All|Don't Exclude Any|Epic and Higher|Legendary and Higher|Mythic||
-Gui Add, Text, x150 y390 w200 h30, Jewel Chests
-Gui Add, DropDownList, x10 y410 w400 r5 vJewelChestExclude, Exclude All|Don't Exclude Any|Diamond and Higher||Opal and Higher|Emerald
-Gui Add, Checkbox, x10 y450 w400 h30 vBless Checked%Bless%, Upgrade Blessings - Will open Oracle chests even without Open Chests selected
-Gui Add, Checkbox, x10 y490 w400 h30 vQuests Checked%Quests%, Claim Quests
-Gui Add, Checkbox, x10 y530 w400 h30 vEvents Checked%Events%, Claim Basic Events
-Gui Add, Checkbox, x10 y570 w400 h30 vMail Checked%Mail%, Check Mail
-Gui Add, Checkbox, x10 y610 w400 h30 vAwaken Checked%Awaken%, Awaken Heroes
-Gui Add, Checkbox, x10 y650 w400 h30 vCrystal Checked%Crystal%, Spend Pickaxes on Crystal
-Gui Add, Checkbox, x10 y690 w400 h30 vChaos Checked%Chaos%, Participate in Chaos Rift
-Gui Add, Checkbox, x10 y730 w600 h30 vPTree Checked%PTree%, Upgrade Personal Tree (Select options on next tab if upgrading)
-Gui Tab, 3 ; Personal Tree Upgrades
-Gui Font, s12, Bold, Tahoma
-Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, CHOOSE PERSONAL TREE UPGRADES THAT YOU WOULD LIKE THE SCRIPT TO ATTEMPT TO PURCHASE
-Gui Add, Text, x0 y60 w900 h30 +0x200 +Center, Choose as many options as you would like
-Gui Font, s9 Bold, Tahoma
-Gui Add, Picture, x200 y100 w600 h600, Images\GuildTreeofLife.png
-Gui Add, Checkbox, x10 y70 w200 h30 vAttDmg, Attribute Damage
-Gui Add, Checkbox, x10 y100 w200 h30 vAttHp, Attribute Health
-Gui Add, Checkbox, x10 y130 w200 h30 vAttArm, Attribute Armor
-Gui Add, Checkbox, x10 y160 w200 h30 vEnergy, Energy Heroes
-Gui Add, Checkbox, x10 y190 w200 h30 vMana, Mana Heroes
-Gui Add, Checkbox, x10 y220 w200 h30 vRage, Rage Heroes
-Gui Add, Checkbox, x10 y250 w200 h30 vMiner, Miner
-Gui Add, Checkbox, x10 y280 w200 h30 vBattle, Battle Cry
-Gui Add, Checkbox, x10 y310 w200 h30 vMainAtt, All Main Attributes
-Gui Add, Checkbox, x10 y340 w200 h30 vPrest, Prestigious
-Gui Add, Checkbox, x10 y370 w200 h30 vFire, Firestone Effect
-Gui Add, Checkbox, x10 y400 w200 h30 vGold, Raining Gold
-Gui Add, Checkbox, x10 y430 w200 h30 vLevel, Hero Level Up Cost
-Gui Add, Checkbox, x10 y460 w200 h30 vGuard, Guardian
-Gui Add, Checkbox, x10 y490 w200 h30 vFist, Fist Fight
-Gui Add, Checkbox, x10 y520 w200 h30 vPrec, Precision
-Gui Add, Checkbox, x10 y550 w200 h30 vMagic, Magic Spells
-Gui Add, Checkbox, x10 y580 w200 h30 vTank, Tank Specialization
-Gui Add, Checkbox, x10 y610 w200 h30 vDamage, Damage Specialization
-Gui Add, Checkbox, x10 y640 w200 h30 vHeal, Healer Specialization
-Gui Font, s11, Bold, Tahoma
-Gui Add, Text, x0 y770 w900 h20 +0x200 +Center, Be aware: The script does try to buy in order listed here (top to bottom)
-Gui Tab, 4 ; QoL/Rare Options
-Gui Add, Picture, x450 y420 w300 h300, Images\dragon.png
-Gui Add, Picture, x0 y0 w900 h300, Images\dragonbanner.png
-Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x0 y330 w900 h30 +0x200 +Center, Rarer Options
-Gui Font, s9 Bold, Tahoma
-Gui Add, Checkbox, x10 y300 w300 h30 vBeer Checked%Beer%, Skip Claiming Beer
-Gui Add, Checkbox, x10 y330 w300 h30 vNoGuild Checked%NoGuild%, Skip All Guild Functions
-Gui Add, Checkbox, x10 y360 w300 h30 vNoEng Checked%NoEng%, Skip Engineer
-Gui Add, Checkbox, x10 y390 w400 h30 vPickaxes Checked%Pickaxes%, Skip Claiming Pickaxes
-Gui Add, Checkbox, x10 y420 w400 h30 vGNotif Checked%GNotif%, Clear Annoying Guild Notifications
-Gui Add, Checkbox, x10 y450 w200 h30 vAlch Checked%Alch%, Skip Alchemy
-Gui Add, Checkbox, x10 y480 w200 h30 vDust Checked%Dust%, Don't Use Dust in Alchemy
-Gui Add, Checkbox, x10 y510 w400 h30 vCoin Checked%Coin%, Use Exotic Coins in Alchemy
-Gui Add, Checkbox, x10 y540 w400 h30 vResearch Checked%Research%, Skip Research
-Gui Add, Checkbox, x10 y570 w400 h30 vSkipOracle Checked%SkipOracle%, Skip Oracle
-Gui Add, Checkbox, x10 y600 w400 h30 vNoHero Checked%NoHero%, Don't Upgrade Heroes
-Gui Add, Checkbox, x10 y630 w400 h30 vNoMap Checked%NoMap%, Don't Do Map Missions/Dailies
-Gui Add, Text, x10 y670 w400 h30, Set End of Loop Delay (In Seconds)
-Gui Add, DropDownList, x10 y690 w500 r5 vDelay, 0|30|60||120|180|240|300|600|900|1200
-Gui Add, Checkbox, x10 y720 w500 h30 vDisableWarning Checked%DisableWarning%, Do not show Steam warning again. (Popup when starting script)
-Gui Tab, 5 ; Other Options
-Gui Font, s15, Bold, Tahoma
-Gui Add, Picture, x500 y300 w300 h500, Images\barkeep.png
-Gui Add, Picture, x10 y600 w200 h200, Images\dragonchest.png
-Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, Other Misc Options
-Gui Font, s9 Bold, Tahoma
-Gui Add, Checkbox, x10 y70 w400 h30 vShop Checked%Shop%, Get Free Gift and Check-In
-Gui Add, Checkbox, x10 y100 w400 h30 vDailyOracle Checked%DailyOracle%, Claim Daily Oracle
-Gui Add, Checkbox, x10 y130 w400 h30 vPVP Checked%PVP%, Complete Arena Battles
-Gui Add, Checkbox, x10 y160 w400 h40 vLiberation Checked%Liberation%, Complete Liberation Missions
-Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x10 y200 w400 h30 +0x200 +Center, ~~ War Machine Upgrades ~~
-Gui Font, s9 Bold, Tahoma
-Gui Add, Text, x10 y230 w400 h30, List is from Left to Right in Garage - Ensure you set each dropdown so you don't waste resources you want to keep
-Gui Add, DropDownList, x10 y260 w400 r9 vUpgradeWM, Don't Upgrade WM's||Upgrade Aegis|Upgrade Cloudfist|Upgrade Curator|Upgrade Earthshatterer|Upgrade FireCracker|Upgrade Fortress|Upgrade Goliath|Upgrade Harvester|Upgrade Hunter|Upgrade Judgement|Upgrade Sentinel|Upgrade Talos|Upgrade Thunderclap
-Gui Add, Text, x10 y290 w400 h30, Choose to upgrade level only, blueprints only, or both!
-Gui Add, DropDownList, x10 y310 w400 r3 vWMOptions, Blueprints Only||Level Only|Level and Blueprints|
-Gui Add, Text, x10 y340 w400 h30, Choose the Blueprint priority (All Options will process from the left to right)
-Gui Add, DropDownList, x10 y370 w400 r10 vBlueprints, Upgrade All||Damage Only|Health Only|Armor Only|Damage and Health|Damage and Armor|Health and Armor
-Gui Font, s15, Bold, Tahoma
-Gui Tab, 6 ; Start Script
-Gui Add, Picture, x0 y0 w900 h350, Images\fslogo.png
-Gui Font, s15, Bold, Tahoma
-Gui Add, Text, BackgroundTrans x0 y300 w900 h30 +0x200 +Center, Press START down below to run the Script
-Gui Font, s9 Bold, Tahoma
-Gui Add, Text, BackgroundTrans x0 y325 w900 h30 +0x200 +Center, Pressing Esc at any time will stop the Script
-Gui Add, Picture, x0 y350 w900 h300, Images\logo.png
-Gui Add, Text, x0 y640 w900 h30 +0x200 +Center, Thank you for using my bot
-Gui Add, Text, x0 y670 w900 h30 +0x200 +Center, Donations are never required, but accepted through Venmo:
-Gui Add, Text, x0 y700 w900 h30 +0x200 +Center, @Spyder85
-Gui Add, Button, x100 y730 w300 h60 gSaveSettings, Save GUI Settings
-Gui Add, Button, x500 y730 w300 h60 +0x200 +Center gButtonStart, Start Script
+    ; --- Tab 1: About ---
+    tab.UseTab(1)
+    myGui.SetFont("s20", "Lucida Handwriting Italic")
+    myGui.AddText("x0 y60 w900 h60 +0x200 +Center", "DEAETH85'S FIRESTONE BOT")
+    myGui.SetFont("s15 Bold", "Tahoma")
+    myGui.AddText("x0 y110 w900 h30 +0x200 +Center", "VERSION 5.0.0")
+    myGui.AddPicture("x415 y615 w60 h60", "Images\giftbox.png")
+    myGui.AddPicture("x150 y140 w600 h300", "Images\Firestone.png")
+    myGui.AddPicture("x150 y70 w60 h60", "Images\logo.png")
+    myGui.AddPicture("x690 y70 w60 h60", "Images\logo.png")
+    myGui.AddText("x0 y460 w900 h30 +0x200 +Center", "INSTRUCTIONS:")
+    myGui.SetFont("s9 Bold", "Tahoma")
+    myGui.AddText("x0 y490 w900 h30 +0x200 +Center", "Set Display to: 1920x1080 Maximized (NOT Fullscreen)")
+    myGui.AddText("x0 y520 w900 h30 +0x200 +Center", "(Recommended) Set Hero Upgrade to Milestone")
+    myGui.AddText("x0 y550 w900 h30 +0x200 +Center", "Make sure you start on main page")
+    myGui.AddText("x0 y580 w900 h30 +0x200 +Center", "Please check the rest of the tabs for specific script options")
+    myGui.AddText("x0 y610 w900 h0 +0x200 +Center", "Personal Tree tab you can select upgrades to have the script purchase for you")
+    myGui.SetFont("s15 Bold", "Tahoma")
+    myGui.AddText("x0 y680 w900 h30 +0x200 +Center", "NOTES:")
+    myGui.SetFont("s9 Bold", "Tahoma")
+    myGui.AddText("x0 y710 w900 h30 +0x200 +Center", "The script takes control of your mouse and will repeat until you close it")
+    myGui.AddText("x0 y740 w900 h30 +0x200 +Center", "You have a 1 minute delay after the Hero Upgrade section to use your mouse w/o risk until script starts over")
+    myGui.AddText("x0 y810 w900 h30 +0x200 +Center", "Credit to @Dandey for the original code")
 
-; Read settings from INI file
-IniRead, Token, settings.ini, CommonOptions, Token
-IniRead, SellEx, settings.ini, CommonOptions, SellEx
-IniRead, SellScrolls, settings.ini, CommonOptions, SellScrolls
-IniRead, SellNoGold, settings.ini, CommonOptions, SellNoGold
-IniRead, SellAll, settings.ini, CommonOptions, SellAll
-IniRead, SellNone, settings.ini, CommonOptions, SellNone
-IniRead, ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
-IniRead, BuyEx, settings.ini, CommonOptions, BuyEx
-IniRead, Chests, settings.ini, CommonOptions, Chests
-IniRead, GearChestExclude, settings.ini, CommonOptions, GearChestExclude
-GuiControl, Choose, GearChestExclude, %GearChestExclude%
-IniRead, JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
-GuiControl, Choose, JewelChestExclude, %JewelChestExclude%
-IniRead, Bless, settings.ini, CommonOptions, Bless
-IniRead, Quests, settings.ini, CommonOptions, Quests
-IniRead, Events, settings.ini, CommonOptions, Events
-IniRead, Mail, settings.ini, CommonOptions, Mail
-IniRead, Awaken, settings.ini, CommonOptions, Awaken
-IniRead, Crystal, settings.ini, CommonOptions, Crystal
-IniRead, Chaos, settings.ini, CommonOptions, Chaos
-IniRead, PTree, settings.ini, CommonOptions, PTree
+    ; --- Tab 2: Common Options ---
+    tab.UseTab(2)
+    myGui.AddPicture("x450 y220 w400 h400", "Images\chest.png")
+    myGui.SetFont("s15 Bold", "Tahoma")
+    myGui.AddText("x0 y70 w900 h30 +0x200 +Center", "CHECK ANY OPTIONAL BOXES TO DIRECT THE SCRIPT")
+    myGui.SetFont("s9 Bold", "Tahoma")
+    global tokenCB := myGui.AddCheckbox("x10 y110 w600 h30", "Use Tavern Tokens/Craft Artifact")
+    tokenCB.Value := !!Token
+    global sellExCB := myGui.AddCheckbox("x10 y150 w600 h30", "Open Exotic Merchant")
+    sellExCB.Value := !!SellEx
+    global sellScrollsRB := myGui.AddRadio("x20 y185 w400 h30", "1. Sell ONLY Exotic Scrolls")
+    sellScrollsRB.Value := !!SellScrolls
+    global sellNoGoldRB := myGui.AddRadio("x20 y215 w400 h30", "2. Sell All But Gold Items")
+    sellNoGoldRB.Value := !!SellNoGold
+    global sellAllRB := myGui.AddRadio("x20 y245 w400 h30", "3. Sell All Exotic Items")
+    sellAllRB.Value := !!SellAll
+    global sellNoneRB := myGui.AddRadio("x20 y275 w400 h30", "4. Sell Nothing")
+    sellNoneRB.Value := !!SellNone
+    global exoticUpgradesCB := myGui.AddCheckbox("x10 y310 w400 h30", "Buy Exotic Upgrades")
+    exoticUpgradesCB.Value := !!ExoticUpgrades
+    global buyExCB := myGui.AddCheckbox("x10 y340 w400 h30", "Buy Exotic Chests")
+    buyExCB.Value := !!BuyEx
+    global chestsCB := myGui.AddCheckbox("x10 y370 w400 h30", "Open Chests")
+    chestsCB.Value := !!Chests
+    myGui.AddText("x150 y400 w200 h30", "Gear Chests")
+    gearChestOptions := ["Exclude All", "Don't Exclude Any", "Epic and Higher", "Legendary and Higher", "Mythic"]
+    gearChestIndex := 1
+    for i, v in gearChestOptions
+        if (v = GearChestExclude) {
+            gearChestIndex := i
+            break
+        }
+    global gearChestDD := myGui.AddDropDownList("x10 y430 w400 r5", gearChestOptions)
+    gearChestDD.Value := gearChestIndex
+    myGui.AddText("x150 y470 w200 h30", "Jewel Chests")
+    jewelChestOptions := ["Exclude All", "Don't Exclude Any", "Diamond and Higher", "Opal and Higher", "Emerald"]
+    jewelChestIndex := 1
+    for i, v in jewelChestOptions
+        if (v = JewelChestExclude) {
+            jewelChestIndex := i
+            break
+        }
+    global jewelChestDD := myGui.AddDropDownList("x10 y500 w400 r5", jewelChestOptions)
+    jewelChestDD.Value := jewelChestIndex
+    global blessCB := myGui.AddCheckbox("x10 y540 w400 h30", "Upgrade Blessings")
+    blessCB.Value := !!Bless
+    global questsCB := myGui.AddCheckbox("x10 y570 w400 h30", "Claim Quests")
+    questsCB.Value := !!Quests
+    global eventsCB := myGui.AddCheckbox("x10 y600 w400 h30", "Claim Basic Events")
+    eventsCB.Value := !!Events
+    global mailCB := myGui.AddCheckbox("x10 y630 w400 h30", "Check Mail")
+    mailCB.Value := !!Mail
+    global awakenCB := myGui.AddCheckbox("x10 y660 w400 h30", "Awaken Heroes")
+    awakenCB.Value := !!Awaken
+    global crystalCB := myGui.AddCheckbox("x10 y690 w400 h30", "Spend Pickaxes on Crystal")
+    crystalCB.Value := !!Crystal
+    global chaosCB := myGui.AddCheckbox("x10 y720 w400 h30", "Participate in Chaos Rift")
+    chaosCB.Value := !!Chaos
+    global ptreeCB := myGui.AddCheckbox("x10 y750 w600 h30", "Upgrade Personal Tree")
+    ptreeCB.Value := !!PTree
 
-IniRead, Beer, settings.ini, QoL/RareOptions, Beer
-IniRead, NoGuild, settings.ini, QoL/RareOptions, NoGuild
-IniRead, NoEng, settings.ini, QoL/RareOptions, NoEng
-IniRead, Pickaxes, settings.ini, QoL/RareOptions, Pickaxes
-IniRead, GNotif, settings.ini, QoL/RareOptions, GNotif
-IniRead, Alch, settings.ini, QoL/RareOptions, Alch
-IniRead, Dust, settings.ini, QoL/RareOptions, Dust
-IniRead, Coin, settings.ini, QoL/RareOptions, Coin
-IniRead, Research, settings.ini, QoL/RareOptions, Research
-IniRead, SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
-IniRead, NoHero, settings.ini, QoL/RareOptions, NoHero
-IniRead, NoMap, settings.ini, QoL/RareOptions, NoMap
-IniRead, Delay, settings.ini, QoL/RareOptions, Delay
-IniRead, DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
+    ; --- Tab 3: Personal Tree Upgrades ---
+    tab.UseTab(3)
+    myGui.SetFont("s12 Bold", "Tahoma")
+    myGui.AddText("x0 y70 w900 h30 +0x200 +Center", "CHOOSE PERSONAL TREE UPGRADES THAT YOU WOULD LIKE THE SCRIPT TO ATTEMPT TO PURCHASE")
+    myGui.AddText("x0 y100 w900 h30 +0x200 +Center", "Choose as many options as you would like")
+    myGui.SetFont("s9 Bold", "Tahoma")
+    myGui.AddPicture("x200 y140 w600 h600", "Images\GuildTreeofLife.png")
+    global attDmgCB := myGui.AddCheckbox("x10 y70 w200 h30", "Attribute Damage")
+    global attHpCB := myGui.AddCheckbox("x10 y100 w200 h30", "Attribute Health")
+    global attArmCB := myGui.AddCheckbox("x10 y130 w200 h30", "Attribute Armor")
+    global energyCB := myGui.AddCheckbox("x10 y160 w200 h30", "Energy Heroes")
+    global manaCB := myGui.AddCheckbox("x10 y190 w200 h30", "Mana Heroes")
+    global rageCB := myGui.AddCheckbox("x10 y220 w200 h30", "Rage Heroes")
+    global minerCB := myGui.AddCheckbox("x10 y250 w200 h30", "Miner")
+    global battleCB := myGui.AddCheckbox("x10 y280 w200 h30", "Battle Cry")
+    global mainAttCB := myGui.AddCheckbox("x10 y310 w200 h30", "All Main Attributes")
+    global prestCB := myGui.AddCheckbox("x10 y340 w200 h30", "Prestigious")
+    global fireCB := myGui.AddCheckbox("x10 y370 w200 h30", "Firestone Effect")
+    global goldCB := myGui.AddCheckbox("x10 y400 w200 h30", "Raining Gold")
+    global levelCB := myGui.AddCheckbox("x10 y430 w200 h30", "Hero Level Up Cost")
+    global guardCB := myGui.AddCheckbox("x10 y460 w200 h30", "Guardian")
+    global fistCB := myGui.AddCheckbox("x10 y490 w200 h30", "Fist Fight")
+    global precCB := myGui.AddCheckbox("x10 y520 w200 h30", "Precision")
+    global magicCB := myGui.AddCheckbox("x10 y550 w200 h30", "Magic Spells")
+    global tankCB := myGui.AddCheckbox("x10 y580 w200 h30", "Tank Specialization")
+    global damageCB := myGui.AddCheckbox("x10 y610 w200 h30", "Damage Specialization")
+    global healCB := myGui.AddCheckbox("x10 y640 w200 h30", "Healer Specialization")
+    myGui.SetFont("s11 Bold", "Tahoma")
+    myGui.AddText("x0 y770 w900 h20 +0x200 +Center", "Be aware: The script does try to buy in order listed here (top to bottom)")
 
-IniRead, Shop, settings.ini, OtherOptions, Shop
-IniRead, DailyOracle, settings.ini, OtherOptions, DailyOracle
-IniRead, PVP, settings.ini, OtherOptions, PVP
-IniRead, LiberationStars, settings.ini, OtherOptions, LiberationStars
-GuiControl, Choose, LiberationStars, %LiberationStars%
-IniRead, UpgradeWM, settings.ini, OtherOptions, UpgradeWM
-GuiControl, Choose, UpgradeWM, %UpgradeWM%
-IniRead, WMOptions, settings.ini, OtherOptions, WMOptions
-GuiControl, Choose, WMOptions, %WMOptions%
-IniRead, Blueprints, settings.ini, OtherOptions, Blueprints
-GuiControl, Choose, Blueprints, %Blueprints%
+    ; --- Tab 4: QoL/Rare Options ---
+    tab.UseTab(4)
+    myGui.AddPicture("x450 y460 w300 h300", "Images\dragon.png")
+    myGui.AddPicture("x0 y40 w900 h300", "Images\dragonbanner.png")
+    myGui.SetFont("s15 Bold", "Tahoma")
+    myGui.AddText("x0 y370 w900 h30 +0x200 +Center", "Rarer Options")
+    myGui.SetFont("s9 Bold", "Tahoma")
+    global beerCB := myGui.AddCheckbox("x10 y400 w300 h30", "Skip Claiming Beer")
+    beerCB.Value := !!Beer
+    global noGuildCB := myGui.AddCheckbox("x10 y430 w300 h30", "Skip All Guild Functions")
+    noGuildCB.Value := !!NoGuild
+    global noEngCB := myGui.AddCheckbox("x10 y460 w300 h30", "Skip Engineer")
+    noEngCB.Value := !!NoEng
+    global pickaxesCB := myGui.AddCheckbox("x10 y490 w400 h30", "Skip Claiming Pickaxes")
+    pickaxesCB.Value := !!Pickaxes
+    global gnotifCB := myGui.AddCheckbox("x10 y520 w400 h30", "Clear Annoying Guild Notifications")
+    gnotifCB.Value := !!GNotif
+    global alchCB := myGui.AddCheckbox("x10 y550 w200 h30", "Skip Alchemy")
+    alchCB.Value := !!Alch
+    global dustCB := myGui.AddCheckbox("x10 y580 w200 h30", "Don't Use Dust in Alchemy")
+    dustCB.Value := !!Dust
+    global coinCB := myGui.AddCheckbox("x10 y610 w400 h30", "Use Exotic Coins in Alchemy")
+    coinCB.Value := !!Coin
+    global researchCB := myGui.AddCheckbox("x10 y640 w400 h30", "Skip Research")
+    researchCB.Value := !!Research
+    global skipOracleCB := myGui.AddCheckbox("x10 y670 w400 h30", "Skip Oracle")
+    skipOracleCB.Value := !!SkipOracle
+    global noHeroCB := myGui.AddCheckbox("x10 y700 w400 h30", "Don't Upgrade Heroes")
+    noHeroCB.Value := !!NoHero
+    global noMapCB := myGui.AddCheckbox("x10 y730 w400 h30", "Don't Do Map Missions/Dailies")
+    noMapCB.Value := !!NoMap
+    myGui.AddText("x10 y760 w400 h30", "Set End of Loop Delay (In Seconds)")
+    delayOptions := ["0", "30", "60", "120", "180", "240", "300", "600", "900", "1200"]
+    delayIndex := 1
+    for i, v in delayOptions
+        if (v = Delay) {
+            delayIndex := i
+            break
+        }
+    global delayDD := myGui.AddDropDownList("x10 y790 w500 r5", delayOptions)
+    delayDD.Value := delayIndex
+    global disableWarningCB := myGui.AddCheckbox("x10 y820 w500 h30", "Do not show Steam warning again. (Popup when starting script)")
+    disableWarningCB.Value := !!DisableWarning
 
-Gui Show, w900 h800, Deaeth85's Firestone Bot - V4.1.2
-GuiControlGet, Checked, , DisableWarning
-If (Checked = 0){
-MsgBox, 48, Warning, Please note this Bot will ONLY work reliably with the game launched via Steam
+    ; --- Tab 5: Other Options ---
+    tab.UseTab(5)
+    myGui.SetFont("s15 Bold", "Tahoma")
+    myGui.AddPicture("x500 y340 w300 h500", "Images\barkeep.png")
+    myGui.AddPicture("x10 y640 w200 h200", "Images\dragonchest.png")
+    myGui.AddText("x0 y70 w900 h30 +0x200 +Center", "Other Misc Options")
+    myGui.SetFont("s9 Bold", "Tahoma")
+    global shopCB := myGui.AddCheckbox("x10 y100 w400 h30", "Get Free Gift and Check-In")
+    shopCB.Value := !!Shop
+    global dailyOracleCB := myGui.AddCheckbox("x10 y130 w400 h30", "Claim Daily Oracle")
+    dailyOracleCB.Value := !!DailyOracle
+    global pvpCB := myGui.AddCheckbox("x10 y160 w400 h30", "Complete Arena Battles")
+    pvpCB.Value := !!PVP
+    global liberationCB := myGui.AddCheckbox("x10 y190 w400 h40", "Complete Liberation Missions")
+    liberationCB.Value := !!Liberation
+    myGui.SetFont("s15 Bold", "Tahoma")
+    myGui.AddText("x10 y230 w400 h30 +0x200 +Center", "~~ War Machine Upgrades ~~")
+    myGui.SetFont("s9 Bold", "Tahoma")
+    myGui.AddText("x10 y260 w400 h30", "List is from Left to Right in Garage - Ensure you set each dropdown so you don't waste resources you want to keep")
+    upgradeWMOptions := ["Don't Upgrade WM's", "Upgrade Aegis", "Upgrade Cloudfist", "Upgrade Curator", "Upgrade Earthshatterer", "Upgrade FireCracker", "Upgrade Fortress", "Upgrade Goliath", "Upgrade Harvester", "Upgrade Hunter", "Upgrade Judgement", "Upgrade Sentinel", "Upgrade Talos", "Upgrade Thunderclap"]
+    upgradeWMIndex := 1
+    for i, v in upgradeWMOptions
+        if (v = UpgradeWM) {
+            upgradeWMIndex := i
+            break
+        }
+    global upgradeWMDD := myGui.AddDropDownList("x10 y290 w400 r9", upgradeWMOptions)
+    upgradeWMDD.Value := upgradeWMIndex
+    myGui.AddText("x10 y320 w400 h30", "Choose to upgrade level only, blueprints only, or both!")
+    wmOptionsOptions := ["Blueprints Only", "Level Only", "Level and Blueprints"]
+    wmOptionsIndex := 1
+    for i, v in wmOptionsOptions
+        if (v = WMOptions) {
+            wmOptionsIndex := i
+            break
+        }
+    global wmOptionsDD := myGui.AddDropDownList("x10 y350 w400 r3", wmOptionsOptions)
+    wmOptionsDD.Value := wmOptionsIndex
+    myGui.AddText("x10 y380 w400 h30", "Choose the Blueprint priority (All Options will process from the left to right)")
+    blueprintsOptions := ["Upgrade All", "Damage Only", "Health Only", "Armor Only", "Damage and Health", "Damage and Armor", "Health and Armor"]
+    blueprintsIndex := 1
+    for i, v in blueprintsOptions
+        if (v = Blueprints) {
+            blueprintsIndex := i
+            break
+        }
+    global blueprintsDD := myGui.AddDropDownList("x10 y410 w400 r10", blueprintsOptions)
+    blueprintsDD.Value := blueprintsIndex
+    myGui.AddText("x10 y440 w400 h30", "Talents 450")
+    talents450Options := ["None", "Option1", "Option2"]
+    talents450Index := 1
+    for i, v in talents450Options
+        if (v = Talents450) {
+            talents450Index := i
+            break
+        }
+    
+    ; --- Tab 6: Script Start ---
+    tab.UseTab(6)
+    myGui.AddPicture("x0 y0 w900 h250", "Images\fslogo.png")
+    myGui.SetFont("s15 Bold", "Tahoma")
+    myGui.AddText("x0 y260 w900 h30 +0x200 +Center", "Press START down below to run the Script")
+    myGui.SetFont("s9 Bold", "Tahoma")
+    myGui.AddText("x0 y290 w900 h30 +0x200 +Center", "Pressing Esc at any time will stop the Script")
+    myGui.AddPicture("x0 y330 w900 h250", "Images\logo.png")
+    myGui.AddText("x0 y600 w900 h30 +0x200 +Center", "Thank you for using my bot")
+    myGui.AddText("x0 y630 w900 h30 +0x200 +Center", "Donations are never required, but accepted through Venmo:")
+    myGui.AddText("x0 y660 w900 h30 +0x200 +Center", "@Spyder85")
+    myGui.AddButton("x100 y710 w300 h60", "Save GUI Settings").OnEvent("Click", SaveSettings)
+    myGui.AddButton("x500 y710 w300 h60 +0x200 +Center", "Start Script").OnEvent("Click", ButtonStart)
+
+    tab.UseTab()
+    myGui.OnEvent("Close", (*) => ExitApp())
+    myGui.Show("w900 h800")
 }
-Return
 
-SaveSettings:
-    ; Common Options
-    IniWrite, % Token, settings.ini, CommonOptions, Token
-    IniWrite, % SellEx, settings.ini, CommonOptions, SellEx
-    IniWrite, % SellScrolls, settings.ini, CommonOptions, SellScrolls
-    IniWrite, % SellNoGold, settings.ini, CommonOptions, SellNoGold
-    IniWrite, % SellAll, settings.ini, CommonOptions, SellAll
-    IniWrite, % SellNone, settings.ini, CommonOptions, SellNone
-    IniWrite, % ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
-    IniWrite, % BuyEx, settings.ini, CommonOptions, BuyEx
-    IniWrite, % Chests, settings.ini, CommonOptions, Chests
-    IniWrite, % GearChestExclude, settings.ini, CommonOptions, GearChestExclude
-    IniWrite, % JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
-    IniWrite, % Bless, settings.ini, CommonOptions, Bless
-    IniWrite, % Quests, settings.ini, CommonOptions, Quests
-    IniWrite, % Events, settings.ini, CommonOptions, Events
-    IniWrite, % Mail, settings.ini, CommonOptions, Mail
-    IniWrite, % Awaken, settings.ini, CommonOptions, Awaken
-    IniWrite, % Crystal, settings.ini, CommonOptions, Crystal
-    IniWrite, % Chaos, settings.ini, CommonOptions, Chaos
-    IniWrite, % PTree, settings.ini, CommonOptions, PTree
+SaveSettings(*) {
+    ; --- CommonOptions ---
+    IniWrite(tokenCB.Value, "settings.ini", "CommonOptions", "Token")
+    IniWrite(sellExCB.Value, "settings.ini", "CommonOptions", "SellEx")
+    IniWrite(sellScrollsRB.Value, "settings.ini", "CommonOptions", "SellScrolls")
+    IniWrite(sellNoGoldRB.Value, "settings.ini", "CommonOptions", "SellNoGold")
+    IniWrite(sellAllRB.Value, "settings.ini", "CommonOptions", "SellAll")
+    IniWrite(sellNoneRB.Value, "settings.ini", "CommonOptions", "SellNone")
+    IniWrite(exoticUpgradesCB.Value, "settings.ini", "CommonOptions", "ExoticUpgrades")
+    IniWrite(buyExCB.Value, "settings.ini", "CommonOptions", "BuyEx")
+    IniWrite(chestsCB.Value, "settings.ini", "CommonOptions", "Chests")
+    IniWrite(gearChestDD.Text, "settings.ini", "CommonOptions", "GearChestExclude")
+    IniWrite(jewelChestDD.Text, "settings.ini", "CommonOptions", "JewelChestExclude")
+    IniWrite(blessCB.Value, "settings.ini", "CommonOptions", "Bless")
+    IniWrite(questsCB.Value, "settings.ini", "CommonOptions", "Quests")
+    IniWrite(eventsCB.Value, "settings.ini", "CommonOptions", "Events")
+    IniWrite(mailCB.Value, "settings.ini", "CommonOptions", "Mail")
+    IniWrite(awakenCB.Value, "settings.ini", "CommonOptions", "Awaken")
+    IniWrite(crystalCB.Value, "settings.ini", "CommonOptions", "Crystal")
+    IniWrite(chaosCB.Value, "settings.ini", "CommonOptions", "Chaos")
+    IniWrite(ptreeCB.Value, "settings.ini", "CommonOptions", "PTree")
+    ; --- QoL/RareOptions ---
+    IniWrite(beerCB.Value, "settings.ini", "QoL/RareOptions", "Beer")
+    IniWrite(noGuildCB.Value, "settings.ini", "QoL/RareOptions", "NoGuild")
+    IniWrite(noEngCB.Value, "settings.ini", "QoL/RareOptions", "NoEng")
+    IniWrite(pickaxesCB.Value, "settings.ini", "QoL/RareOptions", "Pickaxes")
+    IniWrite(gnotifCB.Value, "settings.ini", "QoL/RareOptions", "GNotif")
+    IniWrite(alchCB.Value, "settings.ini", "QoL/RareOptions", "Alch")
+    IniWrite(dustCB.Value, "settings.ini", "QoL/RareOptions", "Dust")
+    IniWrite(coinCB.Value, "settings.ini", "QoL/RareOptions", "Coin")
+    IniWrite(researchCB.Value, "settings.ini", "QoL/RareOptions", "Research")
+    IniWrite(skipOracleCB.Value, "settings.ini", "QoL/RareOptions", "SkipOracle")
+    IniWrite(noHeroCB.Value, "settings.ini", "QoL/RareOptions", "NoHero")
+    IniWrite(noMapCB.Value, "settings.ini", "QoL/RareOptions", "NoMap")
+    IniWrite(delayDD.Text, "settings.ini", "QoL/RareOptions", "Delay")
+    IniWrite(disableWarningCB.Value, "settings.ini", "QoL/RareOptions", "DisableWarning")
+    ; --- OtherOptions ---
+    IniWrite(shopCB.Value, "settings.ini", "OtherOptions", "Shop")
+    IniWrite(dailyOracleCB.Value, "settings.ini", "OtherOptions", "DailyOracle")
+    IniWrite(pvpCB.Value, "settings.ini", "OtherOptions", "PVP")
+    IniWrite(liberationCB.Value, "settings.ini", "OtherOptions", "Liberation")
+    IniWrite(upgradeWMDD.Text, "settings.ini", "OtherOptions", "UpgradeWM")
+    IniWrite(wmOptionsDD.Text, "settings.ini", "OtherOptions", "WMOptions")
+    IniWrite(blueprintsDD.Text, "settings.ini", "OtherOptions", "Blueprints")
+    MsgBox "Gui Settings Saved", "Gui Settings"
+}
 
-    ; QoL/Rare Options
-    IniWrite, % Beer, settings.ini, QoL/RareOptions, Beer
-    IniWrite, % NoGuild, settings.ini, QoL/RareOptions, NoGuild
-    IniWrite, % NoEng, settings.ini, QoL/RareOptions, NoEng
-    IniWrite, % Pickaxes, settings.ini, QoL/RareOptions, Pickaxes
-    IniWrite, % GNotif, settings.ini, QoL/RareOptions, GNotif
-    IniWrite, % Alch, settings.ini, QoL/RareOptions, Alch
-    IniWrite, % Dust, settings.ini, QoL/RareOptions, Dust
-    IniWrite, % Coin, settings.ini, QoL/RareOptions, Coin
-    IniWrite, % Research, settings.ini, QoL/RareOptions, Research
-    IniWrite, % SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
-    IniWrite, % NoHero, settings.ini, QoL/RareOptions, NoHero
-    IniWrite, % NoMap, settings.ini, QoL/RareOptions, NoMap
-    IniWrite, % Delay, settings.ini, QoL/RareOptions, Delay
-    IniWrite, % DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
+ButtonStart(*) {
+    SetTimer(MainScript, 1000)
+}
 
-    ; Other Options
-    IniWrite, % Shop, settings.ini, OtherOptions, Shop
-    IniWrite, % DailyOracle, settings.ini, OtherOptions, DailyOracle
-    IniWrite, % PVP, settings.ini, OtherOptions, PVP
-    IniWrite, % Liberation, settings.ini, OtherOptions, Liberation
-    IniWrite, % UpgradeWM, settings.ini, OtherOptions, UpgradeWM
-    IniWrite, % WMOptions, settings.ini, OtherOptions, WMOptions
-    IniWrite, % Blueprints, settings.ini, OtherOptions, Blueprints
-
-    GuiControlGet, Token, , Token
-    GuiControlGet, SellEx, , SellEx
-    GuiControlGet, SellScrolls, , SellScrolls
-    GuiControlGet, SellNoGold, , SellNoGold
-    GuiControlGet, SellAll, , SellAll
-    GuiControlGet, SellNone, , SellNone
-    GuiControlGet, ExoticUpgrades, , ExoticUpgrades
-    GuiControlGet, BuyEx, , BuyEx
-    GuiControlGet, Chests, , Chests
-    GuiControlGet, GearChestExclude, , GearChestExclude
-    GuiControlGet, JewelChestExclude, , JewelChestExclude
-    GuiControlGet, Bless, , Bless
-    GuiControlGet, Quests, , Quests
-    GuiControlGet, Events, , Events
-    GuiControlGet, Mail, , Mail
-    GuiControlGet, Awaken, , Awaken
-    GuiControlGet, Crystal, , Crystal
-    GuiControlGet, Chaos, , Chaos
-    GuiControlGet, PTree, , PTree
-
-    GuiControlGet, Beer, , Beer
-    GuiControlGet, NoGuild, , NoGuild
-    GuiControlGet, NoEng, , NoEng
-    GuiControlGet, Pickaxes, , Pickaxes
-    GuiControlGet, GNotif, , GNotif
-    GuiControlGet, Alch, , Alch
-    GuiControlGet, Dust, , Dust
-    GuiControlGet, Coin, , Coin
-    GuiControlGet, Research, , Research
-    GuiControlGet, SkipOracle, , SkipOracle
-    GuiControlGet, NoHero, , NoHero
-    GuiControlGet, NoMap, , NoMap
-    GuiControlGet, Delay, , Delay
-    GuiControlGet, DisableWarning, , DisableWarning
-
-    GuiControlGet, Shop, , Shop
-    GuiControlGet, DailyOracle, , DailyOracle
-    GuiControlGet, PVP, , PVP
-    GuiControlGet, Liberation, , Liberation
-    GuiControlGet, UpgradeWM, , UpgradeWM
-    GuiControlGet, WMOptions, , WMOptions
-    GuiControlGet, Blueprints, , Blueprints
-
-    IniWrite, % Token, settings.ini, CommonOptions, Token
-    IniWrite, % SellEx, settings.ini, CommonOptions, SellEx
-    IniWrite, % SellScrolls, settings.ini, CommonOptions, SellScrolls
-    IniWrite, % SellNoGold, settings.ini, CommonOptions, SellNoGold
-    IniWrite, % SellAll, settings.ini, CommonOptions, SellAll
-    IniWrite, % SellNone, settings.ini, CommonOptions, SellNone
-    IniWrite, % ExoticUpgrades, settings.ini, CommonOptions, ExoticUpgrades
-    IniWrite, % BuyEx, settings.ini, CommonOptions, BuyEx
-    IniWrite, % Chests, settings.ini, CommonOptions, Chests
-    IniWrite, % GearChestExclude, settings.ini, CommonOptions, GearChestExclude
-    IniWrite, % JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
-    IniWrite, % Bless, settings.ini, CommonOptions, Bless
-    IniWrite, % Quests, settings.ini, CommonOptions, Quests
-    IniWrite, % Events, settings.ini, CommonOptions, Events
-    IniWrite, % Mail, settings.ini, CommonOptions, Mail
-    IniWrite, % Awaken, settings.ini, CommonOptions, Awaken
-    IniWrite, % Crystal, settings.ini, CommonOptions, Crystal
-    IniWrite, % Chaos, settings.ini, CommonOptions, Chaos
-    IniWrite, % PTree, settings.ini, CommonOptions, PTree
-
-    IniWrite, % Beer, settings.ini, QoL/RareOptions, Beer
-    IniWrite, % NoGuild, settings.ini, QoL/RareOptions, NoGuild
-    IniWrite, % NoEng, settings.ini, QoL/RareOptions, NoEng
-    IniWrite, % Pickaxes, settings.ini, QoL/RareOptions, Pickaxes
-    IniWrite, % GNotif, settings.ini, QoL/RareOptions, GNotif
-    IniWrite, % Alch, settings.ini, QoL/RareOptions, Alch
-    IniWrite, % Dust, settings.ini, QoL/RareOptions, Dust
-    IniWrite, % Coin, settings.ini, QoL/RareOptions, Coin
-    IniWrite, % Research, settings.ini, QoL/RareOptions, Research
-    IniWrite, % SkipOracle, settings.ini, QoL/RareOptions, SkipOracle
-    IniWrite, % NoHero, settings.ini, QoL/RareOptions, NoHero
-    IniWrite, % NoMap, settings.ini, QoL/RareOptions, NoMap
-    IniWrite, % Delay, settings.ini, QoL/RareOptions, Delay
-    IniWrite, % DisableWarning, settings.ini, QoL/RareOptions, DisableWarning
-
-    IniWrite, % Shop, settings.ini, OtherOptions, Shop
-    IniWrite, % DailyOracle, settings.ini, OtherOptions, DailyOracle
-    IniWrite, % PVP, settings.ini, OtherOptions, PVP
-    IniWrite, % Liberation, settings.ini, OtherOptions, Liberation
-    IniWrite, % UpgradeWM, settings.ini, OtherOptions, UpgradeWM
-    IniWrite, % WMOptions, settings.ini, OtherOptions, WMOptions
-    IniWrite, % Blueprints, settings.ini, OtherOptions, Blueprints
-    MsgBox, , Gui Settings, Gui Settings Saved
-    Return
-
-ButtonStart:
-SetTimer, loop, 1000
-Return
+; Call ShowGui to initialize and display the GUI when the script starts
+ShowGui()

@@ -1,208 +1,211 @@
-; ExoticMerchant.ahk
+; ExoticMerchant.ahk (AHK v2)
 
-#Include Functions\subFunctions\BuyExotic.ahk
-#Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\ExoticUpgrades.ahk
-#Include Functions\util.ahk
+#Include util.ahk
+#Include subFunctions\BuyExotic.ahk
+#Include subFunctions\BigClose.ahk
+#Include subFunctions\ExoticUpgrades.ahk
 
-ExoticMerchant(){
+; Use global control objects from Gui.ahk
+global sellScrollsRB, sellAllRB, sellNoGoldRB, exoticUpgradesCB, buyExCB
+
+ExoticMerchant() {
+    global sellScrollsRB, sellAllRB, sellNoGoldRB
+    WinActivate("ahk_exe Firestone.exe ahk_class UnityWndClass")
     ; Open exotic merchant
     MoveMouseRel(1459, 650)
-    Sleep, 1000
-    Click
-    Sleep, 1500
-    ; check if Sell Scrolls is checked
-    GuiControlGet, Checked, , SellScrolls,
-    If (Checked = 1){
-        Goto, SellStart
-    } Else {
-        ; check if Sell All Exotic Items is checked
-        GuiControlGet, Checked, , SellAll,
-        If (Checked = 1){
-            Goto, SellStart
-        } Else {
-            ; check if Sell All But Keep Gold Items is checked
-            GuiControlGet, Checked, , SellNoGold,
-            If (Checked = 1){
-                Goto, SellStart
-            } Else {
-                Goto, ExChecks
-            }
+    Sleep(1000)
+    Click()
+    Sleep(1500)
+
+    ; Check which selling option is checked
+    if (sellScrollsRB.Value = 1) {
+        SellStart()
+        ExChecks()
+        return
+    }
+    if (sellAllRB.Value = 1) {
+        SellStart()
+        ExChecks()
+        return
+    }
+    if (sellNoGoldRB.Value = 1) {
+        SellStart()
+        ExChecks()
+        return
+    }
+    ExChecks()
+}
+
+SellStart() {
+    global sellAllRB, sellNoGoldRB
+    ; Sell scroll of speed
+    result := PixelSearchRel(&FoundX, &FoundY, 1026, 596, 1074, 636, 0x0AA008, 3)
+    if (result = 0) {
+        MoveMouseRel(959, 596)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+    ; Sell scroll of damage
+    result := PixelSearchRel(&FoundX, &FoundY, 1350, 598, 1401, 634, 0x0AA008, 3)
+    if (result = 0) {
+        MoveMouseRel(1280, 601)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+    ; Sell scroll of health
+    result := PixelSearchRel(&FoundX, &FoundY, 1678, 596, 1724, 635, 0x0AA008, 3)
+    if (result = 0) {
+        MoveMouseRel(1595, 592)
+        Sleep(1000)
+        Click()
+        Sleep(1000)
+    }
+
+    ; Sell ALL exotic items if checked
+    if (sellAllRB.Value = 1) {
+        ; Sell midas' touch
+        result := PixelSearchRel(&FoundX, &FoundY, 1022, 912, 1078, 951, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(962, 908)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell pouch of gold
+        result := PixelSearchRel(&FoundX, &FoundY, 1336, 916, 1399, 956, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(1278, 910)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell bucket of gold
+        result := PixelSearchRel(&FoundX, &FoundY, 1663, 917, 1720, 950, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(1602, 911)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Scroll to bottom
+        Loop 35 {
+            Send("{WheelDown}")
+            Sleep(200)
+        }
+        ; Sell crate of gold
+        result := PixelSearchRel(&FoundX, &FoundY, 1026, 298, 1081, 338, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(967, 307)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell barrel of gold
+        result := PixelSearchRel(&FoundX, &FoundY, 1341, 296, 1398, 335, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(1280, 313)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell drums of war
+        result := PixelSearchRel(&FoundX, &FoundY, 1678, 298, 1721, 332, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(1611, 313)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell dragon armor
+        result := PixelSearchRel(&FoundX, &FoundY, 1024, 616, 1078, 648, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(954, 616)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell guardian's rune
+        result := PixelSearchRel(&FoundX, &FoundY, 1346, 614, 1399, 651, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(1269, 608)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell totem of agony
+        result := PixelSearchRel(&FoundX, &FoundY, 1667, 616, 1722, 652, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(1591, 610)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell totem of annihilation
+        result := PixelSearchRel(&FoundX, &FoundY, 1030, 930, 1078, 975, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(951, 934)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+    } else if (sellNoGoldRB.Value = 1) {
+        ; Sell All But Keep Gold Items if checked
+        Loop 35 {
+            Send("{WheelDown}")
+            Sleep(200)
+        }
+        ; Sell drums of war
+        result := PixelSearchRel(&FoundX, &FoundY, 1678, 298, 1721, 332, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(1611, 313)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell dragon armor
+        result := PixelSearchRel(&FoundX, &FoundY, 1024, 616, 1078, 648, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(954, 616)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell guardian's rune
+        result := PixelSearchRel(&FoundX, &FoundY, 1346, 614, 1399, 651, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(1269, 608)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell totem of agony
+        result := PixelSearchRel(&FoundX, &FoundY, 1667, 616, 1722, 652, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(1591, 610)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+        }
+        ; Sell totem of annihilation
+        result := PixelSearchRel(&FoundX, &FoundY, 1030, 930, 1078, 975, 0x0AA008, 3)
+        if (result = 0) {
+            MoveMouseRel(951, 934)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
         }
     }
-    SellStart:
-        ; sell scroll of speed
-        PixelSearchRel(FoundX, FoundY, 1026, 596, 1074, 636, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(959, 596)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        ; sell scroll of damage
-        PixelSearchRel(FoundX, FoundY, 1350, 598, 1401, 634, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1280, 601)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        ; sell scroll of health
-        PixelSearchRel(FoundX, FoundY, 1678, 596, 1724, 635, 0x0AA008, 3)
-        If (ErrorLevel = 0){
-            MoveMouseRel(1595, 592)
-            Sleep, 1000
-            Click
-            Sleep, 1000
-        }
-        ; check if Sell ALL exotic items is checked
-        GuiControlGet, Checked, , SellAll,
-        If (Checked = 1){
-            ; sell midas' touch
-            PixelSearchRel(FoundX, FoundY, 1022, 912, 1078, 951, 0x0AA008, 3)
-            If (ErrorLevel = 0){
-                MoveMouseRel(962, 908)
-                Sleep, 1000
-                Click
-                Sleep, 1000
-            }
-            ; sell pouch of gold
-            PixelSearchRel(FoundX, FoundY, 1336, 916, 1399, 956, 0x0AA008, 3)
-            If (ErrorLevel = 0){
-                MoveMouseRel(1278, 910)
-                Sleep, 1000
-                Click
-                Sleep, 1000
-            }
-            ; sell bucket of gold
-            PixelSearchRel(FoundX, FoundY, 1663, 917, 1720, 950, 0x0AA008, 3)
-            If (ErrorLevel = 0){
-                MoveMouseRel(1602, 911)
-                Sleep, 1000
-                Click
-                Sleep, 1000
-            }
-            ; scroll to bottom
-            Loop, 35{
-                Send, {WheelDown}
-                Sleep, 200
-            }
-            ; sell crate of gold
-            PixelSearchRel(FoundX, FoundY, 1026, 298, 1081, 338, 0x0AA008, 3)
-            If (ErrorLevel = 0){
-                MoveMouseRel(967, 307)
-                Sleep, 1000
-                Click
-                Sleep, 1000
-            }
-            ; sell barrel of gold
-            PixelSearchRel(FoundX, FoundY, 1341, 296, 1398, 335, 0x0AA008, 3)
-            If (ErrorLevel = 0){
-                MoveMouseRel(1280, 313)
-                Sleep, 1000
-                Click
-                Sleep, 1000
-            }
-            ; sell drums of war
-            PixelSearchRel(FoundX, FoundY, 1678, 298, 1721, 332, 0x0AA008, 3)
-            If (ErrorLevel = 0){
-                MoveMouseRel(1611, 313)
-                Sleep, 1000
-                Click
-                Sleep, 1000
-            }
-            ; sell dragon armor
-            PixelSearchRel(FoundX, FoundY, 1024, 616, 1078, 648, 0x0AA008, 3)
-            If (ErrorLevel = 0){
-                MoveMouseRel(954, 616)
-                Sleep, 1000
-                Click
-                Sleep, 1000
-            }
-            ; sell guardian's rune
-            PixelSearchRel(FoundX, FoundY, 1346, 614, 1399, 651, 0x0AA008, 3)
-            If (ErrorLevel = 0){
-                MoveMouseRel(1269, 608)
-                Sleep, 1000
-                Click
-                Sleep, 1000
-            }
-            ; sell totem of agony
-            PixelSearchRel(FoundX, FoundY, 1667, 616, 1722, 652, 0x0AA008, 3)
-            If (ErrorLevel = 0){
-                MoveMouseRel(1591, 610)
-                Sleep, 1000
-                Click
-                Sleep, 1000
-            }
-            ; sell totem of annihilation
-            PixelSearchRel(FoundX, FoundY, 1030, 930, 1078, 975, 0x0AA008, 3)
-            If (ErrorLevel = 0){
-                MoveMouseRel(951, 934)
-                Sleep, 1000
-                Click
-                Sleep, 1000
-            }
-        } Else {
-            ; check if Sell All But Keep Gold Items is checked
-            GuiControlGet, Checked, , SellNoGold,
-            If (Checked = 1){
-                Loop, 35{
-                    Send, {WheelDown}
-                    Sleep, 200
-                }
-                ; sell drums of war
-                PixelSearchRel(FoundX, FoundY, 1678, 298, 1721, 332, 0x0AA008, 3)
-                If (ErrorLevel = 0){
-                    MoveMouseRel(1611, 313)
-                    Sleep, 1000
-                    Click
-                    Sleep, 1000
-                }
-                ; sell dragon armor
-                PixelSearchRel(FoundX, FoundY, 1024, 616, 1078, 648, 0x0AA008, 3)
-                If (ErrorLevel = 0){
-                    MoveMouseRel(954, 616)
-                    Sleep, 1000
-                    Click
-                    Sleep, 1000
-                }
-                ; sell guardian's rune
-                PixelSearchRel(FoundX, FoundY, 1346, 614, 1399, 651, 0x0AA008, 3)
-                If (ErrorLevel = 0){
-                    MoveMouseRel(1269, 608)
-                    Sleep, 1000
-                    Click
-                    Sleep, 1000
-                }
-                ; sell totem of agony
-                PixelSearchRel(FoundX, FoundY, 1667, 616, 1722, 652, 0x0AA008, 3)
-                If (ErrorLevel = 0){
-                    MoveMouseRel(1591, 610)
-                    Sleep, 1000
-                    Click
-                    Sleep, 1000
-                }
-                ; sell totem of annihilation
-                PixelSearchRel(FoundX, FoundY, 1030, 930, 1078, 975, 0x0AA008, 3)
-                If (ErrorLevel = 0){
-                    MoveMouseRel(951, 934)
-                    Sleep, 1000
-                    Click
-                    Sleep, 1000
-                }
-            }
-        }
-    ExChecks:
-        ; check if Exotic Upgrades is checked
-        GuiControlGet, Checked, , ExoticUpgrades
-        If (Checked = 1){
-            ExoticUpgrades()
-        }
-        ; check if buy exotic chests is checked
-        GuiControlGet, Checked, , BuyEx,
-        If (Checked = 1) {
-            BuyExotic()
-        }
-        BigClose()
+}
+
+ExChecks() {
+    global exoticUpgradesCB, buyExCB
+    if (exoticUpgradesCB.Value = 1) {
+        ExoticUpgrades()
     }
+    if (buyExCB.Value = 1) {
+        BuyExotic()
+    }
+    BigClose()
+}

@@ -1,11 +1,11 @@
-; BigClose.ahk
+; BigClose.ahk (AHK v2)
 
-; Function to close menus
-BigClose(){
-    ; Use resolution-independent close (top-right X)
-    MoveMouseRel(1851, 84)
-    Sleep, 1000
-    Click
-    Sleep, 1500
-    Return
+#Include ..\util.ahk
+
+BigClose() {
+    ; Move mouse to close button and click (update coordinates as needed)
+    MoveMouseRel(1800, 100)
+    Sleep(500)
+    Click()
+    Sleep(500)
 }

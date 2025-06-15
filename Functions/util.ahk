@@ -1,116 +1,110 @@
-; util.ahk - Utility functions for Deaeth85 Firestone Bot
+; util.ahk - Utility functions for Deaeth85 Firestone Bot (AHK v2)
 
-#NoEnv
-#SingleInstance, Force
-SendMode, Input
-SetBatchLines, -1
-SetWorkingDir, %A_ScriptDir%
+#SingleInstance Force
+SendMode "Input"
+SetWorkingDir A_ScriptDir
 
 ; Skips a function if the checkbox is checked
-SkipIfChecked(checkbox, func){
-    GuiControlGet, Checked, , %checkbox%
-    If (Checked = 1) {
-        Return
-    } Else {
-        %func%()
-    }
+SkipIfChecked(checkboxObj, func) {
+    if checkboxObj.Value = 1
+        return
+    func.Call()
 }
+
 ; Calls a function if the checkbox is checked
-CallIfChecked(checkbox, func){
-    GuiControlGet, Checked, , %checkbox%
-    If (Checked = 1) {
-        %func%()
-    }
+CallIfChecked(checkboxObj, func) {
+    if checkboxObj.Value = 1
+        func.Call()
 }
 
-; Calls a function or jumps to a label based on checkbox
-CallOrGotoIfChecked(checkbox, label, func){
-    GuiControlGet, Checked, , %checkbox%
-    If (Checked = 1) {
-        Goto, %label%
-    } Else {
-        %func%()
-    }
+; Calls one function if the checkbox is checked, another if not
+CallOrRunIfChecked(checkboxObj, funcIfChecked, funcIfNotChecked) {
+    if checkboxObj.Value = 1
+        funcIfChecked.Call()
+    else
+        funcIfNotChecked.Call()
 }
 
-; ========= Resolution-Independent Utilities for AHK v1 =========
+; Converts client coordinates (cx, cy) of Firestone.exe to screen coordinates (sx, sy)
+ClientToScreen_Firestone(cx, cy, &sx, &sy) {
+    hwnd := WinGetID("ahk_exe Firestone.exe")
+    if !hwnd
+        return false
+    pt := Buffer(8, 0)
+    NumPut("Int", cx, pt, 0)
+    NumPut("Int", cy, pt, 4)
+    DllCall("ClientToScreen", "Ptr", hwnd, "Ptr", pt)
+    sx := NumGet(pt, 0, "Int")
+    sy := NumGet(pt, 4, "Int")
+    return true
+}
 
-global baseWidth := 1920
-global baseHeight := 1080
+; Returns coordinates scaled to current client area
+GetWindowRelativeCoord(x, y) {
+    baseWidth := 1920.0
+    baseHeight := 1008.0
+    titleHeight := 24.0 ; Height of the title bar in pixels
 
-; --- Returns coordinates scaled to current client area ---
-GetWindowRelativeCoord(x, y)
-{
-    global baseWidth, baseHeight
-    WinGet, hwnd, ID, ahk_exe Firestone.exe
+    hwnd := WinGetID("ahk_exe Firestone.exe")
     if (!hwnd) {
-        MsgBox, Error: Firestone window not found!
+        MsgBox "Error: Firestone window not found!"
         return [0, 0]
     }
 
-    ; Get client area size
-    VarSetCapacity(rc, 16, 0)
-    DllCall("GetClientRect", "Ptr", hwnd, "Ptr", &rc)
+    rc := Buffer(16, 0)
+    DllCall("GetClientRect", "Ptr", hwnd, "Ptr", rc)
     clientW := NumGet(rc, 8, "Int")
     clientH := NumGet(rc, 12, "Int")
 
-    ; Get top-left corner of client on screen
-    VarSetCapacity(pt, 8, 0)
-    DllCall("ClientToScreen", "Ptr", hwnd, "Ptr", &pt)
-    screenX := NumGet(pt, 0, "Int")
-    screenY := NumGet(pt, 4, "Int")
+    scaledX := Round(x * 1.0 * clientW / baseWidth)
+    scaledY := Round(((y - titleHeight) * 1.0 * clientH) / baseHeight)
 
-    ; Scale the coordinates
-    scaledX := screenX + Round(x * clientW / baseWidth)
-    scaledY := screenY + Round(y * clientH / baseHeight)
     return [scaledX, scaledY]
 }
 
-; --- Moves mouse relative to game window ---
-MoveMouseRel(x, y)
-{
+; Moves mouse relative to game window
+MoveMouseRel(x, y) {
     coords := GetWindowRelativeCoord(x, y)
-    MouseMove, % coords[1], % coords[2]
+    cx := coords[1]
+    cy := coords[2]
+
+    if ClientToScreen_Firestone(cx, cy, &sx, &sy) {
+        MouseMove(sx, sy, 0)
+    }
+    ; Debug details (uncomment for debugging)
+    ; MsgBox "Moving mouse to " cx "[" x "] " cy "[" y "]"
 }
 
-; --- Clicks relative to game window ---
-ClickRel(x, y)
-{
+; Clicks relative to game window
+ClickRel(x, y) {
     coords := GetWindowRelativeCoord(x, y)
-    MouseMove, % coords[1], % coords[2]
-    Click
+    cx := coords[1]
+    cy := coords[2]
+
+    if ClientToScreen_Firestone(cx, cy, &sx, &sy) {
+        MouseMove(sx, sy, 0)
+        Click(sx, sy)
+        Sleep 100
+    }
+    ; Debug details (uncomment for debugging)
+    ; MsgBox "Clicking at " cx "[" x "] " cy "[" y "]"
 }
 
-; --- PixelSearch relative to game window ---
-PixelSearchRel(ByRef outX, ByRef outY, x1, y1, x2, y2, color, variation := 0, options := "")
-{
-    global baseWidth, baseHeight
-    WinGet, hwnd, ID, ahk_exe Firestone.exe
-    if (!hwnd)
-    {
-        MsgBox, Error: Could not find Firestone window for PixelSearch!
+; PixelSearch relative to game window (AHK v2)
+PixelSearchRel(&outX, &outY, x1, y1, x2, y2, color, variation := 0, options := "") {
+    topLeft := GetWindowRelativeCoord(x1, y1)
+    bottomRight := GetWindowRelativeCoord(x2, y2)
+
+    ClientToScreen_Firestone(topLeft[1], topLeft[2], &sx1, &sy1)
+    ClientToScreen_Firestone(bottomRight[1], bottomRight[2], &sx2, &sy2)
+
+    try {
+        found := PixelSearch(&outX, &outY, sx1, sy1, sx2, sy2, color, variation)
+        ; Convert screen coords back to client-relative
+        outX := outX - sx1 + x1
+        outY := outY - sy1 + y1
+        return found
+    } catch {
         return false
     }
-
-    ; Get client area
-    VarSetCapacity(rc, 16, 0)
-    DllCall("GetClientRect", "Ptr", hwnd, "Ptr", &rc)
-    clientW := NumGet(rc, 8, "Int")
-    clientH := NumGet(rc, 12, "Int")
-
-    ; Get top-left of client area on screen
-    VarSetCapacity(pt, 8, 0)
-    DllCall("ClientToScreen", "Ptr", hwnd, "Ptr", &pt)
-    screenX := NumGet(pt, 0, "Int")
-    screenY := NumGet(pt, 4, "Int")
-
-    ; Scale search box
-    sx1 := screenX + Round(x1 * clientW / baseWidth)
-    sy1 := screenY + Round(y1 * clientH / baseHeight)
-    sx2 := screenX + Round(x2 * clientW / baseWidth)
-    sy2 := screenY + Round(y2 * clientH / baseHeight)
-
-    ; Perform the pixel search
-    PixelSearch, outX, outY, sx1, sy1, sx2, sy2, color, variation, %options%
-    return !ErrorLevel
 }

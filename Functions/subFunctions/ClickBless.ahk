@@ -1,18 +1,18 @@
-; ClickBless.ahk
+; ClickBless.ahk (AHK v2)
 
-#Include Functions\util.ahk
+#Include ..\util.ahk
 
 ; Simple script to click the Bless box
-ClickBless(){
+ClickBless() {
     ; Click the Bless box
     MoveMouseRel(1371, 812)
-    Sleep, 1000
-    Click
-    Sleep, 1000
+    Sleep(1000)
+    Click()
+    Sleep(1000)
 
     ; Confirm the blessing
     MoveMouseRel(471, 643)
-    Sleep, 1000
-    Click
-    Sleep, 1000
+    Sleep(1000)
+    Click()
+    Sleep(1000)
 }

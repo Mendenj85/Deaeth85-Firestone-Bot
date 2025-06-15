@@ -1,165 +1,170 @@
 ; OpenChests.ahk
 
-#Include Functions\subFunctions\MainMenu.ahk
-#Include Functions\subFunctions\BigClose.ahk
-#Include Functions\subFunctions\Comet.ahk
-#Include Functions\subFunctions\Common.ahk
-#Include Functions\subFunctions\Cosmic.ahk
-#Include Functions\subFunctions\Diamond.ahk
-#Include Functions\subFunctions\Emerald.ahk
-#Include Functions\subFunctions\Epic.ahk
-#Include Functions\subFunctions\Galaxy.ahk
-#Include Functions\subFunctions\Golden.ahk
-#Include Functions\subFunctions\Iron.ahk
-#Include Functions\subFunctions\Legendary.ahk
-#Include Functions\subFunctions\Lunar.ahk
-#Include Functions\subFunctions\MysteryBox.ahk
-#Include Functions\subFunctions\Mythic.ahk
-#Include Functions\subFunctions\Nebula.ahk
-#Include Functions\subFunctions\Opal.ahk
-#Include Functions\subFunctions\OraclesGift.ahk
-#Include Functions\subFunctions\Solar.ahk
-#Include Functions\subFunctions\Rare.ahk
-#Include Functions\subFunctions\Uncommon.ahk
-#Include Functions\subFunctions\Wooden.ahk
-#Include Functions\util.ahk
+#Include util.ahk
+#Include subFunctions\MainMenu.ahk
+#Include subFunctions\BigClose.ahk
+#Include subFunctions\Chests.ahk
 
-OpenChests(){
+global gearChestDD, jewelChestDD, blessCB, chestsCB
+
+OpenChests() {
+    global gearChestDD, jewelChestDD, blessCB, chestsCB
+
     ; open bag
     MoveMouseRel(1581, 939)
-    Sleep, 1000
+    Sleep 1000
     Click
-    Sleep, 1000
+    Sleep 1000
     ; click chests tab
     MoveMouseRel(1487, 460)
-    Sleep, 1000
+    Sleep 1000
     Click
-    Sleep, 1000
+    Sleep 1000
+
     ; looks for Gear Chests
-    GuiControlGet, SelectedItem, ,GearChestExclude,
-    If (SelectedItem="Exclude All"){
-        Goto, JewelChests
+    SelectedItem := gearChestDD.Value
+    if (SelectedItem = "Exclude All") {
+        goto JewelChests
     }
-    If (SelectedItem="Don't Exclude Any"){
-        Goto, Mythic
-    }    
-    If (SelectedItem="Mythic"){
-        Goto, Legendary
+    if (SelectedItem = "Don't Exclude Any") {
+        goto Mythic
     }
-    If (SelectedItem="Legendary and Higher"){
-        Goto, Epic
+    if (SelectedItem = "Mythic") {
+        goto Legendary
     }
-    If (SelectedItem="Epic and Higher"){
-        Goto, Rare
-    }    
+    if (SelectedItem = "Legendary and Higher") {
+        goto Epic
+    }
+    if (SelectedItem = "Epic and Higher") {
+        goto Rare
+    }
     Mythic:
-    MsgBox, , Open Chests, Opening Mythic Chests, 1.5
-    Mythic()
+    ToolTip("Opening Mythic Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("mythic")
     Legendary:
-    MsgBox, , Open Chests, Opening Legendary Chests, 1.5
-    Legendary()
+    ToolTip("Opening Legendary Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("legendary")
     Epic:
-    MsgBox, , Open Chests, Opening Epic Chests, 1.5
-    Epic()
+    ToolTip("Opening Epic Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("epic")
     Rare:
-    MsgBox, , Open Chests, Opening Rare Chests, 1.5
-    Rare()
-    MsgBox, , Open Chests, Opening Uncommon Chests, 1.5
-    Uncommon()
-    MsgBox, , Open Chests, Opening Common Chests, 1.5
-    Common()
+    ToolTip("Opening Rare Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("rare")
+    ToolTip("Opening Uncommon Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("uncommon")
+    ToolTip("Opening Common Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("common")
 
     JewelChests:
     ; look for Jewel Chests
-    GuiControlGet, SelectedItem, ,JewelChestExclude,
-    If (SelectedItem="Exclude All"){
-        Goto, Gifts
+    SelectedItem := jewelChestDD.Value
+    if (SelectedItem = "Exclude All") {
+        goto Gifts
     }
-    If (SelectedItem="Don't Exclude Any"){
-        Goto, Emerald
+    if (SelectedItem = "Don't Exclude Any") {
+        goto Emerald
     }
-    If (SelectedItem="Diamond and Higher"){
-        Goto, Golden
+    if (SelectedItem = "Diamond and Higher") {
+        goto Golden
     }
-    If (SelectedItem="Opal and Higher"){
-        Goto, Diamond
+    if (SelectedItem = "Opal and Higher") {
+        goto Diamond
     }
-    If (SelectedItem="Emerald"){
-        Goto, Opal
+    if (SelectedItem = "Emerald") {
+        goto Opal
     }
     Emerald:
-    MsgBox, , Open Chests, Opening Emerald Chests, 1.5
-    Emerald()
+    ToolTip("Opening Emerald Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("emerald")
     Opal:
-    MsgBox, , Open Chests, Opening Opal Chests, 1.5
-    Opal()
+    ToolTip("Opening Opal Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("opal")
     Diamond:
-    MsgBox, , Open Chests, Opening Diamond Chests, 1.5
-    Diamond()
+    ToolTip("Opening Diamond Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("diamond")
     Golden:
-    MsgBox, , Open Chests, Opening Golden Chests, 1.5
-    Golden()
-    MsgBox, , Open Chests, Opening Iron Chests, 1.5
-    Iron()
-    MsgBox, , Open Chests, Opening Wooden Chests, 1.5
-    Wooden()
-    
+    ToolTip("Opening Golden Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("golden")
+    ToolTip("Opening Iron Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("iron")
+    ToolTip("Opening Wooden Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("wooden")
+
     Gifts:
     ; look for Gifts
-    MsgBox, , Open Chests, Opening Oracle Gifts, 1.5
-    OraclesGift()
-    MsgBox, , Open Chests, Opening Mystery Boxes, 1.5
-    MysteryBox()
-    
+    ToolTip("Opening Oracle Gifts")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("oraclesgift")
+    ToolTip("Opening Mystery Boxes")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("mysterybox")
+
     ;check if Upgrade Blessings is checked
-    GuiControlGet, Checked, , Bless,
-    If (Checked = 1){
+    if (blessCB.Value = 1) {
         OpenBlessChests()
-    } Else {
+    } else {
         ;close bag
         MoveMouseRel(1870, 246)
-        Sleep, 1000
+        Sleep 1000
         Click
-        Sleep, 1500
-        Return
+        Sleep 1500
+        return
     }
 }
 
 ; section will trigger if Upgrade Blessings is selected and Open Chests is not
-OpenBlessChests(){
-    GuiControlGet, Checked, , Chests,
-    If (Checked = 1){
-        Goto, OpenBlessChestsNoBag
+OpenBlessChests() {
+    global chestsCB
+    if (chestsCB.Value = 1) {
+        goto OpenBlessChestsNoBag
     }
     ; open bag
     MoveMouseRel(1581, 939)
-    Sleep, 1000
+    Sleep 1000
     Click
-    Sleep, 1000
+    Sleep 1000
     ; click chests tab
     MoveMouseRel(1487, 460)
-    Sleep, 1000
+    Sleep 1000
     Click
-    Sleep, 1000
+    Sleep 1000
     ; start here if also claiming other chests
     OpenBlessChestsNoBag:
     ; look for blessing chests
-    MsgBox, , Open Chests, Opening Galaxy Chests, 1.5
-    Galaxy()
-    MsgBox, , Open Chests, Opening Cosmic Chests, 1.5
-    Cosmic()
-    MsgBox, , Open Chests, Opening Nebula Chests, 1.5
-    Nebula()
-    MsgBox, , Open Chests, Opening Solar Chests, 1.5
-    Solar()
-    MsgBox, , Open Chests, Opening Lunar Chests, 1.5
-    Lunar()
-    MsgBox, , Open Chests, Opening Comet Chests, 1.5
-    Comet()
+    ToolTip("Opening Galaxy Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("galaxy")
+    ToolTip("Opening Cosmic Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("cosmic")
+    ToolTip("Opening Nebula Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("nebula")
+    ToolTip("Opening Solar Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("solar")
+    ToolTip("Opening Lunar Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("lunar")
+    ToolTip("Opening Comet Chests")
+    SetTimer(() => ToolTip(), -1500)
+    OpenChest("comet")
     ; close bag
     MoveMouseRel(1870, 246)
-    Sleep, 1000
+    Sleep 1000
     Click
-    Sleep, 1000
-    Return
+    Sleep 1000
+    return
 }

@@ -1,10 +1,9 @@
 ; SleepDelay.ahk
 
-; This script uses the Delay() function from your Gui.ahk to pause for the user-selected delay.
-
-#Include Gui.ahk
+; This script pauses for the user-selected delay using the delayDD control object from your Gui.ahk.
 
 EndofLoopDelay() {
-    GuiControlGet, SelectedDelay, , Delay
-    Sleep, %SelectedDelay%*1000
+    global delayDD 
+    SelectedDelay := delayDD.Value
+    Sleep SelectedDelay * 1000
 }

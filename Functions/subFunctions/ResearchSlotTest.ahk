@@ -1,88 +1,100 @@
-;ResearchSlotTest.ahk
+; ResearchSlotTest.ahk (AHK v2)
 
-#Include Functions\util.ahk
+#Include ..\util.ahk
 
 ResearchSlotTest() {
+    global Slot1InProcess := 0
+    global Slot2InProcess := 0
+
     ; make sure slot 2 is purchased
-    MsgBox, , Slot 2 Status ,Checking status of slot 2..., 1.5
-    PixelSearchRel(FoundX, FoundY, 1208, 892, 1264, 931, 0x6F6F6F, 1)
-    If (ErrorLevel = 0){
-        MsgBox, , Slot 2 Status, Slot 2 not purchased - setting to in progress, 1.5
+    ToolTip("Checking status of slot 2...")
+    SetTimer(() => ToolTip(), -1500)
+    if PixelSearchRel(&FoundX, &FoundY, 1208, 892, 1264, 931, 0x6F6F6F, 1) {
+        ToolTip("Slot 2 not purchased - setting to in progress")
+        SetTimer(() => ToolTip(), -1500)
         Slot2InProcess := 1
-        Goto, Slot1Check
+        gotoSlot1Check()
+        return
     }
     ; check for in process research in slot 2
-    PixelSearchRel(FoundX, FoundY, 1228, 889, 1269, 929, 0x916A37, 3)
-    If (ErrorLevel = 0){
-        MsgBox, , Slot 2 Status, Slot 2 is in progress., 1.5
+    PixelSearchRel(&FoundX, &FoundY, 1228, 889, 1269, 929, 0x916A37, 3)
+    if PixelSearchRel(&FoundX, &FoundY, 1228, 889, 1269, 929, 0x916A37, 3) {
+        ToolTip("Slot 2 is in progress.")
+        SetTimer(() => ToolTip(), -1500)
         Slot2InProcess := 1
-        Goto, Slot1Check
+        gotoSlot1Check()
+        return
     }
-    ; checking if slot 2 is ready for free claim
-    PixelSearchRel(FoundX, FoundY, 1234, 912, 1272, 974, 0xF9AA47, 3)
-    If (ErrorLevel = 0){
+    if PixelSearchRel(&FoundX, &FoundY, 1234, 912, 1272, 974, 0xF9AA47, 3) {
         MoveMouseRel(1204, 938)
-        MsgBox, , Slot 2 Status, Slot 2 is able to be completed for free., 1.5
-        Click
-        Sleep, 1000
+        ToolTip("Slot 2 is able to be completed for free.")
+        SetTimer(() => ToolTip(), -1500)
+        Click()
+        Sleep(1000)
         Slot2InProcess := 0
-        Goto, Slot1Check
+        gotoSlot1Check()
+        return
     }
-    ; checking if slot 2 is completed
-    PixelSearchRel(FoundX, FoundY, 1234, 912, 1272, 974, 0x0AA008, 3)
-    If (ErrorLevel = 0){
-        MsgBox, , Slot 2 Status, Slot 2 is completed and ready to claim., 1.5
+    if PixelSearchRel(&FoundX, &FoundY, 1234, 912, 1272, 974, 0x0AA008, 3) {
+        ToolTip("Slot 2 is completed and ready to claim.")
+        SetTimer(() => ToolTip(), -1500)
         MoveMouseRel(1204, 938)
-        Sleep, 1000
-        Click
-        Sleep, 1000
+        Sleep(1000)
+        Click()
+        Sleep(1000)
         Slot2InProcess := 0
-        Goto, Slot1Check
+        gotoSlot1Check()
+        return
     }
-    MsgBox, , Slot 2 Status, Slot 2 is not in progress., 1.5
-    Slot2InProcess := 0
-    Goto, Slot1Check
+    gotoSlot1Check()
+    return
 
-    Slot1Check:
-    ; check for in process research in slot 1
-    MsgBox, , Slot 1 Status, Checking status of slot 1... , 1.5
-    PixelSearchRel(FoundX, FoundY, 603, 891, 624, 932, 0x916A37, 3)
-    If (ErrorLevel = 0){
-        MsgBox, , Slot 1 Status, Slot 1 is in progress., 1.5
-        Slot1InProcess := 1
-        Return
+    ; Slot 1 check logic as a nested function for clarity
     }
-    ; checking if slot 1 is ready for free claim
-    PixelSearchRel(FoundX, FoundY, 588, 911, 620, 967, 0xF9AA47, 3)
-    If (ErrorLevel = 0){
-        MoveMouseRel(545, 940)
-        MsgBox, , Slot 1 Status, Slot 1 is able to be completed for free., 1.5
-        Click
-        Sleep, 1000
-        Slot1InProcess := 0
-        If (Slot2InProcess = 1){
+    
+    gotoSlot1Check() {
+        ToolTip("Checking status of slot 1...")
+        SetTimer(() => ToolTip(), -1500)
+        if PixelSearchRel(&FoundX, &FoundY, 603, 891, 624, 932, 0x916A37, 3) {
+            ToolTip("Slot 1 is in progress.")
+            SetTimer(() => ToolTip(), -1500)
             Slot1InProcess := 1
-            Slot2InProcess := 0
-            MsgBox, , Changing Slot Status, Changing Slot 1 to In Process and Slot 2 to Not in Process, 2
-            Return
+            return
+        }
+        ToolTip("Slot 1 is able to be completed for free.")
+        SetTimer(() => ToolTip(), -1500)
+        if PixelSearchRel(&FoundX, &FoundY, 588, 911, 620, 967, 0xF9AA47, 3) {
+            MoveMouseRel(545, 940)
+            ToolTip("Slot 1 is able to be completed for free.")
+            SetTimer(() => ToolTip(), -1500)
+            Click()
+            Sleep(1000)
+            Slot1InProcess := 0
+            if (Slot2InProcess = 1) {
+                Slot1InProcess := 1
+                Slot2InProcess := 0
+                ToolTip("Changing Slot 1 to In Process and Slot 2 to Not in Process")
+                SetTimer(() => ToolTip(), -2000)
+                return
+            }
+            return
+        }
+        MoveMouseRel(545, 940)
+        Sleep(1000)
+        if PixelSearchRel(&FoundX, &FoundY, 588, 911, 620, 967, 0x0AA008, 3) {
+            ToolTip("Slot 1 is completed and ready to claim.")
+            SetTimer(() => ToolTip(), -1500)
+            MoveMouseRel(545, 940)
+            Sleep(1000)
+            Click()
+            Sleep(1000)
+            Slot1InProcess := 0
+            if (Slot2InProcess = 1) {
+                Slot1InProcess := 1
+                Slot2InProcess := 0
+                ToolTip("Changing Slot 1 to In Process and Slot 2 to Not in Process")
+                SetTimer(() => ToolTip(), -2000)
+            }
+            return
         }
     }
-    ; checking if slot 1 is complete
-    PixelSearchRel(FoundX, FoundY, 588, 911, 620, 967, 0x0AA008, 3)
-    If (ErrorLevel = 0){
-        MsgBox, , Slot 1 Status, Slot 1 is completed and ready to claim., 1.5
-        MoveMouseRel(545, 940)
-        Sleep, 1000
-        Click
-        Sleep, 1000
-        Slot1InProcess := 0
-        If (Slot2InProcess = 1){
-            Slot1InProcess := 1
-            Slot2InProcess := 0
-            MsgBox, , Changing Slot Status, Changing Slot 1 to In Process and Slot 2 to Not in Process, 2
-        }
-        Return
-    }
-    MsgBox, , Slot 1 Status, Slot 1 is not in progress., 1.5
-    Slot1InProcess := 0
-}

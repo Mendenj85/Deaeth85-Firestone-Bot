@@ -1,13 +1,13 @@
-; ResearchClicks.ahk
+; ResearchClicks.ahk (AHK v2)
 
-#Include Functions\subFunctions\ResearchSlotTest.ahk
-#Include Functions\util.ahk
+#Include ..\util.ahk
+#Include ResearchSlotTest.ahk
 
-ResearchClicks(){
+ResearchClicks() {
     ; start or safely click away from spend gems (resolution independent)
     MoveMouseRel(721, 747)
-    Sleep, 1000
-    Click
-    Sleep, 1000
+    Sleep(1000)
+    Click()
+    Sleep(1000)
     ResearchSlotTest()
 }
