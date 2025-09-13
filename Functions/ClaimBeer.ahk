@@ -15,7 +15,11 @@ ClaimBeer(){
             MouseMove, 719, 957
             Sleep, 1000
             Click
-            Sleep, 1500
+            Sleep, 1000
+            MouseMove, 773, 500
+            Sleep, 1000
+            Click
+            Sleep, 1000
             ; check for enough beer to claim tokens
             MouseMove, 1735, 69
             Sleep, 1000

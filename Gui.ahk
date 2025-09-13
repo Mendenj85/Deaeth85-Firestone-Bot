@@ -27,7 +27,7 @@ GuiControl, Choose, GearChestExclude, %GearChestExclude%
 IniRead, JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
 GuiControl, Choose, JewelChestExclude, %JewelChestExclude%
 IniRead, Bless, settings.ini, CommonOptions, Bless
-IniRead, Quests, settings.ini, CommonOptions, Quests
+IniRead, Delay, settings.ini, CommonOptions, Delay
 IniRead, Events, settings.ini, CommonOptions, Events
 IniRead, Mail, settings.ini, CommonOptions, Mail
 IniRead, Awaken, settings.ini, CommonOptions, Awaken
@@ -36,6 +36,7 @@ IniRead, Chaos, settings.ini, CommonOptions, Chaos
 IniRead, PTree, settings.ini, CommonOptions, PTree
 
 IniRead, Beer, settings.ini, QoL/RareOptions, Beer
+IniRead, Scarab, settings.ini, QoL/RareOptions, Scarab
 IniRead, NoGuild, settings.ini, QoL/RareOptions, NoGuild
 IniRead, NoEng, settings.ini, QoL/RareOptions, NoEng
 IniRead, Pickaxes, settings.ini, QoL/RareOptions, Pickaxes
@@ -71,7 +72,7 @@ Gui Tab, 1 ; About
 Gui Font, s20, , Lucida Handwriting Italic
 Gui Add, Text, x0 y20 w900 h60 +0x200 +Center, DEAETH85'S FIRESTONE BOT
 Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x0 y70 w900 h30 +0x200 +Center, VERSION 4.1.3
+Gui Add, Text, x0 y70 w900 h30 +0x200 +Center, VERSION 5.0.0
 Gui Add, Picture, x415 y575 w60 h60, Images\giftbox.png
 Gui Add, Picture, x150 y100 w600 h300, Images\Firestone.png
 Gui Add, Picture, x150 y30 w60 h60, Images\logo.png
@@ -108,13 +109,14 @@ Gui Add, DropDownList, x10 y360 w400 r5 vGearChestExclude, Exclude All|Don't Exc
 Gui Add, Text, x150 y390 w200 h30, Jewel Chests
 Gui Add, DropDownList, x10 y410 w400 r5 vJewelChestExclude, Exclude All|Don't Exclude Any|Diamond and Higher||Opal and Higher|Emerald
 Gui Add, Checkbox, x10 y450 w400 h30 vBless Checked%Bless%, Upgrade Blessings - Will open Oracle chests even without Open Chests selected
-Gui Add, Checkbox, x10 y490 w400 h30 vQuests Checked%Quests%, Claim Quests
-Gui Add, Checkbox, x10 y530 w400 h30 vEvents Checked%Events%, Claim Basic Events
-Gui Add, Checkbox, x10 y570 w400 h30 vMail Checked%Mail%, Check Mail
-Gui Add, Checkbox, x10 y610 w400 h30 vAwaken Checked%Awaken%, Awaken Heroes
-Gui Add, Checkbox, x10 y650 w400 h30 vCrystal Checked%Crystal%, Spend Pickaxes on Crystal
-Gui Add, Checkbox, x10 y690 w400 h30 vChaos Checked%Chaos%, Participate in Chaos Rift
-Gui Add, Checkbox, x10 y730 w600 h30 vPTree Checked%PTree%, Upgrade Personal Tree (Select options on next tab if upgrading)
+Gui Add, Text, x150 y490 w200 h30, End of Cycle Delay (In Seconds)
+Gui Add, DropDownList, x10 y510 w400 r5 vDelay, 0|30|60||90|120
+Gui Add, Checkbox, x10 y550 w400 h30 vEvents Checked%Events%, Claim Basic Events
+Gui Add, Checkbox, x10 y590 w400 h30 vMail Checked%Mail%, Check Mail
+Gui Add, Checkbox, x10 y630 w400 h30 vAwaken Checked%Awaken%, Awaken Heroes
+Gui Add, Checkbox, x10 y670 w400 h30 vCrystal Checked%Crystal%, Spend Pickaxes on Crystal
+Gui Add, Checkbox, x10 y720 w400 h30 vChaos Checked%Chaos%, Participate in Chaos Rift
+Gui Add, Checkbox, x10 y760 w600 h30 vPTree Checked%PTree%, Upgrade Personal Tree (Select options on next tab if upgrading)
 Gui Tab, 3 ; Personal Tree Upgrades
 Gui Font, s12, Bold, Tahoma
 Gui Add, Text, x0 y30 w900 h30 +0x200 +Center, CHOOSE PERSONAL TREE UPGRADES THAT YOU WOULD LIKE THE SCRIPT TO ATTEMPT TO PURCHASE
@@ -147,9 +149,11 @@ Gui Tab, 4 ; QoL/Rare Options
 Gui Add, Picture, x450 y420 w300 h300, Images\dragon.png
 Gui Add, Picture, x0 y0 w900 h300, Images\dragonbanner.png
 Gui Font, s15, Bold, Tahoma
-Gui Add, Text, x0 y330 w900 h30 +0x200 +Center, Rarer Options
+;Gui Add, Text, x0 y330 w900 h30 +0x200 +Center, Rarer Options
 Gui Font, s9 Bold, Tahoma
-Gui Add, Checkbox, x10 y330 w600 h30 vBeer Checked%Beer%, Skip Claiming Beer
+Gui Add, Checkbox, x10 y330 w200 h30 vBeer Checked%Beer%, Skip Claiming Beer
+Gui Add, Checkbox, x250 y330 w200 h30 vScarab Checked%Scarab%, Skip Using Scarab Token
+;Gui Add, Checkbox, x250 y330 w200 h30 vScarabToken Checked%ScarabToken%, Skip Using Scarab Token
 Gui Add, Checkbox, x10 y370 w400 h30 vNoGuild Checked%NoGuild%, Skip All Guild Functions
 Gui Add, Checkbox, x10 y410 w400 h30 vNoEng Checked%NoEng%, Skip Engineer
 Gui Add, Checkbox, x10 y450 w400 h30 vPickaxes Checked%Pickaxes%, Skip Claiming Pickaxes
@@ -209,7 +213,7 @@ GuiControl, Choose, GearChestExclude, %GearChestExclude%
 IniRead, JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
 GuiControl, Choose, JewelChestExclude, %JewelChestExclude%
 IniRead, Bless, settings.ini, CommonOptions, Bless
-IniRead, Quests, settings.ini, CommonOptions, Quests
+IniRead, Delay, settings.ini, CommonOptions, Delay
 IniRead, Events, settings.ini, CommonOptions, Events
 IniRead, Mail, settings.ini, CommonOptions, Mail
 IniRead, Awaken, settings.ini, CommonOptions, Awaken
@@ -218,6 +222,7 @@ IniRead, Chaos, settings.ini, CommonOptions, Chaos
 IniRead, PTree, settings.ini, CommonOptions, PTree
 
 IniRead, Beer, settings.ini, QoL/RareOptions, Beer
+IniRead, Scarab, settings.ini, QoL/RareOptions, Scarab
 IniRead, NoGuild, settings.ini, QoL/RareOptions, NoGuild
 IniRead, NoEng, settings.ini, QoL/RareOptions, NoEng
 IniRead, Pickaxes, settings.ini, QoL/RareOptions, Pickaxes
@@ -241,7 +246,7 @@ GuiControl, Choose, WMOptions, %WMOptions%
 IniRead, Blueprints, settings.ini, OtherOptions, Blueprints
 GuiControl, Choose, Blueprints, %Blueprints%
 
-Gui Show, w900 h800, Deaeth85's Firestone Bot - V4.1.3
+Gui Show, w900 h800, Deaeth85's Firestone Bot - V5.0.0
 GuiControlGet, Checked, , DisableWarning
 If (Checked = 0){
 MsgBox, 48, Warning, Please note this Bot will ONLY work reliably with the game launched via Steam
@@ -262,7 +267,7 @@ SaveSettings:
     IniWrite, % GearChestExclude, settings.ini, CommonOptions, GearChestExclude
     IniWrite, % JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
     IniWrite, % Bless, settings.ini, CommonOptions, Bless
-    IniWrite, % Quests, settings.ini, CommonOptions, Quests
+    IniWrite, % Delay, settings.ini, CommonOptions, Delay
     IniWrite, % Events, settings.ini, CommonOptions, Events
     IniWrite, % Mail, settings.ini, CommonOptions, Mail
     IniWrite, % Awaken, settings.ini, CommonOptions, Awaken
@@ -272,6 +277,7 @@ SaveSettings:
 
     ; QoL/Rare Options
     IniWrite, % Beer, settings.ini, QoL/RareOptions, Beer
+    IniWrite, % Scarab, settings.ini, QoL/RareOptions, Scarab
     IniWrite, % NoGuild, settings.ini, QoL/RareOptions, NoGuild
     IniWrite, % NoEng, settings.ini, QoL/RareOptions, NoEng
     IniWrite, % Pickaxes, settings.ini, QoL/RareOptions, Pickaxes
@@ -305,7 +311,7 @@ SaveSettings:
     GuiControlGet, GearChestExclude, , GearChestExclude
     GuiControlGet, JewelChestExclude, , JewelChestExclude
     GuiControlGet, Bless, , Bless
-    GuiControlGet, Quests, , Quests
+    GuiControlGet, Delay, , Delay
     GuiControlGet, Events, , Events
     GuiControlGet, Mail, , Mail
     GuiControlGet, Awaken, , Awaken
@@ -314,6 +320,7 @@ SaveSettings:
     GuiControlGet, PTree, , PTree
 
     GuiControlGet, Beer, , Beer
+    GuiControlGet, Scarab, , Scarab
     GuiControlGet, NoGuild, , NoGuild
     GuiControlGet, NoEng, , NoEng
     GuiControlGet, Pickaxes, , Pickaxes
@@ -346,7 +353,7 @@ SaveSettings:
     IniWrite, % GearChestExclude, settings.ini, CommonOptions, GearChestExclude
     IniWrite, % JewelChestExclude, settings.ini, CommonOptions, JewelChestExclude
     IniWrite, % Bless, settings.ini, CommonOptions, Bless
-    IniWrite, % Quests, settings.ini, CommonOptions, Quests
+    IniWrite, % Delay, settings.ini, CommonOptions, Delay
     IniWrite, % Events, settings.ini, CommonOptions, Events
     IniWrite, % Mail, settings.ini, CommonOptions, Mail
     IniWrite, % Awaken, settings.ini, CommonOptions, Awaken
@@ -355,6 +362,7 @@ SaveSettings:
     IniWrite, % PTree, settings.ini, CommonOptions, PTree
 
     IniWrite, % Beer, settings.ini, QoL/RareOptions, Beer
+    IniWrite, % Scarab, settings.ini, QoL/RareOptions, Scarab
     IniWrite, % NoGuild, settings.ini, QoL/RareOptions, NoGuild
     IniWrite, % NoEng, settings.ini, QoL/RareOptions, NoEng
     IniWrite, % Pickaxes, settings.ini, QoL/RareOptions, Pickaxes

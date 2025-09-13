@@ -6,6 +6,7 @@
 #Include Functions\Arena.ahk
 #Include Functions\CheckMail.ahk
 #Include Functions\ClaimBeer.ahk
+#include Functions\Scarab.ahk
 #Include Functions\ClaimEngineer.ahk
 #Include Functions\ClaimEvents.ahk
 #Include Functions\ClaimRituals.ahk
@@ -79,6 +80,7 @@ loop:
     Guardian()
     ; tavern
     ClaimBeer()
+    Scarab()
     ; claim rituals
     GuiControlGet, Checked, , SkipOracle,
         If (Checked = 1){
@@ -141,9 +143,34 @@ loop:
     }
     HeroUpgrade()
     EndingMouseMove:
-    MouseMove, 947, 755
-    Sleep, 60000 ;wait 1 minute then repeat
-    Goto, Loop
+    GuiControlGet, SelectedItem, ,Delay,
+    If (SelectedItem="0"){
+        Goto, Loop
+    }
+    GuiControlGet, SelectedItem, ,Delay,
+    If (SelectedItem="30"){
+        MouseMove, 947, 755
+        Sleep, 30000
+        Goto, Loop
+    }
+    GuiControlGet, SelectedItem, ,Delay,
+    If (SelectedItem="60"){
+        MouseMove, 947, 755
+        Sleep, 60000
+        Goto, Loop
+    }
+    GuiControlGet, SelectedItem, ,Delay,
+    If (SelectedItem="90"){
+        MouseMove, 947, 755
+        Sleep, 90000
+        Goto, Loop
+    }
+    GuiControlGet, SelectedItem, ,Delay,
+    If (SelectedItem="120"){
+        MouseMove, 947, 755
+        Sleep, 120000
+        Goto, Loop
+}
 }
 
 GuiEscape:
